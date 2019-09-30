@@ -1,0 +1,37 @@
+extends ../node_modules/yi-frames-ui/pc-widget/src/pug/layout.pug
+block pugConfig
+	-const pugConfig={titleText:`class api`, cssName:`index`, confName:`index`, isNotSpa:true, column:'2', bodyClassName:[''], hrefUrl:'../'};
+block mainLeft
+	// 导航栏
+	+subnav({
+		'title': '用户管理',
+		'iconName': 'yhgl',
+		'active': 'active',
+		'link':  '###yiche.com###',
+		'value': ['车型报价', '新闻管理' , '增配车管理'],
+	},{
+		'title': '业务管理',
+		'iconName': 'ywgl',
+		'value': ['车型报价','新闻管理','增配车管理'],
+	})
+block mainRight
+	// 导航条
+	+tabs({
+		'active': 'active',
+		'text': ' 张三',
+	},{
+		'active': 'active',
+		'text': ' 张三',
+	},{
+		'active': 'active',
+		'text': ' 张三',
+	},{
+		'active': 'active',
+		'text': ' 张三',
+	},{
+		'active': 'active',
+		'text': ' 张三',
+	})#tabsBox
+		.panel-item
+		.panel-item
+		.panel-item

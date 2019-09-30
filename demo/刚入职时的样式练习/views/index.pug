@@ -1,0 +1,342 @@
+doctype
+html
+	head
+		meta(charset="UTF-8")
+		title 项目学习
+		link(rel="stylesheet",href="../css/eui.css")
+		link(rel="stylesheet",href="../css/style.css")
+		script(src="../js/jQuery-1.11.3.min.js")
+		script(src="../js/common.js")
+	body
+		//- 星级评分条
+		h1.block 星级评分条
+		div
+			span.grayStar
+				em.colorStar(style="width:80%;")
+		//- 树形菜单
+		h1.block 可伸缩可展开的高度很调皮的——树形菜单
+		.tree-cont
+			.treeBar
+				ul
+					mixin submenu(...items)
+						each item in items
+							li.tree-items(class= item.active)
+								a.tree-item-link(href="javascript:;")
+									i.icon(class= item.iconName)
+									| #{item.title}
+									i.icon(class= item.class)
+								if item.value
+									.nav-item-submenu
+										ul
+											each i in item.value
+												li
+													a.submenu-item-link(href="javascript:;")
+														i.icon.icon-navarrow
+														| #{i}
+					+submenu(
+						{
+							"title":"首页",
+							"active":"active",
+							"iconName":"icon-home"
+						}
+					)
+					+submenu(
+						{ 
+							"title":"信息管理",
+							"iconName":"icon-userinfo",
+							"class":"icon-pulldown",
+							"value":["车型报价","新闻管理","增配车管理","视频管理","调查管理","保养服务","维修服务","汽车用品","企业员工"]
+						}
+					)
+					+submenu(
+						{
+							"title":"会员页设置",
+							"iconName":"icon-customer",
+							"class":"icon-pulldown",
+							"value":["店头设置","栏目设置","形象图管理","主营品牌设置"]
+						}
+					)
+					+submenu(
+						{
+							"title":"信息呈现",
+							"iconName":"icon-briefcase"
+						}
+					)
+					+submenu(
+						{
+							"title":"统计报表",
+							"iconName":"icon-bargraph",
+							"class":"icon-pulldown",
+							"value":["统计概览","会员页","报价搜索","新闻","易车指数","车型分析","车型对比"]
+						}
+					)
+			.info
+				h3 问题总结
+				ol
+					li pug，mixin用不了，想要批量的生产结构代码（后来解决了)
+					li html，结构没理清，a和div应该是并列结构，不是包含结构
+					li css，左侧树菜单可以无限期的延长的做法需要掌握
+					li css，展开的div左边少5个像素的视觉差不会
+					li css，巧用增加类名的方式，改变点击/交互后的效果 的想法没想到
+					li js，给展开的div加一个动画，做不了。
+					li js，展开的能做了，但是他这个展开不太一样，没有二级菜单的不能展开，点击也不变背景色（这就涉及判断了），有二级菜单的，点击的时候展开，展开后再次点击他就关闭（突然领悟这种就用index=0/1的方法，本来之前想的是判断高度，捣鼓半天没成功，因为隐藏后高度清零，再次点击，高度就没法加上去了，因为不是固定的高度，问题就坑在这里了，现在突然想到用index=0的情况，等到点击后index=1；然后判断index的值来展开闭合！这么经典的方法差一点就忘了！)
+					li firebug 截止目前还是不能顺利的运行断点后的代码，找不到关键点打开这个功能，都是靠巧合
+				h3 新技能
+				ol
+					li 用firebug的调试工具调试js，非常管用，打断点，精确查找错误点
+					li 用console.log写出多个object：console.log($(this).children(".nav-item-submenu"));，然后在Console中查看其详细的数据值，寻找规律，找不同的地方作为判断依据。对于解决问题有很大的帮助.比如这一句：var length = $(this).children(".nav-item-submenu").length;console.log(length);
+					li 东翌学院学到的文字分析js逻辑的方法很管用，把逻辑用文字描述出来，之后再用代码进行表现就不难了，因为自己的思维不会再乱了。
+		//- tab 选项卡
+		h1.block tab选项卡(0818更改选项卡的样式)
+		.tab-wrap
+			ul
+				li.cur: a 1
+				li: a 2
+				li: a 3
+			div.tab-cont.show 1-1
+			div.tab-cont 2-1
+			div.tab-cont 3-1
+		.info.info-no-float
+			h3 问题总结
+			ol
+				li js 用js的方法写一个tab选项卡，没有写出来，有点忘了需要熟悉，jq的可以写出来，这个页面中两次用siblings都不起作用，需要换行不能链式，不造啥原因，好像是jqeury源码的问题。
+		//- IMS首页
+		h1.block IMS首页（易湃智能营销系统）-intelligence marketing system login
+		.ims-wrap
+			.ims-header
+				.ims-container
+					.ims-logo: image(src="../img/sys_logo.png")
+			.ims-cont
+				.ims-container.clearfix
+					.ims-login-wrap
+						.ims-login-logo: image(src="../img/login-logo.png")
+						form.ims-login-form
+							.ims-login-div
+								input.ims-input-account(type="text",placeholder="账号/邮箱地址/手机号")
+							.ims-login-div
+								input.ims-input-password(type="password",placeholder="请输入密码")
+							.ims-login-div.ims-login-verify.clearfix
+								span
+									input.ims-input-verify(type="text")
+								span: image(src="../img/auth-code.png")
+								span: a.change-code-img(href="javascript:;") 换一张
+							.ims-login-btn
+								input.ims-login-submit(type="submit",value="Engine Start")
+							.ims-login-info.clearfix
+								span
+									input.ims-login-check(type="checkbox") 
+									| 记住账号和密码
+								span: a(href="javascript:;") 取回密码
+						.ims-login-phone
+							image(src="../img/login-phone.png")
+				.ims-container
+					.ims-login-copy
+						| &copy;  符号，猜猜我是怎么出来的呢？
+					.info.info-no-float.info-white
+						h3 问题总结
+						ol
+							li html checkbox和文字不能垂直居中的问题
+							li css outline去掉的方法是none，不是0；
+		h1.block 车微店 表格布局
+		table.cwd-table
+			colgroup
+				-var colWidth = ["300","300","300","200"]
+				each item in colWidth
+					col(width= item)
+			thead
+				tr
+					- var theadTxt = ["新闻标题","新闻类型","发布时间","二维码"]
+					each item in theadTxt 
+						th #{item}
+			tbody
+				- var tbodyTxt = [["易车互联索纳塔八优惠高达5万元","降价促销","2015-03-10","qrCode"],["易车互联索纳塔八优惠高达5万元","降价促销","2015-03-10","qrCode"],["易车互联索纳塔八优惠高达5万元","降价促销","2015-03-10","qrCode"],["易车互联索纳塔八优惠高达5万元","降价促销","2015-03-10","qrCode"]]
+				each item in tbodyTxt
+					tr
+						each i in item
+							td= i
+		h1.block 车易通 表格布局之th与td的合作
+		table.cyt-table
+			thead
+				tr
+					th(colspan="2") 保养项目
+					th 价格及用时
+					th 点的使用
+			tbody
+				tr
+					th 更换机油
+					th
+					mixin cytTds
+						td
+							-var cytTdSpans = [["工时费","元","500.0"],["材料费：","元"],["用时：","分钟"]]
+							//- each item in cytTdSpans
+							//- 	span
+							//- 		= item[0] 
+							//- 		if item.length > 3
+							//- 			input(value= item[2])
+							//- 		else
+							//- 			input 
+							//- 		= item[1]
+							span
+								|材料费：
+								input
+								|元
+							span
+								|用时：
+								input
+								|分钟
+					+cytTds
+					td: b.cyt-point ● 
+				tr
+					th(rowspan="2") 更换变速汽油
+					th 手自一体
+					+cytTds
+					td 看啥？我没有点的,<br/>我很特殊的<br/>我们这一行还<br/>换行了呢！
+				tr
+					th 自动
+					+cytTds
+					td: b.cyt-point ●
+		.info.info-no-float
+			h3 问题总结
+			ol
+				li 注意tbody那里的th与td的结合使用，是为了方便日后写不同的样式而做的结构上的区分
+				li 注意需要合并的th或者td的做法，横向合并两个用colspan="2"，纵向合并两个用rowspan="2".
+				li 那个大圆点的实现，是在内容中复制了一个标点，其实可以利用span等内联元素塑造一个
+		h1.block 车易通 width+% 制作进度条
+		.progress-box
+			h3 印象排行榜
+			.progress-rank
+				ul
+					- var progress = [{"spanClass": "rank-num-hot","spanCont": "1","carName": "上海大众","proStat": "6,123,200","progressNum": "width:90%"},{"spanClass": "rank-num-hot","spanCont": "2","carName": "一汽大众","proStat": "6,123,20","progressNum": "width:72%"},{"spanClass": "rank-num-hot","spanCont": "3","carName": "一汽奔腾","proStat": "6,120,0","progressNum": "width:50%"},{"spanClass": "","spanCont": "4","carName": "宝马","proStat": "6,100","progressNum": "width:25%"},{"spanClass": "","spanCont": "5","carName": "奔驰","proStat": "6300","progressNum": "width:5%"}]
+					each item in progress
+						li
+							span.rank-num(class = item.spanClass) #{item.spanCont}
+							span= item.carName
+							div.progress-ico
+								span.progress-stat #{item.proStat}
+								div.progress
+									div.progress-bg
+										p.progress-show(style= item.progressNum)
+		.info.info-no-float
+			h3 问题总结
+			ol
+				li(style="color:red") 利用有颜色的结构覆盖在灰颜色的上边，就是进度条的核心关键，就像第一个案例的"星级评分条"一样的道理。
+				li 像p.progress-show(style= "width:100%")这样的结构，如果我json中只有100这个数值是需要动态传入的，怎么使用json方法引用如下这种键值对的正确值？
+					span(style="color: blue;font-weight: bold;")  不得解、未解决，只好牺牲了width一起作伴
+		h1.block 车易通 查看、修改员工信息
+		div.clearfix
+			.staff-info-box
+				h3 查看员工信息
+				.staff-btn
+					a.staff-btn-change 修改
+					a.staff-btn-del 删除
+				.staff-info
+					.staff-info-row
+							.staff-info-title
+								span 姓名：
+							.staff-info-cont
+								span 王销理
+					.staff-info-row
+							.staff-info-title
+								span 照片：
+							.staff-info-cont
+								span: image(src='../img/man_02.png')
+					-var staffInfo = [["职位：","销售经理"],["400分机号：","8888"],["手机：","123456789"],["固话：","010-88334422"],["QQ：","3215424"],["微博：","http://weibo.com/u/1234567890/home?wvr=1"],["员工介绍：","商务男子"]]
+					each item in staffInfo
+						.staff-info-row
+							.staff-info-title
+								span= item[0]
+							.staff-info-cont
+								span= item[1]
+				.info.info-no-float
+					h3 问题总结
+					ol
+						li 注意这种结构的行盒子，按行分组
+						li label写错愕 写成lable，不出效果。
+						li border的颜色大多是dedede
+						li(style="color: red;") 内联元素的padding对于撑起父元素的高度是不起作用的,需要转化成inline-block或者float一下。
+						li input的:focus模式下，一定要关掉outline，这是标配
+						li 在传数据上，也有问题。照片那里的结构，和其他的不一样，多了一个image标签，我把image标签写在数据里传进来他就会翻译成文本。只能打断前两个不传参，后边的循环替换数据
+						li(style="background:#1bc28a;color:white;padding: 5px;") 在做button的背景色、broder色、以及hover/focus模式的背景色和边框的时候，不知道怎么才能快速取值，到底颜色值有什么规律呢？这就去研究明白，还有一个HEX十六进制颜色模式，我们在浏览器中选中的颜色就是这个模式的。他有什么颜色的分布规律吗啊？
+			.staff-info-box.staff-change-box
+				h3 修改员工信息
+				.staff-change
+					.staff-info
+						.staff-info-row
+							.staff-info-title
+								i.icon.icon-snow.icon-red
+								span 姓名：
+							.staff-info-cont
+								p: input(type="text")
+								p.staff-change-info 最多6个汉字（12个字符）
+						.staff-info-row
+							.staff-info-title
+								span 金牌销售：
+							.staff-info-cont
+								p
+									label
+										input(type="checkbox")
+										i.icon.icon-star.icon-orange
+						.staff-info-row
+							.staff-info-title
+								i.icon.icon-snow.icon-red
+								span 照片：
+							.staff-info-cont
+								.staff-image-box
+									.staff-image-btn
+										button() 上传
+						-var staffInfo = [[1,"职位：","最多6个汉字（12个字符）"],[1,"手机："],[0,"固话：","有分机：区号-电话号码-分机，如：010-68492345-8000","无分机：区号-电话号码，如：010-68492345"],[0,"QQ："],[0,"微博：","链接地址必须以“http://”开头"]]
+						each item in staffInfo
+							.staff-info-row
+								.staff-info-title
+									if item[0] == 1
+										i.icon.icon-snow.icon-red
+										span= item[1]
+									else
+										span= item[1]
+								.staff-info-cont
+									p: input(type="text")
+									if item.length > 2
+										p.staff-change-info= item[2]
+									if item.length > 3
+										p.staff-change-info= item[3]
+						.staff-info-row
+							.staff-info-title
+								span 员工介绍：
+							.staff-info-cont
+								p: textarea
+						.staff-info-row
+							.staff-info-cont
+								input.butInput(type="submit",value="提交")
+								input.butInput(type="reset",value="取消")
+		h1.block 平台 公用 分页效果
+		.page-wrap
+			ul.pages.clearfix
+				- var oLi = [{"className":"prevpage disable","content":"上一页"},{"className":"active","content":"1"},{"className":"","content":"2"},{"className":"","content":"3"},{"className":"disable","content":"4"},{"className":"","content":"5"},{"className":"","content":"6"},{"className":"","content":"7"},{"className":"","content":"8"},{"className":"","content":"9"},{"className":"","content":"10"},{"className":"more-page","content":"..."},{"className":"nextpage","content":"下一页"}]
+				each item in oLi
+					li(class = item.className)
+						a(href="javascript:;") #{item.content}
+		.info.info-no-float
+			h3 问题总结
+			ol
+				li 注意不同样式之间的选择器定义方法和样式的写法
+				li 检查了半天，又是因为空格和tab一起用了导致的错误，是在句首而不是句尾，是包含关系的时候，没用tab换层级而用了一下空格导致的。出现过很多次这种问题，还是犯错
+		h1.block json 数据格式测试
+		- var jsonArr = [{"name" : "张三","age" : 21,"friend" : [{"name" : "李四"},{"name" : "王五"}]}]
+		each item in jsonArr
+			h2(value= item["age"])= item["name"]
+			for i in item.friend
+				p= [i]["name"]
+		script.
+			var jsonArr = [{"name" : "张三","age" : 21,"friend" : [{"name" : "李四"},{"name" : "王五"}]},{"name" : "张三2","age" : 212,"friend" : [{"name" : "李四2"},{"name" : "王五2"}]}];
+			for(var i = 0; i <jsonArr.length; i++){
+				//- console.log(i) 
+				console.log(jsonArr[i]["age"]);
+				console.log(jsonArr[i]["name"]);
+				//- var arr = jsonArr[0]["friend"];
+				//- console.log(arr);
+				for(var y = 0; y <jsonArr[i]["friend"].length; y++){
+					//- console.log(jsonArr[i]["friend"].length)
+					console.log(jsonArr[i]["friend"][y]["name"]);
+				}
+			}
+

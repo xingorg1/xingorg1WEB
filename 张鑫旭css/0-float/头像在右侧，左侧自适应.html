@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>头像在右侧，左侧自适应</title>
+  <style>
+      /* 公共样式 */
+      .item{
+        padding: 20px;
+        margin-bottom: 10px;
+        border-bottom: 2px dotted #eee;
+      }
+      .user-info{
+        margin-left: 20px;
+        padding: 20px;
+        border: 1px dotted #e5e5e5;
+      }
+      .user-txts{
+        margin-bottom: 20px;
+      }
+      
+    </style>
+</head>
+<body>
+    <h3>一个头像在右侧，左侧自适应的写法，我想原理应该和右侧自适应一样</h3>
+    <div class="float clearfix" style="border: 2px solid red;padding: 10px;margin-top: 10px;">
+      <div class="item item-me2">
+        <style>
+          .item-me2 .head-img{
+            float: right;
+            width: 50px;
+            height: 50px;
+          }
+          .item-me2 .user-info{
+            margin-right: 70px;
+          }
+        </style>
+        <div class="head-img">
+          <a href="">
+            <img src="http://img.mukewang.com/53e2e9470001dfd200500050.jpg" alt="">
+          </a>
+        </div>
+        <div class="user-info">
+          <div class="user-txts">浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局浮动与单侧尺寸固定的流体布局</div>
+          <div class="user-img">
+            <img src="http://img.mukewang.com/53e2e9b10001948000890120.jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <h3>让dom的顺序和看到的一样该怎么做呢？如下: <span style="color:red;">才发现上边的竟然都没有清除浮动也没有问题</span></h3>
+      
+      <div class="item item-me3">
+          <style>
+            .item-me3{
+              overflow: hidden;
+            }
+            .item-me3 .user-info{
+              width: 100%;
+              float: left;
+              /* margin-right: 20px; */
+              margin-left: 0;
+              padding: 0;
+            }
+            .aomiao{
+              /* 核心所在 :让出右边头像的宽度和二者边距*/
+              margin-right: 70px;
+              /* 另外，他干了外边元素干的事，比如间距 */
+              padding: 20px;
+            }
+            .item-me3 .head-img{
+              float: left;
+              /* 核心2；这个元素想要往那边诺就给那边的margin负值，具体值多少，大概是 左边距=负的宽度-右边元素的border*/
+            margin-left: -52px;
+            width: 50px;
+            height: 50px;
+          }
+          </style>
+          <div class="user-info">
+            <div class="aomiao">
+              <h3 class="user-txts">奥妙在这里，里边这里又包了一个结构，然后做一个margin-right</h3>
+              <h4 class="user-txts">核心2是给左边头像一个左边距=负的宽度-右边元素的border，反正具体值有时候也不一定全等于左边元素的宽度，你就看着调吧，上下左右加减总没错的！</h4>
+              <p class="user-txts">奥妙在这里，里边这里又包了一个结构，然后做一个margin-right！！！！！！！！！！！！！！！！！！！！！！凑字数走字数！！！！！！！！！！凑字数走字数凑字数走字数凑字数走字数凑字数走字数凑字数走字数凑字数走字数！！！！！！！！！！！！！！！！凑字数走字数凑字数走字数凑字数走字数凑字数走字数凑字数走字数凑字数走字数凑字数走字数！！！！！！！！！！！</p>
+              <div class="user-img">
+                <img src="http://img.mukewang.com/53e2e9b10001948000890120.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="head-img">
+            <a href="">
+              <img src="http://img.mukewang.com/53e2e9470001dfd200500050.jpg" alt="">
+            </a>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

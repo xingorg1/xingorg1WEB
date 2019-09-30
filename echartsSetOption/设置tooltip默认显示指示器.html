@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+  <script type="text/javascript">
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    option = {
+
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          value: '10.10',
+          snap: false,
+          lineStyle: {
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [{
+                  offset: 0,
+                  color: 'rgba(234,19,99,0.15)'
+                },
+                {
+                  offset: 0.5,
+                  color: 'rgba(234,19,99,0.7)'
+                },
+                {
+                  offset: 1,
+                  color: 'rgba(234,19,99,0.15)'
+                }
+              ]
+            ),
+            opacity: 1,
+            width: 2
+          },
+          label: {
+            show: false,
+            color: '#FF4389',
+            fontSize: 24,
+            padding: [3, 6, 2, 7],
+            backgroundColor: 'rgba(255,225,235,0.9)',
+            barBorderRadius: '50%'
+          },
+          handle: {
+            show: true,
+            size: 0
+          }
+        }
+      },
+
+
+
+      xAxis: [{
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      }],
+      yAxis: [{
+        type: 'value'
+      }],
+      series: [
+
+        {
+          name: '搜索引擎',
+          type: 'line',
+          stack: '总量',
+          label: {
+            normal: {
+              show: true,
+              position: 'top'
+            }
+          },
+          areaStyle: {
+            normal: {}
+          },
+          data: [820, 932, 901, 934, 1290, 1330, 1320]
+        }
+      ]
+    };
+    if (option && typeof option === "object") {
+      console.log(2)
+      myChart.setOption(option, true);
+    }
+    setTimeout(function () {
+      console.log(1)
+      myChart.dispatchAction({
+        type: 'showTip',
+        seriesIndex: 0,
+        dataIndex: 1 //第一种写法，根据x轴上的索引值指定，数字类型
+      });
+    }, 10);
+  </script>
+</body>
+
+</html>

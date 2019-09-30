@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax应用</title>
+		<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="读取" />
+		<script type="text/javascript">
+			window.onload = function(){
+				var oBtn = document.getElementById("btn");
+				oBtn.onclick = function(){
+					ajax('tab.json',function(str){
+						document.write(str);
+					})
+				}
+			}
+		</script>
+ </body>
+</html>

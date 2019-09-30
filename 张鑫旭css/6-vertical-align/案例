@@ -1,0 +1,14 @@
+p
+  img(src="")
+  span 为了让img垂直居中的作用
+
+p{
+  line-height: 250px;
+  /*font-size: 0;*/ //font-size有局限性
+}
+img{
+  vertical-align: middle;
+}
+span{
+  vertical-align: middle;//img后边放一个img，让二者一起垂直居中
+}

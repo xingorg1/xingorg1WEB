@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="author" content="郭菊锋702004176@qq.com"/>
+		<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			margin-bottom: 10px;
+		}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById("div");
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			var oDiv3 = document.getElementById("div3");
+			var a = Math.floor(Math.random()*225);
+			var b = "rgb("+Math.floor(Math.random()*225)+","+Math.floor(Math.random()*225)+","+Math.floor(Math.random()*225)+")";
+			var c = "rgb("+a+","+a+","+a+")";
+			oDiv1.style.backgroundColor = b;
+			oDiv2.style.backgroundColor = c;
+			
+			console.log("!!!a"+a);
+//			console.log(b+"rgb要想不一样，要三个公式分开分别传进去，不能合起来。");
+//			console.log(c+"用a替换公式的时候，传出来的rgb三个值都一样了，这样只能配到白到黑的灰度值。");
+			/*
+			 *第二种，定义成一个函数的写法。 
+			 *
+			 */
+		  function getRandomColor(){
+		        var rgb='rgb('+Math.floor(Math.random()*255)+','
+		                +Math.floor(Math.random()*255)+','
+		                +Math.floor(Math.random()*255)+')';
+		        return rgb;
+		  }
+			oDiv.style.backgroundColor =getRandomColor();	
+		}
+		
+		</script>
+	</head>
+	<body>
+		<div id="div"></div>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+	</body>
+</html>

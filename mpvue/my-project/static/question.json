@@ -1,0 +1,19 @@
+{
+    "QuestionID": 1,
+    "RightCode": "C",
+    "Description": "我是题目我是题目我是题目（单选）",
+    "IsMulti": false,
+    "QuestionAnswerCode": [{
+        "Code": "A",
+        "Description": "选项一"
+    }, {
+        "Code": "B",
+        "Description": "选项二"
+    }, {
+        "Code": "C",
+        "Description": "选项散"
+    }, {
+        "Code": "D",
+        "Description": "选项四"
+    }]
+}

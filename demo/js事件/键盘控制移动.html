@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘移动</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			h3{
+				position: absolute;
+				width: 200px;
+				background: cadetblue;
+				color: #fff;
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3 id="h3">
+			注意三点：<br />
+			1：事件名称onkeydown<br />
+			2：事件加给document，而非window。<br />
+			3： 把元素的top，left值分别用offsetTop，offsetLeft来设定
+		</h3>
+		
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oH3 = document.getElementById("h3");
+			document.onkeydown = function(ev){
+				var ev = ev || window.event;
+				switch(ev.keyCode){
+					case 37:
+					case 100:
+						oH3.style.left =  oH3.offsetLeft - 10 + "px";
+					break;
+					case 38:
+					case 104:
+						oH3.style.top = oH3.offsetTop - 10 + "px";
+					break;
+					case 39:
+					case 102:
+						oH3.style.left = oH3.offsetLeft + 10 + "px";
+					break;
+					case 40:
+					case 98:
+						oH3.style.top = oH3.offsetTop + 10 + "px";
+					break;
+					default:
+						console.log("请按上下左右键");
+					break;
+				}
+				console.log(oH3.offsetTop+"+"+oH3.style.top);
+				console.log(ev.keyCode);
+				
+			}
+		}
+	</script>
+</html>

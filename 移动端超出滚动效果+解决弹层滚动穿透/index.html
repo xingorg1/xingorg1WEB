@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test</title>
+  <style>
+    ul,li{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    h3{
+      font-size: .24rem;
+    }
+    #echarts1 {
+      width: 100%;
+      height: 5rem;
+      background: #eee;
+    }
+    #echart011,#echart012,#echart013,#echart014,#echart015{
+      width: 100%;
+      height: 5rem;
+      background: #eee;
+      margin-top: 20px;
+    }
+    .layer{
+      display: none;
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,.4);
+    }
+    .layer-box{
+      position: absolute;
+      top: 0;
+      left: 30px;
+      right: 30px;
+      bottom: 190px;
+      top: 0.76rem;
+      background: #F8F8FA;
+    }
+    .layer-box h3{
+      text-align: center
+    }
+    .layer-box h3 span{
+      position: absolute;
+    right: .4rem;
+    width: .36rem;
+    height: .36rem;
+    }
+    .layer-scroll{
+      padding: 0 .4rem;
+      overflow: hidden;
+      background: #f1f1f1;
+      transition: all .25s linear;
+    }
+    .layer-scroll li.index-item{
+      border-top: 1px solid #eee;
+      margin-top: -0.02rem;
+    }
+    .layer-scroll li.index-item label{
+      display: block;
+      padding: .5rem 0;
+    }
+    .lose-item{
+    padding: .6rem 0;
+    border-top: 1px solid #eee;
+  }
+      .lose-item h3{
+        text-align: center;
+        font-size: .32rem;
+        margin-bottom: .1rem;
+      }
+      .lose-item .lose-gray{
+        color: #AFAFBE;
+      }
+      .lose-item p{
+        font-size: .28rem;
+      }
+      .lose-date{
+    padding-top: .18rem;
+  }
+  .lose-date li{
+        font-size: .28rem;
+       display: inline-block;
+       width: 32.1%;
+      }
+      .lose-list{
+        position: relative;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling : touch;/* ios 自带滚动条不平滑解决方法 */
+      height: 6.84rem;
+      margin-top: .1rem;
+      margin-right: .14rem;
+    }
+        .lose-list::-webkit-scrollbar-track-piece {
+          background-color: rgba(0, 0, 0, 0);
+          border-left: 1px solid rgba(0, 0, 0, 0);
+        }
+        .lose-list::-webkit-scrollbar { 
+          width: 0.08rem;
+          height: 0.26rem;
+          -webkit-border-radius: 0.05rem;
+          -moz-border-radius: 0.05rem;
+          border-radius: 0.05rem;
+        }
+        .lose-list::-webkit-scrollbar-thumb {
+          background-color: #000;
+          background-clip: padding-box;
+          -webkit-border-radius: 0.05rem;
+          -moz-border-radius: 0.05rem;
+          border-radius: 0.05rem;
+          min-height: .28rem;
+        }
+        .lose-list::-webkit-scrollbar-thumb:hover {
+          background-color: #000;
+          -webkit-border-radius: 0.05rem;
+          -moz-border-radius: 0.05rem;
+          border-radius: 0.05rem;
+      }
+      .right-bar{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 8px;
+        background: #d0d0d0;
+      }
+      .bar-pro{
+        height: 0;
+        background: #000;
+        border-radius: 4px;
+        transition: all .25s linear;
+      }
+  </style>
+  <script type="text/javascript">
+    (function () {
+      var b = document.createElement("meta");
+      b.setAttribute("name", "viewport");
+      var c = window.devicePixelRatio,
+        a = c ? 1 / c : 1;
+      window.screen.availWidth == document.documentElement.offsetWidth && (c = a = 1);
+      document.documentElement.setAttribute("data-dpr", c || 1);
+      window.navigator.userAgent.match(/android/i) ? b.setAttribute("content", "width=device-width, initial-scale=" +
+        a + ", maximum-scale=" + a + ", minimum-scale=" + a + ", user-scalable=no") : b.setAttribute("content",
+        "initial-scale=" + a + ", maximum-scale=" + a + ", minimum-scale=" + a + ", user-scalable=no");
+      document.head.appendChild(b)
+    })();
+  </script>
+  <script type="text/javascript">
+    var dpr = document.documentElement.getAttribute("data-dpr") || 1,
+      width = document.documentElement.offsetWidth,
+      fontSize = 100 / 750 * width;
+    document.querySelector("html").style.fontSize = fontSize + "px";
+    window.addEventListener("resize", function () {
+      var a = 100 / 750 * document.querySelector("html").offsetWidth;
+      document.querySelector("html").style.fontSize = a + "px"
+    });
+  </script>
+</head>
+
+<body>
+  <h3>
+    测试 - echarts的尺寸问题、移动端封装滚动条组件
+  </h3>
+  <button size="default" type="warn" plain="false" loading="false" form-type="submit" hover-class="button-hover"
+    open-type="contact">弹层</button>
+  <div id="echarts1"></div>
+  <div id="echart011"></div>
+  <div id="echart012"></div>
+  <button size="default" type="warn" plain="false" loading="false" form-type="submit" hover-class="button-hover"
+    open-type="contact">弹层</button>
+  <div id="echart013"></div>
+  <div id="echart014"></div>
+  <div id="echart015"></div>
+  <div class="layer" style="">
+    <div class="layer-box">
+      <h3>title
+        <span class="close">X</span>
+      </h3>
+      <div class="lose-list">
+        <ul class="layer-scroll">
+          <li class="lose-item">
+            <h3>有效降价车款1</h3>
+            <ul class="lose-date">
+              <li>10月7日5分</li>
+              <li>10月7日6分</li>
+              <li>10月7日7分</li>
+              <li>10月7日8分</li>
+              <li>10月7日9分</li>
+              <li>10月7日10分</li>
+              <li>10月7日11分</li>
+              <li>10月7日12分</li>
+              <li>10月7日13分</li>
+              <li>10月7日14分</li>
+              <li>10月7日15444分</li>
+            </ul>
+          </li>
+          <li class="lose-item">
+            <h3>有效降价车款2</h3>
+            <ul class="lose-date">
+              <li>10月7日5分</li>
+              <li>10月7日6分</li>
+              <li>10月7日7分</li>
+              <li>10月7日8分</li>
+              <li>10月7日9分</li>
+              <li>10月7日10分</li>
+              <li>10月7日11分</li>
+              <li>10月7日12分</li>
+              <li>10月7日13分</li>
+              <li>10月7日14分</li>
+              <li>10月7日15333分</li>
+            </ul>
+          </li>
+          <li class="lose-item">
+            <h3>有效降价车款3 </h3>
+            <ul class="lose-date">
+              <li>10月7日5分</li>
+              <li>10月7日6分</li>
+              <li>10月7日7分</li>
+              <li>10月7日8分</li>
+              <li>10月7日9分</li>
+              <li>10月7日10分</li>
+              <li>10月7日11分</li>
+              <li>10月7日12分</li>
+              <li>10月7日13分</li>
+              <li>10月7日14分</li>
+              <li>10月7日152222分</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="right-bar">
+          <div class="bar-pro"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./jquery.min.js"></script>
+  <script src="./echarts.min.js"></script>
+  <script src="./vconsole.min.js"></script>
+  <script>
+    // let vConsole = new VConsole();
+
+    var myEcharts = echarts.init(document.getElementById('echarts1'));;
+    var option = {
+      color: '#3366FF',
+      tooltip: {
+        trigger: 'axis',
+        textStyle: {
+          fontSize: 24,
+          color: '#000'
+        },
+        alwaysShowContent: true,
+        backgroundColor: 'transparent',
+        borderColor: '#eee',
+        padding: 0,
+        formatter: function (params) {
+          return '<span style="padding:6px 12px 4px 14px;border-radius: 200px;background: rgba(255,225,235,0.9);color: #FF4389;font-size: 24px">' +
+            params[0].value + '</span>';
+        },
+        position: function (pos, params, dom, rect, size) {
+          let bottom = 70;
+          let left1 = pos[0],
+            top1 = pos[1],
+            Tleft = size.viewSize[0] - size.contentSize[0],
+            Ttop = size.viewSize[1] - size.contentSize[1] - bottom;
+          left1 > Tleft ? left1 = Tleft : left1;
+          top1 > Ttop ? top1 = Ttop : top1;
+          return {
+            left: left1,
+            top: top1
+          };
+        },
+        axisPointer: { //坐标指示器
+          type: 'line',
+          axis: 'x',
+          snap: true,
+          lineStyle: {
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [{
+                  offset: 0,
+                  color: 'rgba(234,19,99,0.15)'
+                },
+                {
+                  offset: 0.5,
+                  color: 'rgba(234,19,99,0.7)'
+                },
+                {
+                  offset: 1,
+                  color: 'rgba(234,19,99,0.15)'
+                }
+              ]
+            ),
+            opacity: 1,
+            width: 2
+          },
+          label: {
+            show: false,
+            color: '#FF4389',
+            fontSize: 24,
+            padding: [3, 6, 2, 7],
+            backgroundColor: 'rgba(255,225,235,0.9)',
+            barBorderRadius: '50%'
+          },
+        }
+      },
+      grid: {
+        left: '40',
+        right: 0,
+        top: '30',
+        bottom: '30'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      },
+      yAxis: {
+        type: 'value'
+      },
+      legend: {
+        data: ['文案'],
+        itemGap: 5,
+        left: 0,
+        itemWidth: 8,
+        itemHeight: 8,
+        padding: 0,
+        textStyle: {
+          color: "#36f"
+        }
+      },
+      dataZoom: [{
+        type: 'inside',
+        rangeMode: ['value', 'value'],
+        start: 60,
+        end: 100,
+        preventDefaultMouseMove: false,
+        zoomLock: true
+      }],
+      series: [{
+        name: "文案",
+        data: [120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130],
+        type: 'bar'
+      }]
+    };
+    myEcharts.setOption(option)
+  </script>
+  <script>
+    if (true) {
+      /* echarts */
+      var oUa = {
+        u: navigator.userAgent,
+        ios: function () {
+          return !!this.u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        }, //ios终端  
+        android: function () {
+          return this.u.indexOf("Android") > -1 || this.u.indexOf("Linux") > -1
+        }, //android终端或者ucvar浏览器  
+        iPhone: function () {
+          return this.u.indexOf("iPhone") > -1 //是否为iPhone或者QQHD浏览器  
+        }
+      }
+      console.log(oUa.ios())
+      var commonSty = {
+        dev: window.devicePixelRatio,
+        fSize: function () {
+          if (oUa.ios()) { //IOS
+            // console.log('fontSize', this.dev * 12)
+            return this.dev * 12 || 24;
+          } else {
+            // console.log('fontSize', this.dev * 4)
+            return this.dev * 4 || 12;
+          }
+        },
+        legendS: function () {
+          if (oUa.ios()) { //IOS
+            return this.dev * 8 || 16;
+          } else {
+            return this.dev * 3 || 8;
+          }
+        },
+        legendMgin: function () {
+          return oUa.ios() ? 20 : 10;
+        },
+        legendMT: function () {
+          if (oUa.ios()) { //IOS
+            return this.dev * 3 || 9;
+          } else {
+            return this.dev * 1.3 || 4;
+          }
+        },
+        toolLegendSize: function () {
+          var str = this.dev ?
+            ';vertical-align: 0px;margin-right:' + commonSty.legendMT() + 'px;border-radius:' + this.dev * 1 +
+            'px;width:' + commonSty.legendS() + 'px;height:' + commonSty.legendS() + 'px;' : '';
+          return str || ';vertical-align: 0px;margin-right:6px;border-radius:2px;width:16px;height:16px;';
+        },
+        toolLegendPad: function () {
+          var str = '';
+          if (oUa.ios()) { //IOS
+            str = this.dev ? this.dev * 2 + 'px ' + this.dev * 6 + 'px ' + this.dev * 2 + 'px ' + this.dev * 7 +
+              'px' : '';
+          } else {
+            str = this.dev ? this.dev * 1 + 'px ' + this.dev * 3 + 'px ' + this.dev * 1 + 'px ' + this.dev * 3 +
+              'px' : '';
+          }
+          return str || '6px 12px 4px 14px';
+        },
+        // 左上角图例
+        Mylegend: function (arrName) {
+          return {
+            data: arrName,
+            itemGap: commonSty.legendMgin(),
+            left: 0,
+            itemWidth: commonSty.legendS(),
+            itemHeight: commonSty.legendS(),
+            padding: 0,
+            textStyle: {
+              fontSize: commonSty.fSize(),
+            }
+          }
+        },
+        /* 坐标指示器 */
+        axisPoi: function (data) {
+          return {
+            value: data[data.length - 1],
+            snap: true,
+            lineStyle: {
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [{
+                    offset: 0,
+                    color: 'rgba(234,19,99,0.15)'
+                  },
+                  {
+                    offset: 0.5,
+                    color: 'rgba(234,19,99,0.7)'
+                  },
+                  {
+                    offset: 1,
+                    color: 'rgba(234,19,99,0.15)'
+                  }
+                ]
+              ),
+              opacity: 1,
+              width: 2
+            },
+            label: {
+              show: true,
+              color: '#FF4389',
+              fontSize: commonSty.fSize() + '',
+              padding: [3, 6, 2, 7],
+              backgroundColor: 'rgba(255,225,235,0.9)',
+              barBorderRadius: '50%'
+            },
+            handle: {
+              show: true,
+              size: 0
+            }
+          }
+        },
+        /* tooltip的坐标指示器 */
+        toolAxisPoi: function () {
+          return { //坐标指示器
+            type: 'line',
+            axis: 'x',
+            snap: true,
+            lineStyle: {
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [{
+                    offset: 0,
+                    color: 'rgba(234,19,99,0.15)'
+                  },
+                  {
+                    offset: 0.5,
+                    color: 'rgba(234,19,99,0.7)'
+                  },
+                  {
+                    offset: 1,
+                    color: 'rgba(234,19,99,0.15)'
+                  }
+                ]
+              ),
+              opacity: 1,
+              width: oUa.ios() ? 2 : 1
+            },
+            label: {
+              show: false,
+              color: '#FF4389',
+              fontSize: commonSty.fSize() + '',
+              padding: [3, 6, 2, 7],
+              backgroundColor: 'rgba(255,225,235,0.9)',
+              barBorderRadius: '50%'
+            },
+          }
+        },
+        /* x轴 */
+        xSty: function (data) {
+          return {
+            type: 'category',
+            data: data,
+            axisLabel: {
+              color: '#999EAE',
+              fontSize: commonSty.fSize(),
+              fontWeight: 600
+            },
+            axisLine: {
+              lineStyle: {
+                width: 0,
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            },
+            /* 指示器 */
+            // axisPointer: commonSty.axisPoi(data),
+          }
+        },
+        /* y轴公用 */
+        ySty: function () {
+          return {
+            type: 'value',
+            offset: oUa.ios() ? 40 : 25,
+            axisLabel: {
+              margin: 0,
+              align: 'left',
+              color: '#999EAE',
+              fontSize: commonSty.fSize(),
+              fontWeight: 600,
+            },
+            axisLine: {
+              lineStyle: {
+                width: 0,
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            }
+          }
+        },
+        /* 网格位置 */
+        gridSty: {
+          left: oUa.ios() ? '40' : '25',
+          right: 0,
+          top: oUa.ios() ? '100' : '50',
+          // bottom: '30'
+        },
+        /* 点击节点展示的数据 */
+        singleTool: function () {
+          return {
+            trigger: 'axis',
+            textStyle: {
+              fontSize: commonSty.fSize(),
+              color: '#000'
+            },
+            alwaysShowContent: true,
+            backgroundColor: 'transparent',
+            borderColor: '#eee',
+            padding: 0,
+            formatter: function (params) {
+              return '<span style="padding:' + commonSty.toolLegendPad() +
+                ';border-radius: 200px;background: rgba(255,225,235,0.9);color: #FF4389;font-size: ' + commonSty.fSize() +
+                'px">' + params[0].value + '</span>';
+            },
+            position: function (pos, params, dom, rect, size) {
+              let bottom = oUa.ios() ? 70 : 35;
+              let left1 = pos[0],
+                top1 = pos[1],
+                Tleft = size.viewSize[0] - size.contentSize[0],
+                Ttop = size.viewSize[1] - size.contentSize[1] - bottom;
+              left1 > Tleft ? left1 = Tleft : left1;
+              top1 > Ttop ? top1 = Ttop : top1;
+              return {
+                left: left1,
+                top: top1
+              };
+            },
+            axisPointer: commonSty.toolAxisPoi()
+          }
+        },
+        groupTool: function (percent) {
+          var percent = percent || false;
+          return {
+            trigger: 'axis',
+            textStyle: {
+              fontSize: commonSty.fSize(),
+              color: '#000'
+            },
+            backgroundColor: 'rgba(255,255,255,0.9)',
+            extraCssText: 'box-shadow: 0px 8px 20px 0px rgba(56,70,140,0.13);',
+            padding: oUa.ios() ? [12, 16, 12, 12] : [6, 8, 6, 6],
+            // borderColor: '#eee',
+            // width: '218',
+            // shadowBlur: 5,
+            // shandowColor: 'red',
+            formatter: function (params) {
+              var str = '';
+              for (var i = 0; i < params.length; i++) {
+                str += '<span style="display:inline-block;background-color:' + params[i].color + commonSty.toolLegendSize() +
+                  '"></span>' + '<span class="groupTool">' + params[i].value;
+                if ((i + 1) % 3 == 0 && i !== 0) {
+                  str += '</span></br>';
+                } else {
+                  if (percent && i == 1) {
+                    str += '% </span>';
+                  } else {
+                    str += '</span>';
+                  }
+                }
+              }
+              return str
+            },
+            axisPointer: commonSty.toolAxisPoi()
+          }
+        }
+      }
+      var echartsEle = {
+        echart011: echarts.init(document.getElementById('echart011')),
+        echart012: echarts.init(document.getElementById('echart012')),
+        echart013: echarts.init(document.getElementById('echart013')),
+        echart014: echarts.init(document.getElementById('echart014')),
+        echart015: echarts.init(document.getElementById('echart015')),
+        option011: {
+          color: ['#3366FF'],
+          tooltip: commonSty.singleTool(),
+          grid: commonSty.gridSty,
+          xAxis: commonSty.xSty(['10.11', '10.12', '10.13', '10.14', '10.15', '10.16', '10.17', '10.18', '10.19',
+            '10.20', '10.21'
+          ]),
+          yAxis: commonSty.ySty(),
+          legend: commonSty.Mylegend([{
+            name: '文案',
+            textStyle: {
+              color: '#999EAE'
+            }
+          }]),
+          dataZoom: [{
+            type: 'inside',
+            rangeMode: ['value', 'value'],
+            start: 64,
+            end: 100,
+            preventDefaultMouseMove: false,
+            zoomLock: true
+          }],
+          series: [{
+            name: "文案",
+            barMaxWidth: oUa.ios() ? '40' : '25',
+            data: [120, 200, 150, 200, 150, 200, 150, 200, 150, 200, 150],
+            type: 'bar'
+          }]
+        },
+        option012: {
+          color: ['#3366FF', '#17CAB8', '#7A53F4', '#FBAE47', '#FC5584'],
+          tooltip: commonSty.groupTool(),
+          grid: commonSty.gridSty,
+          xAxis: commonSty.xSty(['10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10',
+            '10.10', '10.10', '10.10', '10.11', '10.12'
+          ]),
+          yAxis: commonSty.ySty(),
+          legend: commonSty.Mylegend([{
+            name: '文案2',
+            icon: 'roundRect',
+            textStyle: {
+              color: '#3366FF'
+            }
+          }, {
+            name: '文案3',
+            icon: 'roundRect',
+            textStyle: {
+              color: '#17CAB8'
+            }
+          }, {
+            name: '文案4',
+            icon: 'roundRect',
+            textStyle: {
+              color: '#7A53F4'
+            }
+          }, {
+            name: '文案5',
+            icon: 'roundRect',
+            textStyle: {
+              color: '#FBAE47'
+            }
+          }, {
+            name: '文案6',
+            icon: 'roundRect',
+            textStyle: {
+              color: '#FC5584'
+            }
+          }]),
+          dataZoom: [{
+            type: 'inside',
+            start: 50,
+            end: 100,
+            preventDefaultMouseMove: false,
+            zoomLock: true
+          }],
+          series: [{
+            name: "文案2",
+            data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80],
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+              width: oUa.ios() ? 4 : 2,
+            },
+            // symbolSize: 0,
+            stack: '总量',
+            areaStyle: {
+              normal: {
+                color: '#3366FF',
+              }
+            },
+            symbolSize: oUa.ios() ? 4 : 2,
+            emphasis: {
+              itemStyle: {
+                color: 'rgba(255,67,137,1)',
+                borderWidth: oUa.ios() ? 8 : 4,
+                borderColor: 'rgba(255,38,119,0.1942)'
+              },
+            },
+            showSymbol: false,
+          }, {
+            name: "文案3",
+            data: [160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160],
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+              width: oUa.ios() ? 4 : 2,
+            },
+            // symbolSize: 0,
+            stack: '总量',
+            areaStyle: {
+              normal: {
+                color: '#17CAB8',
+              }
+            },
+            symbolSize: oUa.ios() ? 4 : 2,
+            emphasis: {
+              itemStyle: {
+                color: 'rgba(255,67,137,1)',
+                borderWidth: oUa.ios() ? 8 : 4,
+                borderColor: 'rgba(255,38,119,0.1942)'
+              },
+            },
+            showSymbol: false,
+          }, {
+            name: "文案4",
+            data: [240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240],
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+              width: oUa.ios() ? 4 : 2,
+            },
+            // symbolSize: 0,
+            stack: '总量',
+            areaStyle: {
+              normal: {
+                color: '#7A53F4',
+              }
+            },
+            symbolSize: oUa.ios() ? 4 : 2,
+            emphasis: {
+              itemStyle: {
+                color: 'rgba(255,67,137,1)',
+                borderWidth: oUa.ios() ? 8 : 4,
+                borderColor: 'rgba(255,38,119,0.1942)'
+              },
+            },
+            showSymbol: false,
+          }, {
+            name: "文案5",
+            data: [320, 320, 320, 320, 320, 320, 320, 320, 320, 320, 320, 320, 320, 320],
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+              width: oUa.ios() ? 4 : 2,
+            },
+            // symbolSize: 0,
+            stack: '总量',
+            areaStyle: {
+              normal: {
+                color: '#FBAE47',
+              }
+            },
+            symbolSize: oUa.ios() ? 4 : 2,
+            emphasis: {
+              itemStyle: {
+                color: 'rgba(255,67,137,1)',
+                borderWidth: oUa.ios() ? 8 : 4,
+                borderColor: 'rgba(255,38,119,0.1942)'
+              },
+            },
+            showSymbol: false,
+          }, {
+            name: "文案6",
+            data: [820, 932, 901, 934, 1290, 1330, 1320, 820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+              width: oUa.ios() ? 4 : 2,
+            },
+            // symbolSize: 0,
+            stack: '总量',
+            areaStyle: {
+              normal: {
+                color: '#FC5584',
+              }
+            },
+            symbolSize: oUa.ios() ? 4 : 2,
+            emphasis: {
+              itemStyle: {
+                color: 'rgba(255,67,137,1)',
+                borderWidth: oUa.ios() ? 8 : 4,
+                borderColor: 'rgba(255,38,119,0.1942)'
+              },
+            },
+            showSymbol: false,
+          }]
+        },
+        option013: {
+          color: ['#3366FF', '#FBAE47'],
+          tooltip: commonSty.groupTool(true),
+          grid: {
+            left: oUa.ios() ? '40' : '25',
+            // right: '9%',
+            top: oUa.ios() ? '100' : '50',
+            // bottom: '30'
+          },
+          xAxis: commonSty.xSty(['10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10',
+            '10.10', '10.10', '10.10', '10.10', '10.10'
+          ]),
+          yAxis: [
+            commonSty.ySty(),
+            {
+              type: 'value',
+              // position: 'left',
+              // offset: '120',
+              axisLabel: {
+                color: '#999EAE',
+                fontWeight: 600,
+                fontSize: commonSty.fSize,
+                formatter: '{value}%'
+              },
+              axisLine: {
+                lineStyle: {
+                  width: 0,
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              splitLine: {
+                show: false
+              }
+            }
+          ],
+          legend: commonSty.Mylegend([{
+            name: '文案7',
+            textStyle: {
+              color: '#3366FF'
+            }
+          }, {
+            name: '文案8',
+            icon: 'roundRect',
+            textStyle: {
+              color: '#FBAE47'
+            }
+          }]),
+          dataZoom: [{
+            type: 'inside',
+            start: 50,
+            end: 100,
+            preventDefaultMouseMove: false,
+            zoomLock: true
+          }],
+          series: [{
+            name: "文案7",
+            data: [120, 1200, 150, 80, 270, 110, 122, 120, 200, 34150, 480, 370, 1140, 130],
+            type: 'bar',
+            barMaxWidth: oUa.ios() ? '40' : '25',
+          }, {
+            name: "文案8",
+            yAxisIndex: 1,
+            data: [1201, 22001, 1510, 801, 720, 1130, 12302, 31202, 2200, 2150, 480, 5470, 68110, 13230],
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+              width: oUa.ios() ? 4 : 2,
+            },
+            symbolSize: oUa.ios() ? 4 : 2,
+            emphasis: {
+              itemStyle: {
+                color: 'rgba(255,67,137,1)',
+                borderWidth: oUa.ios() ? 8 : 4,
+                borderColor: 'rgba(255,38,119,0.1942)'
+              },
+            },
+            // symbolSize: 0,
+            showSymbol: false,
+          }]
+        },
+        option014: {
+          color: ['#3366FF'],
+          tooltip: commonSty.singleTool(),
+          grid: commonSty.gridSty,
+          xAxis: commonSty.xSty(['10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10',
+            '10.10', '10.10', '10.10', '10.10', '10.10'
+          ]),
+          yAxis: commonSty.ySty(),
+          legend: commonSty.Mylegend([{
+            name: '文案9',
+            // icon: 'roundRect',
+            textStyle: {
+              color: '#999EAE'
+            }
+          }]),
+          dataZoom: [{
+            type: 'inside',
+            start: 50,
+            end: 100,
+            preventDefaultMouseMove: false,
+            zoomLock: true
+          }],
+          series: [{
+            name: "文案9",
+            data: [120, 200, 150, 80, 70, 110, 222, 120, 200, 150, 80, 70, 110, 130],
+            type: 'bar',
+            barMaxWidth: oUa.ios() ? '40' : '25',
+          }]
+        },
+        option015: {
+          color: ['#3366FF', '#FBAE47'],
+          tooltip: commonSty.groupTool(),
+          grid: commonSty.gridSty,
+          xAxis: commonSty.xSty(['10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10', '10.10',
+            '10.10', '10.10', '10.10', '10.10', '10.10'
+          ]),
+          yAxis: commonSty.ySty(),
+          legend: commonSty.Mylegend([{
+            name: '文案10',
+            textStyle: {
+              color: '#3366FF'
+            }
+          }, {
+            name: '文案11',
+            icon: 'roundRect',
+            textStyle: {
+              color: '#FBAE47'
+            }
+          }]),
+          dataZoom: [{
+            type: 'inside',
+            start: 50,
+            end: 100,
+            preventDefaultMouseMove: false,
+            zoomLock: true
+          }],
+          series: [{
+            name: "文案10",
+            data: [120, 3450, 150, 80, 270, 110, 122, 120, 200, 3450, 480, 370, 1140, 130],
+            type: 'bar',
+            barMaxWidth: oUa.ios() ? '40' : '25',
+            stack: '总量',
+          }, {
+            name: "文案11",
+            data: [1201, 2001, 1510, 801, 720, 1130, 2302, 1202, 2200, 2150, 480, 5470, 6110, 3230],
+            type: 'bar',
+            barMaxWidth: oUa.ios() ? '40' : '25',
+            stack: '总量',
+          }]
+        },
+      }
+      // 使用刚指定的配置项和数据显示图表。
+      echartsEle.echart011.setOption(echartsEle.option011);
+      echartsEle.echart012.setOption(echartsEle.option012);
+      echartsEle.echart013.setOption(echartsEle.option013);
+      echartsEle.echart014.setOption(echartsEle.option014);
+      echartsEle.echart015.setOption(echartsEle.option015);
+      setTimeout(function () {
+        echartsEle.echart011.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 0,
+          dataIndex: 10 //第一种写法，根据x轴上的索引值指定，数字类型,x.data.length - 1;
+        });
+        echartsEle.echart012.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 0,
+          dataIndex: 13
+        });
+        echartsEle.echart013.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 0,
+          dataIndex: 13
+        });
+        echartsEle.echart014.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 0,
+          dataIndex: 13
+        });
+        echartsEle.echart015.dispatchAction({
+          type: 'showTip',
+          seriesIndex: 0,
+          dataIndex: 13
+        });
+      });
+    }
+  </script>
+  <script>
+    /* 绑定事件模拟滚动效果 - 仅适用于从上往下起始的滚动 */
+    console.log($('.layer-scroll'))
+    myScroll({
+      openBtn: 'button',
+      layer: '.layer',
+      client: '.lose-list',
+      scroll: '.layer-scroll',
+      barBG: '.right-bar',
+      bar: '.bar-pro'
+    });
+    function myScroll(params) {
+      var utils = {
+        clientH: $(params.client).height(), //h1
+        scrollH: $(params.scroll).height(), //h2
+        barBgH: $(params.barBG).height() //h4
+      }
+      var lastY = 0,
+        transY = 0,
+        barTransY = 0,
+        barH = 0; //h3
+      function noScroll(dom) {
+        $(dom).on('mousewheel', function (e) {
+          e.preventDefault();
+        });
+        $(dom).on('touchmove', function (e) {
+          e.preventDefault();
+        });
+      }
+      function touchToBottom(target, bar) {
+        $(target).on('touchstart', function (e) {
+          e.preventDefault();
+          let y = e.originalEvent.touches[0].pageY;
+          lastY = y;
+        });
+        $(target).on('touchmove', function (e) {
+          e.preventDefault();
+          let y = e.originalEvent.touches[0].pageY,
+            moveY = y - lastY;
+          transY += moveY;
+          if (moveY > 0 && transY > 0) {
+            /* 鼠标向下移动，对应元素向上回看 */
+            transY = 0; //到顶
+          } else {
+            /* 鼠标向上移动，对应元素向下翻看 */
+            if (Math.abs(transY) >= e.currentTarget.clientHeight - utils.clientH) { //触底
+              transY = -(e.currentTarget.clientHeight - utils.clientH) + 1;
+            }
+          }
+          $(this).css('transform', `translate(0px, ${transY}px)`);
+          /* 移动时，滚轮的变化监听 */
+          var barMove = Math.abs(moveY) * utils.barBgH / utils.scrollH;
+          if (moveY > 0) {
+            barMove = -barMove;
+          }
+          barTransY += barMove;
+          if (moveY > 0) {
+            if (barTransY <= 0) {
+              barTransY = 0; //到顶
+            }
+          } else {
+            if (barTransY >= utils.barBgH - barH) {
+              barTransY = utils.barBgH - barH; //到底
+            }
+          }
+          $(bar).css('transform', `translate(0px, ${barTransY}px)`);
+          lastY = y;
+        });
+        /* 滚轮事件 */
+        $(target).on("mousewheel", function (e, delta) {
+          e.preventDefault();
+          let y = e.originalEvent.deltaY;
+          if (y > 0) {
+            /* 向下翻滚轮 wheelDeltaY的值与之相反*/
+            transY -= 100;
+            barTransY += 100 * utils.barBgH / utils.scrollH;
+            if (Math.abs(transY - 100) >= e.currentTarget.clientHeight - utils.clientH) { //触底
+              transY = -(e.currentTarget.clientHeight - utils.clientH) + 1;
+            }
+            if (barTransY > utils.barBgH - barH) {
+              barTransY = utils.barBgH - barH
+            }
+          } else {
+            /* 向上翻滚轮*/
+            transY += 100;
+            barTransY -= 100 * utils.barBgH / utils.scrollH;
+            if (Math.abs(transY) - 100 <= 0) {
+              transY = 0; //到顶
+            }
+            if (barTransY <= 0) {
+              barTransY = 0; //到顶
+            }
+          }
+          $(this).css('transform', `translate(0px, ${transY}px)`);
+          $(bar).css('transform', `translate(0px, ${barTransY}px)`);
+        });
+      }
+      noScroll(params.layer);
+      $(params.layer + ' .close').on('click', function () {
+        $(params.layer).fadeOut();
+        // $(params.scroll).css('transform', 'translate(0px, 0px)');
+        // $(params.bar).css('transform', 'translate(0px, 0px)');
+      });
+      $(params.openBtn).on('click', function () {
+        $(params.scroll).css('transform', 'translate(0px, 0px)');
+        $(params.bar).css('transform', 'translate(0px, 0px)');
+        lastY = 0;
+        transY = 0;
+        barTransY = 0;
+        $(params.layer).fadeIn();
+        utils = {
+          clientH: $(params.client).height(), //h1
+          scrollH: $(params.scroll).height(), //h2
+          barBgH: $(params.barBG).height() //h4
+        }
+        barH = parseInt(utils.clientH * utils.barBgH / utils.scrollH); //h3
+        $(params.bar).height(barH + 'px');
+        if (utils.clientH < utils.scrollH) {
+          touchToBottom(params.scroll, params.bar);
+        }
+      });
+    }
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Grid学习与实现九宫格布局</title>
+</head>
+<body>
+  <style>
+    .wrapper{
+      display: grid;
+      grid-template-columns: 100px 100px 100px;
+      grid-template-rows: 100px 100px 100px;
+    }
+    .list{
+      background: #beffee;
+    }
+    .list:nth-child(odd){
+      background: #bec3ff;
+    }
+    .list1{
+      /* grid-column-start: 1;
+      grid-column-end: 6;
+      grid-column: 1 / 3; */
+      /* 让网格线结束于第六条 */
+    }
+     /*.list3{
+      grid-row: 2 / 4;
+    }
+    .list6{
+      grid-column: 2 / 4;
+    }
+    .list8{
+      grid-row: 4 / 6;
+      grid-column: 3 / 4;
+    }
+    .list9{
+      grid-column: 1 / 4;
+    } */
+  </style>
+  <div class="wrapper">
+    <div class="list list1">1</div>
+    <div class="list list2">2</div>
+    <div class="list list3">3</div>
+    <div class="list list4">4</div>
+    <div class="list list5">5</div>
+    <div class="list list6">6</div>
+    <div class="list list7">7</div>
+    <div class="list list8">8</div>
+    <div class="list list9">9</div>
+  </div>
+  <h3>学习地址</h3>
+  <a href="https://www.css88.com/archives/8506">1</a>
+  <a href="https://www.css88.com/archives/8510">2</a>
+  <a href="https://www.css88.com/archives/8512">3</a>
+</body>
+</html>

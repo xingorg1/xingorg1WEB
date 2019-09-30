@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流</title>
+		<meta name="Description" content="浮动式瀑布流效果"/>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.fdpbl{width: 720px;margin: 30px auto;*zoom:1;}
+			.fdpbl:after{clear: both;content: "";display: block;}
+			.fdpbl ul{float: left;width: 230px;overflow: hidden;margin-right: 10px;}
+			.fdpbl li{width: 230px;margin-top: 8px;box-shadow: 1px 3px 2px 1px #ddd;}
+			.fdpbl li img{width: 100%;}
+		</style>
+	</head>
+
+	<body>
+		<div class="fdpbl" id="fdpbl">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+		<script src="pblOFfloat.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				pbl({
+					Box: "fdpbl",
+					Ul: "ul",
+					Url: "src='img/",
+					num: "19",
+				});
+			}
+		</script>
+	</body>
+
+</html>

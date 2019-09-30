@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>利用border-double实现三道杠</title>
+</head>
+<body>
+  <h3>double实例：两条红一条白都是border</h3>
+  <span>看双条边的border效果</span>
+  <span class="bottom">截取下边一段</span>
+  <span class="right">截取右边段</span>
+  <h3>double应用：</h3>
+  <div></div>
+  <h3>三道杠竖效果</h3>
+  <div class="shu"></div>
+  <style>
+    span{
+      display: block;
+      width: 200px;
+      border: 10px double red;
+    }
+    span.bottom,span.right{
+      border: 0;
+      margin-top: 20px;
+    }
+    span.bottom{
+      border-bottom: 10px double red;
+    }
+    span.right{
+      text-align: right;
+      border-right: 10px double red;
+    }
+    div{
+      width: 200px;
+      position: relative;
+      border: 1px  solid;
+      padding: 51px 40px;
+    }
+    div::after{
+      content: "";
+      display: block;
+      height: 30px;
+      border-top: 90px double;
+      border-bottom: 30px solid;
+    }
+    div:hover{
+      cursor: pointer;
+      color: red;
+      /* 利用border-color就是color的原理，hover时只改变color即可。 */
+    }
+    div.shu{
+      height: 150px;
+      width: 150px;
+    }
+    div.shu::after{
+      border: 0;
+      width: 30px;
+      border-right: 90px double;
+      border-left: 30px solid;
+      height: 150px;
+    }
+  </style>
+</body>
+</html>

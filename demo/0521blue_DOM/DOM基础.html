@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>智能社课程12课——DOM基础</title>
+	</head>
+	<body>
+		<!--
+			标签 ——css里的叫法
+			元素 ——js的叫法
+			节点 ——DOM的叫法
+			
+			元素属性操作方法
+			一、【点方法】oDiv.style.display = "block";
+			二、【方括号方法】oDiv.style["display"] = "block";
+			三、【DOM方法】 oDiv.setAttribute("参数名字"，“参数值)，与getAttribute、removeAttribute这俩结合使用【基本不用】
+			dom就是document
+		-->
+		<h2>childNodes</h2>
+		<p>测试childnodes会获取空文本作为一个子节点的问题,用nodeType判断节点类型</p>
+		<div id="childNodes">
+			<ul>
+				<li>nodetype==3;表示文本节点,ie8-识别</li>
+				<li>nodetype==1;表示元素节点，全部浏览器识别</li>
+			</ul>
+		</div>
+		<h2>children</h2>
+		<p>只包括子级的元素，不包括文本和孙子级</p>
+		<div id="children">
+			<ul>
+				我是文字
+				<li>1</li>
+				<li>2</li>
+			</ul>
+		</div>
+		<h2>parentNode</h2>
+		<p>查找某一个元素的亲爹--父节点。只要结构定下来，他就一个爹，永远不变。</p>
+		<div id="parent">
+			<ul>
+				<li>ahfkahf<a href="javascript:viod(0);">隐藏</a></li>
+				<li>爱打扮<a href="javascript:viod(0);">隐藏</a></li>
+				<li>阿嘎哒<a href="javascript:viod(0);">隐藏</a></li>
+				<li>阿发<a href="javascript:viod(0);">隐藏</a></li>
+				<li>发发<a href="javascript:viod(0);">隐藏</a></li>
+				<li>啊三国杀啊<a href="javascript:viod(0);">隐藏</a></li>
+			</ul>
+		</div>
+		<h2>offsetParent</h2>
+		<p>绝对定位的元素，根据谁定位？<br />
+			获取元素用来定位的父级，根据样式不同，其爸爸是会发生变化的。offsetParent获取用来定位的最近的那个父元素</p>
+			<div id="div1">
+				如果把我的样式加一个position：relative;则我是div2的绝对定位父节点，这段内容会被弹出去
+				<style type="text/css">
+				#div1{
+					position: relative; 
+					margin: 100px;width: 200px;height: 200px;background: #90EE90;}
+				#div2{width: 100px;height: 100px;position: absolute;top: 0;left: 0;background: #FE7405;}
+				</style>
+				<div id="div2">
+				</div>
+			</div>
+			
+			<h2>首firstChild尾lastChild节点+兄prevSibiling弟nextSibiling节点</h2>
+			<p>注意兼容性质，ie6-8空的文本节点会被认出来；</p>
+			<div id="flChild">
+				<ul>
+					<li>ie6-8用firstChild或firstElementChild</li>
+					<li>正常浏览器下用nextSibiling或nextElementSibling</li>
+					<li>ie6-8用previousSibling或previousElementSibling</li>
+					<li>正常浏览器用lastChild或lastElementChild</li>
+				</ul>
+			</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	window.onload = function(){
+		//1
+		var oDiv = document.getElementById("childNodes");
+		var oUL = oDiv.getElementsByTagName("ul")[0];
+//		alert(oUL.childNodes.length);
+		for(var i=0; i<oUL.childNodes.length;i++){
+			if(oUL.childNodes[i].nodeType==1){
+				oUL.childNodes[i].style.background = "red";
+			}
+		}
+		//2
+		var oDiv2 = document.getElementById("children");
+		var oUL = oDiv2.getElementsByTagName("ul")[0];
+//		alert(oUL.children.length)
+		//3 点击隐藏
+		var oDiv3 = document.getElementById("parent");
+		var oul = oDiv3.getElementsByTagName("ul")[0];
+		var oA =oul.getElementsByTagName("a");
+		for(var i = 0; i < oA.length; i++){
+			oA[i].onclick = function(){
+				this.parentNode.style.display = "none";
+			}
+		}
+		//4 offsetparent 获取用来定位的最近的那个父元素
+		var oDiv1 = document.getElementById("div1");
+		var oDiv2 = document.getElementById("div2");
+//		alert(oDiv2.offsetParent.innerText)
+		//首尾节点
+		var oDiv3 = document.getElementById("flChild");
+		var oUl = oDiv3.getElementsByTagName("ul")[0];
+//		var firstone = oUl.firstChild || oUl.firstElementChild;
+//		var lastone = oUl.lastChild || oUl.lastElementChild;
+		//正确的兼容判断处理方法：
+		if(oUl.firstElementChild){
+			oUl.firstElementChild.style.background = "red";
+		}else{
+			oUl.firstChild.style.background = "red";
+		}
+		if(oUl.lastElementChild){
+			oUl.lastElementChild.style.background = "green";
+		}else{
+			oUl.lastChild.style.background = "green";
+		}
+		////兄弟节点
+		if(oUl.firstElementChild.nextElementSibling){
+			oUl.firstElementChild.nextElementSibling.style.background = "yellow";
+		}else{
+			oUl.firstChild.nextSibling.style.background = "yellow";
+		}
+		if(oUl.lastElementChild.previousElementSibling){
+			oUl.lastElementChild.previousElementSibling.style.background = "pink";
+		}else{
+			oUl.lastChild.previousSibling.style.background = "pink";
+		}
+	};
+</script>

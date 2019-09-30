@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片与行高的表现</title>
+  <style>
+    body{
+      background: #eee;
+
+    }
+    .box{
+      position: relative;
+      font-size: 44px;
+      background: #fff ;
+      border: 1px solid;
+    }
+    .box::after{
+      content: "";
+      height: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border: 1px solid red;
+
+    }
+  </style>
+</head>
+<body>
+  <h3>行高与图文混排</h3>
+  <div class="box">
+    <img src="https://img3.mukewang.com/57a6f85b00013c7202090209-100-100.jpg" alt="">
+    zxxxjakdfjuakahdi我是一段文字
+  </div>
+  <h4>可以很明显的看到，图片的底部是和文字x的下边线绝对对齐的。</h4>
+</body>
+</html>

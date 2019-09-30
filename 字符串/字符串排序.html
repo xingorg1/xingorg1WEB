@@ -1,0 +1,34 @@
+s
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>字符串排序</title>
+</head>
+
+<body>
+  <!-- A、B、C这样得排序 -->
+  <script>
+    var examplearr = ['A', 'C', 'D', 'F', 'V', 'S', 'W']
+
+    function sortarr(arr) {
+      for (i = 0; i < arr.length - 1; i++) {
+        for (j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            var temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+      return arr;
+    }
+    sortarr(examplearr);
+    console.log(examplearr);
+  </script>
+</body>
+
+</html>

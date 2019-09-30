@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>浮动与两侧皆自适应的流体布局</title>
+<style>
+
+body { font-size: 14px; background-color: #DDF3F7; color: #333; }
+a { color: #0082CB; text-decoration: none; }
+p { margin: 0; } img { border: 0; }
+
+.mib_body { width: 600px; margin-left: auto; margin-right: auto; }
+.mib_x { margin-bottom: 10px; background-color: #fff; }
+.mib_list { padding: 20px; }
+.mib_resize { overflow: auto; resize: both; }
+.mib_vip { display: inline-block; width: 11px; height: 10px; margin-left: 1px; background: url(data:image/gif;base64,R0lGODlhCwAKAJEDAPyZCveDBuJmBP///yH5BAEAAAMALAAAAAALAAoAAAIdhD1zopgTXgMpsBdylVCPK2UCKI0j95hoRa0NVwAAOw==); }
+
+.mib_head_a { float: left; margin-right: 20px; }
+/* 下面这个是固定布局写法 */
+.mib_cell { display: table-cell; *display: inline-block; width: 2000px; *width: auto; }
+
+.mib_sms { line-height: 22px; padding-bottom: 6px; font-size: 14px; }
+.mib_select { width: 80px; padding: 5px; font-size: 100%; }
+</style>
+</head>
+
+<body>
+  <h3>这个太高级了，我也没弄懂原理，就先照抄大神的代码了。参考学习</h3>
+  <h2 style="color: red">这里需要搞明白的是右边部分的样式，display:table-cell;width: 2000px;以及兼容性写法！！</h2>
+  <h2 style="color: red">.mib_cell { display: table-cell; *display: inline-block; width: 2000px; *width: auto; }</h2>
+<div id="mibBody" class="mib_body">
+    <div class="mib_x mib_resize">
+        <div class="mib_list">
+            <a href="http://t.sina.com.cn/xuruoxuan" class="mib_head_a">
+                <img id="mibHeadImg" title="徐若瑄VIVIAN" src="http://img.mukewang.com/53e2e9470001dfd200500050.jpg">
+            </a>
+            <div class="mib_cell">
+                <p class="mib_sms"><a title="徐若瑄VIVIAN" href="#">徐若瑄VIVIAN<i title="新浪认证" class="mib_vip"></i></a>：一個人的晚餐！茶泡飯！飯、飯、飯… 今日不減肥，先把病治好再說！ 我認真吃完這，燒就會退了吧？！ 開動啦~~~~~~~~~~~~~~~~~~</p>
+                <div class="feed_img"><img src="http://img.mukewang.com/53e2e9b10001948000890120.jpg" height="120"></div>
+            </div>    
+        </div>
+    </div>
+    <div class="mib_x">
+        <div class="mib_list">
+            <p class="mib_sms">
+            	选择头像的宽度：<select id="minSelect" class="mib_select">
+                	<option value="56px">56px</option>
+                    <option value="70px">70px</option>
+                    <option value="84px">84px</option>
+                    <option value="100px">100px</option>
+                </select>
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+var ele_mibSelect = document.getElementById("minSelect"),
+	ele_mibHeadImg = document.getElementById("mibHeadImg");
+	
+if (ele_mibSelect && ele_mibHeadImg) {
+	ele_mibSelect.onchange = function() {
+		ele_mibHeadImg.style.width = this.value;
+	};
+}
+</script>
+</body>
+</html>

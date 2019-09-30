@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+				overflow: hidden;
+			}
+			
+			tbody tr:hover {
+				background-color: #ffa;
+			}
+			
+			td,
+			th {
+				position: relative;
+				border: 1px solid #ccc;
+				text-align: center;
+				padding: 5px 0
+			}
+			
+			td:hover:after,
+			thead th:hover:after {
+				content: "";
+				position: absolute;
+				background-color: #ffa;
+				left: 0;
+				top: -5000px;
+				height: 10000px;
+				width: 100%;
+				z-index: -1;
+			}
+			/*div.a1{
+				content: "";
+				position: absolute;
+				background-color: #d00;
+				left: 0;
+				top: -5000px;
+				height: 10000px;
+				width: 100%;
+				z-index: -1;
+			}打开这里你就知道他的原理啦，就是先隐藏，hover的时候出现就ok拉*/
+		</style>
+	</head>
+
+	<body>
+		<div class="a1"></div>
+		<div class="a">
+			<table cellpadding="0" cellspacing="0">
+				<colgroup>
+					<col width="280">
+					<col width="90">
+					<col width="90">
+					<col width="90">
+					<col width="90">
+					<col width="90">
+					<col width="90">
+					<col width="90">
+					<col width="90">
+				</colgroup>
+				<thead>
+					<tr>
+						<th rowspan="3">捷达装备</th>
+						<th colspan="2">&nbsp;1.4L&nbsp;</th>
+						<th colspan="6">&nbsp;1.5L&nbsp;</th>
+					</tr>
+
+					<tr>
+						<th>&nbsp;MT Trendline&nbsp;</th>
+						<th>&nbsp;MT Comfortline&nbsp;</th>
+						<th>&nbsp;MT Trendline&nbsp;</th>
+						<th>&nbsp;AT Trendline&nbsp;</th>
+						<th>&nbsp;MT Comfortline&nbsp;</th>
+						<th>&nbsp;AT Comfortline&nbsp;</th>
+						<th>&nbsp;MT Highline&nbsp;</th>
+						<th>&nbsp;AT Highline&nbsp;</th>
+					</tr>
+					<tr>
+						<th>&nbsp;手动时尚型&nbsp;</th>
+						<th>&nbsp;手动舒适型&nbsp;</th>
+						<th>&nbsp;手动时尚型&nbsp;</th>
+						<th>&nbsp;自动时尚型&nbsp;</th>
+						<th>&nbsp;手动舒适型&nbsp;</th>
+						<th>&nbsp;自动舒适型&nbsp;</th>
+						<th>&nbsp;手动豪华型&nbsp;</th>
+						<th>&nbsp;自动豪华型&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="row">&nbsp;后排顶棚阅读灯&nbsp;</th>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;便利12伏电源&nbsp;</th>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;点烟器&nbsp;</th>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;前部可移动烟灰缸&nbsp;</th>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;收音机及空调钢琴漆面板&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;金属质感装饰条&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;科技文理装饰条&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;桃木风格装饰条&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O&nbsp;</td>
+						<td>&nbsp;O&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;运动风格装饰条&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;高级机织座椅&nbsp;</th>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;精致双拼座椅&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;尊贵真皮座椅&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;运动风格Nabuk座椅&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;前排座椅带加热功能&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O4&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O4&nbsp;</td>
+						<td>&nbsp;O4&nbsp;</td>
+						<td>&nbsp;O4&nbsp;</td>
+						<td>&nbsp;O4&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;手动6向可调驾驶员座椅&nbsp;</th>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;方向盘高度可调&nbsp;</th>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;多功能方向盘&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;真皮方向盘 / 手刹 / 换挡手柄&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;O3&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;舒适镀铬包&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+					</tr>
+					<tr>
+						<th class="row">&nbsp;豪华镀铬包&nbsp;</th>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;－&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+						<td>&nbsp;●&nbsp;</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</body>
+
+</html>

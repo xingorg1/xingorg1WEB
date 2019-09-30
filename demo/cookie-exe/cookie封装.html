@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie封装</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		/*****设置cookie*****/
+		function setCookie(name,value,iDay){
+			var oDate = new Date();//获得日期毫秒数
+			oDate.setDate(oDate.getDate()+iDay);//设置延期日
+			document.cookie = name+'='+value+';expires='+oDate;//到这里的oDate是延期后的时间毫秒数
+		}
+		setCookie('xxx','www',3)//调用传参，前俩参数记得加‘单引号’
+//		document.write(document.cookie);输出测试
+		/*****获取cookie*****/
+		function getCookie(name){
+			var arr = document.cookie.split("; ");
+			for(var i=0;i<arr.length;i++){
+				var arr2 = arr[i].split("=");
+				if(arr2[0]==name){
+					return arr2[1]
+				}
+			}
+			return ""
+		}
+		//getCookie:传一个参数，就是要查找记录的name值，讲现有的cookie字符串进行切割扔个arr，此时的arr就是{name=1,name2=2,name3=3...}的一个object，就像一个json，此时，再遍历，将arr的每一个元素分别提取出来然后通过等号切割，扔个arr2，这样，arr2就成了俩值得数组，遍历一遍，就被扔进来一对，把扔进来的这对进行判断，如果他的名字等于传进来的要查找的参数值，那么arr2内部的第2个数值就是要找的名字对应值，把他弹出来。否则，遍历完了还没有，就弹回空或者其他的“没找到”等提示语。
+		
+		
+		/*****移除cookie*****/
+		function removeCookie(name){
+			setCookie(name,1,-1);
+			//?这里第二个参数为什么是1
+		};
+		
+		/*****测试cookie*****/
+		setCookie('123','321',1)
+		setCookie('124','421',1)
+		setCookie('125','521',0)
+		removeCookie('123');
+		var m = getCookie('124');
+		alert(m);
+		document.write("<hr/>"+document.cookie);
+		</script>
+	</body>
+</html>

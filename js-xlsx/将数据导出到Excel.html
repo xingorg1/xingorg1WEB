@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>将数据导出到Excel</title>
+</head>
+<body>
+  <h1>将数据导出到Excel</h1>
+  <span onclick="dataToExcel([1,2,4],'filename')">
+    点击
+  </span>
+  <script>
+    var dataToExcel = function(data, filename){
+      console.log(data,filename)
+      var wopts = { bookType: 'xlsx', bookSST: false, type: 'binary' };//这里的数据是用来定义导出的格式类型
+      // const wopts = { bookType: 'csv', bookSST: false, type: 'binary' };//ods格式
+      // const wopts = { bookType: 'ods', bookSST: false, type: 'binary' };//ods格式
+      // const wopts = { bookType: 'xlsb', bookSST: false, type: 'binary' };//xlsb格式
+      // const wopts = { bookType: 'fods', bookSST: false, type: 'binary' };//fods格式
+      // const wopts = { bookType: 'biff2', bookSST: false, type: 'binary' };//xls格式
+
+      var wb = { SheetNames: ['Sheet1'], Sheets: {}, Props: {} };
+      wb.Sheets['Sheet1'] = XLSX.utils.json_to_sheet(data);
+
+      var str = XLSX.write(wb, wopts);
+      var buffer = new ArrayBuffer(str.length);
+      var view = new Uint8Array(buffer);
+      for (var i = 0; i != str.length; ++i) view[i] = str.charCodeAt(i) & 0xFF;
+
+       var e = document.createElement('a');
+       e.download = filename;
+       e.style.display = 'none';
+
+       var blob = new Blob([buffer], { type: "application/octet-stream" });
+       e.href = URL.createObjectURL(blob);
+
+       document.body.appendChild(e);
+
+       e.click();
+
+       document.body.removeChild(e);
+};
+  </script>
+</body>
+</html>

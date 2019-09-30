@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>宽高二比一的矩形</title>
+</head>
+
+<body>
+  <h3 style="text-indent: 2em">
+    利用的原理：普通元素的margin值设置为百分比时，margin-top/margin-left等值都是相对于父元素的宽度计算的。
+  </h3>
+  <h3 style="text-indent: 2em">
+    父元素的overflow形成BFC防止子元素的margin穿透出去。包裹子元素的margin-top加上自己的背景色，视觉上看上去就像自己的矩形图形。
+  </h3>
+  <h3 style="text-indent: 2em">
+    父元素的宽是流体的，跟随屏幕的宽度而改变，也可以设置为固定的。子元素的margin是百分比，随父元素的宽度改变而改变。
+  </h3>
+  <h3 style="text-indent: 2em">
+    子元素没有文案,加了一个边框示意他的位置和处境。margin-top也是50%，也就是父元素宽度的50%；形成父元素视觉上的高度。
+  </h3>
+  <h3 style="text-indent: 2em">
+    父元素的宽与子元素margin-top结合，组成矩形。
+  </h3>
+  <div class="box" id="box">
+    <div></div>
+  </div>
+  <h3 id="boxTxt" style="color: #00abff"></h3>
+  <h3 style="text-indent: 2em;">
+    总结：主要原理就是
+    子元素的margin设置为百分比时，其具体像素值相对于父元素的宽度计算，如果margin-top为50%；那么margin-top刚好是父元素的宽度的一半。父元素设置overflow形成bfc结界，margin-top就变相成了父元素的高度。高是宽的一半，就是一个矩形。
+  </h3>
+  <style>
+    .box {
+      background-color: blanchedalmond;
+      overflow: hidden;
+      /* border: 1px solid red; */
+    }
+
+    .box div {
+      margin-top: 50%;
+      border-top: 1px solid red;
+    }
+  </style>
+  <script>
+    var box = document.getElementById('box'),
+      boxTxt = document.getElementById('boxTxt');
+    boxTxt.innerHTML = 'box宽度：' + box.clientWidth + 'px, <br/>box高度：' + (box.clientHeight - 1) + 'px；<br/>宽高比例：' + box.clientWidth +
+      '/' + (box.clientHeight - 1) + '=' + box.clientWidth / (box.clientHeight - 1)
+  </script>
+</body>
+
+</html>

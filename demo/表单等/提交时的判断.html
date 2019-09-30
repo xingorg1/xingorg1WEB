@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单判断</title>
+		<script src="http://www.bitauto.com/zhuanti/adtopic/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+
+	</head>
+	<body>
+		 <div class="con_box">
+                <div class="form_box">
+                    <h3>
+                        登录</h3>
+                    <ul class="register">
+                        <li>
+                            <input type="text" id="username" class="input_txt name" value="请输入您的账号" />
+                        </li>
+                        <li>
+                            <input type="password" id="password" class="input_txt password" value="" />
+                        </li>
+                        <li style="height: 50px;">
+                            <label>
+                                <input type="checkbox" id="remembered" class="remember" checked="checked" />
+                                记住用户名</label></li>
+                        <li><a id="login" href="javascript:;" class="login">登录</a></li>
+                    </ul>
+                </div>
+            </div>
+
+		<script type="text/javascript">
+		$(function() {
+				$("#invite_code").focus(function() {
+					if($(this).val() == "邀请码确认") {
+						$(this).val("");
+					}
+				}).blur(function() {
+					if($(this).val() == "") {
+						$(this).val("邀请码确认");
+					}
+				});
+
+				$("#login").click(function() {
+					var url = "Handler1.ashx";
+					var pwd = $("#password").val();
+					var username = $("#username").val();
+					var remembered = $("#remembered").is(':checked');//协议打对勾的地方
+					if($.trim(username) == "" || $.trim(username) == "请输入您的账号") {
+						alert("请输入您的账号");
+						return;
+
+					}
+					if($.trim(pwd) == "" || $.trim(pwd) == "请输入您的密码") {
+						alert("请输入正确的密码");
+						return;
+					}
+					//pwd = hex_md5($("#pwd").val());
+					$.ajax({
+						type: "post",
+						url: url,
+						data: {
+							action: "login",
+							username: username,
+							pwd: pwd,
+							isRem: remembered
+						},
+						dataType: "text",
+						success: function(data) {
+							var responseJson = eval('(' + data + ')');
+							if(responseJson.result == 100) {
+								window.location = responseJson.msg;
+							} else {
+								alert(responseJson.msg);
+							}
+						},
+						error: function(data) {
+							alert("网络异常")
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

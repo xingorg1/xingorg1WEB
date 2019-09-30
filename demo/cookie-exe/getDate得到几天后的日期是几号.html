@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>getDate的实际应用</title>
+		<style type="text/css">
+			input{
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>这一方法可以设置两周内记住用户名这些效果，用于做时间限制，做有效期</h3>
+		<p>得到今天的日期:<input type="text" id="txt1"/></p>
+		<p>得到<b style='color: red;margin: 0 10px;'>14天后</b>的日期:<input type="text" id="txt2"/></p>
+		<script type="text/javascript">
+			var oTxt1 = document.getElementById("txt1");
+			var oTxt2 = document.getElementById("txt2");
+			var daTe = new Date();
+			
+			var yuefen = daTe.getMonth();//获得初始月份
+			var toDay = daTe.getDate();//获得初始日期，就是今天的日期
+			
+			var futur14 = daTe.getDate(daTe.setDate(daTe.getDate()+14));//获得向后挪14天后的日期，
+			//核心理念就是，用今天的日期加14，然后放到daTe里面重新设置，这样就是把日期设置成了今天再加14，然后再重新get获取设置后的日期，得到想要的。
+			var futur14yuefen =  daTe.getMonth();//重新获取月份
+			oTxt1.value = yuefen+"月"+toDay+"日";
+			oTxt2.value = futur14yuefen+"月"+futur14+"日";
+		</script>
+	</body>
+</html>

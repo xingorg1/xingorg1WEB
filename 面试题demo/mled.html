@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,body{
+      height: 100%;
+    }
+    .parent{
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: #d4fdff;
+    }
+    .child{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .parent1{
+      position: relative;
+      z-index: 2;
+      height: 20%;
+      background: rgba(61,231,23,.15);
+      /* 上边为了看效果 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .child1{
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child">垂直水平居中</div>
+  </div>
+  <div class="parent1">
+      <div class="child1">垂直水平居中</div>
+    </div>
+  <script>
+    /*  */
+    var a = 1;
+    if(!(b in window)){//因为b提升，这里条件不成立
+      var b = 2;// 变量提升，还学过的知识点都忘了
+      a += 1;
+    }else{
+      a += 2;//执行else
+    }
+    console.log(a);
+    console.log(b);
+    /* 我的答案：
+      b in window不成立，为false
+      取反false后为true。if条件成立，a+1，b为2.
+     */
+    var m = 1;
+    function log(){
+      var m = 2;
+      return function(){
+        m += 1;
+      }
+    }
+    var _log = log();
+    _log();
+    console.log(m);
+    /*  我的答案
+      m为1，这里取全局m，为1。
+    */
+    switch(m){
+      case 2:
+        var c = 1;
+      break;
+    }
+    console.log(c);
+    /* 根据上一题引申出，全局的语句中，没用var时，变量也会提升 */
+    for(var i = 0; i < 5; i++){
+      (function(){
+        setTimeout(function(){
+          console.log(i)
+        },1000)
+      })(i)
+    }
+    /* 我的答案：1秒后输出5个i，因为定时器查找全局i，已变为5 */
+    function fun(){};
+    console.log(typeof fun);
+    console.log(fun instanceof Function); //这个就考察instanceof的原理了
+    console.log(fun instanceof Object);
+    /* 我的答案
+      function  typeof 一个函数，得到function
+      true
+      true 万物借对象
+    */
+    'use strict'
+    var a = 1;
+    var obj = {
+      a: 2,
+      getA : function(){
+        console.log('this',this)
+        return this.a;
+      }
+    }
+    console.log(obj.getA());
+    console.log(obj.getA.call());//null,undefined,不传参，都指向window
+    console.log(obj.getA.call(null));//null,undefined,不传参，都指向window
+    console.log(obj.getA.call(undefined));//null,undefined,不传参，都指向window
+    console.log(new obj.getA()) // this指向getA{}实例对象
+    console.log(new obj.getA.call()) // obj.getA.call is not a constructor
+    console.log(obj.getA.call({a:10}));
+    var a = 1;
+    function aa(){
+      var a = 222;
+      function fun(){
+        console.log(this)
+        console.log(this.a)
+      }
+      fun.call();
+    }
+    aa();
+    /* 我的答案
+    2 ： 因为obj调用getA，this指向obj
+    undefined : 我以为call里边不传参，this。。。
+                额，自己都编不出理由，call不传参也不能出undefined啊
+    10：因为call显示的将this指向新的对象{a: 10}
+    */
+    var arr = [1,2,3];
+    function test(arr){
+      console.log(1,arr)
+      arr = [];
+      console.log(2,arr);
+    }
+    test(arr);
+    console.log(3,arr);
+    /* 我的答案 
+      [1,2,3]不变，
+      考点：传引用类型参数，函数参数的传值和传址，原始类型传值，引用类型传址。
+      这里arr的地址传给形参arr，他们共用一个堆内存地址，
+      但是到了函数内部，形参arr指向了新的地址——空数组。但是外部arr变量的指针没有被改变，所以照旧
+    */
+  // 换题
+    var arr = [1,2,3];
+    function test(arr){
+      console.log(1,arr)
+      arr.push(4);// 或者写 arr.length = 4;都是改了外部arr所指向的[1,2,3]数组，所以外部也会变。
+      console.log(2,arr);
+    }
+    test(arr);
+    console.log(3,arr);
+
+    // 构造函数Fn、原型对象、实例对象，三者之间的关联关系
+    // var、let、const的区别
+    // 300毫秒点击延迟是什么，怎么去掉？
+  </script>
+</body>
+</html>

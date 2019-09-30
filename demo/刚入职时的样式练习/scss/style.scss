@@ -1,0 +1,641 @@
+html {
+    font: 12px/1.6 'Hiragino Sans GB', 'Helvetica Neue', 'Microsoft Yahei', arial;
+  }
+ul {
+    margin: 0;
+    padding: 0;
+}
+li{
+	list-style:none;
+}
+a{
+	color:#333;
+	text-decoration:none;
+	outline: none;
+}
+a:link,a:active,a:hover,a.visided{
+	outline: none;
+}
+.clearfix:after{
+	content: "";
+	clear: both;
+	display: block;
+	visibility: visible;
+	height: 0px;
+}
+// 分区块
+.block{
+	padding: 20px;
+	border-top: 8px solid #ccc;
+}
+// 星级评分效果
+.grayStar,.colorStar{
+	display: block;
+	width: 180px;
+	height: 24px;
+}
+.grayStar{
+	background: url("../img/star_grey2.png") repeat-x;
+}
+.colorStar{
+	background: url("../img/star_orange2.png") repeat-x;
+}
+// 树形菜单
+.tree-cont{
+	overflow: hidden;
+}
+.treeBar{
+	float:left;
+	width: 170px;
+	margin-left:50px;
+	min-height: 500px;
+	margin-bottom: -5000px;
+	padding-bottom: 5000px;
+	background: #26303d;
+	font-size: 14px;
+	a{
+		color: #a8acb1;
+	}
+}
+.tree-items{
+	margin-top: 10px;
+	.icon{
+		margin-right: 10px;
+	}
+	&.active{
+		.tree-item-link{
+			@extend .aActive;
+    	background: #2f6ec2;
+		}
+		.nav-item-submenu{
+			display: block;
+		}
+	}
+	&:hover{
+		.tree-item-link{
+			@extend .active
+		}
+	}
+}
+.aStyle{
+		height: 40px;
+    display: block;
+    line-height: 40px;
+    padding-left: 20px;
+}
+.aActive{
+	color: #fff;
+    font-weight: bold;
+}
+.tree-item-link{
+	  @extend .aStyle;
+	  &:hover{
+	  	@extend .aActive;
+    	background: #2f6ec2;
+    	.icon-pulldown,.icon-pullup{
+	  		visibility: visible;
+	  	}
+	  }
+	  .icon-pulldown,.icon-pullup{
+	  	visibility: hidden;
+			float: right;
+			margin-top: 10px;
+		}
+}
+
+// div
+.nav-item-submenu{
+	display: none;
+	padding-left: 5px;
+	background: #fff;
+}
+.submenu-item-link{
+	@extend .aStyle;
+	background: #000;
+	&:hover{
+		color: #fff;
+		font-weight: bold;
+	}
+	&.cur{
+		@extend .aActive;
+		.icon{
+			color: yellow;
+		}
+	}
+}
+// 问题总结
+.info{
+	float:left;
+	width: 50%;
+	margin-left: 20px;
+	font-size: 14px;
+	li{
+		margin: 10px 0;
+		list-style: decimal;
+	}
+}
+.info-no-float{
+	float:none;
+}
+.tab-wrap{
+	padding: 20px 50px;
+	background: #f8f8f8;
+	ul{
+		border-bottom: 1px solid #dedede;
+	}
+	ul:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	li{
+		float: left;
+		margin-left: -1px;
+		a{
+		font-size: 24px;
+    padding: 4px 50px;
+    font-weight: bold;
+    background: #f1f1f1;
+    border: 1px solid #dedede;
+    color: #929292;
+    &:hover{
+		    	background: #fff;
+		    }
+		}
+		&.cur{
+			margin-top: -1px;
+			a{
+		    padding: 6px 50px;
+		    background: #fff;
+		    color: #444;
+		    cursor: pointer;
+		    border-color: #dedede;
+		    border-bottom: none;
+			}
+		}
+	}
+}
+.tab-cont{
+	  margin-left: -1px;
+    height: 100px;
+    padding: 20px;
+    background: #fff;
+    font-size: 48px;
+    border: 1px solid #dedede;
+    border-top: none;
+    display: none;
+}
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+// IMS
+.ims-wrap{
+	height: 720px;
+	margin-bottom: 10px;
+	background: #2f4f7a;
+}
+.ims-container{
+	width: 1210px;
+	margin: 0 auto;
+
+}
+.ims-header{
+	height: 50px;
+	background: #202d3d;
+}
+
+.ims-logo img{
+	box-shadow: 1px 5px 5px -2px #202d3d;
+}
+.ims-cont{
+	position: relative;
+	margin-top: 120px;
+	background: #202d3d url("../img/login_bg.jpg") no-repeat;
+	height:320px;
+}
+.ims-login-wrap{
+	float: right;
+	width: 280px;
+	height: 370px;
+	padding: 40px;
+	margin-top: -40px;
+	background: #fff;
+}
+.ims-login-logo {
+    margin-bottom: 20px;
+}
+// .ims-login-form {
+//     margin-top: 20px;能用margin-bottom的时候尽量使用，放置后边的元素没有了，还要与底边保持距离呢。
+// }
+.ims-login-div {
+    margin-bottom: 20px;
+    input{
+    	width: 100%;
+    	height: 38px;
+    	padding: 4px 10px;
+    	box-sizing: border-box;
+    	border: 1px solid #cfd2d7;
+    	&:focus{
+    		outline: none;
+    		border-color: #2483ff;
+    	}
+    }
+}
+.ims-login-verify{
+	margin-bottom: 40px;
+	span{
+		float: left;
+		height: 38px;
+		line-height: 38px;
+		margin-right: 10px;
+		vertical-align: top;
+		img{
+			height: 38px;
+		}
+		a{
+			color: #1b63c2;
+		}
+	}
+
+}
+input.ims-input-verify{
+	width: 98px;
+}
+.ims-login-btn{
+	margin-bottom: 5px;
+	input{
+		width: 100%;
+		height: 38px;
+		line-height: 38px;
+		background: #2f4f7a;
+		color: #fff;
+		font-size: 14px;
+		text-align: center;
+		border: none;
+	}
+}
+.ims-login-info{
+	margin-bottom: 40px;
+	span{
+		color: #999;
+		.ims-login-check{
+			vertical-align: middle;
+			margin-right: 5px;
+		}
+		a{
+			float: right;
+			color: #999;
+		}
+	}
+}
+.ims-login-copy{
+	width: 320px;
+	float: right;
+	color: #fff;
+	font-size: 24px;
+}
+.info-white{
+	color: yellow;
+}
+// 车微店 表格布局
+.cwd-table{
+	margin: 20px 10px;
+	thead th,tbody td{
+		text-align: center;
+		padding: 10px 5px;
+	}
+	thead tr{
+		background: #e8e8e8;
+		border: 1px solid #d8d8d8;
+		border-bottom-color: none;
+	}
+	tbody{
+		background: #f9f9f9;
+		border: 1px solid #d8d8d8;
+		border-top-color: none;
+	}
+	tbody tr{
+		&:hover,&:nth-child(even){
+			background: #eee;
+		}
+	}
+}
+// 车易通 表格之th与td的合作 // 2017-08-22
+.cyt-table{
+	margin: 10px 20px;
+	border: 1px solid #ccc;
+	min-width: 740px;
+	th,td{
+		padding: 10px 20px;
+		border-bottom: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+	}
+	th{
+		background: #eee;
+	}
+	td{
+		span{
+			width: 45%;
+			margin-right: 25px;
+		}
+		input{
+				max-width: 60px;
+				padding: 2px 5px;
+				margin-right: 5px;
+				border: 1px solid #dedede;
+			&:focus{
+				outline: none;
+				border: 1px solid #4488ff;
+			}
+		}
+		p{
+			input{
+				max-width: 160px;
+			}
+		}
+	}
+	.cyt-point{
+		display: block;
+		text-align: center;
+		font-size: 24px;
+		color: #666;
+	}
+}
+// 车易通 排行榜 
+.progress-box{
+	width: 450px;
+	margin: 0 20px 20px;
+	border: 1px solid #dedede;
+	h3{
+		background: #eee;
+		padding: 0 20px;
+		margin: 0;
+		margin-bottom: 13px;
+	}
+	li{
+		margin: 0 20px 13px;
+	}
+	span{
+		font-size: 14px;
+		color: #666;
+	}
+	.rank-num{
+		padding: 2px 10px;
+		margin-right: 5px;
+		color: #fff;
+		background: #999;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+	.rank-num-hot{
+		background: #ffb624;
+	}
+	.progress-ico{
+		float: right;
+	}
+	.progress-stat,.progress{
+		float: left;
+	}
+	.progress-bg{
+		width: 200px;
+		height: 10px;
+		margin: 6px 0 0 10px;
+		background: #eee;
+	}
+	.progress-show{
+		height: 10px;
+		margin: 0;
+		background: #4488ff;
+	}
+}
+// 查看员工信息
+.staff-info-box{
+	float: left;
+	width: 40%;
+	margin: 10px 20px;
+	padding: 0 0 20px;
+	background: #fafafa;
+	border: 1px solid #e8e8e8;
+	h3{
+		margin: 0 0 20px;
+		padding: 10px 20px;
+		background: #d5d5d5;
+		border-left: 1px solid #d5d5d5;
+		border-right: 1px solid #d5d5d5;
+	}
+	.info{
+		width: auto;
+		padding: 0 20px;
+		h3{
+			background: #eee;
+			border: none;
+		}
+	}
+}
+.staff-btn{
+	padding: 0 30px;
+	margin: 10px 0;
+	a{
+		display: inline-block;
+		_display: inline;
+		padding: 10px 20px;
+		color: #fff;
+		margin-right: 15px;
+	}
+}
+.staff-btn-change{
+	background: #4488ff;
+	border: 1px solid #4488aa;
+}
+.staff-btn-del{
+	background: #ddd;
+	border: 1px solid #d1d1d1;
+}
+.staff-info{
+	padding: 0 10px;
+}
+.staff-info-row{
+	padding: 0 0 10px;
+}
+.staff-info-title{
+	float: left;
+	width: 91px;
+	text-align: right;
+	margin-right: 10px;
+	color: #aaa;
+}
+.staff-info-cont{
+	text-align: left;
+	margin-left: 101px;
+}
+// 修改员工信息
+.staff-change-box{
+	width: 40%;
+	p,.staff-change-info{
+		margin: 0 0 5px 0;
+		color: #999;
+	}
+	.staff-info-title{
+		color: #999;
+		font-weight: bold;
+	}
+	input{
+		border: 1px solid #dedede;
+		padding: 4px 5px;
+	}
+	input[type="checkbox"]{
+		margin-right: 5px;
+	}
+	textarea{
+		width: 390px;
+		height: 102px;
+		padding: 4px 5px;
+		border: 1px solid #dedede;
+	}
+	input,textarea{
+		color: #333;
+		&:focus{
+			border: 1px solid #4488ff;
+			outline: none;
+		}
+	}
+	input[type="submit"]{
+		padding: 5px 30px;
+		font-size: 14px;
+		color: #fff;
+		background: #1bc28a;
+		border: 1px solid #1bc28a;
+		&:focus,&:hover{
+			background: #1ab984;
+			border: 1px solid #18a575;
+			outline: none;
+		}
+	}
+	input[type="reset"]{
+		margin-left:10px;
+		padding: 5px 30px;
+		font-size: 14px;
+		color: #666;
+		background: #fff;
+		border: 1px solid #cfd2d7;
+		&:focus,&:hover{
+			background: #f7f7f7;
+			border: 1px solid #c1c3c7;
+			color: #333;
+			outline: none;
+		}
+	}
+}
+.staff-image-box{
+	width: 160px;
+	height: 160px;
+	line-height: 160px;
+	border: 1px dashed #dedede;
+	background: #f6f6f6;
+}
+.staff-image-btn{
+	text-align: center;
+	button{
+		padding: 7px 20px;
+		color: #fff;
+		background: #4488ff;
+		border: none;
+		&:hover,&:focus{
+			outline: none;
+			background: #4488ee;
+		}
+	}
+}
+.icon-red{
+	color: red;
+}
+.icon-orange{
+	color: #ffb624;
+	top: 0;
+}
+// 平台公用 分页效果
+.page-wrap{
+	background: #eee;
+	padding: 10px 0;
+}
+.pages{
+	width: 75%;
+	margin: 0 auto;
+	// li{
+	// 	float: left;
+	// 	border: 1px solid #999;
+	// 	margin: 0 5px;
+	// 	a{
+	// 		float: left;//用以撑开a的padding，起到display：inline-block的作用
+	// 		padding: 10px 20px;
+	// 		font-size: 14px;
+	// 	}
+	// 	&:hover,&.active{
+	// 		background: #aaa;
+	// 		a{
+	// 			color: #fff;
+	// 		}
+	// 	}
+	// 	&.disable{
+	// 		background: #999;
+	// 		&:hover a{
+	// 			color: #333;
+	// 			cursor: default;
+	// 		}
+	// 	}
+	// 	&.more-page{
+	// 		border: none;
+	// 		&:hover {
+	// 			background: none;
+	// 			a{
+	// 			color: #333;
+	// 			cursor: text;
+	// 			}
+	// 		}
+	// 	}	
+	// }
+	// 换一种写法
+	li{
+		float: left;
+		margin-right: 5px;
+		a{
+			display: inline-block;
+			padding: 3px 5px 2px;
+			border: 1px solid #cfd2d7;
+			background: #fff;
+			color: #43464b;
+			min-width: 14px;
+			text-align: center;
+		}
+		&:not(.disable):hover a,&.active a{
+			border-color: #1f70db;
+	    color: #fff;
+	    background: #1f70db;
+		}
+		&.disable a{
+			background: #e3e6eb;
+			color: #ccc;
+			&:hover{
+				cursor: default;
+			}
+		}
+		&.more-page{
+			&:hover{
+				a{
+					border: none;
+					background: none;
+					color: #43464b;
+					cursor: text;
+				}
+			}
+			a{
+				border: none;
+				background: none;
+			}
+		}
+	}
+}

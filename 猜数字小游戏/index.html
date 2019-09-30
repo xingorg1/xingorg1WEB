@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>猜数字小游戏</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="content start">
+	<h1>猜数字小游戏</h1>
+	<h4>请在输入框中填写你猜测的数字，猜测范围是0-100以内的正整数哦！</h4>
+	<div class="cont1">
+		<label for="clientNum"><b>输入数字：</b></label>
+		<input type="text" id="clientNum">
+		<button>监测</button>
+		<p></p>
+	</div>
+	<div class="cont2">
+		<b>猜测提示：</b>
+		<span></span>
+		<!-- <span class="info-up">你的猜测高了</span>
+		<span class="info-down">你的猜测高了</span> -->
+	</div>
+	<div class="cont3">
+		<b>已测数字：</b>
+		<div class="cont3-box">
+			<!-- <span class="old-num">2</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span>
+			<span class="old-num">122</span> -->
+		</div>
+	</div>
+	<div class="cont4">
+		<b>猜测结果：</b>
+		<span></span>
+		<!-- <span class="error">错误！</span>
+		<span class="success">恭喜答对了！</span>
+		<span class="over">game over！</span> -->
+	</div>
+	<div class="cont5">
+		<span class="over">sorry， 你的十次机会用完了。 game over！</span>
+		<br>
+		<input type="reset" value="重来" class="reset">
+	</div>
+</div>
+	<script src="common.js"></script>
+</body>
+</html>

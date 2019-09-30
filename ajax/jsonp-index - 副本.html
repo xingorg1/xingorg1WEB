@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX</title>
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+	<script>
+		axios.get('//ep-svnserver30.tech.bitauto.com/FE/yi-oph5/gloryPartner5/my.json')
+	  .then(function (response) {
+	    console.log(response);
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
+	</script>
+</body>
+</html>

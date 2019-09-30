@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      text-align: center;
+    }
+    header,footer{
+      color: #fff;
+      background: #333;
+      line-height: 76px;
+    }
+    header{
+      line-height: 200px;
+    }
+    .box{
+      width: 1200px;
+      margin: 0 auto;
+      background:  #eef7f0;
+      height: 600px;
+      /* 核心代码 */
+      padding-right: 352px;
+    }
+    .content{
+      height: 590px;
+      margin-top: 20px;
+      box-shadow: 2px 6px 15px 2px #ccc;
+      background: #fff;
+      border-radius: 8px;
+      padding-top: 20px;
+      /* 核心代码 */
+      float: left;
+      width: 100%;
+    }
+    .right{
+      background: #fff;
+      box-shadow: 2px 6px 15px 2px #ccc;
+      height: 500px;
+      padding-top: 20px;
+      border-radius: 8px;
+      /* 核心代码 */
+      float: right;
+      width: 332px;
+      margin-right: -352px;
+      margin-top: -120px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <header>我是头部</header>
+  <div class="box">
+    <div class="content">思考：为什么我会叠在footer的上边，按照文档流顺序来说，footer在我后边，z-index即使一样也应该压住我啊？</div>
+    <div class="right">重点是margin-right负值怎么让我上位的。</div>
+  </div>
+  <footer>版权信息</footer>
+</body>
+</html>

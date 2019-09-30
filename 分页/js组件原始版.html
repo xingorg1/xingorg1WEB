@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自己写的分页小demo</title>
+	<link rel="stylesheet" href="pagination2.css">
+</head>
+<body class="yi-frames ">
+<a href=""></a>
+	<div id="contBox"></div>
+	<div class="yi-pagination">
+		<ul id="pageBox"></ul>
+	</div>
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script src='js/pagination.js'></script>
+	<script>
+		pagination({
+			 idName: 'pageBox',
+			  currentPage: 1,
+			  pageSums: 230
+			},10,true);
+		$('#pageBox').on('click','a',function(){
+		  var clickedPage = Number(this.getAttribute('data-num')); //clickedPage就是用户当前点击的页码数；
+		  //成功回调中获取新的数据总条数,并计算页数总数
+		  var ajaxDataSum = 635; //*注3
+		  var pageSum = parseInt(Math.ceil(ajaxDataSum / 10));
+		   //重新排序，再次调用pagination
+		  pagination({
+		    idName: 'pageBox', 
+		    currentPage: clickedPage, //*注4
+		    pageSums: pageSum
+		  });
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    iframe#mainContent {
+      width: 100%;
+      height: 800px;
+    }
+
+    div#u_sp a {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <iframe src="https://www.baidu.com" id="mainContent" frameborder="0" onload="setIframe()"></iframe>
+  <script>
+    function setIframe(){
+      var iframe = document.getElementById('mainContent');
+      console.log(iframe.contentWindow,window.frames['mainContent'])
+      var u_sp = iframe.contentWindow.document.getElementById("u_sp");
+      console.log(u_sp)
+      iframe.contentWindow.document.body.style.backgroundColor="#f00";
+      console.log(iframe,iframe.contentWindow,iframe.contentWindow.document.body,iframe.contentWindow.document.body.innerHTML)
+    }
+  </script>
+  <script>
+    var iframe = document.getElementById('mainContent');
+    var sty = document.createElement('style');
+    sty.type = "text/css";
+    sty.innerHTML="iframe#mainContent{height:1130px;}iframe#mainContent body{background:#fff;}.main-container:before{content:none;}.yicheTpl .yicheBreadcrumb{margin:0;padding:10px 16px;}.yicheTpl > .row > .col-xs-12{padding:0;}.fixed-table-header .table{width:100%!important;}.fixed-table-body{height:700px;}.grid_icon{margin-left:0;}";
+    iframe.onload = function(e){
+      var doc = this.contentWindow.document || this.contentDocument;
+      console.log(doc)
+      doc.body.appendChild(sty);
+    }
+  </script>
+</body>
+
+</html>

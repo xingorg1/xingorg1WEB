@@ -1,0 +1,146 @@
+/*
+ * @Author: @Guojufeng 
+ * @Date: 2019-01-06 12:32:47 
+ * @Last Modified by: @Guojufeng
+ * @Last Modified time: 2019-01-06 15:47:30
+ */
+/* reset */
+*{
+  font-size: 16px;
+  font-family: "Microsoft YaHei";
+}
+h1{
+  font-size: 30px;
+  text-align: center;
+  border: 1px steelblue dashed;
+}
+h2 strong{
+  color: #f40;
+}
+p.desc {
+  color: #666;
+  /* text-indent: 2em; */
+  line-height: 32px;
+}
+p.tip{
+  color: #999;
+  font-size: 14px;
+}
+.list li{
+  list-style: decimal;
+}
+.cont{
+  border: 1px dashed #666;
+  padding: 20px;
+}
+.head{
+  width: 150px;
+  height: 150px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.head img{
+  display: block;
+  width: 100%;
+  
+}
+/* point */
+/* float实现 */
+.cont-f{
+
+}
+.clearfix::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.cont-f .head {
+  float: left;
+  margin-right: 20px;
+}
+.cont-f .txt{
+  /* 形成bfc */
+  /* overflow: hidden; */
+  /* 170 = 图片宽度150 + 二者间距20 */
+  padding-left: 170px;
+  /* margin-left: 170px; */
+}
+
+/* 定位实现 */
+.cont-a{
+  position: relative;
+  /* 防止文案过少时，父元素塌陷到高度低于图片的高度 */
+  min-height: 150px;
+}
+.cont-a .head{
+  position: absolute;
+  /* 以下两句实现垂直居中，不需要可以不设置 */
+  top: 50%;
+  margin-top: -75px;
+}
+.cont-a .txt{
+  /* 这次就是这俩任选其一了，必须把左边图片的位置空出来 */
+  /* padding-left: 170px; */
+  margin-left: 170px;
+}
+
+/* margin 负边距实现 */
+.cont-m{
+}
+.cont-m .head{
+  float: left;
+  margin-left: -150px;
+}
+.cont-m .txt{
+  float: left;
+  margin-right: 170px;
+}
+
+
+/* flex 弹性布局实现 */
+.cont-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 兼容性写法自己添加吧，就是这么不负责任 */
+}
+.cont-flex .head {
+}
+.cont-flex .txt {
+  flex: 1;
+  padding-left: 20px;
+}
+
+/* table */
+.cont-tc{
+  display: table;
+}
+.cont-tc .head {
+  display: table-cell;
+  /* 如果需要垂直居中 */
+  vertical-align: middle;
+}
+
+.cont-tc .txt {
+  display: table-cell;
+  padding-left: 20px;
+  vertical-align: top;
+  /* 如果需要垂直居中 */
+  vertical-align: middle;
+}
+
+/* 固宽 */
+.cont-w{
+  width: 780px;
+}
+.cont-w .head {
+  display: inline-block;
+  vertical-align: middle;
+}
+.cont-w .txt {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  width: 600px;
+}

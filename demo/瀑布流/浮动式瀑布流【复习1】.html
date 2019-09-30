@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>浮动式瀑布流复习</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#pbl{width: 960px;margin: 0 auto;*zoom:1;}
+			#pbl:after{content: "";clear: both;display: block;}
+			#pbl ul{float: left;width: 230px;margin-right: 10px;}
+			#pbl li{width: 230px;overflow: hidden;margin-top: 10px;-webkit-box-shadow: 1px 3px 3px 3px #ddd;box-shadow: 1px 3px 3px 3px #DDD;}
+			#pbl li img{vertical-align:bottom;}
+		</style>
+	</head>
+	<body>
+		<div id="pbl">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function(){
+		var oDiv = document.getElementById("pbl");
+		var oUl = oDiv.getElementsByTagName("ul");
+		var str = null;
+		appendImg();
+		//scroll
+		window.onscroll = function(){
+			var sT = document.documentElement.scrollTop || document.body.scrollTop;
+			var cH = document.documentElement.clientHeight;
+			var bH = document.body.scrollHeight * 0.82;
+			if(sT + cH >= bH){
+				appendImg();
+			}
+		}
+		//compare
+		function compare(){
+			var oldHeight = 99999;
+			var index = 0;
+			for(var i = 0; i < oUl.length; i++){
+//				alert(oUl[i]);
+				var newHeight = oUl[i].offsetHeight;
+				if(newHeight < oldHeight){
+					//newHeight = oldHeight;//注意二者关系是谁等于谁！！
+					oldHeight = newHeight;
+					index = i;
+				}
+			}
+			return index;
+		}
+		
+		//append
+		function appendImg(){
+			for(var a = 1; a < 20; a++){
+				str = '<li><img src="../img/'+a+'.jpg" alt="第'+a+'张"/></li>';
+				var index = compare();
+				oUl[index].innerHTML += str;
+			}
+		}
+		
+	}
+</script>

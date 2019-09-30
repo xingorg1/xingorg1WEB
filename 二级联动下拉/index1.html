@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二级下拉菜单</title>
+  <script src="../js/jquery-1.10.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="car-model">
+  <h1>一级下拉</h1>
+  <select name="yijiID" id="yijiID">
+    <!-- <option value="-1">请选择</option> -->
+    <option value="-1">全部车型</option>
+    <!-- //问题!!!!!!!!!!!!：第一个option，获取不到数据和id -->
+    <option value="21">车型一</option>
+    <option value="32">车型二</option>
+    <option value="345">车型三</option>
+    <option value="56">车型四</option>
+  </select>
+  <script>
+  // jq的on change时间，
+  // $(this).val(): 可以获取当前选择的数据的 id
+  // $('select本身 option:selected').text(): 获取选中那一条的值
+    $('#yijiID').on('change',function(){
+      console.log($(this).val()+$('#yijiID option:selected').text())
+    })
+    $('body').on('click',function(){
+      console.log($('#yijiID option:selected').text())
+    })
+  </script>
+  <h1>二级下拉</h1>
+  <style>
+   /*  *{
+      margin: 0;
+      padding: 0;
+    } */
+    .first-level{
+      position: relative;
+    }
+    /* .jxs-drop-layer{
+      max-height: 160px;
+      overflow-y: scroll; //问题!!!!!!!!!!!!设置了超出隐藏后，二级的结构就看不到了！
+      display: none;
+      background: #c3ebff;
+      padding: 10px 0 0;
+      border: 1px solid #333;
+    } */
+    .mr5{
+      display: block;
+      padding: 5px 10px;
+      border: 1px solid green;
+    }
+    .first-level{
+      min-height: 28px;
+    }
+    .yiji-a{
+      /*width: 90px;*/
+      padding: 10px 15px 10px 10px;
+      border-bottom: 1px solid #333;
+      display: block;
+    }
+    .yiji-a:hover,.erji-ul li:hover{
+      background: #8ec1da;
+    }
+    .yiji-a:hover .erji-ul{
+      display: block;
+    }
+    .erji-ul{
+      display: none;
+      height: 170px;
+      overflow-y: scroll;
+      min-width: 100px;
+      position: absolute;
+      left: 111px;
+      margin: 0;
+      top: 30px;
+      padding: 0;
+      border: 1px solid #333;
+      background: #ebf7ff;
+    }
+    .erji-ul li{
+      list-style: none;
+      margin-bottom: 5px;
+      padding: 5px 10px;
+    }
+    .width{
+      width: 200px;
+    }
+    body{
+  font-family: '微软雅黑'
+}
+ul,li {
+  margin: 0;
+  padding: 0;
+    list-style: none;
+}
+  div#boxList{
+    position: absolute;
+      top: 30px;
+      left: 199px;
+  }
+ul.box-list-cont li,ul.box-list-cont li span{
+  display: block;
+}
+  ul.box-list-cont li {
+      display: none;
+  }
+  ul.box-list-cont {
+    height: 140px;
+    background: #fff;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+.box-list-cont li span{
+  padding: 5px;
+
+}
+.box-list-cont li span:hover{
+  background: #eee;
+  color: blue;
+}
+  </style>
+    <div class="first-level mr20" id="dropBtn">
+      <span class="mr5" id="pullBtn">沃尔沃XC902</span><i class="icon icon-down"></i>
+      <!-- <div class="zhongjibox"> -->
+        <div class="con" id="con">
+          <div class="width">
+            <div class="jxs-drop-layer" id="dropLayer">
+              <a data-id="0" class="yiji-a">全部</a>
+              <a data-id="1" class="yiji-a">沃尔沃XC问问群二群
+                <!-- <ul class="erji-ul erji-ul1">
+                  <li data-two='22'>二级1</li>
+                  <li data-two='23'>二级2</li>
+                  <li data-two='24'>二级3</li>
+                  <li data-two='25'>二级4</li>
+                   <li data-two='22'>二级1</li>
+                  <li data-two='23'>二级2</li>
+                  <li data-two='24'>二级3</li>
+                  <li data-two='25'>二级4</li>
+                </ul> -->
+              </a>
+              <a data-id="2" class="yiji-a">沃尔沃9031
+                <!-- <ul class="erji-ul">
+                  <li data-two='122'>二级11234</li>
+                  <li data-two='123'>二级沃尔沃903沃尔沃90312</li>
+                  <li data-two='124'>二级13</li>
+                  <li data-two='125'>二级14</li>
+                </ul> -->
+              </a>
+              <a data-id="2" class="yiji-a">沃尔沃9032
+                <!-- <ul class="erji-ul">
+                  <li data-two='122'>二级11··</li>
+                  <li data-two='123'>二级12</li>
+                  <li data-two='124'>二级13</li>
+                  <li data-two='125'>二级14</li>
+                </ul> -->
+              </a>
+              <a data-id="2" class="yiji-a">沃尔沃9033
+               <!--  <ul class="erji-ul">
+                 <li data-two='122'>二级111</li>
+                 <li data-two='123'>二级12</li>
+                 <li data-two='124'>二级13</li>
+                 <li data-two='125'>二级14</li>
+               </ul> -->
+              </a>
+              <a data-id="2" class="yiji-a">沃尔沃9034
+                <!-- <ul class="erji-ul">
+                  <li data-two='122'>二级112</li>
+                  <li data-two='123'>二级12</li>
+                  <li data-two='124'>二级13</li>
+                  <li data-two='125'>二级14</li>
+                </ul> -->
+              </a>
+              <a data-id="2" class="yiji-a">沃尔沃9035
+               <!--  <ul class="erji-ul">
+                  <li data-two='122'>二级114</li>
+                  <li data-two='123'>二级12</li>
+                  <li data-two='124'>二级13</li>
+                  <li data-two='125'>二级14</li>
+                </ul> -->
+              </a>
+              <a data-id="2" class="yiji-a">沃尔沃9036
+                <!-- <ul class="erji-ul">
+                  <li data-two='122'>二级115</li>
+                  <li data-two='123'>二级12</li>
+                  <li data-two='124'>二级13</li>
+                  <li data-two='125'>二级14</li>
+                </ul> -->
+              </a>
+            </div>
+          </div>
+          <div class="Con_Scorll" id="Con_Scorll">
+            <div class="Do_Scorll" id="Do_Scorll"></div>
+          </div>
+        </div>
+      <!-- </div> -->
+      <div class="box-list" id="boxList">
+        <div class="width">
+          <ul class='box-list-cont'>
+            <li>
+              <!-- 无二级 -->
+            </li>
+            <li>
+              <span>车型122-boxfdgfdgf</span>
+              <span>车型122-box</span>
+              <span>车型122-box</span>
+              <span>车型122-box</span>
+              <span>车型122-box</span>
+            </li>
+            <li>
+              <span>车型222-box</span>
+              <span>车型222-box</span>
+              <span>车型222-box</span>
+            </li>
+            <li>
+              <span>车型322-box</span>
+              <span>车型322-box</span>
+              <span>车型322-box</span>
+            </li>
+            <li>
+              <span>车型422-box</span>
+              <span>车型422-box</span>
+            </li>
+            <li>
+              <span>车型522-box</span>
+              <span>车型522-box</span>
+              <span>车型522-box</span>
+            </li>
+            <li>
+              <!-- 无二级 -->
+            </li>
+            <li>
+              <span>车型722-box</span>
+              <span>车型722-box</span>
+              <span>车型722-box</span>
+            </li>
+          </ul>
+        </div>
+          <div class="Con_Scorll" id="Con_Scorll">
+            <div class="Do_Scorll" id="Do_Scorll"></div>
+          </div>
+      </div>
+    </div>
+    <script>
+      $(function(){
+        $('.jxs-drop-layer a').hover(function(){
+          $('.box-list-cont li').hide().eq($(this).index()).show();
+        })
+        $('.box-list-cont li').hover(function(){
+          $(this).show();
+        },function(){
+          $(this).hide();
+        })
+        // 阻止冒泡
+        function stopPop(event){
+          var event = event?event:window.event;
+          if(event.stopPropagation){
+              event.stopPropagation();
+          }else{
+              event.cancelBubble = true;
+          }
+        }
+        var isShow = false;
+        $('#pullBtn').on('click',function(){
+          // console.log(this);
+          if(!isShow){
+            isShow = true;
+            $('#con').show();
+          console.log(document.getElementById('con').offsetWidth)
+          console.log(document.getElementById('con').clientWidth)
+          ScorllTop('#con','#dropLayer','#Con_Scorll','#Do_Scorll',document.getElementById('con').clientHidth);
+          $('.erji-ul').css('left',document.getElementById('con').clientWidth+'px')
+            // $('#con a').on('mouseover',function(){
+            //   $(this).children().show()
+            // }).on('mouseout',function(){
+            //   $(this).children().hide()
+            // })
+          }else{
+            isShow = false;
+            $('#con').hide();
+          }
+        })
+        $('#con a').on('click',function(){
+          isShow = false;
+          $('#con').hide();
+          $('#pullBtn').text(this.childNodes[0].data);
+          // console.log(this.childNodes[0].data)
+        })
+        $('#con a ul li').on('click',function(event){
+          stopPop(event);
+          isShow = false;
+          $('#con').hide();
+          $('#pullBtn').text($(this).text());
+          console.log($(this).text());
+        })
+
+        //竖向的滚动条，四个参数，可视区域ID，内容区域Id，滚动条区域，滚动条，
+        
+        function ScorllTop(id1,id2,id3,id4,heights){
+          var $container = $(id1),//可视区域
+              $contanr   = $(id2),//内容区域
+              $conScroll = $(id3),//滚动条活动区域
+              $sroll     = $(id4),//滚动条
+                startY   = 0,//开始位置  
+                lastY    = 0,//结束位置
+                  YN     = false,
+                    bBtn = true;//判断滚动条上滚还是下滚
+
+          $sroll.css({'height':$container.height()*$conScroll.height()/$contanr.outerHeight()+'px'});
+          $sroll.css({'height':$container.height()*$conScroll.height()/heights+'px'});
+          
+          console.log($container.height()*$conScroll.height())
+          console.log($contanr.clientWidth)
+
+          $sroll.mousedown(function(e){
+              startY = e.clientY - this.offsetTop;  
+              this.setCapture && this.setCapture();//避免IE下拖拽过快鼠标失去对象
+              YN = true;
+              return false;
+          });
+
+          $sroll.mousemove(function(e){
+              var maxVal = $conScroll.height() - $(this).height();
+              if(YN){
+                  lastY = e.clientY - startY;
+                  lastY = lastY < 0 ? 0 :lastY;
+                  lastY = lastY > maxVal ? maxVal : lastY;
+
+                  $(this).css({'top':lastY+'px'});
+                  $contanr.css({'top':-$conScroll.height()*lastY/$(this).height()+'px'});
+                  window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty(); // 防止拖动文本  
+                  e.stopPropagation(); 
+              }
+              
+              return false;
+          });
+
+          $sroll.mouseup(function(e){
+              YN = false;
+              NumY = lastY;
+              return false;
+          });
+          //为内容区域添加滑轮滚动事件
+          if($contanr[0].addEventListener){
+              $contanr[0].addEventListener('DOMMouseScroll',MouseScr,false);
+              $conScroll[0].addEventListener('DOMMouseScroll',MouseScr,false);
+          }
+          //滑轮这部分代码是我参考的别人的，还不知道这句话是怎么个意思，求大神指点
+          $contanr[0].onmousewheel = MouseScr;
+          $conScroll[0].onmousewheel = MouseScr;
+          function MouseScr(ev){
+            var ev = ev || window.event,
+              TopY = 0;
+            if(ev.detail){
+                bBtn = ev.detail>0  ?  true : false;
+            }
+            else{
+                bBtn = ev.wheelDelta<0  ?  true : false;
+            }
+            if(bBtn){   //下
+                TopY = $contanr.position().top-10;
+            }
+            else{  //上
+                TopY = $contanr.position().top+10;
+            }
+            var maxTop = $contanr.outerHeight()-$container.outerHeight();
+            TopY = TopY > 0 ? 0 : TopY;
+            TopY = TopY < -maxTop ? -maxTop : TopY;
+
+            console.log($conScroll.outerHeight());
+            $contanr.css({'top':TopY+'px'});
+            $sroll.css({'top':$sroll.height()*Math.abs(TopY)/$conScroll.height()+'px'});
+
+            if(ev.preventDefault){
+                ev.preventDefault();
+            }
+            else{
+                return false;
+            }
+          }
+        }
+      });
+    </script>
+    <style>
+      .zhongjibox{
+        position: relative;
+      }
+      .con{
+        display: none;
+        height: 140px;
+        overflow: hidden;
+        position: absolute;
+      }
+      .jxs-drop-layer{
+        /*width: 100%;*/
+        position: absolute;
+        left: 0;
+        color: #fff;
+        background-color: #454545;
+      }
+      .Con_Scorll{
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: yellow;
+      }
+      .Do_Scorll{
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: red;
+      }
+    </style>
+  </div>
+</body>
+</html>

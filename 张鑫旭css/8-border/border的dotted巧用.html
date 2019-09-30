@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>巧用border:dotted来做圆</title>
+</head>
+
+<body>
+  <h3>原理：border-style:dotted在ie中是圆点，在其他浏览器是小方点</h3>
+  <h3>内联元素需要把自身高度先去掉</h3>
+  <div class="box2">
+    <span class="dot2">圆</span>
+  </div>
+  <h3>内联元素不去掉自身高度，就得转化为块元素。兼容到ie7</h3>
+  <div class="box1">
+    <span class="dot1">圆</span>
+  </div>
+  <h3>block元素不用做任何处理，直接border即可</h3>
+  <div class="box3">
+    <div class="dot3">圆</div>
+  </div>
+  <span class="dot"></span>
+  <style>
+    .dot {
+      background: green;
+      padding: 20px;
+      /* 这样，元素宽40，高61。即使是一个空文本。 */
+    }
+
+    .box1 {
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    .dot1 {
+      display: block;
+      width: 100%;
+      height: 100%;
+      /* 解决内联元素不可见内容的高度 */
+      border: 150px dotted red;
+    }
+
+    .box2 {
+      margin: 10px 0;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      font-size: 0;
+      /* 解决内联元素不可见内容的高度 */
+    }
+
+    .dot2 {
+      border: red 150px dotted;
+    }
+
+    .box3 {
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    .dot3 {
+      border: 150px dotted red;
+    }
+  </style>
+  <div class="ever">
+    <div class="dots">任意圆角</div>
+    <div class="area">区域</div>
+  </div>
+  <style>
+    .ever {
+      width: 380px;
+      /* overflow: hidden; */
+    }
+
+    .dots {
+      border: 150px dotted palevioletred;
+    }
+
+    .area {
+      width: 335px;
+      background: palevioletred;
+      margin-top: -300px;
+      margin-left: 22px;
+      height: 279px;
+    }
+  </style>
+</body>
+
+</html>

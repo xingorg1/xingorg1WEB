@@ -1,0 +1,66 @@
+doctype
+html
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible",content="IE=edge,chrome=1")
+		meta(name="renderer",content="webkit")
+		link(rel="stylesheet",type="text/css",href="../css/style.css")
+		//- script(type="text/javascript",src="http://keleyi.com/keleyi/pmedia/jquery/jquery-migrate-1.2.1.min.js")
+		script(type="text/javascript",src="../js/index_zns_1.js")
+			
+	body
+		div#mask.mask
+		h1 第一课 面向对象的选项卡
+		p 把面向过程的选项卡做成面向对象的选项卡
+		div#div1.div1
+			input(type="button",value="aaa",class="active")
+			input(type="button",value="bbb")
+			input(type="button",value="ccc")
+			div(style="display:block") 第1个tab的对应内容
+			div 第二个tab 
+			div 第san个的对应内容
+		h1.block 妙味课堂--js初级-热身（上下）课后作业
+		h3.mwjs-1-title 点击更改div的样式
+			input#mwjs1BtnSet(type="button",value="点我设置吧!")
+		div#mwjs1bySeted.mwjs-1-by-seted
+		div#mwjsPopWrap
+			h4 点击按钮尽情的设置样式吧！
+				span#mwjsPopClose X
+			.mwjs-p-wrap
+				p 
+					input.mwjs-1-btn-text(type="button",value="设置宽度：")
+					input#mwjsWidth200.mwjs-1-seting-cur(type="button",value="200")
+					input#mwjsWidth300(type="button",value="300")
+					input#mwjsWidth500(type="button",value="500")
+				p 
+					input.mwjs-1-btn-text(type="button",value="设置高度：")
+					input#mwjsHeight200(type="button",value="200")
+					input#mwjsHeight300(type="button",value="300")
+					input#mwjsHeight500(type="button",value="500")
+				p 
+					input.mwjs-1-btn-text(type="button",value="边框粗细：")
+					input#mwjsBorder4(type="button",value="4")
+					input#mwjsBorder6(type="button",value="6")
+					input#mwjsBorder8(type="button",value="8")
+				p 
+					input.mwjs-1-btn-text(type="button",value="背景颜色：")
+					input#mwjsBorderRed(type="button",value="红")
+					input#mwjsBorderYellow(type="button",value="黄")
+					input#mwjsBorderBlue(type="button",value="蓝")
+			p.mwjs1-submit-wrap
+				input#mwjs1Reset(type="button",value="重来")
+				input#mwjs1Submit(type="button",value="确认")
+		h4.info 问题汇总
+			p js怎么设置渐变的舒缓动画，比如我想让它出现的缓慢一点不要突兀，（参照setInterval的动画，在规定的时间内增加透明度）
+			p js怎么查找其他子元素，比如我想让这个元素点击后他选中类名增加，其他兄弟的类名去掉（参照tab选项卡）
+		h1.block 日期格式化函数
+		.time-wrap
+			p#time-box
+			p#time-show
+		h1.block 页面内插入视频【未完成】
+		object(type="application/x-shockwave-flash" data="http://player.youku.com/player.php/sid/XMjk5MTIyNzcyOA==/isAutoPlay/true/isShowRelatedVideo/false/partnerid/d169f939d50f1b35/v.swf" width="100%" height="100%" id="youku-player")
+			param(name="allowFullScreen" value="true")
+			param(name="allowScriptAccess" value="always")
+			param(name="movie" value="http://player.youku.com/player.php/sid/XMjk5MTIyNzcyOA==/isAutoPlay/true/isShowRelatedVideo/false/partnerid/d169f939d50f1b35/v.swf")
+			param(name="flashvars" value="imglogo=&amp;partnerId=d169f939d50f1b35&amp;styleid=0")
+			param(name="wmode" value="transparent")

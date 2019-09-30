@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jq中异步加载，导致事件不能执行，使用事件委托机制，三个方法</title>
+</head>
+<body>
+<div class="hah">
+	<p id="pLabel">新加一条</p>
+	<ul id="ulLabel">
+	 
+	</ul>
+	<p id="pLabel2">新加一条</p>
+	<div id="ulLabel2">
+	 
+	</div>
+</div>
+<script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+	<script type="text/javascript">
+	$("#pLabel").click(function(){
+	 $("#ulLabel").append('<li class="liLabel">aaaQ</li>'); //动态像ul的末尾追加一个新元素
+	});
+	// 设计一个元素添加多个事件委托机制
+	$("#pLabel2").click(function(){
+	 $("#ulLabel2").append('<div class="liLabel2">咖啡机嗷嗷叫</div>'); //动态像ul的末尾追加一个新元素
+	});
+	// 方法一
+	// $('.liLabel').live('click', function(){
+	//  alert('OK');
+	// });
+	// 方法二
+	// $("#ulLabel").on('click','.liLabel',function(){
+	//  alert('on-OK')
+	// });
+	// // 或者——模拟多个事件!成功
+	$(".hah").on('click','.liLabel',function(){
+	 alert('on-OK')
+	});
+	$(".hah").on('click','.liLabel2',function(){
+	 alert('on-OK-多个事件')
+	});
+	// // 方法三
+	// $("#ulLabel").delegate("li","click",function(){
+	//   alert('on-OK')
+	// });
+	// 模拟多个事件!失败
+	// $("body").delegate(".liLabel1","click",function(){
+	//   alert('on-OK==多个事件')
+	// });
+	// $("body").delegate(".liLabel2","click",function(){
+	//   alert('on-OK==多个事件哈哈哈')
+	// });
+	</script>
+</body>
+</html>

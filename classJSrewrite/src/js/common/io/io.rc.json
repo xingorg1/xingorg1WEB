@@ -1,0 +1,16 @@
+{
+	"apis":{
+		"host":{
+			"dev":"",
+			"test":"",
+			"pre":"",
+			"prod":""
+		},
+		"paths":[
+			{
+				"name":"",
+				"pathname":""
+			}
+		]
+	}
+}

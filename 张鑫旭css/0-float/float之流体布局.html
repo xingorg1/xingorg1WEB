@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="郭菊锋 xing.org1^">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浮动的应用</title>
+</head>
+
+<body>
+  <div class="float overflow-float" style="overflow: hidden;border: 2px solid red;padding: 10px;">
+    <span style="color: red">overflow清楚浮动的原理是形成了一个BFC区域，不与外界干扰，可以看最后一个图片的margin-bottom也是包在红线里的</span>
+    <h3>浮动的根本作用-文字环绕效果</h3>
+    <img style="float:left;margin-right: 10px;" src="http://img.mukewang.com/57466c8e00011b6f06000338-240-135.jpg" alt="">
+    <span>张鑫旭css课程笔记 https://www.imooc.com/t/197450 1-float float的设计初衷/原本作用-是为了实现文字环绕效果 如，一个图片和一段文字垂直放置，给图片加上浮动，文字就环绕图片展示了。 浮动的包裹与破坏
+      包裹 收缩 坚挺 隔绝 - BFC 具有包裹的其他属性：(是不是可以生成块级上下文的其他人？) display: inline-block、table-cell... position: absolute(近亲)、fixed、sticky
+      overflow： hidden、scroll 破坏 容器被破坏 父元素高度塌陷 其他具有破坏属性的属性 display: none position: absolute/fixed/sticky 总结 浮动是魔鬼 无宽度 无图片
+      无浮动 浮动让父元素高度塌陷不是bug而是标准！ 浮动的破坏性只是单纯为了实现文字环绕效果而已； 清除浮动 其实是清除浮动带来的影响，浮动还在 基本方法： 1.在浮动元素的父元素底部插入clear:both 浮动元素和外部元素还是会有联系，例如发生margin重叠效果
+      -- 浮动元素的父元素内部，如果有其他子元素有margin，还是会跑到父元素的外边，导致和父元素其他兄弟元素的margin重叠。 做法： a. 用html， block水平元素底部插入一个空的div元素即可 b. 用css, after伪元素，
+      .clearfix:after{} .clearfix{} 2.使父元素BFC(ie8+)或haslayout(ie6/7) bfc形成一个封闭的结构，保证里边的元素不会对外部发生任何影响，例如浮动带来的影响，也就不会发生margin重叠,因为bfc所形成的新块，包含内部元素的margin；
+      具体的区别对比，最清晰的看这个示例：https://www.imooc.com/code/2778 怎么形成BFC? BFC、haslayout通常声明 . float:left/right; . position: absolute/fixed;
+      . overflow: hidden/scroll(ie7+) . display: inline-block、table-cell(ie8+) . width/height/*【zoom:1】/..(ie6/7) 以上，除了zoom:1以外，其他都不能通用，因为让所有元素都float不现实
+      但是zoom：1只在低版本ie，高版本也不兼容的。 通用清除浮动带来影响的写法： .clearfix:after{content:'';clear:both;display:block;height:0;overflow:hidden;}
+      .clearfix:after{content:'';display:table;clear:both;}//大神推荐写法 .clearfix{*zoom:1;} clearfix只能用在包含浮动元素的父级元素上，滥用会有ie低版本的触发haslayout导致的诡异问题
+      20180622 浮动的特性 1.可以使元素block块状化（元素就像砖头一样一块一块的） 2.破坏性，造成的紧密排列特性（合并回车和空格等） 第一种：
+    </span>
+    <img style="float:left;margin-right: 10px;" src="http://img.mukewang.com/57466c8e00011b6f06000338-240-135.jpg" alt="">
+    <img style="float:left;margin-bottom: 50px;" src="http://img.mukewang.com/57466c8e00011b6f06000338-240-135.jpg" alt="">
+  </div>
+  <div style="background-color: #f5f5f5;">
+    <span></span>
+    <h3>张大神的案例，为了说明clear清楚浮动后，子元素的margin会探出父元素</h3>
+    <img src="http://img.mukewang.com/53d60af3000171a002560191.jpg" style="float:left;">
+    <div style="clear:both; margin-bottom:100px;">clear:both;</div>
+  </div>
+  <div class="float clearfix" style="border: 2px solid red;padding: 10px;margin-top: 10px;">
+    <span></span>
+    <h3>一摸一样的实例，但是我给父元素加了个border，奇迹出现了！</h3>
+    <style>
+      /* .clearfix{
+        *zoom: 1;
+      }
+      .clearfix::after{
+        content: "";
+        display: table;
+        clear: both;
+      } */
+    </style>
+    <img style="float:left;" src="http://img.mukewang.com/57466c8e00011b6f06000338-240-135.jpg" alt="">
+    <div style="margin-bottom: 100px;clear:both;">fuyuansu</div>
+  </div>
+
+</body>
+
+</html>

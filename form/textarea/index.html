@@ -1,0 +1,73 @@
+<HTML>
+    <HEAD>
+        <TITLE>
+            textarea宽度、高度自动适应处理方法
+        </TITLE>
+        <!-- 控制宽度的自动适应 -->
+        <style type="text/css">  
+        .comments {  
+         width:100%;/*自动适应父布局宽度*/  
+         overflow:auto;  
+         word-break:break-all;  
+        /*在ie中解决断行问题(防止自动变为在一行显示，主要解决ie兼容问题，ie8中当设宽度为100%时，文本域类容超过一行时，  
+        当我们双击文本内容就会自动变为一行显示，所以只能用ie的专有断行属性“word-break或word-wrap”控制其断行)*/  
+        }  
+        .text-adaption {
+	        width: 300px;
+	        height: 34px;
+	        overflow: hidden;
+	        resize: none;
+	        outline: 0 none;
+	        padding: 5px 10px;
+	        line-height: 24px;
+	        font-size: 12px;
+	        color: #666;
+	        border: 1px solid #ccc;
+	        border-radius: 3px;
+	        box-sizing: border-box;
+        }
+        </style>
+    </HEAD>
+    <BODY>
+        <form   METHOD=POST   ACTION= " ">
+            <!-- 主要控制高度的自动适应 -->
+            <!-- 第一个是普通textarea -->
+            <textarea class="comments" rows="10" cols="10">
+            </textarea>
+            <!-- 以下两种方式都可以解决textarea行高自动适应类容的高度 -->
+            <textarea class="comments" rows=1   name=s1   cols=27   onpropertychange= "this.style.posHeight=this.scrollHeight ">
+            </textarea>
+            <textarea class="comments" style="height:expression((this.scrollHeight> 150)?'150px':(this.scrollHeight+5)+'px');overflow:auto;">
+            </textarea>
+            <textarea id="text-adaption" class="text-adaption" rows="1">
+            </textarea>
+            <textarea class="text-adaption" rows="1">
+            </textarea>
+            <div class="floor5-textarea">
+            <textarea class="text-adaption" rows="1">
+            </textarea>
+            	
+            </div>
+        </form>
+    </BODY>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script >
+    	$(function(){
+    		function getClass(c){
+    		return document.getElementsByClassName(c);
+    		}
+    		var obj=getClass("text-adaption");
+    		var len=obj.length;
+    
+    		for(var i=0;i<len;i++){
+    		obj[i].onkeyup = function() {
+    				console.log(i)
+		    		this.style.height = 'auto';
+		    		console.log(this.scrollHeight)
+		    		this.style.height = this.scrollHeight + "px";
+	    		};
+    		}
+    
+    		});
+    </script>
+</HTML>

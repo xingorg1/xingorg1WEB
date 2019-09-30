@@ -1,0 +1,632 @@
+/*
+ * @Author: matianye@ 
+ * @Date: 2018-03-14 15:56:00 
+ * @Last Modified by: matianye@
+ * @Last Modified time: 2018-05-25 14:41:18
+ */
+// $mixinUrl: "../../../../scss/public/_mixin.scss";
+
+
+$fs10:				10px;
+$fs12:				$fs10 * 1.2;
+$fs14:				$fs10 * 1.4;
+$fs16:				$fs10 * 1.6;
+$fs18:				$fs10 * 1.8;
+$fs20:				$fs10 * 2;
+$fs22:				$fs10 * 2.2;
+$fs24:				$fs10 * 2.4;
+$fs26:				$fs10 * 2.6;
+$fs28:				$fs10 * 2.8;
+$fs30:				$fs10 * 3;
+// 常规字号 end
+
+
+$fsh1:				$fs10 * 2.2;
+$fsh2:				$fs10 * 2;
+$fsh3:				$fs10 * 1.8;
+$fsh4:				$fs10 * 1.6;
+$fsh5:				$fs10 * 1.4;
+$fsh6:				$fs10 * 1.2;
+$fshLineH:			1.2;
+// 标题字号 end
+
+
+
+$link:					#2E85FF;
+$linkHover:				#1f70db;
+$linkVisited:			#2E85FF;
+// $linkVisited:			#2f4f7a;
+// 主色 end
+
+
+$primary:				$link;
+$success:				#2DDAC6;
+$danger:				#E74C3C;
+$stress:				#FC6E51;
+$warning:				#FFB624;
+$info:					#999;
+// 辅色 end
+
+
+$base:					#333B48;
+$gray:					#5E6E87;
+$grayer:				#9FACBF;
+$disa:					#B6B4B4;
+$white:					#FFF;
+// 文本色 end
+
+
+$bg-base:               #FAFBFC;
+$bg-white:              $white;
+// 背景色 end
+
+$border:				#F5F7FB;
+// 边框色 end
+
+
+$resetIptColor:			$base;
+$resetIptFsize:			$fs14;
+$resetIptLineH:			1.5;
+$resetIptBgC:			none;
+// input, textarea, select, button end
+
+
+$bodyColor:				$base;
+$bodyFsize:				$fs14;
+$bodyLineH:				1.5;
+$bodyBgC:				#ecf0f4;
+// body end
+
+$mask-bg:               rgba(0, 0, 0, .7);
+// 透明色 end
+
+
+// 简写			 = 原值
+// *Padd 		= padding
+// *Pt 			= padding-top
+// *Pr 			= padding-right
+// *Pb 			= padding-bottom
+// *Pl 			= padding-left
+// *Margin		= margin
+// *Ml			= margin-left
+// *Mr			= margin-right
+// *Mt			= margin-top
+// *Mb			= margin-bottom
+// *W 			= width
+// *H 			= height
+// *MinW 		= min-width
+// *MinH 		= min-height
+// *MaxW 		= max-width
+// *MaxH 		= max-height
+// *Color 		= color
+// *Fsize 		= font-size
+// *LineH 		= line-height
+// *Bor 		= border-color
+// *BgC 		= background-color
+// *BgImg 		= background: url(...)
+// 缩写说明 end
+
+$yiLayoutValueMap: (
+	// 主体：外边距、宽度、最小高度
+	mMargin: 20px auto,
+	mW: 1200px,
+	mMinH: 510px,
+
+	// 左侧：宽度、背景色
+	mAsdW: 200px,
+	mAsdBgC: #fff,
+
+	// 右侧：宽度、背景色
+	mContW: 980px,
+	mContBgC: #fff,
+);
+// 主框架 end
+
+
+$yiBtnValueMap: (
+	// 基础
+	btnPadd: 6px 10px,
+	btnMinW: 48px,
+	btnColor: #9FACBF,
+	btnFsize: $fs14,
+	btnBor: #CFD5DF,
+	btnBgC: $bg-white,
+
+	// 大小
+	btnLgPadd: 11px 30px,
+	btnLgMinW: auto,
+	btnLgFsize: $fs14,
+	btnSmPadd: 4px 15px,
+	btnSmMinW: auto,
+	btnSmFsize: 12px,
+	btnXsPadd: 2px 10px,
+	btnXsMinW: auto,
+	btnXsFsize: 12px,
+
+	// 禁用
+	btnDisaColor: $white,
+	btnDisaBor: #CFD5DF,
+	btnDisaBgC: #CFD5DF,
+
+	// 圆角
+	btnRadius: 100px,
+
+	// 加载
+	btnLoadBgImgPl: 30px,
+	btnLoadBgImg: 'https://img1.bitautoimg.com/das/fe/yi-widget/pc-widget/other/load.gif',
+	btnLoadBgImgPosition: 10px center,
+);
+// 按钮 end
+
+
+$yiAlertValueMap: (
+	// 常规：内边距、字号、行高
+	altPadd: 10px 40px 10px 20px,
+	altFsize: $fs14,
+	altLineH: 1.5,
+	
+	// 关闭：颜色
+	altCloseColor: #666,
+	
+	// 消息
+	altInfoBgC: rgba($color: $info, $alpha: .15),
+	
+	// 成功
+	altSuccessBgC: rgba($color: $success, $alpha: .15),
+	
+	// 危险
+	altDangerBgC: rgba($color: $danger, $alpha: .15),
+	
+	// 警告
+	altWarningBgC: rgba($color: $warning, $alpha: .15),
+);
+// 警告提示 end
+
+
+$yiCheckRadioValueMap: (
+	// 文字： 左边距、默认颜色、字号、行高、
+	crTextMl: 8px,
+	crTextColor: #666,
+	crTextFsize: $fs14,
+	// crTextLineH: 20px,
+
+	// 选中项：文字颜色
+	crActTextColor: #333,
+	
+	// 禁用：文字颜色
+	crDisaTextColor: #999,
+);
+// 复选框 单选 end
+
+
+$yiInputValueMap: (
+	// 基础：宽度、高度、边框色
+	iptPl: 10px,
+	iptPr: 10px,
+	iptW: 138px !important,
+	iptH: 30px,
+	iptBgC: $white,
+	iptBor: #e5ecf1,
+
+	// 圆角：圆角左内边距、圆角值
+	iptRadiusPl: 30px,
+	iptRadius: 100px,
+
+	// 禁用：文字颜色、边框色、背景色
+	iptDisaColor: #666,
+	iptDisaBor: #dedede,
+	iptDisaBgC: #f9f9f9,
+
+	// 点击：文字颜色、边框色
+	iptFocusColor: #333,
+	iptFocusBor: #2E85FF,
+
+	// 日历：右侧内边距、icon背景图
+	iptDateW: 87px,
+	iptDatePl: 25px,
+	iptDateBgImg: 'https://img1.bitautoimg.com/das/fe/yi-widget/m-widget/other/icon-date.png',
+
+	// 尺寸规格
+	iptLgW: 238px !important,
+	iptSmW: 68px !important,
+);
+// 输入框 end
+
+
+$yiSelectValueMap: (
+	// 常规：内边距、宽度、高度、边框色、背景色
+	selPll: 3px 3px 3px 6px,
+    selW: 138px,
+    selH: 30px,
+	selBor: #e5ecf1,
+	selBgC: $white,
+	
+	// 禁用：文字色、边框色、背景色
+	selDisaColor: #ccc,
+    selDisaBor: #ccc,
+	selDisaBgC: $white,
+	
+	// 尺寸：较大、较小
+	selLgW: 238px !important,
+	selSmW: 68px !important,
+);
+// 选择器 end
+
+
+$yiListValueMap: (
+	// 基础：ul上边距、li内上下边距、颜色、字号、行高、边框
+	listMt: 5px,
+	listItemPt: 10px,
+	listItemPb: 10px,
+	listItemColor: #777,
+	listItemFsize: 13px,
+	listItemLineH: 1.4,
+	listItemBor: 1px solid #dedede,
+	
+	// feed：左侧内边距（给图片空位
+	listFeedPl: 60px,
+
+	// 图片：定位上位置、宽度、高度
+	listImgTop: 10px,
+	listImgW: 40px,
+	listImgH: 40px,
+
+	// item>*: item-hd 右侧内边距、item-bd 外上边距、item-ft 外上边距
+	listItemHdPr: 80px,
+	listItemBdMt: 8px,
+	listItemFtMt: 12px,
+
+	// 标题右侧日期：定位右侧距离、定位顶部距离、外边距、颜色、行高、
+	listDateRight: 0,
+	listDateTop: 50%,
+	listDateMt: -10px,
+	listDateColor: #999,
+	listDateLineH: 20px,
+);
+// 列表 end
+
+
+$yiTabsValueMap: (
+	// 基础：底边框颜色、高度、字号、行高、颜色
+	tabsBorb: #E5ECF1,
+	tabsH: 31px,
+	tabsFsize: $fs14,
+	tabsLineH: 30px,
+	tabsColor: #5E6E87,
+	tabsPl:	20px,
+	tabsPr: 20px,
+
+	// 选中项：文字颜色、边框颜色
+	tabsActColor: $primary,
+	tabsActBor: $primary,
+);
+// 选项卡 end
+
+
+$yiCrumbsValueMap:(
+	cbsPl: 20px,
+	cbsPr: 20px,
+	cbsH: 40px,
+	cbsFsize: $fs14,
+	cbsColor: #5E6E87,
+	cbsLineH: 40px,
+	cbsBgC: #F6F7F8,
+
+	cbsOthRight: 20px,
+	cbsOthTop: 0,
+);
+// 面包屑 end
+
+
+$yiStepsValueMap: (
+	// 基础：默认颜色
+	stepColor: #999,
+
+	// 线条：top值、左右边距、背景色
+	stepLineTop: 25px,
+	stepLineMl: 32px,
+	stepLineMr: 32px,
+	stepLineBgC: #ccc,
+
+	// Icon：宽度、高度、字号、行高、边框、圆角
+	stepIconW: 48px,
+	stepIconH: 48px,
+	stepIconFsize: $fs12,
+	stepIconLineH: 48px,
+	stepIconBor: 1px solid #ccc,
+	stepIconRadius: 48px,
+
+	// 标题：上边距、字号、行高
+	stepTitMt: 8px,
+	stepTitFsize: $fs14,
+	stepTitLineH: 18px,
+
+	// 完成：颜色、icon颜色、icon边框、icon背景色
+	stepFinColor: $primary,
+	stepFinIconColor: $white,
+	stepFinIconBor: $primary,
+	stepFinIconBgC: $primary,
+
+	// 选中：颜色、icon颜色
+	stepActiveColor: $primary,
+	stepActiveIconColor: $primary,
+);
+// 步骤条 end
+
+
+$yiModalValueMap: (
+	// 基础：宽度、背景色、定位值
+	mdlPadd: 30px 30px 20px,
+	mdlW: 340px,
+	mdlLgW: 540px,
+	mdlSmW: 240px,
+	mdlBgC: $white,
+	// mdlTXY: translate(-50%, -50%),
+	
+	// 关闭：右边距、上边距、宽度、高度、字号
+	mdlCloR: 10px,
+	mdlCloT: 10px,
+	mdlCloW: 20px,
+	mdlCloH: 20px,
+	mdlCloFsize: $fs10 * 2,
+	mdlCloColor: #9FACBF,
+
+	// 标题：内边距、字号、行高
+	mdlTitMb: 20px,
+	mdlTitFsize: 16px,
+	mdlTitLineH: 1.1,
+
+	// 内容：上边距、颜色、行高
+	// mdlContMt: 30px,
+	mdlContColor: $gray,
+	mdlContFsize: $fs10 * 1.6,
+	mdlContLineH: 1.4,
+
+	mdlFtMt: 30px,
+	mdlFtTalign: center,
+
+	// 按钮：按钮间距、第一个按钮颜色 边框色 背景色，第二个按钮颜色 边框色 背景色
+	mdlBtnMl: 5px,
+	mdlBtnOkColor: $white,
+	mdlBtnOkBor: $primary,
+	mdlBtnOkBgC: $primary,
+	mdlBtnNoColor: $primary,
+	mdlBtnNoBor: $primary,
+	mdlBtnNoBgC: $white,
+);
+// 对话框 end
+
+
+$yiToastValueMap: (
+	// 基础：内边距、最大宽、最小宽度、文字颜色、背景色、Icon间距
+	toastPadd: 20px,
+	toastMinW: 80px,
+	toastMaxW: 300px,
+	toastColor: $white,
+	toastBgC: rgba(0, 0, 0, .7),
+	toastIconM: 10px auto,
+
+	// 文本：字号、行高
+	toastTextFsize: $fs10 * 1.2,
+	toastTextLineH: 1.6,
+);
+// 吐司 end
+
+
+$yiHeaderValueMap:(
+	// 基础：背景图、宽度、高度、链接颜色
+	headBgI: 'https://img1.bitautoimg.com/das/fe/yi-widget/pc-widget/other/header.jpg',
+	headW: 1200px,
+	headH: 60px,
+	headLinkColor: $white,
+	
+	// logo:内上&右边距、宽度、高度、背景图
+	headLogoPt: 16px,
+	headLogoPr: 12px,
+	headLogoW: 188px,
+	headLogoH: 28px,
+	headLogoBgI: 'https://img1.bitautoimg.com/das/fe/yi-widget/pc-widget/other/logo.png',
+
+	// menu：内上边距、高度、选中背景色、圆角、选中颜色
+	headMenuPt: 18px,
+	headMenuH: 24px,
+	headMenuActBgC: #2277db,
+	headMenuActRadius: 5px,
+	headMenuActColor: $white,
+
+	// link：内左右边距、字号、行高、带有角标内左右边距、划过文字颜色
+	headLinkPl: 20px,
+	headLinkPr: 20px,
+	headLinkFsize: $fs14,
+	headLinkLineH: 24px,
+	headLinkArrPl: 16px,
+	headLinkArrPr: 12px,
+	headLinkHover: #48baf9,
+
+	// 右侧：内上边距、子元素左边距、子元素行高
+	headLogPt: 16px,
+	headLogItemMl: 15px,
+	headLogItemLineH: 28px,
+);
+// header end
+
+
+$yiSubNavValueMap: (
+	// 基础：宽度、最小高、字号、背景色
+	snavW: 200px,
+	snavH: 500px,
+	snavFsize: $fs14,
+	snavBgC: $white,
+
+	// 分割线：左右间距、边框色
+	snavLineMl: 30px,
+	snavLineMr: 30px,
+	snavLineBor: #F6F7F8,
+	
+	// ul：上下内边距
+	snavUlPt: 10px,
+	snavUlPb: 10px,
+	
+	// 一级标题：上边距、左内边距、高度行高、颜色、字号、hover颜色、hover背景色
+	snavLinkMt: 10px,
+	snavLinkPl: 36px,
+	snavLinkH: 40px,
+	snavLinkColor: #5E6E87,
+	snavLinkFsize: $fs16,
+	snavLinkHoverColor: $primary,
+
+	// 图标：上右边距
+	snavIcnMt: 10px,
+	snavIcnMr: 16px,
+
+	// 二级标题：背景色、ul背景色、内边距、li内下边距
+	smBgC: #ECF0F4,
+	smUlBgC: #F6F7F8,
+	smUlPadd: 10px 10px 0,
+	smLiPb: 10px,
+
+	// 二级链接：左内边距、高度行高、颜色、hover颜色、hover背景色
+	smLinkPl: 60px,
+	smLinkH: 36px,
+	smLinkColor: $primary,
+	smLinkHoverColor: $white,
+	smLinkHoverBgC: $primary,
+);
+// 左侧导航 end
+
+
+$yiFooterValueMap: (
+	// 基础：内边距、对其方式、文本颜色
+	footPb: 80px,
+	footTalign: center,
+	footColor: #9FACBF,
+	footLineH: 1.5,
+);
+// footer end
+
+
+$yiPageNotifyValueMap: (
+	// 基础：内边距、对其方式、文本颜色
+	pnMt: 120px,
+	pnH1Mt: 30px,
+	pnH1Color: #5E6E87,
+	pnH1Fsize: $fs20,
+	
+	// 描述：上边距、文本颜色、字号
+	pnDescMt: 10px,
+	pnDescColor: #5E6E87,
+	pnDescFsize: $fs16,
+
+	// 其他：上边距、字号
+	pnOtherMt: 20px,
+	pnOtherFsize: $fs16,
+	pnOtherItemMl: 10px,
+);
+//状态提示 end
+
+
+$yiTableValueMap: (
+	// 基础：底边框颜色、高度、字号、行高、颜色
+	captionFsize: 24px,
+	captionPadd: 20px,
+	tr1Bor: #e5ecf1,
+	thPadd: 15px 0,
+	thColor: #333B48,
+	thBgC: #F6F7F8,
+	// 选中项：文字颜色、边框颜色
+	tr2BgC: #FAFBFC,
+	tr2ActColor: #F7FAFF,
+	tdPadd: 14px 0,
+	tdBor: #e5ecf1
+);
+// 表格 end
+
+
+$yiPaginationValueMap: (
+	// 基础：外边距、链接色、链接边框、链接hover色、禁用色、禁用边框、禁用背景色
+	pgMargin: 40px 0 20px,
+	pgLinkColor: #5E6E87,
+	pgLinkBor: #E5ECF1,
+	pgLinkHover: #2E85FF,
+	pgDisaColor: #cfd5df,
+	pgDisaBor: #E5ECF1,
+	pgDisaBgC: #F6F7F8,
+);
+// 翻页 end
+
+
+$yiGoTopValueMap: (
+	// 悬浮：右侧距离、底部距离、层级、内边距、宽度、字号
+	goRight: 6px,
+	goBottom: 20px,
+	goZindex: 10,
+	goPadd: 5px 3px,
+	goW: 20px,
+	goFsize: 12px,
+);
+// 回到顶部 end
+
+
+$yiLabelValueMap: (
+	labelColor: $white,
+	labelItemMt: 5px,
+	labelItemMr: 5px,
+	labelItemPadd: 4px 8px,
+	labelItemFsize: $fs14,
+	labelItemRadius: 3px,
+);
+// 标签 end
+
+$yiTitleValueMap: (
+	// 基础：上下边距
+	titMt: 40px,
+	titMb: 20px,
+
+	// 边框：左边框内边距、左边框值，底边框内边距、低边框值
+	titBorlPl: 12px,
+	titBorlBorLeft: 3px solid #2E85FF,
+	titBorbPb: 12px,
+	titBorbBorBottom: 2px solid #2E85FF,
+	
+	// 标题：大标题右侧外边距、副标题左侧边距、副标题颜色
+	titBigMr: 10px,
+	titSubTitMl: 10px,
+	titSubTitColor: #666,
+);
+// 标题 end
+
+$yiUploadValueMap: (
+	// 基础：宽度、高度、颜色、边框、背景色
+	upW: 234px,
+	upH: 130px,
+	upColor: #5e6e87,
+	upBor: 1px solid #e5ecf1,
+	upBgC: #fafbfc,
+
+	// 提示：上边距、颜色、字号
+	upMsgMt: 5px,
+	upMsgColor: #9FACBF,
+	upMsgFsize: 12px,
+
+	// 默认态：左边距、字号、图标宽度高度字号、图标颜色、图标边框
+	upFileMl: 10px,
+	upFileFsize: 16px,
+	upFileIconWH: 26px,
+	upFileIconColor: #cfd5df,
+	upFileIconBor: 1px solid #cfd5df,
+	
+	// 更换图片：颜色、背景色
+	upNewColor: $white,
+	upNewBg: rgba(0, 0, 0, 0.6),
+);
+// 上传文件 end
+
+
+$yiTipsValueMap: (
+	tipsPadd: 10px 16px,
+	tipsMaxW: 190px,
+	tipsFsize: $fs12,
+	tipsColor: $white,
+	tipsBgC: rgba(88, 92, 99, 0.9),
+);
+// 气泡提示 end

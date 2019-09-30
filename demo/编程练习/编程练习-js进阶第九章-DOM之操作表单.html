@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title> new document </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=" utf-8 ""/>
+		<script type="text/javascript">
+			//问题1.如何获取到tr。逻辑没错的话，怎么依旧获取不到？-————-代码写错了,——已改正
+			//问题2.新增的tr，没有办法调用mouseover和mouseout的函数、-————-初步设想：写一个定时器，每秒查一下有多少个tr,——可以的。
+			//问题3.删不掉，删不了，删除不起作用、-——-——-重新写：在tbody，这个坑，明明没有tbody，js却要翻出来。
+			//问题4.考虑tbody之后依旧出错。removeChild()报错，<a href="javascript:removeChild(this);">删除</a>这个写法错误，被源码诱导，正确写法是href和onclick分开来：href="javascript:void(0);"  onclick="hanshu()".链接：http://www.cnblogs.com/caishuhua226/archive/2012/03/20/2408165.html
+			//保留字不能做函数名
+			//总是忘记添加进去，总是创建了不添加，那还创建有什么用？
+			window.onload = function() {
+				// 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+				var table = document.getElementById('table');
+				setInterval(function() {
+					var tr = table.getElementsByTagName('tr');
+					for(var i = 0; i < tr.length; i++) {
+						tr[i].onmouseover = function() {
+							this.style.backgroundColor = "red";
+						}
+						tr[i].onmouseout = function() {
+							this.style.backgroundColor = "#fff";
+						}
+					}
+				}, 1000)
+			}
+			// 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+			function addTR() {
+				var num = "001";
+				var name = "xxx";
+				var trAnd = document.createElement("tr");
+				trAnd.innerHTML = '<td>' + num + '</td><td>' + name + '</td><td><a href="javascript:;" onclick="removeChild1(this);" >删除</a></td>';
+				table.appendChild(trAnd);
+			}
+
+			// 创建删除函数
+			function removeChild1(obj) {
+//				var tbody = document.getElementById('table').lastChild;  可以通过table找最后一个子元素tbody
+//				var tbody = obj.parentNode.parentNode.parentNode;  可以通过一直找上一级，直到翻出父亲
+				var tr = obj.parentNode.parentNode;
+				tr.parentNode.removeChild(tr);//可以直接在tr上找父亲，更简洁
+			}
+		</script>
+	</head>
+
+	<body>
+		<table border="1" width="50%" id="table">
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>xh001</td>
+				<td>王小明</td>
+				<td>
+					<a href="javascript:;" onclick="removeChild1(this);">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td>xh002</td>
+				<td>刘小芳</td>
+				<td>
+					<a href="javascript:;" onclick="removeChild1(this);">删除</a>
+				</td>
+			</tr>
+		</table>
+		<input type="button" value="添加一行" id="addTR" onclick="addTR();" />
+	</body>
+
+</html>

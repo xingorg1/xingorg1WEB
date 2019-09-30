@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>调用封装好的cookie文件来制作小案例</title>
+		<script src="cookie.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<form action="" method="post" id="form1">
+			<input type="text" name="user" id="user" value="56" />
+			<input type="password" name="pass" id="pass" value="" />
+			<input type="submit" value="提交" id="btn"/>
+		</form>
+		
+	</body>
+	<script type="text/javascript">
+		var oTxt1 = document.getElementsByName('user')[0],
+			oForm1 = document.getElementById('form1'),
+			oBtn = document.getElementById('btn');
+		oForm1.onsubmit = function(){
+			setCookie('user',oTxt1.value,14);
+		}
+		oTxt1.value = getCookie('user');
+	</script>
+</html>

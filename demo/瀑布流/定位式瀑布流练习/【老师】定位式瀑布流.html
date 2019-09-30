@@ -1,0 +1,119 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>无标题</title>
+	<style type="text/css">
+			*{
+				padding:0px;
+				margin: 0px;
+			}
+
+			#box{
+				/*相对定位*/
+				position: relative;
+			}
+
+	</style>
+	<script type="text/javascript">
+
+			//获得最短内容索引的函数
+			function checkHeight(arr){
+				//初始化对象
+				var height = 10000000000;
+				var index = 0;
+
+				for(var a=0;a<arr.length;a++){
+					var arr_height = arr[a];
+					if(arr_height < height){
+						height = arr_height;
+						index = a;
+					}
+				}
+
+				return index;
+
+			}
+
+
+			window.onload=function(){
+				//初始化内容的宽度
+				var width = 230 + 16;
+				var oBox = document.getElementById('box');
+
+				//1,通过浏览器的宽度或者父级的宽度来计算可容纳多少列
+				var oW = document.documentElement.clientWidth;
+				var oH = document.documentElement.clientHeight;
+				var divNum = Math.floor( oW / width );
+
+				//2,计算剩余空间并且居中
+				oBox.style.width = divNum * width;
+				oBox.style.margin = "0 auto";
+				oBox.style.background = "#e2e2e2";
+
+				//3,初始化高度数组
+				var arrHeight = [];
+				for(var a=0;a<divNum;a++){
+					arrHeight[a] = 0;
+				}
+
+				//4,循环创建元素
+				createElements();
+				function createElements(){
+					for(var a=0;a<20;a++){
+						//创建元素
+						var oDiv = document.createElement('div');
+						//随机生成一些颜色来填充
+						//parseInt(Math.random()*(256-1)+1);
+						oDiv.style.width = 230 + 'px';
+						oDiv.style.background = "rgb(" + parseInt(Math.random()*(256-1)+1) + ',' + parseInt(Math.random()*(256-1)+1) + ',' + parseInt(Math.random()*(256-1)+1) +")";
+						var height = parseInt(Math.random()*(350-200)+200);
+						oDiv.style.height = height + 'px';
+						oDiv.style.margin = "8px";
+						oDiv.style.position = "absolute";
+
+						//5,获得最短内容的索引
+						var min_index = checkHeight(arrHeight);
+
+						//6,设置div定位&&分配内容到相应的列&&分别插入内容
+						oDiv.style.top = arrHeight[min_index] + 'px';
+						oDiv.style.left = min_index  * width +'px';
+											// 0    * 246   = 0
+											// 1    * 246  = 246 
+						oBox.appendChild(oDiv);
+
+						//7,更新高度数组
+						arrHeight[min_index] += height + 16;
+
+					}
+				}
+
+
+				//8,滚动加载
+				window.onscroll=function(){
+					
+					var sT = document.documentElement.scrollTop || document.body.scrollTop;
+					// 内容区域的高度 = 滚动条滚动的高度 + 浏览器的高度
+					// 当他们相等的时候，没内容。
+					var bodyHeight = document.body.scrollHeight * 0.8;
+
+					if( sT + oH > bodyHeight ){
+						createElements();
+					}
+
+
+				}
+	
+				
+				
+
+
+			}
+	</script>
+</head>
+<body>
+
+	<div id="box"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>老师模板-浮动式</title>
+		<meta name="description" content="东翌学院老师的代码"/>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			#box{width: 720px;margin: 30px auto;*zoom:1;}
+			#box:after{clear: both;content: "";display: block;}
+			#box ul{float: left;width: 230px;overflow: hidden;margin-right: 10px;}
+			#box li{width: 230px;margin-top: 8px;box-shadow: 1px 3px 2px 1px #ddd;}
+			#box li img{width: 100%;}
+		</style>
+	</head>
+	<body>
+		<div class="" id="box">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function(){
+		
+		var oBox = document.getElementById("box");
+		var oUl = oBox.getElementsByTagName("ul");
+		//获取最小ul的索引
+		function checkHeight(oUl){
+			var index = 0;
+			var oldHeight = 1000000000000;
+			for(var i=0;i<oUl.length;i++){
+				var newHeight = oUl[i].offsetHeight;
+				if(newHeight < oldHeight){
+					oldHeight = newHeight;
+					index = i;
+				}
+			}
+			return index;
+		}
+		//第一版先调用，让页面刷新实现有东西。
+		 appendImg();
+		//滚动加载事件
+		window.onscroll = function(){
+			//滚动条的滚动高度sT(可以想象成可滚动区域的高度)
+			//scrollHeight-scrollTop = clientHeight？
+			var sT = document.documentElement.scrollTop || document.body.scrollTop;
+			//浏览器的高度
+			var vH = document.documentElement.clientHeight;
+			//滚动条滚动的高度加上浏览器的可是区的高度就是整个html中内容的高度。
+			if(sT+vH > document.body.scrollHeight*0.9){
+				//这个地方如果是等于号，就会太严格，很难刚好精确到那个像素
+				 appendImg();
+			}
+		}
+		function appendImg(){
+			//插入图片
+			for(var a = 1; a <= 19; a++){
+				var oLi = document.createElement("li");
+				var oImg = document.createElement("img");
+				oImg.src = "../img/"+ a +".jpg";
+				oLi.appendChild(oImg);
+					//获取最短的ul再插入
+					//这个地方通过一个函数获取另一个循环中得到的索引值的方法很经典。利用传参，
+				var newIndex = checkHeight(oUl);
+				oUl[newIndex].appendChild(oLi);
+			}
+		}
+		
+		
+	}
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>记录用户名和密码</title>
+		<script src="cookie.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<form action="" method="post" id="form1">
+			<input type="text" name="user" id="user" value="" />
+			<input type="password" name="pass" id="pass" value="" />
+			<input type="submit" value="提交" id="btn"/>
+		</form>
+		
+	</body>
+	<script type="text/javascript">
+		var oTxt1 = document.getElementsByName('user')[0],
+		    oTxt2 = document.getElementsByName('pass')[0],
+			oForm1 = document.getElementById('form1'),
+			oBtn = document.getElementById('btn');
+		oForm1.onsubmit = function(){
+			setCookie('user',oTxt1.value,14);
+			setCookie('pass',oTxt2.value,14);
+		}
+		oTxt1.value = getCookie('user');
+		oTxt2.value = getCookie('pass');
+	</script>
+</html>

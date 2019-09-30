@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>内容高度由行高决定，不由字体大小决定</title>
+</head>
+<body>
+  <div class="test1">文字x</div>
+  <div class="test2">文字x</div>
+  <span></span>
+  <style>
+    span{
+      display: inline-block;
+      width: 20px;
+      height: 100px;
+      background: #eee;
+      transform: skew(45deg);
+    }
+    div{
+      border: 1px solid;
+      background: #eee;
+      margin: 40px 0;
+    }
+    .test1{
+      font-size: 36px;
+      line-height: 0;
+    } 
+    .test2{
+      font-size: 0;
+      line-height: 36px;
+    }
+  </style>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.hide{
+				display: none;
+			}
+			li{
+				list-style: none;
+				display: inline-block;
+				background-color: #90EE90;
+			}
+			.tapActiveLi{
+				background-color: #FF7F50;
+			}
+			div{
+				border: 1px solid #f00;
+			}
+			.aTapWrap{
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aTapWrap aboutA_P" id="aTapWrap">
+				<ul id="aTapHeadWrap">
+					<li class="tapActiveLi">关于我们</li><li>
+					联系方式</li><li>
+					意见建议</li>
+				</ul>
+					<sesction class="slider">
+										<div class="slider_stage sliderStage01">
+											<ul class="scrol_4 scrol01">
+												<li style="display: list-item;">
+													<a href="#" target="_blank"><img src="../img/sj1.jpg" alt="#" /></a>
+												</li>
+											</ul>
+										</div>
+										</sesction>
+				<sesction class="hide">
+					一行
+				</sesction>
+				<sesction class="hide">
+					文字
+				</sesction>
+		</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				function stopPropagation(e) {  
+					    e = e || window.event;  
+					    if(e.stopPropagation) { //W3C阻止冒泡方法  
+					        e.stopPropagation();  
+					    } else {  
+					        e.cancelBubble = true; //IE阻止冒泡方法  
+					    }  
+					};
+				var oTapWrap = document.getElementById('aTapWrap');
+				var oUL = document.getElementById('aTapHeadWrap');
+				var aLi = oUL.getElementsByTagName('li');
+				var aP = oTapWrap.getElementsByTagName('sesction');
+				for(var i = 0;i < aLi.length; i++){
+//					aLi.index= i;
+//灰色地带为我写错的地方，错误总是犯，这个aLi[i]总是忘掉，N次了。下面，className怎么会属于style呢？不知道自己在想什么、
+					aLi[i].index = i;
+					aLi[i].onclick = function(e){
+						stopPropagation(e)
+						for(var j = 0; j < aLi.length; j++){
+//							aLi[j].style.className = "";
+//							aDiv[j].style.className = "hide";
+							aLi[j].className = "";
+							aP[j].className = "hide";
+						}
+//						this.style.className = "tapActiveLi";
+//						aDiv[this.index].style.className = "";
+						this.className = "tapActiveLi";
+						aP[this.index].className = "";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

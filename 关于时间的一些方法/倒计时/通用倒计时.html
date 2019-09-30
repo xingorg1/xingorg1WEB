@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通用倒计时封装</title>
+</head>
+<body>
+	<div id="timeBox">kaishi </div>
+	<button id='btn'>点击开始倒计时</button>
+	<script>
+		var btn = document.getElementById('btn');
+		var timeBox = document.getElementById('timeBox');
+		var timer;
+		var par = function(time,interval){
+			timer = setInterval(function(){
+				timeBox.innerText = time+'秒';
+				time--;
+				if(time < 0){
+					clearInterval(timer);
+				}
+			},interval);
+		}
+		btn.onclick = function(){
+			clearInterval(timer);
+			par(4,1000)
+		};
+	</script>
+</body>
+</html>

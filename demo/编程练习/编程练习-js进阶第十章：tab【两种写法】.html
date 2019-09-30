@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>tab</title>
+		<script src="../js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.tabWrap {
+				width: 500px;
+				height: 300px;
+				border: 1px solid red;
+				position: relative;
+			}
+			
+			.tabWrap li {
+				float: left;
+				margin-right: 20px;
+				width: 130px;
+				height: 30px;
+				list-style: none;
+				text-align: center;
+				line-height: 30px;
+				color: blueviolet;
+				background-color: #DFE9F6;
+			}
+			
+			.tabWrap li:hover,
+			.tabWrap li.liActive {
+				cursor: pointer;
+				color: #F2F2F2;
+				background-color: #5884CF;
+			}
+			
+			.tabWrap div {
+				width: 500px;
+				background-color: #999999;
+				position: absolute;
+				top: 30px;
+				left: 0;
+				height: 270px;
+				line-height: 270px;
+				text-align: center;
+				color: #FFF600;
+			}
+			
+			.tabWrap .hide {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="tabWrap" id="tabWrap">
+			<ul class="tabHead">
+				<li class="liActive">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div>1-1</div>
+			<div class="hide">2-1</div>
+			<div class="hide">3-1</div>
+		</div>
+		<!--
+			*js 原生写法
+		-->
+		<script type="text/javascript">
+//			var oUL = document.getElementsByTagName("ul")[0];
+//			var oLi = oUL.getElementsByTagName("li");
+//			var oDiv = document.getElementById('tabWrap').getElementsByTagName('div');
+//			for(var i = 0; i < oLi.length; i++) {
+//				oLi[i].index = i;
+//				oLi[i].onclick = function() {
+//					for(var j = 0; j < oLi.length; j++) {
+//						oLi[j].className = "";
+//						oDiv[j].className = "hide";
+//					}
+//					this.className = "liActive";
+//					oDiv[this.index].className = "";
+//				}
+//			}
+		</script>
+		<!--
+			*jq 框架写法
+		-->
+		<script type="text/javascript">
+			$(function(){
+				$(".tabHead li").hover(
+					function(){
+						$(this).addClass("liActive").siblings().removeClass("liActive");
+						var index = $(this).index();
+						console.log($(".tabWrap div").eq(index));
+						$(".tabWrap div").eq(index).show().siblings().hide();
+//					 console.log($(this));
+
+					},
+					function(){
+						$(this).removeClass("liActive");
+//						var index = $(this).index();
+						$(".tabWrap div").eq(index).hide();
+//						console.log("qwe")
+					})
+			})
+			/*
+			 * 
+			//?\siblings 不是sibling,写错了，报错是：sibling不是一个function。
+			//$("tabWrap div") 选择器也写错了，没有加"."，怪不得div不替换，人家没找到，而且也不报错。
+			 */
+		</script>
+	</body>
+
+</html>

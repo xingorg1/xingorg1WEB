@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>HTML/CSS/JS代码运行演示工具-易玩稀有</title>
+<!-- http://www.ewceo.com/post-1225.html -->
+<style type="text/css">
+.textC {
+ position:absolute;
+ width:500px;
+ overflow:hidden;
+ margin-top: 100px;
+ line-height:30px;
+ margin-left: 300px;
+ height:30px;
+}
+.textC span {
+ color: #13BEEC;
+ font-size: 28px;
+ font-weight: bold;
+ font-family: Georgia, "Times New Roman", Times, serif;
+ position: absolute;
+}
+</style>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+ NumbersAnimate.Target=$(".textC");
+ NumbersAnimate.Numbers=12389623;
+ NumbersAnimate.Duration=1500;
+ NumbersAnimate.Animate();
+});
+var NumbersAnimate={
+ Target:null,
+ Numbers:0,
+ Duration:500,
+ Animate:function(){
+ var array=NumbersAnimate.Numbers.toString().split("");
+ //遍历数组
+ for(var i=0;i<array.length;i++){
+  var currentN=array[i];
+  //数字append进容器
+  var t=$("<span></span>");
+  $(t).append("<span class=\"childNumber\">"+array[i]+"</span>");
+  $(t).css("margin-left",18*i+"px");
+  $(NumbersAnimate.Target).append(t);
+  //生成滚动数字,根据当前数字大小来定
+  for(var j=0;j<=currentN;j++){
+  var tt;
+  if(j==currentN){
+   tt=$("<span class=\"main\"><span>"+j+"</span></span>");
+   }else{
+   tt=$("<span class=\"childNumber\">"+j+"</span>");
+  }
+  $(t).append(tt);
+  $(tt).css("margin-top",(j+1)*25+"px");
+  }
+  $(t).animate({marginTop:-((parseInt(currentN)+1)*25)+"px"},NumbersAnimate.Duration,function(){
+  $(this).find(".childNumber").remove();
+  });
+ }
+ },
+ ChangeNumber:function(numbers){
+ var oldArray=NumbersAnimate.Numbers.toString().split("");
+ var newArray=numbers.toString().split("");
+ for(var i=0;i<oldArray.length;i++){
+  var o=oldArray[i];
+  var n=newArray[i];
+  if(o!=n){
+   var c=$($(".main")[i]);
+        var num=parseInt($(c).html());
+   var top=parseInt($($(c).find("span")[0]).css("marginTop").replace('px', '')); 
+   
+   for(var j=0;j<=n;j++){
+    var nn=$("<span>"+j+"</span>");
+    if(j==n){
+    nn=$("<span>"+j+"</span>");
+    }else{
+    nn=$("<span class=\"yy\">"+j+"</span>");
+    }
+    $(c).append(nn);
+    $(nn).css("margin-top",(j+1)*25+top+"px");
+   }
+   var margintop=parseInt($(c).css("marginTop").replace('px', '')); 
+   $(c).animate({marginTop:-((parseInt(n)+1)*25)+margintop+"px"},NumbersAnimate.Duration,function(){
+    $($(this).find("span")[0]).remove();
+    $(".yy").remove();
+   });
+  }
+ }
+ NumbersAnimate.Numbers=numbers;
+ },
+ 
+ RandomNum:function(m,a){
+ var Range = a - m;  
+    var Rand = Math.random();  
+    return(m + Math.round(Rand * Range));  
+ }
+}
+</script>
+</head>
+<body>
+<div class="textC"></div>
+<p style="text-align:center;"><a style="float:left; margin-left:300px; margin-top:200px;" href="javascript:void(0);" onClick="NumbersAnimate.ChangeNumber(NumbersAnimate.RandomNum(10000000,19999999));">随机切换数字</a>
+</p>
+</body>
+</html>

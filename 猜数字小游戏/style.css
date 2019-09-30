@@ -1,0 +1,144 @@
+html {
+  font-size: 10px;
+  font-family: '微软雅黑', sans-serif;
+}
+
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+}
+
+p, li {
+  font-size: 16px;  
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+
+html {
+  background-color: #cce7ff;
+}
+
+body {
+  width: 600px;
+  margin: 200px auto;
+  background-color: #fbe0bb;
+  padding: 0 20px 20px 20px;
+  border: 5px solid #ffd497;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 0;  
+  color: #ff91a0;
+  text-shadow: 3px 3px 1px #690000;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+.content div {
+    padding: 10px 0 10px 125px ;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background: #ffe8c7;
+}
+.content div span{
+  display: inline-block;
+  margin: 5px 10px 5px 0;
+  padding: 5px 10px;
+}
+.error{
+  background: #ff7800;
+  color: white;
+}
+.success{
+  background: #42ad42;
+  color: white;
+}
+.over{
+  background: red;
+  color: white;
+}
+.old-num{
+  border: 1px solid #fdc87e;
+}
+.info-up{
+  color: red;
+    background: #ffd2d2;
+}
+.info-down{
+  color: blue;
+    background: #d9d9ff;
+}
+button{
+  padding: 5px 7px;
+  background: #4488ff;
+  border: none;
+  font-size: 16px;
+  color: white;
+}
+button:hover{
+  cursor: pointer;
+  background: #3971d4;
+}
+input{
+  padding: 5px 10px;
+  border: 1px solid #999;
+  outline: none;
+  margin-right: 10px;
+}
+input:focus{
+  outline: none;
+  border-color: #4488ff;
+}
+.cont3:after{
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.cont3 b{
+  float: left;
+    margin: 12px 0;
+}
+.cont3 div{
+      margin-left: 85px;
+    padding: 0;
+}
+.cont4 span{margin-left: 5px;}
+.cont1 p{
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: red;
+  padding-left: 85px;
+}
+h4 {
+    margin-top: 0;
+    text-align: center;
+    color: #333;
+}
+.content .cont5{
+  display: none;
+  padding-left: 0;
+  text-align: center;
+}
+.gameover .cont5{
+  display: block;
+}
+.start .cont2,.start .cont3,.start .cont4{
+  display: none;
+}
+.gameover .cont2,.gameover .cont3,.gameover .cont4{
+  display: none;
+}
+.reset{
+      background: #4488ff;
+    padding: 5px 20px;
+    color: white;
+    margin-top: 10px;
+    border: 0;
+}

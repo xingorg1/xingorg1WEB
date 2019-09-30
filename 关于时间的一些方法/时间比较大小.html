@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星期格式啊</title>
+</head>
+<body>
+	<h1 id='week'></h1>
+	<script>
+			function CompareDate(d1,d2)
+			{
+			  return ((new Date(d1.replace(/-/g,"\/"))) > (new Date(d2.replace(/-/g,"\/"))));
+			}
+			var current_time = "2007-2-2 7:30";
+			var stop_time = "2007-1-31 8:30";
+			alert(CompareDate(current_time,stop_time));
+
+	</script>
+</body>
+</html>

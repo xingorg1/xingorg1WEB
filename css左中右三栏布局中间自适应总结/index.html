@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xing.org1^ guojufeng">
+  <title>三栏布局-中间自适应的写法总结</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 1 float -->
+  <h3 class="block">第一种方法-float</h3>
+  <div class="tips">
+    <h4 class="tips-info">关键点</h4>
+    <ol>
+      <li>结构顺序：左，中，右</li>
+      <li>中间盒模型的margin-left、margin-right分别是左右盒模型的宽度、障眼法:中间盒模型使用margin属性，留出左右元素的宽度，既可以使中间元素自适应屏幕宽度。</li>
+      <li>注意，结构上，左边盒模型、右边盒模型、中间盒模型</li>
+    </ol>
+  </div>
+  <div class="browser">
+    <div class="container f-cont clearfix">
+      <div class="box team-box clearfix">
+        <div class="img-box">
+          <div class="img-txt">团队logo 80x80</div>
+        </div>
+        <div class="team-name">团队名称</div>
+      </div>
+      <div class="box person-box clearfix">
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+      </div>
+      <div class="box info-box">
+        <div>
+          <h3>关于你们团队的介绍</h3>
+          <span>可以给我们解释一下团队名称得来历，或是分别介绍你们的团队成员。（以下为示例）</span>
+          <p>页面的样式表是非必要的。当有页面样式表时，页面的样式表中的样式规则会层叠覆盖 app.wxss 中的样式规则。如果不指定页面的样式表，也可以在页面的结构文件中直接使用 app.wxss
+            中指定的样式规则。index.json 是页面的配置文件：页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window
+            中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。</p>
+          <h3>又一个小标题</h3>
+          <p>
+            页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window 中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 position -->
+  <h3 class="block top">第二种方法-position+margin</h3>
+  <div class="tips">
+    <h4 class="tips-info">关键点</h4>
+    <ol>
+      <li>结构顺序：左，中，右</li>
+      <li>position:absolute;之后的父元素塌陷</li>
+    </ol>
+  </div>
+  <div class="tips">
+    <h4 class="tips-info">缺点</h4>
+    <ol>
+      <li>父元素设置固定高度，中间结构超出高度会溢出</li>
+    </ol>
+  </div>
+  <div class="browser">
+    <div class="container p-cont">
+      <div class="box team-box clearfix">
+        <div class="img-box">
+          <div class="img-txt">团队logo 80x80</div>
+        </div>
+        <div class="team-name">团队名称</div>
+      </div>
+      <div class="box info-box">
+        <div>
+          <h3>关于你们团队的介绍</h3>
+          <span>可以给我们解释一下团队名称得来历，或是分别介绍你们的团队成员。（以下为示例）</span>
+          <p>页面的样式表是非必要的。当有页面样式表时，页面的样式表中的样式规则会层叠覆盖 app.wxss 中的样式规则。如果不指定页面的样式表，也可以在页面的结构文件中直接使用 app.wxss
+            中指定的样式规则。index.json 是页面的配置文件：页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window
+            中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。</p>
+          <h3>又一个小标题</h3>
+          <p>
+            页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window 中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。
+          </p>
+        </div>
+      </div>
+      <div class="box person-box clearfix">
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+        <div class="img-box">
+          <div class="img-txt">个人logo 80x80</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 display-->
+  <h3 class="block top">第三种方法--display：table-cell</h3>
+  <div class="tips">
+    <h4 class="tips-info">关键点</h4>
+    <ol>
+      <li>结构顺序：左，中，右</li>
+      <li>父元素display:table;</li>
+      <li>左右两个子元素display：table-cell；vertical-align：center，中间盒子不用管。</li>
+      <li>左右两个子元素加一个包裹，因为高度会盛满父元素</li>
+
+      <li>display：table-cell；——不支持ie6,7</li>
+    </ol>
+  </div>
+  <div class="browser">
+    <div class="container d-cont">
+      <div class="cell">
+        <div class="box team-box clearfix">
+          <div class="img-box">
+            <div class="img-txt">团队logo 80x80</div>
+          </div>
+          <div class="team-name">团队名称</div>
+        </div>
+      </div>
+      <div class="box info-box">
+        <div>
+          <h3>关于你们团队的介绍</h3>
+          <span>可以给我们解释一下团队名称得来历，或是分别介绍你们的团队成员。（以下为示例）</span>
+          <p>页面的样式表是非必要的。当有页面样式表时，页面的样式表中的样式规则会层叠覆盖 app.wxss 中的样式规则。如果不指定页面的样式表，也可以在页面的结构文件中直接使用 app.wxss
+            中指定的样式规则。index.json 是页面的配置文件：页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window
+            中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。</p>
+          <h3>又一个小标题</h3>
+          <p>
+            页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window 中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。
+          </p>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="box person-box clearfix">
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 4 margin-->
+  <h3 class="block top">第4种方法--圣杯布局【margin负边距布局】</h3>
+  <div class="tips">
+    <h4 class="tips-info">关键点</h4>
+    <ol>
+      <li>结构上，中间盒模型在前面【重要】，左右两边的顺序随意，但最好是中，左，右的顺序来。</li>
+      <li>三个模块外边都要加一个父元素-包裹用的div，这个父div的float：left；【三个都有左浮动】</li>
+      <li>中间盒模型margin-left、margin-right等于左右结构的宽度，</li>
+      <li>左边父div的margin-left:-100%;
+        <span class="tips-ex">100%的来源，其实是中间盒模型的宽度.这里我中间没设置宽度所以就是100%</span>
+      </li>
+      <li>右边父div的margin-left:-盒子宽度px;
+        <span class="tips-ex">右边只需要向左移动自己宽度的大小就能回到原位置。</span>
+      </li>
+      <li>最外边清楚浮动</li>
+    </ol>
+  </div>
+  <div class="browser">
+    <div class="container m-cont clearfix">
+      <div class="m-c">
+        <div class="box info-box">
+          <div>
+            <h3>关于你们团队的介绍</h3>
+            <span>可以给我们解释一下团队名称得来历，或是分别介绍你们的团队成员。（以下为示例）</span>
+            <p>页面的样式表是非必要的。当有页面样式表时，页面的样式表中的样式规则会层叠覆盖 app.wxss 中的样式规则。如果不指定页面的样式表，也可以在页面的结构文件中直接使用 app.wxss
+              中指定的样式规则。index.json 是页面的配置文件：页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window
+              中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。</p>
+            <h3>又一个小标题</h3>
+            <p>
+              页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window 中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="m-l">
+        <div class="box team-box clearfix">
+          <div class="img-box">
+            <div class="img-txt">团队logo 80x80</div>
+          </div>
+          <div class="team-name">团队名称</div>
+        </div>
+      </div>
+      <div class="m-r">
+        <div class="box person-box clearfix">
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 5 flex-->
+  <h3 class="block top">第5种方法--css3 flex</h3>
+  <div class="tips">
+    <h4 class="tips-info">关键点</h4>
+    <ol>
+      <li>结构顺序：左，中，右</li>
+      <li>三个盒子分别需要给一个div外包裹，好让内部的实际内容高度自定义。因为用了flex和用了table-cell感觉一样，高度会和父元素高度一致</li>
+      <li>三个盒子的父元素设置display：flex；</li>
+      <li>中间盒子设置flex： 1；让他填充父元素剩下的地方.并根据需要设置边距和左右隔开</li>
+    </ol>
+  </div>
+  <div class="browser bottom">
+    <div class="container fx-cont">
+      <div class="cell">
+        <div class="box team-box clearfix">
+          <div class="img-box">
+            <div class="img-txt">团队logo 80x80</div>
+          </div>
+          <div class="team-name">团队名称</div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="box info-box">
+          <div>
+            <h3>关于你们团队的介绍</h3>
+            <span>可以给我们解释一下团队名称得来历，或是分别介绍你们的团队成员。（以下为示例）</span>
+            <p>页面的样式表是非必要的。当有页面样式表时，页面的样式表中的样式规则会层叠覆盖 app.wxss 中的样式规则。如果不指定页面的样式表，也可以在页面的结构文件中直接使用 app.wxss
+              中指定的样式规则。index.json 是页面的配置文件：页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window
+              中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。</p>
+            <h3>又一个小标题</h3>
+            <p>
+              页面的配置文件是非必要的。当有页面的配置文件时，配置项在该页面会覆盖 app.json 的 window 中相同的配置项。如果没有指定的页面配置文件，则在该页面直接使用 app.json 中的默认配置。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="box person-box clearfix">
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+          <div class="img-box">
+            <div class="img-txt">个人logo 80x80</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

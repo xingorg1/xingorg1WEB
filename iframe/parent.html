@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>父页面</title>
+  <style>
+    h1{
+      color: red;
+      border: 1px solid tomato;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>父页面title</h1>
+  <iframe src="./son.html" frameborder="0" id="mainContent"></iframe>
+  <iframe src="https://www.baidu.com" frameborder="0" id="iframe2"></iframe>
+  <script>
+    var iframe = document.getElementById('mainContent');
+    var sty = document.createElement('style');
+    sty.type = "text/css";
+    sty.innerHTML =
+      "body{background:#eee;}h1{color: green}";
+    iframe.onload = function (e) {
+      console.log(this.contentWindow.document,this.contentDocument)
+      var doc = this.contentWindow.document || this.contentDocument;
+      console.log(doc)
+      doc.body.appendChild(sty);
+    }
+  </script>
+  <script>
+      var iframe = document.getElementById('iframe2');
+      var sty = document.createElement('style');
+      sty.type = "text/css";
+      sty.innerHTML =
+        "body{background:#eee;}h1{color: green}";
+      iframe.onload = function (e) {
+        console.log(this.contentWindow.document,this.contentDocument)
+        var doc = this.contentWindow.document || this.contentDocument;
+        console.log(doc);
+        doc.body.appendChild(sty);
+      }
+    </script>
+</body>
+
+</html>

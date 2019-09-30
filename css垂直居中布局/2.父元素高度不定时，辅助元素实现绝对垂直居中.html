@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单个元素的绝对垂直居中效果</title>
+  <style>
+    .box{
+      height: 200px;
+      text-align: center;
+      background: #f5f5f5;
+      border: 1px solid #eee;
+    }
+    img{
+      /* 第一步，元素inline-block化，因为图片本身是所以省去。 */
+      /* display:inline-block; */
+      /* 第三步，图片和辅助元素同时垂直居中对齐 */
+      vertical-align: middle;
+    }
+    span.assist{
+      /* 第二步，0宽度100%高度的辅助元素 */
+      display: inline-block;
+      height: 100%;
+      /* 第三步，图片和辅助元素同时垂直居中对齐 */
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <h3>不用line-height也能实现的垂直居中</h3>
+  <div class="box">
+    <img src="https://img1.mukewang.com/user/57a6f85b00013c7202090209-100-100.jpg" alt="">
+    <span class="assist"></span>
+  </div>
+  <hr>
+  <h3>
+    大小不固定的文字垂直居中
+  </h3>
+  <div class="box box2">
+    <span class="txts">
+      大小不固定的文字垂直居中
+      <br>
+      多行文本也可以哦！
+    </span>
+    <i></i>
+  </div>
+  <style>
+    .box2 span.txts{
+      /* inline-block化，形成块状整体才适用垂直居中。 */
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .box2 i{
+      display: inline-block;
+      height: 100%;
+
+      vertical-align: middle;
+    }
+  </style>
+</body>
+</html>

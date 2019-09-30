@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jquery滚动条美化Scrollbar设置浏览器默认滚动条样式 DIVCSS5 在线演示</title>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="scrollbar.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+			
+			a,
+			img {
+				border: 0;
+			}
+			
+			body {
+				font-size: 12px;
+				text-align: center
+			}
+			
+			a {
+				color: #333;
+				text-decoration: none;
+			}
+			
+			a:hover {
+				color: #ff6600;
+				text-decoration: underline;
+			}
+			/* newslist */
+			
+			.newslist {
+				/*padding: 10px;*/
+				margin: 0 auto;
+				text-align: left
+			}
+			
+			.newslist li {
+				height: 32px;
+				line-height: 32px;
+				border-bottom: dashed 1px #FFF;
+				padding: 0 10px;
+				overflow: hidden;
+			}
+			/* scr_con style */
+			
+			.scr_con {
+				position: relative;
+				height: 330px;
+				border: solid 1px #FFF;
+				width: 1350px;
+				margin: 20px auto;
+			}
+			
+			#dv_scroll {
+				position: absolute;
+				height: 310px;
+				overflow: hidden;
+				width: 1320px;
+			}
+			
+			#dv_scroll .Scroller-Container {
+				width: 100%;
+			}
+			
+			#dv_scroll_bar {
+				position: absolute;
+				right: 0;
+				/*top: 10px;*/
+				/*width: 15px;*/
+				height: 310px;
+				border-left: 2px solid red;
+			}
+			
+			#dv_scroll_bar .Scrollbar-Track {
+				position: absolute;
+				left: 0;
+				/*top: 27px;*/
+				width: 15px;
+				/*height: 270px;*/
+				height: 100%;
+			}
+			
+			#dv_scroll_bar .Scrollbar-Handle {
+				position: absolute;
+				left: -8px;
+				top: 0;
+				/*width: 15px;*/
+				width: 8px;
+				height: 29px;
+				overflow: hidden;
+				background: url('http://www.divcss5.com/yanshi/2014/2014060401/images/srcoll.gif') no-repeat;
+				cursor: pointer;
+			}
+			
+			#dv_scroll_text {
+				position: absolute;
+			}
+			/* 以下CSS与特效无关 */
+			
+			#n {
+				margin: 10px auto;
+				width: 920px;
+				border: 1px solid #CCC;
+				font-size: 12px;
+				line-height: 30px;
+			}
+			
+			#n a {
+				padding: 0 4px;
+				color: #333
+			}
+			/*table css*/
+			
+			.tableWrap {
+				position: relative;
+				margin-top: 15px;
+				height: 438px;
+				/*overflow: hidden;
+	overflow-y: scroll;*/
+			}
+			/*tbody{
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}*/
+			
+			.main05Table {
+				border: 0;
+				width: 100%;
+				border: 1px solid #6d6d6d;
+				background-color: rgba(0, 0, 0, 0.05);
+				filter: progid: DXImageTransform.Microsoft.Gradient(startColorStr=#05000000, endColorStr=#05000000);
+				font-size: 18px;
+			}
+			
+			.thead {
+				background-color: rgba(39, 39, 39, 0.8);
+				filter: progid: DXImageTransform.Microsoft.Gradient(startColorStr=#80272727, endColorStr=#80272727);
+				color: #fff;
+				/*padding: 10px 5px;*/
+			}
+			.thead ul li{
+				display: inline-block;
+				     padding: 10px 5px; 
+			}
+			/*.main05Table tbody{
+	
+} */
+			
+			.main05Table tbody td {
+				color: #101010;
+			}
+			
+			th,
+			td {
+				padding: 17px 20px;
+				padding-right: 0;
+				border-right: 1px solid rgba(0, 0, 0, 0.2);
+			}
+			
+			th {
+				padding: 14px 20px;
+				border-color: #3d3d3d;
+			}
+			
+			th:first-child,
+			td:first-child {
+				padding-left: 10px;
+			}
+			
+			th:last-child,
+			table tr td:last-child {
+				border-right: 0;
+			}
+			
+			td {
+				/*border-top: 1px solid #bababa;rgba(0,0,0,0.2)*/
+				border-top: 1px solid rgba(0, 0, 0, 0.2);
+			}
+			
+			table tbody tr:first-child td {
+				border-top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 以上DIV与特效无关 -->
+
+		<div class="scr_con">
+			<div class="thead">
+						<ul>
+							<li><span>车型</span></li>
+							<li><span>E 200 L 轿车</span></li>
+							<li><span>E 300 L 时尚型轿车</span></li>
+							<li><span>E 300 L 豪华型轿车</span></li>
+						</ul>
+					</div>
+			<div id="dv_scroll">
+				<div id="dv_scroll_text" class="Scroller-Container">
+					<div class="newslist">
+						<table class="main05Table" cellspacing="0">
+							<!--<thead>
+								<tr>
+									<th><span>车型</span></th>
+									<th><span>E 200 L 轿车</span></th>
+									<th><span>E 300 L 时尚型轿车</span></th>
+									<th><span>E 300 L 豪华型轿车</span></th>
+								</tr>
+							</thead>-->
+							<tbody>
+								<tr>
+									<td><span>额定功率 ( 千瓦 / 马力 / 转每分 )</span></td>
+									<td><span>135/184/5500</span></td>
+									<td><span>180/245/5500</span></td>
+									<td><span>180/245/5500</span></td>
+								</tr>
+								<tr>
+									<td><span>额定扭矩 ( 牛顿米 / 转每分 )</span></td>
+									<td><span>300/1200-4000</span></td>
+									<td><span>370/1300-4000</span></td>
+									<td><span>370/1300-4000</span></td>
+								</tr>
+								<tr>
+									<td><span>气缸数 / 总排量 ( 毫升 )</span></td>
+									<td><span>L4/1991</span></td>
+									<td><span>L4/1991</span></td>
+									<td><span>L4/1991</span></td>
+								</tr>
+								<tr>
+									<td><span>市区燃油消耗量（升/100公里）</span></td>
+									<td><span>8.7</span></td>
+									<td><span>9</span></td>
+									<td><span>9</span></td>
+								</tr>
+								<tr>
+									<td><span>市郊燃油消耗量（升/100公里）</span></td>
+									<td><span>5.9</span></td>
+									<td><span>6</span></td>
+									<td><span>6</span></td>
+								</tr>
+								<tr>
+									<td><span>燃油综合消耗量 ( 升 /100 公里 )</span></td>
+									<td><span>6.9</span></td>
+									<td><span>7.1</span></td>
+									<td><span>7.1</span></td>
+								</tr>
+								<tr>
+									<td><span>油箱容积（升）</span></td>
+									<td><span>Jul-66</span></td>
+									<td><span>Jul-66</span></td>
+									<td><span>Jul-66</span></td>
+								</tr>
+								<tr>
+									<td><span>额定功率 ( 千瓦 / 马力 / 转每分 )</span></td>
+									<td><span>135/184/5500</span></td>
+									<td><span>180/245/5500</span></td>
+									<td><span>180/245/5500</span></td>
+								</tr>
+								<tr>
+									<td><span>额定扭矩 ( 牛顿米 / 转每分 )</span></td>
+									<td><span>300/1200-4000</span></td>
+									<td><span>370/1300-4000</span></td>
+									<td><span>370/1300-4000</span></td>
+								</tr>
+								<tr>
+									<td><span>气缸数 / 总排量 ( 毫升 )</span></td>
+									<td><span>L4/1991</span></td>
+									<td><span>L4/1991</span></td>
+									<td><span>L4/1991</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--about end-->
+				</div>
+			</div>
+			<!--dv_scroll end-->
+			<div id="dv_scroll_bar">
+				<div id="dv_scroll_track" class="Scrollbar-Track">
+					<div class="Scrollbar-Handle"></div>
+				</div>
+			</div>
+			<!--dv_scroll_bar end-->
+		</div>
+		<!--scr_con end-->
+
+	</body>
+
+</html>

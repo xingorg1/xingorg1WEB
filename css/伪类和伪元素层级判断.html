@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <style>
+      .box div{
+        /* position: absolute; */
+        width: 200px;
+        height: 200px;
+        margin: 10px 0;
+        background: #fb8d8d;
+        text-align: right;
+      }
+      .box::before,.box::after{
+        content: "伪元素";
+        position: absolute;
+        display: block;
+        width: 100px;
+        height: 100px;
+        background: #ffcb57;
+      }
+      .box div:first-child{
+        height: 150px;
+        width: 150px;
+        margin-left: 10px;
+        top: 30px;
+      }
+      .box div:first-child,.box div:last-child{
+        position: absolute;
+        background: #fec8ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div>1 </div>
+      <div>2</div>
+      <div>3 伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，伪类，</div>
+    </div>
+  </body>
+</html>

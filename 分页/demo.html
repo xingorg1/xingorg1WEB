@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自己写的分页小demo</title>
+	<link rel="stylesheet" href="pagination.css">
+</head>
+<body>
+<a href=""></a>
+	<div id="contBox"></div>
+	<div class="jxs-pagination">
+		<ul id="pageBox"></ul>
+	</div>
+	<script src='js/pagination-demo.js'></script>
+	<script>
+		initPagination({
+			isEP: true,
+			btnSums: 10,
+			showSums: 10,
+			dataSum: 326,
+			ulId: 'pageBox',
+			callbackFun: function(clickedPage){
+				// 回调函数，返回当前点击的页码，也就是data-num的数值
+				console.log("点击的是第"+clickedPage+"页")
+			}
+		});
+	</script>
+</body>
+</html>

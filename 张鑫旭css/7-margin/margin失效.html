@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>margin失效</title>
+</head>
+<body>
+  <h3>
+    与绝对定位对立方向的margin负值虽然看上去不起作用，其实是对于元素的位移不起作用，但实际上对于元素占据的空间是起作用的。
+    因为absolute元素是飘起来的,且看上去不在一层。
+  </h3>
+  <div class="box">
+    <div class="no-margin no-margin1">
+      我漂浮起来，自然不会因为margin而影响视觉上与父元素偏移的位置。 
+    </div>
+    <div class="no-margin no-margin2">
+        我也飘起来了，但不和上边的白色块在一个层级里，所以我俩的margin不会互相影响到。 
+      </div>
+  </div>
+  <a href="" style="">
+      <p style="margin: 20px;display: inline;">被a包裹的元素设置margin无效，是因为a内部的元素是inline
+        inline元素设置上下margin无效。那么a里边的元素改成block元素，a也要变成block元素，同时使用padding或者border形成bfc，阻止margin穿透。
+      </p>
+    </a>
+  <a href="" style="display: block;border: 1px solid red">
+      <p style="margin: 20px;">被a包裹的元素设置margin无效，是因为a内部的元素是inline
+        inline元素设置上下margin无效。那么a里边的元素改成block元素，a也要变成block元素，同时使用padding或者border形成bfc，阻止margin穿透。
+      </p>
+    </a>
+  <style>
+    .box{
+      height: 300px;
+      width: 300px;
+      background: #6c6cb7;
+      overflow: scroll;
+     position: relative;
+    }
+    .no-margin{
+      width: 120px;
+      height: 110px;
+      background: white;
+      position: absolute;
+    }
+    .no-margin1{
+      margin-right: 99999px;
+      margin-bottom: 99999px;
+      left: 20px;
+      top: 20px;
+    }
+    .no-margin2{
+      right: 20px;
+      bottom: 20px;
+      margin-left: 99999px;
+      margin-top: 99999px;
+    }
+  </style>
+</body>
+</html>

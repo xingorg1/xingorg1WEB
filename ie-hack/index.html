@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ie hack test</title>
+</head>
+<body>
+<style>
+ul,li{
+	list-style: none;
+}
+	.clearfix{
+		clear: both;
+		*zoom: 1;
+	}
+	.clearfix:after{
+		content: "";
+		clear: both;
+		display: block;
+		overflow: hidden;
+		height: 0;
+		visibility: hidden;
+	}
+	.clearfix div{
+		width: 100px;
+		height: 100px;
+		margin: 20px;
+		float: left;
+		/*border: 1px solid #000; */
+		border-width: 1px;
+		border-style: solid;
+		text-align: center;
+		line-height: 100px;
+	}
+	.qq{background: blue;}
+	.ie6{ _background: #ff0;}
+	.ie7{ +background: #f0f;}
+	.ie8{ background: #0ff\0;}
+	.ie9{ background: #f00\9;}
+	.he1{
+		/*demo1 注意顺序，否则IE6/7下可能无法正确显示，导致结果显示为白色背景*/  
+    background-color:red; /* All browsers */  
+    background-color:blue !important;/* All browsers but IE6 */  
+    *background-color:black; /* IE6, IE7 */  
+    +background-color:yellow;/* IE6, IE7*/  
+    background-color:gray\9; /* IE6, IE7, IE8, IE9, IE10 */  
+    background-color:purple\0; /* IE8, IE9, IE10 */  
+    background-color:orange\9\0;/*IE9, IE10*/  
+    _background-color:green; /* Only works in IE6 */  
+    *+background-color:pink; /*  WARNING: Only works in IE7 ? Is it right? */  
+	}
+	.he2{
+		/*该demo实例是用于区分标准模式下ie6~ie9和Firefox/Chrome的hack，注意顺序  
+			IE6显示为：绿色，  
+			IE7显示为：黑色，  
+			IE8显示为：红色，  
+			IE9显示为：蓝色，  
+			Firefox/Chrome显示为：橘色，  
+			（本例IE10效果同IE9,Opera最新版效果同IE8）  
+			*/  
+			    background-color:orange;  /* all - for Firefox/Chrome */  
+			    background-color:red\0;  /* ie 8/9/10/Opera - for ie8/ie10/Opera */  
+			    background-color:blue\9\0;  /* ie 9/10 - for ie9/10 */  
+			    *background-color:black;  /* ie 6/7 - for ie7 */  
+			    _background-color:green;  /* ie 6 - for ie6 */  
+	}
+	ul.li-last-child{
+		margin: 20px 0 50px;
+		background: #eaeaea;
+		font-size: 0;
+	}
+	ul.li-last-child li{
+		display: inline-block;
+		*zoom: 1;
+		*display: inline;
+		_margin-right: 10px;
+		width: 100px;
+		height: 100px;
+		margin-bottom: 20px;
+		line-height: 100px;
+		text-align: center;
+		font-size: 20px;
+		background: #d9ddfd;
+	}
+	ul.li-last-child1 li+li{
+		margin-left: 20px;
+		border-left: 2px solid #ff00a5;
+	}
+	ul.li-last-child2 li{
+		background: #fff;
+		_border-left: 2px solid #ff00a5;
+	}
+	ul.li-last-child2 .li1~li{
+		margin-left: 20px;
+		border-left: 2px solid #ffbc00;
+	}
+	ul.li-last-child2 .li1+li{
+		background: #ffeffb;
+	}
+</style>
+<div class="clearfix">
+	<div class="ie6">黄色</div>
+	<div class="ie7">紫粉色</div>
+	<div class="ie8">青色</div>
+	<div class="ie9">红色</div>
+	<div class="he1">合体1</div>
+	<div class="he2">合体2</div>
+</div>
+<ul class="li-last-child li-last-child1">
+	<li>1</li>
+	<li>1</li>
+	<li>1</li>
+	<li>1</li>
+	<li>1</li>
+</ul>
+<ul class="li-last-child li-last-child2">
+	<li class="li1">1</li>
+	<li>1</li>
+	<li>1</li>
+	<li>1</li>
+	<li>1</li>
+</ul>
+</body>
+</html>

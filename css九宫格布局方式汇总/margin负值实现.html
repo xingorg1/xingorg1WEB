@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>margin负值实现</title>
+  <style>
+    /* 基础 */
+    .box{
+      background: #e4f7fd61;
+      border: 2px solid #0786ada1;
+      border-radius: 8px;
+    }
+    ul{
+      padding: 0;
+    }
+    .box li{
+      list-style: none;
+      text-align: center;
+      line-height: 200px;
+      background: rgba(146, 203, 230, 0.65);
+      border-radius: 8px;
+    }
+    /* 关键代码 */
+    .box{
+      width: 940px;
+    }
+    ul{
+      overflow: hidden;
+      margin-right: -20px;
+      margin-bottom: -20px;
+      margin-top: 0;
+    }
+    .box li{
+      float: left;
+      width: 300px;
+      height: 200px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div style="padding: 20px;">
+      <b>原理：margin负边距</b>
+      <p>关键点：</p>
+      <ol>
+        <li>最外层的包裹元素等于：li宽度*3+li右间距*2</li>
+        <li>如果li是右间距，则ul的margin-right为负的li间距值。</li>
+        <li>li要浮动</li>
+      </ol>
+  </div>
+  <div class="box">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+  </div>
+</body>
+</html>

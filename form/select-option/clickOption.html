@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>操作option</title>
+	<style>
+		#select1{
+			width: 300px;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<select name="" id="select1">
+		<option value="1">ertetjert</option>
+		<option value="2">沃尔沃热</option>
+		<option value="3">完额我还是</option>
+		<option value="4">again</option>
+	</select>
+	<script>
+		var myId = document.getElementById('select1');
+		myId.onclick = function(){
+			var selectedOption=this.options;
+			console.log(this.options);
+			console.log(this.children);
+			console.log(this.selectedIndex);
+			if(this.selectedIndex === 1){
+				console.log('sd')
+			}
+		}
+		myId.children[1].onclick = function(){
+			alert('sd');
+		}
+	</script>
+</body>
+</html>

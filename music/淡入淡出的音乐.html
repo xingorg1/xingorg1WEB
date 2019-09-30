@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style></style>
+</head>
+
+<body>
+  <h1>Audio music</h1>
+  <audio id="bgMusic" src="./music.mp3" autoplay></audio>
+  <label style="font-size: 24px">
+    <input id="bgSwitch" type="checkbox" checked>
+    是否播放背景音乐
+  </label>
+  <script>
+    bgSwitch.onchange = function () {
+      var v = bgMusic.volume;
+      if (this.checked) {
+        bgMusic.volume = 0;
+        v = 0;
+        bgMusic.play();
+        console.log("play");
+        var t = setInterval(function () {
+          v += 0.1;
+          console.log('v1' + v);
+          if (v <= 1) {
+            bgMusic.volume = v;
+          } else {
+            clearInterval(t);
+          }
+        }, 200);
+      } else {
+        var t = setInterval(function () {
+          v -= 0.1;
+          console.log('v2' + v);
+          if (v > 0) {
+            bgMusic.volume = v;
+          } else {
+            clearInterval(t);
+            bgMusic.pause();
+            console.log("pause");
+          }
+        }, 200);
+      }
+    }
+  </script>
+</body>
+
+</html>
+<!-- 
+作者：Xaire 
+来源：CSDN 
+原文：https://blog.csdn.net/u012183426/article/details/79721246 
+版权声明：本文为博主原创文章，转载请附上博文链接！ -->

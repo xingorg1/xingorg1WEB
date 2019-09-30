@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式学习后的练习</title>
+		<script type="text/javascript">
+//			var re = //;
+			var str = "23nr qreq2 34fq4 4454gsr 45";//定义字符串
+			var tep = "";//用来装正在过安检的字符
+			var arr= [];//用来装所有通过安检的符合要求的妃子去见皇上。
+			//第一种：使用字符串将数字挑出
+			for(var i=0;i<str.length;i++){
+				if(str.charAt(i)> 0 && str.charAt(i)< 9){//判断下标第i位这个字符，若这个字符是一个数字
+					//tep = str[i];//这里遇到问题，第i个字符串怎么表示，和数组的表示方法一样吗?答案是yes
+					tep += str[i];//一定要加等于，把他累计丢进去，不然你就是狗熊掰棒子，掰第二个时，第一个就被替换掉没了。最后遍历出来的就是3,2,4,4,5，是这五组数字的最后一个字符，说明前面的数字都被替换掉了。
+				}else{//遇到字符不是一个数字的时候，再把tep里面存放的正在过安检的人push给arr，这样，连在一起的两个字符就还可以在一起了，不然你查出来一个push一个，差一个过一个，那人家之前两个数字做着伴的不就被分开了。
+					if(tep){//如果tep里有东西，就是说，这个字符不是0-9，但是tep又不是空，有东西的情况下，
+						arr.push(tep);
+						tep = "";//把复合的数据备份到arr后，讲tep篮子清空，接着去装被人
+					}
+				}
+			}
+			//防止到了最后一个字符还是数字，这样就算字符串遍理完了，你还是会有最后一个数字字符在上面的for遍历中，因为没有遇到else的情况，就不会被push到arr中，你可以尝试删除下面的if语句，就知道他的作用了。这个字符最后是45，遍历完了依旧符合if(str.charAt(i)> 0 && str.charAt(i)< 9)的条件，不会执行else。
+			if(tep){
+				arr.push(tep);
+				tep="";
+			}
+			document.write(arr);
+		</script>
+		<!--以下是简洁代码-->
+		<!--<script type="text/javascript">
+			var str = "23nr qreq2 34fq4 4454gsr 45";
+			var tep = "";
+			var arr= [];
+			for(var i=0;i<str.length;i++){
+				if(str.charAt(i)> 0 && str.charAt(i)< 9){
+					tep += str[i];
+				}else{
+					if(tep){
+						arr.push(tep);
+						tep = "";
+					}
+				}
+			}
+			if(tep){
+				arr.push(tep);
+				tep="";
+			}
+			alert(arr);
+		</script>-->
+		<script type="text/javascript">
+			//方法二：使用regular expression【RegExp】
+			var str2 = "23nr qreq2 34fq4 4454gsr 45";
+			var re = new RegExp('\d','g');
+			var re = /\d+/g;
+			document.write("<br/>"+str2.match(re))
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

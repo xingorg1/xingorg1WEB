@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie设置</title>
+		<style type="text/css">
+			li{
+				list-style: decimal;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>查看自己设置的cookie的方法，</h3>
+		<ul>
+			<li>cookie是document的一个属性，</li>
+			<li>通过document设置</li>
+			<li>重复设置时若等号前面的值相同就会被覆盖，若不同只会添加</li>
+			<li>大小是4-10k，最多50条，</li>
+			<li>一定要在火狐浏览器里调试，</li>
+			<li>火狐中右键》查看页面信息》安全》查看cookie</li>
+			<li>滚动列表查找自己的那一条</li>
+		</ul>
+		<hr />
+		<script type="text/javascript">
+			document.cookie = 'user=name';//1
+			document.cookie = 'user=na';//2
+			document.cookie = 'password=12';//3
+			document.write(document.cookie+"<hr/>");
+			document.write("【区分1,2,3就知道了】");
+		</script>
+	</body>
+</html>

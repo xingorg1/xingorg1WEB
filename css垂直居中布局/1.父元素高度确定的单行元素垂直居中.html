@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>一、父元素高度确定的单行元素垂直居中</title>
+  <style>
+    .box{
+      background: #f5f5f5;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+<h3>1.父元素高度固定的单行文本垂直居中</h3>  
+<div class="box box1">
+  <span class="span1">
+      我是单行文本
+      <!-- <br>
+      如果想换行，就挂掉了 -->
+  </span>
+</div>
+<style>
+  .box1{
+    text-align: center;
+    line-height: 300px;
+  }
+  img{
+    vertical-align: middle;
+  }
+  /* .span1{
+    line-height: 21px;
+    display: inline-block;
+  } */
+</style>
+<h3>2.父元素高度固定的单个图片垂直居中</h3>
+<div class="box box1">
+  <img src="https://img1.mukewang.com/user/57a6f85b00013c7202090209-100-100.jpg" alt="">
+</div>
+<h3>3.目标元素高度也固定的单个图片垂直居中</h3>
+<div class="box box2">
+  其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！其实他可以当作是一个弹层效果了！
+  <img src="https://img1.mukewang.com/user/57a6f85b00013c7202090209-40-40.jpg" alt="">
+</div>
+<style>
+  .box2{
+    height: 300px;
+    position: relative;
+  }
+  .box2 img{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+  }
+</style>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "base": {
+    "isMobile": false,
+    "commonChunks": [],
+    "ExtractTextPluginName": "common",
+    "postcssrc": {
+      "rootValue": 100,
+      "propList": [
+        "*",
+        "!border*"
+      ],
+      "selectorBlackList": [
+        "yi-pc",
+        "norem"
+      ]
+    },
+    "type": "platform"
+  },
+  "dev": {
+    "port": 3000,
+    "browsersyncstream": true,
+    "webpackWatch": true,
+    "pretty": true,
+    "files": {
+      "rename": ".min"
+    },
+    "devtool": "source-map",
+    "cssSourceMap": true
+  },
+  "prod": {
+    "pretty": true,
+    "files": {
+      "rename": ".min"
+    },
+    "devtool": "cheap-module-source-map",
+    "productionSourceMap": false,
+    "cssSourceMap": false,
+    "postcssrc": {
+      "compatibility": "ie8",
+      "url": "inline",
+      "basePath": "../images/",
+      "encodeType": "base64",
+      "maxSize": 5,
+      "includeRemote": true
+    }
+  }
+}

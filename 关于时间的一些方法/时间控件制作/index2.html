@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间联动选择控件制作整理</title>
+	<style>
+		html,body {
+    height: 100%;
+}
+	</style>
+	<script src="../js/jquery-1.10.1.min.js"></script>
+	<!-- <script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+	<link rel="stylesheet" href="My97DatePicker/skin/WdatePicker.css"> -->
+	<script src="DatePicker/WdatePicker.js"></script>
+	<!-- <script src="DatePicker/DatePicker/skin/WdatePicker.css"></script> -->
+</head>
+<body>
+<span class="input-calendar input-calendar-start-date">
+  <input id="txtBeginTimeID" name="LastLeadCreateTimeBegin" onfocus="var txtEndContactTime=$dp.$('txtEndTimeID');
+         var minTime = '2017/2/3 0:00:00';
+              WdatePicker({isShowClear:false,
+          isShowToday: false,
+          readOnly:true, onpicked: function(){ txtEndContactTime.focus(); },maxDate: '#F{$dp.$D(\'txtEndTimeID\')}',minDate: minTime.replace(new RegExp('-', 'gm'), '/')}); " class="form-control Wdate" type="text" value=""> 
+</span>
+到
+<span class="input-calendar input-calendar-end-date">
+    <input id="txtEndTimeID" name="LastLeadCreateTimeEnd"  class="form-control Wdate" type="text" value="" >
+    <!-- onfocus="WdatePicker({isShowClear:false,isShowToday: false,readOnly:true,onpicked:function(dp){pickedFunc(dp)},minDate:'#F{$dp.$D(\'txtBeginTimeID\')}'})" -->
+    <input type="text" id="newValue" value='1' onchange="console.log('onchange')"> 
+</span>
+<!-- onpicked:function(dp){console.log('你选择的日期是：'+dp.cal.getNewDateStr() )}, -->
+<!-- <input type="text" id="testInput" value="2017"> -->
+<input type="text" id="username" value="2017">
+<!-- 日历控件的选中事件是：onpicked -->
+<select name="" id="#selectTime"></select>
+<div id="thrid" data-id="0">我是第三方元素</div>
+<div id="result" data-id="0">我是第三方元素</div>
+<script type="text/javascript">
+// 通过自定义事件，在改变日期后让其他按钮的属性改变，再在入口文件监听某元素属性改变后执行另一个事件
+// document.getElementById('txtEndTimeID').onfocus = function(){
+// 	console.log('获取焦点')
+// }
+// document.getElementById('txtEndTimeID').onblur = function(){
+// 	console.log('失去焦点')
+// }
+ 
+	document.getElementById('txtEndTimeID').onfocus = function(){
+    WdatePicker({
+      isShowClear:false,
+      isShowToday: false,
+      readOnly:true,
+      onpicked:function(dp){pickedFunc(dp);},
+      minDate: "#F{$dp.$D('txtBeginTimeID')}",
+      maxDate:'%y-%M-{%d-1}'
+    });
+  };
+  // 点击后执行此事件
+  function pickedFunc(dp){
+  	var newValue = dp.cal.getNewDateStr();
+  	// console.log(newValue)
+  	$('#thrid').attr('data-id',1)
+  	$('#newValue').val(newValue)
+  }
+  // 入口文件js
+	var testinput = document.getElementById('newValue');      
+	if('oninput' in testinput){  
+		console.log('入口文件js')
+		// fn();
+			// thridLithener()
+	    testinput.addEventListener("input",fn,false);  //input 对于js动态修改的属性值，在qq中不能执行，
+	}else{  
+		// console.log(dp.cal.getNewDateStr())
+	    testinput.onpropertychange = fn;  
+	}
+	function fn(){
+		console.log('txtEndTimeID val改变')
+	}
+	// $("#username").bind("input propertychange", function() {  
+	// 	console.log('newValue改变了')
+	// }); 
+  // 此事件判定第三方属性值的变化，如果变了说明时间被切换了
+  
+  // thridLithener();
+  // 此事件负责一直查看是否属性值变化了
+  var timer ;
+  $('#txtEndTimeID').on('focus',function(){
+  	console.log('focus')
+  	// clearInterval(timer);
+	  // timer = setInterval(function(){
+	  // 	thridLithener();
+	  // 	console.log('======')
+	  // },500);
+  });
+  $('#txtEndTimeID').on('blur',function(){
+  	console.log('blur')
+  	// clearInterval(timer);
+  });
+  $('body').on('click',function(){
+  	console.log('body click')
+  	// clearInterval(timer);
+  });
+	function thridLithener(){
+  	console.log($('#thrid').attr('data-id'));
+  	// if($('#thrid').attr('data-id') == 1){
+  	// 	console.log('执行事件');
+  	// 	// 恢复状态
+			// $('#thrid').attr('data-id','0');
+			// clearInterval(timer);
+  	// }else{
+  	// 	console.log('不等于1')
+			// return false;
+  	// }
+  }
+  // 在body中监听文本框被点击/iframe被点击等事件-失败
+
+	// oninput等其他方法代替onchange事件-失败
+	// var testinput = document.getElementById('txtEndTimeID');      
+	// if('oninput' in testinput){  
+	//     testinput.addEventListener("input",fn,false);  
+	// }else{  
+	//     testinput.onpropertychange = fn;  
+	// }
+	// function fn(){
+	// 	console.log('gjf2')
+	// }
+
+
+	// 	// 渲染左上角日期下拉
+	// var nowTime = new Date();
+	// var nowYear = nowTime.getFullYear();
+	// var nowMonth = nowTime.getMonth()+1;
+	// var nowDay = nowTime.getDate();
+	// // nowDay = 1;
+	// if(nowDay<2){//小于1号渲染23个月
+	//   nowMonth -= 1;
+	//   for(var t = 1; t <= 23; t++){
+	//     nowMonth--;
+	//     if(nowMonth<1){
+	//       nowMonth = 12;
+	//       nowYear--;
+	//     }
+	//     $('#selectTime').append(`<option>${nowYear}年${nowMonth}月</option>`)
+	//   }
+	// }else{
+	//   for(var t = 1; t <= 24; t++){
+	//     nowMonth--;
+	//     if(nowMonth<1){
+	//       nowMonth = 12;
+	//       nowYear--;
+	//     }
+	//     $('#selectTime').append(`<option>${nowYear}年${nowMonth}月</option>`);
+	//   } 
+	// };
+</script>
+</body>
+</html>
+
+<!-- 大概思路如下
+ie下，支持propertychange事件的，就直接监听第三方文本框的value值改变时触发ajax发送请求数据
+非ie下，不支持property的，就在endTime文本框获取焦点的时候触发定时器，100-500ms内不停的去监听第三方文本框的data-id值，当值一旦变动立马发送ajax，并把值换成原来的状态，当endTIme失去焦点的时候，清除定时器。
+！！点击事件不成立
+endTime文本框被点击的时候，开启定时器，100-500ms内不停的去监听第三方文本框的data-id值，当值一旦变动立马发送ajax，并把值换成原来的状态，清除定时器。
+ -->

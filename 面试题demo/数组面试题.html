@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>一个数组，把奇数放到右边，偶数放到左边，不许使用额外空间。</h1>
+  <script>
+    /* 方法一 */
+    arr.sort(function (a, b) {
+      return a % 2 !== 0
+    })
+  </script>
+  <script>
+    /* 方法二 */
+    Array.prototype.swap = function (a, b) {
+
+      this[a] ^= this[b];
+
+      this[b] ^= this[a];
+
+      this[a] ^= this[b];
+
+    }
+
+    Array.prototype.OddSort = function () {
+
+      for (var i = this.length - 1; i > 0; --i) {
+
+        for (var j = 0; j < i; ++j)
+
+          if (this[j] & 1)
+
+            this.swap(j, j + 1);
+
+      }
+
+    }
+
+    var arr = [2, 4, 77, 788, 2, 0, 99, 10];
+
+    arr.OddSort();
+
+    console.log(arr)
+  </script>
+</body>
+
+</html>

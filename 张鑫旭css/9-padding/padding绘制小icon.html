@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3>利用的其实是background-clip：content-box;这个属性，此属性兼容性在ie9+</h3>
+  <div class="box">
+    <div class="icon"></div>
+  </div>
+  <style>
+  .box{
+    border: 1px solid  red;
+    width: 300px;
+  }
+  .icon{
+    width: 200px;
+    margin: 30px auto;
+    padding: 30px 0;
+    height: 30px;
+    border-top: 30px solid red;
+    border-bottom: 30px solid red;
+    background: red;
+    background-clip: content-box;
+  }
+  </style>
+  <div class="box2">
+    <div class="dot"></div>
+  </div>
+  <style>
+    .dot{
+      width: 50px;
+      height: 50px;
+      padding: 10px;
+      border: 5px solid red;
+      border-radius: 50%;
+      background: red;
+      background-clip: content-box;
+    }
+  </style>
+</body>
+</html>

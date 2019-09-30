@@ -1,0 +1,62 @@
+/*
+ * @Author: matianye@ 
+ * @Date: 2018-04-08 14:36:22 
+ * @Last Modified by: matianye@
+ * @Last Modified time: 2018-05-25 15:26:24
+ */
+
+@charset "UTF-8";
+@import "_mixin.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/layout.scss";
+// layout.scss 已调用 common.scss, float.scss, goTop.scss";
+// 公用 end
+
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/iconFont.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/button.scss";
+// 基础 end
+
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/alert.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/toast.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/modal.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/error.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/table.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/pageNotify.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/label.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/list.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/accordion.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/tips.scss";
+// 视图 end
+
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/checkRadio.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/input.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/select.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/textarea.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/upload.scss";
+// 表单 end
+
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/header.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/tabs.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/crumbs.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/subNav.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/pagination.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/steps.scss";
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/title.scss";
+// 导航 end
+
+@import "../../node_modules/yi-frames-ui/pc-widget/src/scss/modules/footer.scss";
+// 其它 end
+
+
+
+.yi-frames{
+	.contBox{
+		padding: 20px;
+		font-family: 'Microsoft YaHei';
+	}
+	.show{
+		display: block;
+	}
+	.yi-mask{
+		// display: block;
+	}
+}

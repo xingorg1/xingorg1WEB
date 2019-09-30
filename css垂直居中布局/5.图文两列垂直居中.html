@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=], initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单个图片和多行文本垂直居中</title>
+  <style>
+    .box {
+      padding: 10px;
+      border: 1px solid #eee;
+      margin: 5px 0;
+      /* 核心 */
+      width: 245px;
+      text-align: justify;
+    }
+
+    .box span {
+      width: 200px;
+      /* 核心 */
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .box img {
+      /* 核心 */
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>因为vertical-align只对inline/inline-block元素起作用，而浮动会让元素block水平化，就不能使用vertical-align对齐了</h3>
+  <div class="box">
+    <span>单行文字</span>
+    <img src="https://img1.mukewang.com/user/57a6f85b00013c7202090209-40-40.jpg" alt="">
+  </div>
+  <div class="box">
+    <span>多行文字<br />文字文字文字文字<br />文字文字文字文字</span>
+    <img src="https://img1.mukewang.com/user/57a6f85b00013c7202090209-40-40.jpg" alt="">
+  </div>
+  <div class="box">
+    <span>因为vertical-align只对inline/inline-block元素起作用，而浮动会让元素block水平化，就不能使用vertical-align对齐了</span>
+    <img src="https://img1.mukewang.com/user/57a6f85b00013c7202090209-40-40.jpg" alt="">
+  </div>
+  <h3>问题一解决，让文字和图片两端对齐，且不使用浮动实现：text-align: justify;</h3>
+</body>
+
+</html>

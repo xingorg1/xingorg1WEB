@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>百分比高度自适应布局</title>
+</head>
+<body>
+  <!-- <div class="page">
+    <div class="list">1</div>
+    <div class="list">2</div>
+    <div class="list">3</div>
+    <div class="list">4</div>
+    <div class="list">5</div>
+    <div class="list">6</div>
+  </div> -->
+  <!-- <style>
+    .page{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .list{
+      float: left;
+      height: 33.3%;
+      width: 31%;
+
+      margin: 10px;
+      border-radius: 5px;
+      background: #9edde2;
+    }
+  </style> -->
+  <h3>大神写法</h3>
+  <div class="page">
+    <div class="list" data-index="1"></div>
+      <div class="list" data-index="2"></div>
+      <div class="list" data-index="3"></div>
+      <div class="list" data-index="4"></div>
+      <div class="list" data-index="5"></div>
+      <div class="list" data-index="6"></div>
+      <div class="list" data-index="7"></div>
+      <div class="list" data-index="8"></div>
+      <div class="list" data-index="9"></div>
+  </div>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    .page {
+        position: absolute;
+        left: 0; top: 180px; right: 0; bottom: 0;
+    }
+    .list {
+      float: left;
+      height: 33.3%; width: 33.3%;
+      position: relative;
+    }
+    .list:before {
+      content: '';
+      position: absolute;
+      left: 10px; right: 10px; top: 10px; bottom: 10px;
+      border-radius: 10px;
+      background-color: #cad5eb;
+    }
+    .list:after {
+      content:attr(data-index);
+      position: absolute;
+      height: 30px;
+      left: 0; right: 0; top: 0; bottom: 0;
+      margin: auto;
+      text-align: center;
+      font: 24px/30px bold 'microsoft yahei';
+    }
+  </style>
+  <h3>
+    启示：
+    1. 间距不一定要加在最外边父元素身上的，最外边父元素可以只负责流体布局，内部用padding或第一层子元素来控制和相邻元素的间距
+
+    2. 这种九宫格布局除了margin负值的写法，还可以这么写。
+  </h3>
+  <h3>
+    content: attr(data-index);的写法
+  </h3>
+</body>
+</html>

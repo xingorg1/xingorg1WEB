@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过期时间设置expires</title>
+	</head>
+	<body>
+		expires
+		<script type="text/javascript">
+			var riqi = new Date();
+			//假设有效期是两周，就是14天
+			var youxiaoqi = riqi.getDate(riqi.setDate(riqi.getDate()+14));
+			
+			document.cookie = "name=gjf;expires="+riqi;
+			//这里传的是riqi，而不是get后的有效期，riqi如果不get的话，就是一个毫秒值，看来它会自动解析，看火狐里的记录，过期时间是年月日都有的，那说明，需要传的是毫秒值，而不是一个单纯的getDate日期值。
+			document.cookie = "pass=123";//pass因为没有设置有效期，他会在页面关闭之后就删除、
+		</script>
+		
+	</body>
+</html>

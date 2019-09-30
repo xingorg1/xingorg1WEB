@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>offsetHeight深入研究</title>
+		<meta name="Description" content="让人头大的offsetHeight,在不同浏览器中结果不一"/>
+	</head>
+	<body>
+		<a herf="http://www.cnblogs.com/zgl-x/p/5673787.html">讲解不同浏览器中的offset</a>
+	<div id="mn" style="height: 300px;width: 200px;border: 1px solid red;">
+		
+	</div>
+		 <script type="text/javascript">
+  var mn = document.getElementById("mn")
+//		   var dw = document.documentElement.offsetWidth;
+		   var dh = document.documentElement.offsetHeight;
+		   var mn = document.documentElement.offsetHeight;
+		   document.write("mn:"+mn + "<br> dh-documentElement.offsetHeight:【"+dh);
+		   document.write("<br>");
+		    
+//		   var bw = document.body.offsetWidth;
+		   var bh = document.body.offsetHeight;
+		   document.write("<br/> dh-body.offsetHeight:【"+bh);
+		   document.write("<br>");
+		    
+//		   var bdw = document.body.offsetWidth || document.documentElement.offsetWidth;
+		   var bdh = document.body.offsetHeight || document.documentElement.offsetHeight;
+		   document.write("<br> bdh_合，body在前:【"+bdh);
+		   document.write("<br>");
+		    
+//		   var dbw = document.documentElement.offsetWidth || document.body.offsetWidth;
+		   var dbw = document.documentElement.offsetHeight || document.body.offsetHeight;
+		   document.write("<br> dbw_合，documentElement在前:【"+dbw);
+		    
+		</script>
+	</body>
+</html>

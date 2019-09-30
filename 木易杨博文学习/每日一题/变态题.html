@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var e = 20;
+    var e = function e() {
+      e = 12;
+      console.log(e);
+    }
+    console.log(e);
+    e();
+
+    var cc = 20;
+    var cc = function dd() {
+      console.log(cc);
+      cc = 12;
+      console.log(cc);
+    }
+    cc();
+
+    // debugger;
+    var b = 10;//这里不加分号，会被当参数传进去，然后报错Uncaught TypeError: 10 is not a function。好像以小括号开始的自调用函数前面必须有分号隔绝
+    (function b() {
+      // 'use strict'
+      b = 20;
+      console.log(cc,'立即执行函数内部能拿到全局变量啊')
+      cc = '我就改你';
+      console.log(cc)
+      // debugger;
+      console.log(b)
+    })();
+    
+    console.log(window)
+    // Uncaught TypeError: aa is not a function
+    var aa = 20;
+    function aa() {
+      aa = 12;
+      console.log('-',aa);
+    }
+    console.log('--',aa)
+    aa();
+  </script>
+</body>
+
+</html>

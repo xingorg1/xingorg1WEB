@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计时器制作</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<script>
+		var oNowTime = new Date();
+		var oBody = document.body;
+		var oBirthDate = new Date("1993,11,28");
+		var oBirthTwo = new Date("2014,07,11");
+		var oToLove = new Date("2014,02,02");
+		function dateFun(str){
+			var oFlagDate = new Date(str);
+			var flag = oNowTime.valueOf() - oFlagDate.valueOf();
+			return parseInt(flag / 1000 / 60 / 60 / 24);
+		}
+		function creteEle(txt,num){
+			var oP = document.createElement("p");
+			oP.innerHTML = txt+"已经<b>"+(num+1)+"</b>天";
+			oBody.appendChild(oP);
+		}
+		creteEle("出生到现在",dateFun("1993,11,28"));
+		creteEle("重生到现在",dateFun("2014,07,11"));
+		creteEle("fall in love",dateFun("2014,02,02"));
+		creteEle("入职易车",dateFun("2017,02,16"));
+		creteEle("入职易湃",dateFun("2017,06,26"));
+		creteEle("转正",dateFun("2017,10,12"));
+	</script>
+</body>
+</html>

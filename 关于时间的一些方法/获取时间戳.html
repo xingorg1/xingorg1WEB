@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取事件戳</title>
+</head>
+<body>
+	<h1>控制台</h1>
+	<script>
+		var date = new Date();
+    var timestamp = date.getTime();
+    console.log(timestamp)
+	</script>
+  <script>
+    function formatDate(date,fmt){
+      var o = {
+          'M+' : date.getMonth() +1,                    //月份
+      　　'd+' : date.getDate(),                        //日
+     　　 'h+' : date.getHours(),                       //小时
+      　　'm+' : date.getMinutes(),                     //分  
+      　　's+' : date.getSeconds(),                     //秒
+      　　"q+":  Math.floor((date.getMonth() + 3) / 3), //季度   
+          "S":   date.getMilliseconds()                 //毫秒   
+      };
+      if(/(y+)/.test(fmt)){//年份
+     　　 fmt = fmt.replace(RegExp.$1,(date.getFullYear()+'').substr(4-RegExp.$1.length));
+      }
+      for(var k in o){
+       if (new RegExp("(" + k + ")").test(fmt)){
+          var str = o[k] + '';
+          fmt = fmt.replace(RegExp.$1,(RegExp.$1.length === 1) ? str:padLeftZero(str));
+      　}
+      }
+      return fmt;
+    };
+    function padLeftZero(str){// 补0
+      return ('00'+str).substr(str.length);
+    }
+    // setInterval(function(){
+      var date2 = new Date();
+      console.log(formatDate(date2,'yyyy/MM/dd hh:mm:ss'));
+    // },1000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    color:'red',
+    title : {
+        text: '某地区蒸发量和降水量',
+        subtext: '纯属虚构'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['蒸发量','降水量']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+        }
+    ],
+    yAxis : [
+        {
+          type: 'value',
+          splitLine: {show: false}//不显示分割线
+        },
+        {
+          type: 'value',
+          splitLine: {show: false}
+        }
+        
+    ],
+    series : [
+        {
+            // label: {
+            //     normal: {
+            //         position: 'top',
+            //         show: true,
+            //         color: '#333'
+            //     }
+            // },
+          name:'蒸发量',
+          type:'line',
+          symbolSize: 0,
+          markLine : {
+            data : [
+              {type : 'average', name : '平均值'}
+            ],
+            lineStyle: {
+              type: 'solid',
+              color:'#89DFA9'
+            }
+          },
+          data:[12.6,12.6,12.6,12.6,12.6,12.6,12.6,12.6,12.6,12.6,12.6,12.6,12.6,12.6],
+          smooth: true,
+          yAxisIndex: 1,
+        },
+        {
+            name:'降水量',
+            type:'line',
+            data:[2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6],
+            yAxisIndex: 1,
+            symbolSize: 0,
+            lineStyle: {
+                width: 0.5
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name : '平均值'}
+                ],
+                lineStyle: {
+                    type: 'solid',
+                    color:'red'
+                },
+                
+            }
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

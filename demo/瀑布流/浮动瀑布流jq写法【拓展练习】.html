@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>浮动瀑布流创新之JQ方法处理</title>
+		<meta name="Description" content="pblOfFloat-jq.js"/>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			#jqpbl{width: 960px;margin: 0 auto;*zoom: 1;}
+			#jqpbl:after{content: "";clear: both;display: block;}
+			#jqpbl ul{width: 230px;float: left;margin-right: 10px;}
+			#jqpbl li{width: 230px; margin-top: 10px; -webkit-box-shadow: 1px 3px 3px 3px #DDDDDD;box-shadow: 1px 3px 3px 3px #ddd;}
+			#jqpbl img{width: 100%;vertical-align: bottom;}
+		</style>
+	</head>
+	<body>
+		<div id="jqpbl">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+	</body>
+</html>
+<script src="../js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="pblOfFloat-jq.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		pblOfFloatJQ("#jqpbl ul")
+	});
+</script>

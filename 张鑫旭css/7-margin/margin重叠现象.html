@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>哪些元素什么情况会产生margin重叠</title>
+</head>
+
+<body style="padding-bottom: 100px;">
+  <h1>margin重叠现象观察</h1>
+  <div class="bfc">
+    <h3>
+      相邻普通块级元素的上下重叠
+    </h3>
+    <div class="box1 box">
+      <div class="a">test</div>
+      <div class="a">测试</div>
+      <div class="a">test</div>
+      <div class="a"></div>
+      <div class="a">test</div>
+    </div>
+  </div>
+  <div class="bfc">
+    <h3>
+      空的block元素和自己发生重叠
+    </h3>
+    <div class="kong"> </div>
+    <div class="kong"> </div>
+  </div>
+  <div class="bfc">
+    <h3>
+      内联元素没有 上下margin，且左右margin不发生重叠
+    </h3>
+    <div class="box1 box0">
+      <span class="a">1</span>
+      <span class="a">1</span>
+      <span class="a">1</span>
+      <span class="a"></span>
+      <span class="a">1</span>
+    </div>
+  </div>
+  <div class="bfc">
+    <h3>
+      浮动块状元素，抵消margin重叠
+    </h3>
+    <div class="box1 box2">
+      <div class="a">2</div>
+      <div class="a">2</div>
+      <div class="a">2</div>
+      <div class="a">2</div>
+      <div class="a">2</div>
+    </div>
+  </div>
+  <div class="bfc">
+    <h3>
+      普通块状元素和内联元素相邻不存在重叠
+    </h3>
+    <div class="box1 box3">
+      <div class="a">div</div>
+      <span class="a">span</span>
+      <div class="a">div</div>
+      <span class="a">span</span>
+      <div class="a">div</div>
+    </div>
+  </div>
+  <div class="bfc">
+    <h3>
+      子元素与父亲的margin-top或margin-bottom重叠
+    </h3>
+    <div class="box1 box">
+      <div class="a">第一个元素的margin-top和父元素的margin-top重叠</div>
+      <div class="a">解决方法：</div>
+      <div class="a" style="text-indent: 2em;">1.父元素形成BFC块级格式化上下文，如设置overflow:hidden；或者position：position</div>
+      <div class="a" style="text-indent: 2em;">2.父元素设置border</div>
+      <div class="a" style="text-indent: 2em;">3.父元素设置padding值</div>
+      <div class="a" style="text-indent: 2em;">4.父元素和第一/最后一个子元素之间用inline元素隔开</div>
+      <span>232</span>
+      <div class="a">最后一个元素的margin-bottom和父元素的margin-bottom重叠</div>
+    </div>
+  </div>
+  <div class="bfc">
+    <h3>
+      margin负值重叠计算规则
+    </h3>
+    <div class="box1 box4">
+      <div class="b">b</div>
+      <div class="a">a</div>
+    </div>
+  </div>
+  <style>
+    .bfc {
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    .kong {
+      margin: 40px;
+      background: #d69a9a;
+      border: 1px solid #d69a9a;
+    }
+
+    .box {
+      margin: 20px 0;
+    }
+
+    .box1 {
+      background: #f1e1e1;
+    }
+
+    .box1.box {
+      /* padding: 20px; */
+      /* border: 1px solid red; */
+      /* overflow: hidden; */
+      /* position: absolute; */
+    }
+
+    .box1 .a {
+      border: 1px solid #ab3030;
+      background: #d69a9a;
+      margin: 20px;
+    }
+
+    .box0 span {
+      padding: 20px;
+    }
+
+    .box2 {
+      max-width: 600px;
+      border: 1px solid red;
+      /* 能形成BFC但是不能清楚浮动 */
+    }
+
+    .box2 .a {
+      float: left;
+      width: 200px;
+    }
+
+    .box4 {
+      margin: 20px 0;
+    }
+
+    .box4 .b {
+      background: #d69a9a;
+      margin: -10px;
+    }
+  </style>
+</body>
+
+</html>

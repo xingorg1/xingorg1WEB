@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<!--
+    	作者：702004176@qq.com
+    	时间：2017-04-07
+    	描述：在线运行代码小工具
+    -->
+	<head>
+		<meta charset="UTF-8">
+		<title>在线运行代码</title>
+		<meta name="author" content="gjf_xing.org1^"/>
+		<meta name="Description" content="在线运行代码的小工具"/>
+		<meta name="Keywords" content="小工具，代码运行，运行代码，open方法，新页面，在线调试"/>
+	</head>
+	<body>
+		<textarea name="" rows="13" cols="80" id="txt"></textarea>
+		<br />
+		<input type="button" name="" id="btn" value="运行代码" />
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTxt = document.getElementById("txt"),
+			    oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+				var w = window.open("about:blank","_blank");
+				w.document.write(oTxt.value);
+			};
+		};
+	</script>
+</html>

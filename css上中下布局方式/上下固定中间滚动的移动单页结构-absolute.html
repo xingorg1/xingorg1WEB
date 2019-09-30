@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <header>头部</header>
+  <section>
+    <ul>
+      <li>遇到这种布局，通常想到用fixed固定顶部和尾部，然后中间的有个和顶部尾部同值的上下padding，好让内容撑开与上下的距离。但是这种布局会有bug。</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项我是列表项我是列表项我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+      <li>我是列表项</li>
+    </ul>
+  </section>
+  <footer>底部</footer>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    body,ul {
+      margin: 0;
+    }
+    header,
+    footer {
+      position: absolute;
+      line-height: 48px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      color: aquamarine;
+      text-align: center;
+      background: #333;
+    }
+    header{
+      top: 0;
+    }
+    footer {
+      bottom: 0;
+    }
+    section{
+      padding: 20px;
+      position: absolute;
+      top: 48px;
+      right: 0;
+      bottom: 48px;
+      left: 0;
+      overflow: auto;
+    }
+    li{
+      padding: 10px 0;
+    }
+  </style>
+</body>
+</html>

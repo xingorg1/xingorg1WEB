@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.hide {
+				display: none;
+			}
+			
+			li {
+				list-style: none;
+				display: inline-block;
+				background-color: #90EE90;
+			}
+			
+			.tapActiveLi {
+				background-color: #FF7F50;
+			}
+			
+			div {
+				border: 1px solid #f00;
+			}
+			
+			.aTapWrap {
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aTapWrap aboutA_P" id="aTapWrap">
+			<ul class="aTapHeadWrap">
+				<li class="tapActiveLi">关于我们</li>
+				<li>
+					联系方式</li>
+				<li>
+					意见建议</li>
+			</ul>
+			<div class="aTapWrapS">
+				<div>
+					<p>文字1</p>
+				</div>
+				<div class="hide">
+					<p>文字2</p>
+				</div>
+				<div class="hide">
+					<p>文字3</p>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery-1.8.3.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				function tabs(tabMenu, on, tabContent) {
+					$(tabContent).each(function() {
+						$(this).children().eq(0).show();
+					});
+					$(tabMenu).each(function() {
+						$(this).children().eq(0).addClass(on);
+					});
+					$(tabMenu).children().hover(function() {
+						$(this).addClass(on).siblings().removeClass(on);
+						var index = $(tabMenu).children().index(this);
+						$(tabContent).children().eq(index).show().siblings().hide();
+					});
+				}
+				tabs(".aTapHeadWrap", "tapActiveLi", ".aTapWrapS");
+			})
+		</script>
+	</body>
+
+</html>

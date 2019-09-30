@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>模拟圆角效果</title>
+</head>
+<body>
+   <h3>模拟圆角效果：</h3>
+  <div class="top"></div>
+  <div class="cont">中间部分</div>
+  <div class="bottom"></div>
+  <h3>分解图：</h3>
+  <div class="top top1">border-bottom</div>
+  <div class="cont cont1">中间部分</div>
+  <div class="bottom bottom1">border-top</div>
+  <style>
+    div{
+      width: 200px;
+      border: 3px solid transparent;
+    }
+    .top{
+      border-bottom-color: red;
+    }
+    .cont{
+      height: 56px;
+      background: red;
+      border-color: red;
+    }
+    .bottom{
+      border-top-color: red;
+    }
+    .cont1{
+      border-width: 30px;
+    }
+    .top1{
+      border-width: 30px;
+      border-bottom-color: rgb(83, 0, 0);
+    }
+    .bottom1{
+      border-width: 30px;
+      border-top-color: rgb(83, 0, 0);
+    }
+  </style>
+</body>
+</html>

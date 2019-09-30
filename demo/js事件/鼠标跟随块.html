@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="author" content="郭菊锋/702004176@qq.com"/>
+		<style type="text/css">
+			.div {
+				display: none;
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				margin: -15px 0 0 -15px;
+				background: rgba(37, 0, 255, 0.3);
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div" class="div">
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	window.onload = function() {
+		var oDiv = document.getElementById("div");
+		window.onmousemove = function(ev) {
+			var ev = ev || window.event;
+			var ofLeft = document.documentElement.offsetLeft || document.body.offsetLeft;
+			var ofTop = document.documentElement.offsetTop || document.body.offsetTop;
+			var oLeft = ev.clientX + ofLeft;
+			var oTop = ev.clientY + ofTop;
+			oDiv.style.display = "block";
+			oDiv.style.left = oLeft + "px";
+			oDiv.style.top = oTop +　"px";
+		}
+
+	}
+</script>

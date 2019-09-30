@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta name="wap-font-scale" content="no"/>
+    <meta name="applicable-device" content="mobile"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- <meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>测试iphonex适配</title>
+    <script type="text/javascript">(function(){var b=document.createElement("meta");b.setAttribute("name","viewport");var c=window.devicePixelRatio,a=c?1/c:1;window.screen.availWidth==document.documentElement.offsetWidth&&(c=a=1);document.documentElement.setAttribute("data-dpr",c||1);window.navigator.userAgent.match(/android/i)?b.setAttribute("content","width=device-width, initial-scale="+a+", maximum-scale="+a+", minimum-scale="+a+", user-scalable=no"):b.setAttribute("content","initial-scale="+a+", maximum-scale="+a+", minimum-scale="+a+", user-scalable=no");document.head.appendChild(b)})();</script>
+    <script type="text/javascript">var dpr=document.documentElement.getAttribute("data-dpr")||1,width=document.documentElement.offsetWidth,fontSize=100/750*width;document.querySelector("html").style.fontSize=fontSize+"px";window.addEventListener("resize",function(){var a=100/750*document.querySelector("html").offsetWidth;document.querySelector("html").style.fontSize=a+"px"});</script>
+
+    <style>
+		    *{
+		    	margin: 0;
+		    	padding: 0;
+		    }
+		    .index-bg1{
+				  height: 2.94rem;
+				  /*height: 300px;*/
+				  background: url('index_bg_01.png') no-repeat;
+				  /*background-size: auto 2.94rem;*/
+				}
+				.index-bg2{
+				  height: 2.8rem;
+				  background: url('index_bg_02.png') no-repeat;
+				  /*background-size: cover;*/
+				}
+				.index-bg3{
+				  height: 3.5rem;
+				  background: url('index_bg_03.png') no-repeat;
+				  /*background-size: auto 3.5rem;*/
+				}
+				.index-bg4{
+				  height: 3.4rem;
+				  background: url('index_bg_04.png') no-repeat;
+				  /*background-size: auto 3.4rem;*/
+				}
+				.index-bg5{
+				  height: 3.49rem;
+				  background: url('index_bg_05.png') no-repeat;
+				  /*background-size: auto 3.49rem;*/
+				}
+				.index-bg6{
+				  height: 4.09rem;
+		      background: url('index_bg_06.png') no-repeat;
+		      /*background-size: auto 4.09rem;*/
+				}
+				.index-bg7{
+				  height: 3.51rem;
+		      background: url('index_bg_07.png') no-repeat;
+		      /*background-size: auto 3.51rem;*/
+				}
+				.index-bg8{
+				  height: 4.38rem;
+		      background: url('index_bg_08.png') no-repeat;
+		      /*background-size: auto 4.38rem;*/
+				}
+		    .index-bg9{
+		      position: relative;
+		      height: 2.83rem;
+		      background: url('index_bg_09.png') no-repeat;
+		      /*background-size: auto 2.83rem;*/
+		    }
+		    .index-bg{
+		    	background-size: auto 100%;
+		    	/*background-size: cover;*/
+		    }
+		    #boximg{
+					/*display: inline-block;*/
+		    }
+		    #box1 img{
+		    	display: block;
+		    	    width: 100%;
+		    }
+		    @media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
+					 #box1{
+					    background: #333 linear-gradient(to bottom right, #311c74, #babbfd 100%);
+					    background: #333 -webkit-linear-gradient(top left, #311c74, #babbfd 100%);
+					    /*background-size: 100% 100%;*/
+					 }
+				}
+    </style>
+  </head>
+  <body>
+  <!-- 	<div id="boximg">
+  		<img src="index_bg_06.png" alt="">
+  	</div> -->
+    <div id="box">
+    	<div class="index-bg index-bg1" id="box1">
+    		<img src="index_bg_01.png" alt="">
+    	</div>
+    	<div class="index-bg index-bg2"></div>
+    	<div class="index-bg index-bg3"></div>
+    	<div class="index-bg index-bg4"></div>
+    	<div class="index-bg index-bg5"></div>
+    	<div class="index-bg index-bg6"></div>
+    	<div class="index-bg index-bg7"></div>
+    	<div class="index-bg index-bg8"></div>
+    	<div class="index-bg index-bg9"></div>
+    </div>
+    <div>
+    	<form action="" class="question">
+	      <div>
+	        <h3 class="qus-title">
+	        	{{state.ExamInfo.}}
+	        </h3>
+	        <ul class="qus-list">
+	          <li>{{item.Code}}、{{item.Description}}</li>
+	          <li>{{item.Code}}、{{item.Description}}</li>
+	          <li>{{item.Code}}、{{item.Description}}</li>
+	          <li>{{item.Code}}、{{item.Description}}</li>
+	        </ul>
+	      </div>
+    			<div class="public-btn">下一题</div>
+    	</form>
+    </div>
+  </body>
+  <script>
+  	/*	
+	  s = " 网页可见区域宽：" document.body.clientWidth; 
+		s = " 网页可见区域高：" document.body.clientHeight; 
+		s = " 网页可见区域宽：" document.body.offsetWidth " (包括边线和滚动条的宽)"; 
+		s = " 网页可见区域高：" document.body.offsetHeight " (包括边线的宽)"; 
+		s = " 网页正文全文宽：" document.body.scrollWidth; 
+		s = " 网页正文全文高：" document.body.scrollHeight; 
+		s = " 网页被卷去的高(ff)：" document.body.scrollTop; 
+		s = " 网页被卷去的高(ie)：" document.documentElement.scrollTop; 
+		s = " 网页被卷去的左：" document.body.scrollLeft; 
+		s = " 网页正文部分上：" window.screenTop; 
+		s = " 网页正文部分左：" window.screenLeft; 
+		s = " 屏幕分辨率的高：" window.screen.height; 
+		s = " 屏幕分辨率的宽：" window.screen.width; 
+		s = " 屏幕可用工作区高度：" window.screen.availHeight; 
+		s = " 屏幕可用工作区宽度：" window.screen.availWidth;
+
+		s = " 你的屏幕设置是 " window.screen.colorDepth " 位彩色"; 
+		s = " 你的屏幕设置 " window.screen.deviceXDPI " 像素/英寸"; 
+		*/
+  	//alert(" html-"+document.documentElement.innerWidth+"px、"+document.documentElement.innerHidth+"px");//undefined
+  	//alert(" body-"+document.body.clientWidth+"px、"+document.body.clientHidth+"px");//1125W
+  	// alert("boximg-"+document.getElementById('boximg').clientWidth+"px、"+ document.getElementById('boximg').clientHidth)
+  	alert(" 正文全文高-"+document.body.scrollWidth+"px、"+ document.body.scrollHeight)//1125W+3094H
+  	alert("box1-"+document.getElementById('box1').clientWidth+"px、"+ document.getElementById('box1').clientHidth)
+  	// alert(window.screen.deviceXDPI)
+  	
+  	
+  </script>
+  <style>
+  html,body,.gradient{
+	  background: linear-gradient(to bottom right, #311c74, #babbfd 100%);
+	  background: -webkit-linear-gradient(top left, #311c74, #babbfd 100%);
+	  // background: #babbfd url(./assets/images/bg.png) no-repeat;
+	  background-size: 100% 100%;
+	  font-family: "微软雅黑"
+	}
+	li{
+		list-style: none;
+	}
+  	.question{
+	    position: relative;
+	    padding: .77rem .3rem .4rem;
+	    margin: 0 .3rem 1.78rem;
+	    /*@include boxStyle();*/
+	    /*@mixin boxStyle($border:.2rem,$radiu:.2rem,$shadow:rgba(75,44,139,0.25)){*/
+			-webkit-box-shadow: 0 0 .2rem 0 rgba(75,44,139,0.25);
+			box-shadow: 0 0 .2rem 0 rgba(75,44,139,0.25);
+			-webkit-border-radius: .2rem;
+			border-radius: .2rem;
+			background: #fff;
+		/*}*/
+	  }
+	    .qus-title{
+	      margin-bottom: .77rem;
+	      font-size: .38rem;
+	      color: #333;
+	    }
+	  .qus-box{
+	    display: inline-block;
+	    width: .3rem;
+	    height: .3rem;
+	    margin-right: .2rem;
+	  }
+	  .qus-list li{
+	    /*width: 6.3rem;*/
+	    margin: .2rem auto 0;
+	    padding: .3rem .3rem .34rem;
+	    color: #333;
+	    font-size: .34rem;
+	    text-align: center;
+	    -webkit-box-shadow: 0 0 .12rem 0 rgba(49,32,114,0.16);
+			box-shadow: 0 0 .12rem 0 rgba(49,32,114,0.16);
+			-webkit-border-radius: 1rem;
+			border-radius: 1rem;
+			background: #fff;
+	    /*@include boxStyle(1rem,.12rem,rgba(49,32,114,0.16));*/
+	  }
+	   .qus-list li.li-focus{
+	      background: red;
+	      color: #FFF;
+	    }
+	    .public-btn{
+		  height: 1.12rem;
+		  padding: .32rem;
+		  margin: 0.2rem .3rem 0;
+		  text-align: center;
+		  font-size: .34rem;
+		  color: #333;
+		  background: #babbfd;
+		  -webkit-box-shadow: 0 0 .12rem 0 rgba(77,144,242,0.16);
+		  box-shadow: 0 0 .12rem 0 rgba(77,144,242,0.16);
+		  -webkit-border-radius: 1rem;
+		  border-radius: 1rem;
+		}
+  </style>
+</html>

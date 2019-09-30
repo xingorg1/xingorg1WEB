@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>拖拽点的位置</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .demo {
+      width: 300px;
+      height: 300px;
+      background: #eee;
+      margin: 10px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .demo1 {
+      background: #eee;
+    }
+
+    .demo2 {
+      background: #aee;
+      left: 400px;
+    }
+
+    .demo3 {
+      background: #efe;
+      left: 800px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>1、左上角跟随：</h1>
+  <p>原理：【简单粗暴】直接让元素的left和top值等于鼠标的x、y</p>
+  <h1>2、中心点跟随：</h1>
+  <p>原理：鼠标点减去元素宽度的一半。原因是，本来应该是元素的左上角等于鼠标点的，但是如果把左上角的点移动到元素中间的话，需要元素向左向上减去宽度一半的距离。所以也就是鼠标点减去宽/高度的一半</p>
+  <p>公式： style.left = e.pageX - div.clientWidth / 2 + 'px'</p>
+  <h1>3、鼠标落下点跟随</h1>
+  <p>原理：基于第2条(配合说明图)，这次不需要计算出中心点，而是计算出鼠标在元素身上的点（绿色箭头顶点），到元素左上角顶点的距离。用代码就是鼠标的点e.pageX（蓝色条的宽高）等减去元素距离文档的距离（黑色边线的距离），剩下的值，就是元素最左边到鼠标的距离或元素最顶边到鼠标的距离（橙色线条的距离），也就是鼠标在元素身上的距离。</p>
+  <p>但是上边求出橙色线条的距离后，不能直接用来赋给元素，元素的距离应该是鼠标点（蓝色线的宽高）再减去刚才求出来的鼠标在元素身上的距离（也就是橙色线）的距离，</p>
+  <p>公式：e.clientX - (e.clientX - div.offsetLeft) + 'px'</p>
+  <div class="demo1 demo" id="demo1">1、左上角跟随</div>
+  <div class="demo2 demo" id="demo2">2、中心点跟随</div>
+  <div class="demo3 demo" id="demo3">3、鼠标落下点跟随</div>
+  <script>
+    // 左上角跟随代码
+    demo1.onmousedown = function (e) {
+      var self = this,
+        mL = e.pageX,
+        mT = e.pageY;
+      this.style.left = mL + 'px';
+      this.style.top = mT + 'px';
+      document.onmousemove = function (e) {
+        var mL = e.pageX,
+          mT = e.pageY;
+        console.log(self, e, mL, mT);
+        self.style.left = mL + 'px';
+        self.style.top = mT + 'px';
+      }
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      }
+    }
+
+    // 中心点跟随代码
+    demo2.onmousedown = function (e) {
+      var self = this,
+        mL = e.pageX,
+        mT = e.pageY,
+        oW = this.clientWidth / 2;
+      oH = this.clientHeight / 2;
+      this.style.left = mL - oW + 'px';
+      this.style.top = mT - oH + 'px';
+      document.onmousemove = function (e) {
+        var mL = e.pageX,
+          mT = e.pageY;
+        console.log(self, e, mL, mT, oW);
+        self.style.left = mL - oW + 'px';
+        self.style.top = mT - oH + 'px';
+      }
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      }
+    }
+
+    // 鼠标落下点跟随
+    demo3.onmousedown = function (e) {
+      var self = this,
+        mL = e.clientX, //pageX就会每次差10像素，换了也一样
+        mT = e.clientY,
+        oL = this.offsetLeft, //元素距离文档左侧的距离;
+        oT = this.offsetTop,
+        mouseInObjL = mL - oL, //元素距离文档顶部的距离;
+        mouseInObjT = mT - oT; //元素距离文档顶部的距离;
+      // this.style.left = mL - mouseInObjL + 'px';
+      // this.style.top = mT - mouseInObjT + 'px';//否则会卡顿一下
+      document.onmousemove = function (e) {
+        var mL = e.clientX,
+          mT = e.clientY;
+        // oL = self.offsetLeft, //move的时候就不用再求了
+        // oT = self.offsetTop,
+        // mouseInObjL = mL - oL, 
+        // mouseInObjT = mT - oT;
+        self.style.left = mL - mouseInObjL + 'px';
+        self.style.top = mT - mouseInObjT + 'px';
+      }
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      }
+    }
+
+    demo3.onmousedown = function (e) {
+      var self = this,
+        mL = e.clientX,
+        mT = e.clientY,
+        oL = this.offsetLeft,
+        oT = this.offsetTop,
+        mouseInObjL = mL - oL,
+        mouseInObjT = mT - oT;
+      document.onmousemove = function (e) {
+        var mL = e.clientX,
+          mT = e.clientY;
+        self.style.left = mL - mouseInObjL + 'px';
+        self.style.top = mT - mouseInObjT + 'px';
+      }
+      document.onmouseup = function (e) {
+        console.log(e.clientX, e.clientY);
+        // 添加功能，每次鼠标松开记录当前鼠标点（确切记录方块左上角顶点），存入cookie，下次打开还能继续回到上次拖动到的位置
+        cookieHandle()
+          .setCookie('clientx', demo3.style.left, 100000)
+          .setCookie('clienty', demo3.style.top, 100000)
+        document.onmousemove = null;
+        document.onmouseup = null;
+      }
+    }
+    var lastx = null,
+      lasty = null;
+    cookieHandle()
+      .getCookie('clientx', function (data) {
+        lastx = data;
+      })
+      .getCookie('clienty', function (data) {
+        lasty = data;
+        console.log(lasty, lastx)
+        if (lasty !== null && lastx !== null) {
+          console.log(12)
+          demo3.style.left = lastx;
+          demo3.style.top = lasty;
+        }
+      })
+
+    function cookieHandle() {
+      return {
+        setCookie: function (name, value, time) {
+          // 增、改
+          document.cookie = name + '=' + value + ';max-age=' + time;
+          return this;
+        },
+        delCookie: function (name) {
+          // 删
+          return this.setCookie(name, '', -1);
+        },
+        getCookie: function (name, callback) {
+          // 格式化cookie 字符串->对象
+          var allCookieArr = document.cookie.split('; '),
+            len = allCookieArr.length;
+          for (let i = 0; i < len; i++) { //for循环和forEach的区别是，for循环找到就停止循环，forEach就必须全部循环完
+            var itemArr = allCookieArr[i].split('=');
+            if (itemArr[0] == name) {
+              callback(itemArr[1]);
+              return this;
+            }
+          }
+          callback(undefined);
+          return this;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

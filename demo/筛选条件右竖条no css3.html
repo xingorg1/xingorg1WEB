@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content "郭菊锋,702004176@qq.com"/>
+		<title>list</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			a:hover {
+				cursor: pointer;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			.clearfix:after {
+				visibility: hidden;
+				display: block;
+				font-size: 0;
+				content: "";
+				clear: both;
+				height: 0;
+			}
+			
+			.clearfix {
+				*zoom: 1;
+			}
+			
+			.menu {
+				width: 1100px;
+				margin: 130px auto;
+				padding: 10px;
+				background: #DFE9F6;
+				font-size: 16px;
+				border-bottom: 1px dashed #DB7093;
+			}
+			
+			.menu dt {
+				float: left;
+				color: #999;
+				line-height: 1.1;
+			}
+			
+			.menu dd {
+				float: left;
+				overflow: hidden;
+				line-height: 1.1;
+			}
+			
+			.menu dd a {
+				padding: 0 12px;
+				color: #333;
+				border-left: 2px solid #DB7093;
+			}
+			
+			.menu dd.menu_active a,
+			.menu dd a:hover {
+				color: #DB7093
+			}
+		</style>
+	</head>
+
+	<body>
+		<dl class="menu clearfix">
+			<dt>品牌：</dt>
+			<dd class="menu_active">
+				<a href="#" title="" style="margin-left: -2px;">全部</a>
+			</dd>
+			<dd>
+				<a href="#" title="">第一</a>
+			</dd>
+			<dd>
+				<a href="#" title="">第二</a>
+			</dd>
+			<dd>
+				<a href="#" title="">第三</a>
+			</dd>
+			<dd>
+				<a href="#" title="">第四</a>
+			</dd>
+		</dl>
+	</body>
+</html>

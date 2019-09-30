@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间联动选择控件制作整理</title>
+	<script src="../js/jquery-1.10.1.min.js"></script>
+	<!-- <script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+	<link rel="stylesheet" href="My97DatePicker/skin/WdatePicker.css"> -->
+	<script src="DatePicker/WdatePicker.js"></script>
+	<!-- <script src="DatePicker/DatePicker/skin/WdatePicker.css"></script> -->
+</head>
+<body>
+<span class="input-calendar input-calendar-start-date">
+  <input id="txtBeginTimeID" name="LastLeadCreateTimeBegin" onfocus="var txtEndContactTime=$dp.$('txtEndTimeID');
+         var minTime = '2017/2/3 0:00:00';
+              WdatePicker({isShowClear:false,
+          isShowToday: false,
+          readOnly:true, onpicked: function(){ txtEndContactTime.focus(); },maxDate: '#F{$dp.$D(\'txtEndTimeID\')}',minDate: minTime.replace(new RegExp('-', 'gm'), '/')}); " class="form-control Wdate" type="text" value=""> 
+</span>
+到
+<span class="input-calendar input-calendar-end-date">
+    <input id="txtEndTimeID" name="LastLeadCreateTimeEnd"  class="form-control Wdate" type="text" value="" onfocus="WdatePicker({isShowClear:false,isShowToday: false,readOnly:true,onpicked:function(dp){pickedFunc(dp)},minDate:'#F{$dp.$D(\'txtBeginTimeID\')}'})">
+    <input type="text" id="newValue" value='1' > 
+</span>
+<!-- onpicked:function(dp){console.log('你选择的日期是：'+dp.cal.getNewDateStr() )}, -->
+<input type="text" id="testInput" value="2017">
+<input type="text" id="username" value="2017">
+<!-- 日历控件的选中事件是：onpicked -->
+<select name="" id="#selectTime"></select>
+<div id="thrid" data-id="0">我是第三方元素</div>
+<div id="result" data-id="0">我是第三方元素</div>
+<script type="text/javascript">
+// 通过自定义事件，在改变日期后让其他按钮的属性改变，再在入口文件监听某元素属性改变后执行另一个事件
+	// document.getElementById('txtEndTimeID').onfocus = function(){
+ //    WdatePicker({
+ //      isShowClear:false,
+ //      isShowToday: false,
+ //      readOnly:true,
+ //      onpicked:function(dp){pickedFunc(dp)},
+ //      minDate: "#F{$dp.$D('txtBeginTimeID')}",
+ //      maxDate:'%y-%M-{%d-1}'
+ //    });
+ //  };
+  // 点击后执行此事件
+  function pickedFunc(dp){
+  	var newValue = dp.cal.getNewDateStr();
+  	console.log(newValue)
+  	console.log($('#newValue').val(newValue))
+  }
+	var testinput = document.getElementById('newValue');      
+	if('oninput' in testinput){  
+	    testinput.addEventListener("input",fn,false);  
+	}else{  
+	    testinput.onpropertychange = fn;  
+	}
+	function fn(){
+		console.log('gjf')
+	}
+	$(function(){ 
+
+    $('#username').bind('input propertychange', function() {  
+
+    $('#result').html($(this).val().length + ' characters');  
+
+  });  
+
+})  
+  // 此事件判定第三方属性值的变化，如果变了说明时间被切换了
+  function thridLithener(){
+  	console.log($('#thrid').attr('data-id'));
+  	if($('#thrid').attr('data-id') == 1){
+  		alert('执行事件');
+			$('#thrid').attr('data-id','0');
+			// thridLithener();
+  	}else{
+  		// thridLithener();
+			return false;
+  	}
+  }
+  // thridLithener();
+  // 此事件负责一直查看是否属性值变化了
+  // setInterval(function(){
+  // 	thridLithener();
+  // 	console.log('======')
+  // },500)
+
+  // 在body中监听文本框被点击/iframe被点击等事件-失败
+
+	$('body').on('click','iframe',function(){
+		console.log('hhh')
+	})
+
+
+	// oninput等其他方法代替onchange事件-失败
+	var testinput = document.getElementById('txtEndTimeID');      
+	if('oninput' in testinput){  
+	    testinput.addEventListener("input",fn,false);  
+	}else{  
+	    testinput.onpropertychange = fn;  
+	}
+	function fn(){
+		console.log('gjf')
+	}
+
+
+	// 	// 渲染左上角日期下拉
+	// var nowTime = new Date();
+	// var nowYear = nowTime.getFullYear();
+	// var nowMonth = nowTime.getMonth()+1;
+	// var nowDay = nowTime.getDate();
+	// // nowDay = 1;
+	// if(nowDay<2){//小于1号渲染23个月
+	//   nowMonth -= 1;
+	//   for(var t = 1; t <= 23; t++){
+	//     nowMonth--;
+	//     if(nowMonth<1){
+	//       nowMonth = 12;
+	//       nowYear--;
+	//     }
+	//     $('#selectTime').append(`<option>${nowYear}年${nowMonth}月</option>`)
+	//   }
+	// }else{
+	//   for(var t = 1; t <= 24; t++){
+	//     nowMonth--;
+	//     if(nowMonth<1){
+	//       nowMonth = 12;
+	//       nowYear--;
+	//     }
+	//     $('#selectTime').append(`<option>${nowYear}年${nowMonth}月</option>`);
+	//   } 
+	// };
+</script>
+</body>
+</html>

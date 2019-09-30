@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星期格式啊</title>
+</head>
+<body>
+	<h1 id='week'></h1>
+	<script>
+		function weekFormat(date){
+      var day = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      return day[date.getDay()];
+    }
+    var date = new Date();
+    document.getElementById('week').innerText = '今天是：'+weekFormat(date);
+    /*var date6 = new Date();
+		var a = '2018-03-12'
+		console.log(new Date(Date.parse(a.replace(/-/g,"/"))))*/
+
+	</script>
+</body>
+</html>

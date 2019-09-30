@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css"> 
+ul,li,div{ margin:0; padding:0;}  
+ul,li{ list-style:none;}  
+.tabWrap{ width:450px; margin:0 auto 50px; overflow:hidden;}  
+.tab{ background:#F93; overflow:hidden; width:450px;}  
+.tab li{ float:left; width:150px; color:#fff; text-align:center; cursor:pointer; height:22px; line-height:22px;}  
+.tab li.on{background:#F60;}  
+.tabContent .p-content{ padding:20px; border:1px solid #ddd; border-top:0 none; }  
+.tabContent .hide{ display:none;}  
+</style> 
+	</head>
+	<body>
+		 <div class="tabWrap"> 
+        <ul class="tab"> 
+            <li>选项卡1</li> 
+            <li>选项卡2</li> 
+            <li>选项卡3</li> 
+        </ul> 
+        <div class="tabContent"> 
+            <div class="p-content">1111</div> 
+            <div class="p-content hide">222</div> 
+            <div class="p-content hide">3333</div> 
+        </div> 
+    </div> 
+      
+    <br/> 
+    <br/> 
+    <div class="tabWrap"> 
+        <ul class="tab1"> 
+            <li>选项卡1</li> 
+            <li>选项卡2</li> 
+            <li>选项卡3</li> 
+        </ul> 
+        <div class="tabContent1"> 
+            <div class="p-content">1111</div> 
+            <div class="p-content hide">222</div> 
+            <div class="p-content hide">3333</div> 
+        </div> 
+    </div> 
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> 
+    <script type="text/javascript">  
+    $(function(){  
+        function tabs(tabMenu,on,tabContent){  
+        $(tabContent).each(function(){  
+            $(this).children().eq(0).show();      
+        });   
+        $(tabMenu).each(function(){  
+            $(this).children().eq(0).addClass(on);    
+        });  
+        $(tabMenu).children().hover(function(){  
+            $(this).addClass(on).siblings().removeClass(on);  
+            var index = $(tabMenu).children().index(this);  
+            $(tabContent).children().eq(index).show().siblings().hide();      
+        });  
+    }  
+    tabs(".tab","on",".tabContent");
+    tabs(".tab1","on",".tabContent1");  
+})  
+          
+    </script> 
+	</body>
+</html>

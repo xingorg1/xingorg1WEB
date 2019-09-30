@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css渐变</title>
+	<style>
+	body{
+		text-align: center;
+	}
+		div{
+			height: 50px;
+			width: 1000px;
+			margin: 20px auto;
+			border-radius: 30px;
+		}
+		.zhang1{
+			height: 80px;
+	    background:red; /* 一些不支持背景渐变的浏览器 */  
+			filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=red,endcolorstr=blue,gradientType=1);
+	    -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=red,endcolorstr=blue,gradientType=1);/*IE8 gradientType=1代表横向渐变，gradientType=0代表纵向淅变。*/	
+	    background:-moz-linear-gradient(top, red, rgba(0, 0, 255, 0.5));  
+	    background:-webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0.5)));  
+	    background:-o-linear-gradient(top, red, rgba(0, 0, 255, 0.5));
+		}
+		.zhang2{
+			filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=red,endcolorstr=blue,gradientType=0);
+	    -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150) progid:DXImageTransform.Microsoft.gradient(startcolorstr=red,endcolorstr=blue,gradientType=0);/*IE8*/	
+	    background:red; /* 一些不支持背景渐变的浏览器 */  
+	    background:-moz-linear-gradient(top, red, rgba(0, 0, 255, 0.5));  
+	    background:-webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0.5)));  
+	    background:-o-linear-gradient(top, red, rgba(0, 0, 255, 0.5)); 
+		}
+		.myself1{
+			background: #779DFF;
+			filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#779DFF,endcolorstr=#1E47B1,gradientType=1);/*IE8*/
+	    -ms-filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#779DFF,endcolorstr=#1E47B1,gradientType=1);/*IE8*/
+			background: -webkit-linear-gradient(left, #779DFF, #1E47B1 100%);
+			background: -moz-linear-gradient(left, #779DFF, #1E47B1 100%);
+			background: -ms-linear-gradient(left, #779DFF, #1E47B1 100%);
+			background: -o-linear-gradient(left, #779DFF, #1E47B1 100%);
+			background: linear-gradient(to right, #779DFF, #1E47B1 100%);
+		}
+		.myself2{
+			background: #4574EF;
+			filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#4574EF,endcolorstr=#0C3399,gradientType=1);/*IE8*/
+	    -ms-filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#4574EF,endcolorstr=#0C3399,gradientType=1);/*IE8*/
+			background: -webkit-linear-gradient(left, #4574EF, #0C3399 100%);
+			background: -moz-linear-gradient(left, #4574EF, #0C3399 100%);
+			background: -ms-linear-gradient(left, #4574EF, #0C3399 100%);
+			background: -o-linear-gradient(left, #4574EF, #0C3399 100%);
+			background: linear-gradient(to right, #4574EF, #0C3399 100%);
+		}
+		.myself3{
+			background: #9E42C7;
+			filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#9E42C7,endcolorstr=#650E8D,gradientType=1);
+	    -ms-filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#9E42C7,endcolorstr=#650E8D,gradientType=1);/*IE8 */	
+			background: -webkit-linear-gradient(left, #9E42C7, #650E8D 100%);
+			background: -moz-linear-gradient(left, #9E42C7, #650E8D 100%);
+			background: -ms-linear-gradient(left, #9E42C7, #650E8D 100%);
+			background: -o-linear-gradient(left, #9E42C7, #650E8D 100%);
+			background: linear-gradient(to right, #9E42C7, #650E8D 100%);
+		}
+		.myself4{
+			background: #D33B76;
+			filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#D33B76,endcolorstr=#8D094D,gradientType=1);
+	    -ms-filter:alpha(opacity=100) progid:DXImageTransform.Microsoft.gradient(startcolorstr=#D33B76,endcolorstr=#8D094D,gradientType=1);/*IE8 */	
+			background: -webkit-linear-gradient(left, #D33B76, #8D094D 100%);
+		  background: -moz-linear-gradient(left, #D33B76, #8D094D 100%);
+			background: -ms-linear-gradient(left, #D33B76, #8D094D 100%);
+			background: -o-linear-gradient(left, #D33B76, #8D094D 100%);
+			background: linear-gradient(to right, #D33B76, #8D094D 100%);
+		}
+		.animation{
+			-webkit-animation:load 1s ease-in infinite;
+			animation:load 1s ease-in infinite;
+			-webkit-animation-delay:2s;
+			animation-delay:2s;
+		}
+		@-webkit-keyframes load{
+        0%{
+            width: 0%;
+        }
+        100%{
+            width:100%;
+        }
+    }
+		@keyframes load{
+        0%{
+            width: 0%;
+        }
+        100%{
+            width:100%;
+        }
+    }
+    .myself5{
+    	background: #eee;
+    	text-align: left;
+    }
+    .myself6{
+    	margin: 0;
+    	background: green;
+    }
+	</style>
+</head>
+<body>
+	<h2><a href="http://www.zhangxinxu.com/wordpress/2010/04/css%E5%AE%9E%E7%8E%B0%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E6%B8%90%E5%8F%98%E8%83%8C%E6%99%AFgradient%E6%95%88%E6%9E%9C/">张鑫旭教程</a></h2>
+	<div class="zhang1"></div>
+	<div class="zhang2"></div>
+	<div class="myself1"></div>
+	<div class="myself2"></div>
+	<div class="myself3"></div>
+	<div class="myself4 animation"></div>
+	<div class="myself5" >
+		<div class="myself6 animation"></div>
+	</div>
+</body>
+</html>

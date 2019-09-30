@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+    function req(){
+          var div = document.getElementById("div1");
+          document.getElementById("li1").innerHTML = (div.offsetTop)+"px";//div1距离屏幕顶部的距离
+          document.getElementById("li2").innerHTML = (div.offsetLeft)+"px";//div1距离屏幕左部的距离
+          document.getElementById("li3").innerHTML = (div.scrollTop)+"px";//div1纵向滚动条滚动的距离
+          document.getElementById("li4").innerHTML = (div.scrollLeft)+"px";//div1横向滚动条滚动的距离
+     }
+</script>
+</head>
+<body style="border:10px solid #ccc;padding:0px 0px;margin:5px 10px">
+    <div style="width:60%;border-right:1px dashed red;float:left;">
+        <div style="float:left;">
+            <div id="div1" style="border:5px red solid;height:300px;width:200px;overflow:auto">
+                <div style="height:500px;width:400px">请调整横竖滚动条后，点击按钮后查看offsetTop、offsetLeft、scrollTop、scrollLeft值。</div>
+            </div>
+            <input type="button" value="点击我!" onclick="req()" style="border: 1px solid purple;height: 25px;"/>
+        </div>
+        
+    </div>
+    <div style="width:30%;float:left;">
+        <ul style="list-style-type: none; line-height:30px;">结果：
+            <li>offsetTop : <span id="li1"></span></li>
+            <li>offsetLeft : <span id="li2"></span></li>
+            <li> scrollTop : <span id="li3"></span></li>
+            <li>scrollLeft : <span id="li4"></span></li>
+        </ul>
+        
+    </div>
+    <div style="clear:both;"></div>    
+</body>
+</html>

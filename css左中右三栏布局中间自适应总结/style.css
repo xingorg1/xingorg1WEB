@@ -1,0 +1,174 @@
+/*
+ * @Author: @Guojufeng 
+ * @Date: 2017-09-05 12:58:07
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2019-01-21 21:28:16
+ */
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-family: "微软雅黑";
+}
+ul li{
+  list-style: none;
+}
+a:link,a:hover{
+  text-decoration: none;
+}
+.clearfix{
+  *zoom:1;
+}
+.clearfix:after{
+  height: 0;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  display: block;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+h3,.tips-info{
+  margin: 8px 0;
+  font-size: 14px;
+}
+li{
+  margin-bottom: 10px
+}
+.tips,ol{
+  background: #fffbfb;
+  padding: 10px 20px;
+}
+.tips-ex{
+  font-size: 12px;
+  color: #99c1c1;
+}
+.block{
+  padding: 10px 20px;
+  border-top: 5px solid #99c1c1;
+  margin: 30px 0 0px;
+  background: #f5f5f5;
+}
+.browser,.container{
+  padding: 20px;
+  
+}
+.container{
+  font-size: 14px;
+}
+.container,.img-box{
+  background: #eee;
+  border: 1px solid #999;
+}
+.box{
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #999;
+}
+.team-box{
+  width: 158px;
+}
+.info-box{
+
+}
+.person-box{
+  width: 78px;
+}
+.person-box .img-box{
+  margin-bottom: 20px;
+}
+.person-box .img-box:last-child{
+  margin: 0;
+}
+.img-box{
+  width: 78px;
+}
+.img-txt{
+  line-height: 20px;
+  margin: 20px 0;
+  text-align: center;
+  padding: 0 5px;
+}
+.team-name{
+  width: 78px;
+  height: 80px;
+  text-align: center;
+}
+/* others */
+.top{
+  margin-top: 150px;
+}
+.bottom{
+  margin-bottom: 150px;
+}
+
+/*不同*/
+/* 1 */
+.f-cont .team-box,.img-box,.team-name{
+  float: left;
+}
+.f-cont .person-box{
+  float: right;
+}
+.f-cont .info-box,.p-cont .info-box{
+  margin: 0 140px 0 220px;
+}
+/*2*/
+.p-cont{
+  position: relative;
+  height: 430px;
+}
+.p-cont .team-box,.p-cont .person-box{
+  position: absolute;
+  top: 20px;
+  z-index: 9;
+}
+.p-cont .team-box{
+  left: 20px;
+}
+.p-cont .person-box{
+  right: 20px;
+}
+.p-cont .info-box{
+  margin: 0 140px 0 220px;
+}
+/*3*/
+.d-cont{
+  display: table;
+}
+.d-cont .cell{
+  display: table-cell;
+  vertical-align: top;
+}
+.d-cont .info-box{
+  margin: 0 20px;
+}
+/*4*/
+.m-l,.m-c,.m-r{
+  float: left;
+}
+.m-l{
+  margin-left: -100%;
+}
+.m-c{
+  margin: 0 140px 0 220px;
+}
+.m-r{
+  margin-left: -120px;
+}
+/*5*/
+.fx-cont{
+  display: -webkit-flex;
+  display: flex;
+}
+.fx-cont .info-box{
+  flex: 1;
+  margin: 0 20px;
+}
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jQuery Validation 插件</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<form id="demoForm">
+    <fieldset>
+        <legend>用户登录</legend>
+        <p id="info"></p>
+
+        <p>
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username"/>
+        </p>
+
+        <p>
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password"/>
+        </p>
+
+        <p>
+            <label for="confirm-password">确认密码</label>
+            <input type="password" id="confirm-password" name="confirm-password"/>
+        </p>
+
+        <p>
+            <input type="submit" value="登录"/>
+        </p>
+    </fieldset>
+</form>
+
+<script src="vendor/jquery-1.10.0.js"></script>
+<script src="vendor/jquery.validate-1.13.1.js"></script>
+<script>
+    var validator1;
+    $(document).ready(function () {
+        validator1 = $("#demoForm").validate({
+            debug: true,
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 10
+                },
+                password: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 16
+                },
+                "confirm-password": {
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                username: {
+                    required: '请输入用户名',
+                    minlength: '用户名不能小于2个字符',
+                    maxlength: '用户名不能超过10个字符',
+                    remote: '用户名不存在'
+                },
+                password: {
+                    required: '请输入密码',
+                    minlength: '密码不能小于2个字符',
+                    maxlength: '密码不能超过16个字符'
+                },
+                "confirm-password": {
+                    equalTo: "两次输入密码不一致"
+                }
+
+            },
+
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass(errorClass).removeClass(validClass);
+                $(element).fadeOut().fadeIn();
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass(errorClass).addClass(validClass);
+            },
+            submitHandler: function (form) {
+                console.log($(form).serialize())
+            }
+        });
+
+        $("#check").click(function () {
+            console.log($("#demoForm").valid() ? "填写正确" : "填写不正确");
+        });
+    });
+</script>
+
+</body>
+</html>

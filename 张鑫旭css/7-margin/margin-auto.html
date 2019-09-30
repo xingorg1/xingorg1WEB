@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  
+  .box{
+    height: 300px;
+    background: #d5deff;
+    border: 1px solid #0d00ff;
+  }
+  .test{
+    width: 200px;
+    height: 200px;
+    background: rgb(76, 105, 255);
+    margin: auto;
+    padding: 10px;
+    color: white;
+  }
+  .img{
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+  }
+  .inlien{
+    background: rgb(240, 195, 195);
+    margin: 0 auto;
+    display: block;
+    width: 200px;
+    padding: 10px;
+  }
+  </style>
+</head>
+<body>
+  <h3>垂直方向的auto不起作用</h3>
+  <div class="box"> 
+    <div class="test">
+      原因：如果我不设置高度，我的高度也不会自动填充整个父元素的高度，就像内联元素不会自动填充父元素的宽度一样，所以auto没有办法计算我的高度剩余空间，也就不会有高度自动填充这一说了。
+    </div>
+  </div>
+  <h3>内联元素设置左右auto也不起作用，只能block化</h3>
+  <img src="https://img2.mukewang.com/user/57a6f85b00013c7202090209-140-140.jpg" alt="" class="img">
+  <span class="inlien">
+    我和图片一样是内联元素,我没有block化之前设置margin：0 auto；不起作用，原因是因为我内联元素的宽度不会自动填充父元素的水平区域，所以我没有剩余的水平空间可供margin分割的。
+  </span>
+</body>
+</html>

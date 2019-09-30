@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX</title>
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<script>
+	$.ajax({
+		url: 'http://link.easypass.cn/activity/wenda5/activity/JoinInActive',
+		type: 'GET',
+		dataType: 'json',
+	})
+	.done(function(res) {
+		console.log(res)
+		console.log("success");
+	})
+	.fail(function(err) {
+		console.log(err)
+		console.log("error");
+	})
+	.always(function(par) {
+		console.log(par)
+		console.log("complete");
+	});
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面试题demo</title>
+</head>
+<body>
+	<script>
+			window.v = 1;
+			window.a = 'window';
+			var obj = {
+			    // v: 2,
+			    a: 'obj',
+			    d: function(q) {
+			        // this.v *= 2;
+			        // v *= 2;
+			        console.log('===='+q+'=======',this.a)
+			        console.log(a)
+			        // console.log(v);
+			        // console.log(this.v);
+			    }
+			};
+			obj.d('1');//obj
+			var func = obj.d;
+			func('2');//window
+      obj.d.call(this,'3');
+      var obj2 = {
+        a: 'obj2',
+        func: function(){
+          obj.d.call(this,'5');
+        }
+      }
+      obj2.func();
+	</script>
+	<script>
+		console.log('+++++++++++++++++++++++++++++')
+		var name = 'window';
+		var Bob = {
+			name: 'bob',
+			aF: function(){
+				console.log(this)
+				alert(this.name);
+			}
+		};
+		var Tom = {
+			name: 'tom',
+			aF: function(){
+				// console.log(this.name);
+				var fun = Bob.aF;
+				fun();
+			}
+		};
+		// Bob.aF();
+		Tom.aF();
+	</script>
+	<script>
+		// 考察立即执行函数和this的指向问题
+		var a = 'window'
+		var obj = {
+			a: 'obj',
+			fn: (function(){
+				console.log(this.a);
+				return function(){
+					console.log(this)
+					var c = this;
+					return c
+				}
+			})()
+		}
+		var b= obj.fn();
+		// var b= obj.fn.call(window);
+		var f = obj.fn;
+		f();
+		console.log(b);
+	</script>
+</body>
+</html>

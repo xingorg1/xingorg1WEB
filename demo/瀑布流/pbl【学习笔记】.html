@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<!--
+		来源：腾讯课堂笔记
+			https://ke.qq.com/webcourse/index.html#course_id=57390&term_id=100106654&taid=250199024918574&vid=e1400l36kd7
+    	记录人：702004176@qq.com
+    	时间：2017-04-13
+    	描述：瀑布流学习与制作
+    	1：瀑布流的特点
+    	（1）宽度相同，高度不相同。或者 高度相同宽度不相同
+    	（2）可以一直下拉加载（无止境）
+    	2：瀑布流两种常见的形式
+    	（1）浮动式 - 即外层容器浮动布局（简单）
+    		原理：
+    			1.外层容器浮动
+    			2.判断哪一个容器为最小容器（当垂直瀑布时，最短的为最小的。当水平瀑布时，宽度最窄的为最小的）
+    			3.将图片（内容）插入到最小容器内。
+    			
+    			当滚动条滚动到一定程度，循环执行2和3
+    		代码要点：
+    			1.创建元素 document.createElement（“元素”）；
+    			2.获得屏幕的宽和高，如果不做横向的瀑布流，获得高就行了。
+    			  document.documentElement.clientHeight;（浏览器的高度）
+    			3.触发滚动条事件 window.onscroll
+    			4.获得滚动条高度
+    			  document.documentElement.scrollTop ||
+    			  document.body.scrollTop,(||是为了处理兼容问题做的“或”双选一)；
+    			5.滚动后body高度
+    			  document.body.scrollHeight
+    	（2）定位式 - 没有单独的浮动容器，而是按照外层容器进行一一定位（复杂点）
+    	每一个元素都是单独的自由体，按照他们的最外层的框来浮动。
+    -->
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流</title>
+		<meta name="author" content="郭菊锋-xing.org1^"/>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.fdpbl{width: 720px;margin: 30px auto;*zoom:1;}
+			.fdpbl:after{clear: both;content: "";display: block;}
+			.fdpbl ul{float: left;width: 230px;overflow: hidden;margin-right: 10px;}
+		</style>
+	</head>
+	<body>
+		<!--浮动式-->
+		<div class="fdpbl" id="fdpbl">
+			<ul>
+			</ul>
+			<ul>
+			</ul>
+			<ul>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				
+//"<li><img src='../img/"+i+".jpg' alt=''/></li>"				
+				
+				var oDiv = document.getElementById("fdpbl");
+				var oUl = oDiv.getElementsByTagName("ul");
+				var oBody = document.documentElement || document.body;
+//				alert(document.body.nodeName)
+				var src = null;
+				function appendImg(){
+					//判断哪个ul短
+					var oldHeight = 10000000000;//这个不能再循环的里边，不然，每次开始循环就又开始等于10000000000了
+					for(var i=0;i<oUl.length;i++){
+//						console.log(oldHeight)
+						var nowHeight = oUl[i].offsetHeight;
+//						alert(nowHeight)
+						if(nowHeight < oldHeight){
+							//将图片插入进ul
+							src = "<li><img src='../img/"+(i+1)+".jpg' alt=''/></li>"
+							oUl[i].innerHTML += src;
+//							oldHeight = nowHeight;这里不对了，不会写了。
+						}
+//						console.log(nowHeight)
+					}
+				}
+				appendImg()
+			}
+		</script>
+	</body>
+</html>

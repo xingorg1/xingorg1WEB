@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .result{
+      width: 300px;
+      height: 300px;
+      background: #eee;
+    }
+    .result4 .demo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -765px;
+      margin-left: -765px;
+      width: 1529px;
+      height: 1529px;
+      background: url(https://img1.bitautoimg.com/bt/activity/newyear/resoult4/light.png) no-repeat;
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="result" id="result">
+    <div class="demo"></div>
+  </div>
+  <button onclick="fun()">点击加载图片</button>
+  <script>
+    function fun(){
+      console.log('chufa ')
+      result.className = 'result result4'
+    }
+  </script>
+</body>
+
+</html>

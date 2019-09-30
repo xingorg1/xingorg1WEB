@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<h2>控制台</h2>
+	<script>
+		let feedArr = [
+			{Content: "Xjjxjdj", DealerId: 0, DealerName: null, FeedId: 2044706, FeedType: 100},
+			{Content: "24 动态发布内容", DealerId: 0, DealerName: null, FeedId: 24, FeedType: 210},
+			{Content: "23 动态发布内容", DealerId: 0, DealerName: null, FeedId: 23, FeedType: 210},
+			{Content: "19 动态发布内容", DealerId: 0, DealerName: null, FeedId: 19, FeedType: 210},
+			{Content: "46 动态发布内容", DealerId: 0, DealerName: null, FeedId: 46, FeedType: 210},
+			{Content: "45 动态发布内容", DealerId: 0, DealerName: null, FeedId: 45, FeedType: 210},
+			{Content: "44 动态发布内容", DealerId: 0, DealerName: null, FeedId: 44, FeedType: 210},
+			{Content: "43 动态发布内容", DealerId: 0, DealerName: null, FeedId: 43, FeedType: 210},
+			{Content: "42 动态发布内容", DealerId: 0, DealerName: null, FeedId: 42, FeedType: 210}
+		];
+		let newFeedArr = [
+			{Content: "441 动态发布内容", DealerId: 0, DealerName: null, FeedId: 441, FeedType: 210},
+			{Content: "42 动态发布内容", DealerId: 0, DealerName: null, FeedId: 42, FeedType: 210},
+			{Content: "431 动态发布内容", DealerId: 0, DealerName: null, FeedId: 431, FeedType: 210}
+		];
+		// function unique(arr){
+		// 	var res =[];
+		// 	var json = {};
+		// 	for (var i = 0; i < feedArr.length; i++) {
+		// 		if(!json[feedArr[i]]){
+		// 			res.push(feedArr[i]);
+		// 			json[feedArr[i]] = 1;
+		// 		}
+		// 	}
+		// 	return res;
+		// }
+		var thirdArr =[];
+		for (var i = 0; i < newFeedArr.length; i++) {
+				console.log(newFeedArr[i]['FeedId']);
+				var newId = newFeedArr[i]['FeedId'];
+			for (var j = 0; j < feedArr.length; j++) {
+				console.log(feedArr[j]['FeedId']);
+				if(newId === feedArr[j]['FeedId']){
+					console.log('===');
+					break;
+				}
+			}
+			thirdArr.push(newFeedArr[i]);
+		}
+		console.log(thirdArr);
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>演示：jQue动态数字展示效果</title>
+<!-- <link rel="stylesheet" href="http://www.jb51.net/demo/css/main.css" /> -->
+<script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
+<style type="text/css">
+.demo{width:320px; margin:20px auto 0 auto; }
+.count{margin-top:50px;font-size:32px; }
+#number{font-size:42px;text-shadow: 0 -1px 0 #72a441;color:#360;font-weight:700;}
+</style>
+</head>
+
+<body>
+<div id="main">
+   <div class="demo">
+    <div class="count">当前在线：<span id="number"></span></div>
+		<div class="count">当前在线：<span id="number1"></span></div> 
+   </div>
+  <br/>
+</div>
+<script>
+  var newNum;
+  var box = $("#number");
+	var box1 = $("#number1");
+  function magic_number(box,value) {
+    newNum = value;
+    box.animate({count: value}, {
+      duration: 1000,
+      step: function() {
+        var boxText = String(parseInt(this.count))
+        if(isNaN(boxText)){
+          boxText = 0;
+        }else{
+          box.text(boxText);
+        }
+		  }
+  	});
+  };
+  magic_number(box,30);
+  magic_number(box1,30);
+  setInterval(function(){
+    magic_number(box,newNum + 20);
+    magic_number(box1,newNum + 60);
+  }, 3000);
+</script>
+
+</body>
+</html>

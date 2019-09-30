@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>absoule实现上中下分左右布局.html</title>
+</head>
+
+<body>
+  <header>头部</header>
+  <section>
+    <aside>侧边栏</aside>
+    <article>
+      内容区域
+    </article>
+  </section>
+  <footer>尾部</footer>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+    }
+    header,
+    footer {
+      position: absolute;
+      line-height: 48px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      color: aquamarine;
+      text-align: center;
+      background: #333;
+    }
+
+    footer {
+      bottom: 0;
+    }
+
+    aside {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 68px 0;
+      width: 280px;
+      text-align: center;
+      background: #eee;
+    }
+
+    article {
+      position: absolute;
+      left: 280px;/*如果侧边栏有宽度*/
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 68px 20px;
+      overflow: auto;/*超出滚动显示*/
+      background: #f5f5f5;
+    }
+  </style>
+</body>
+
+</html>

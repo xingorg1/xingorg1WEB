@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 类似src，数据地址 -->
+  <script src="http://www.test.com/url/index.js?callback=jsonpTest"></script>
+  <script>
+    // 事先 定义好回调函数被调用时要执行的函数。
+    function jsonpTest(data){
+      console.log('数据返回结果' + data);
+    }
+  </script>
+</body>
+</html>

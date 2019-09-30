@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>padding现象</title>
+  <style>
+    div{
+      margin: 20px 0;
+    }
+    .block{
+      padding: 20px;
+      border: 1px solid red;
+    }
+    .block-width{
+      width: 300px;
+      padding: 20px;
+      border: 1px solid red;
+    }
+    .inlinespan{
+      border: 1px solid blue;
+      margin: 2px;
+    }
+    .inlinespan span{
+      padding: 20px 5px;
+    }
+    .inlinespan span:nth-child(odd){
+      background: rgba(0, 255, 114, .41);
+    }
+  </style>
+</head>
+<body>
+  <div class=" inlinespan">
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <span>内联元素的</span>
+    <span>上下padding</span>
+    <span>不能撑开</span>
+    <span>元素的高度</span>
+    <span>内联元素的</span>
+    <span>上下padding</span>
+    <span>不能撑开</span>
+    <span>元素的高度</span>
+    <!-- <span>卡会尽快</span>
+    <span>卡会尽快</span>
+    <span>卡会尽快</span>
+    <span>卡会尽快</span> -->
+  </div>
+  <div class="block">
+    block    
+  </div>
+
+  <div class="block-width">
+      block    
+    </div>
+  <style>
+    p{
+      margin: 0;
+      border: 1px solid rebeccapurple;
+    }
+    span{
+      background: rgba(255, 0, 0, .4);
+
+    }
+    .inlien{
+      padding: 20px;
+      background: rgba(0, 255, 114, .41);
+    }
+    .inline-box{
+      /* margin-top: 50px; */
+      border: 1px solid red;
+    }
+  </style>
+  <p>上方</p>
+  <span>左边</span><span class="inlien">中间</span><span>右边</span>
+  <p>下方</p>
+  <div class="inline-box">
+    <span class="inlien">inline</span><span>兄弟</span>
+  </div>
+  
+  <p>hhah </p>
+</body>
+</html>

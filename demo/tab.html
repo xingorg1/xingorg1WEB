@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>实践题 - 选项卡</title>
+		<style type="text/css">
+			/* CSS样式制作 */
+			
+			li {
+				list-style: none;
+				width: 30px;
+				height: 30px;
+				background-color: yellow;
+				float: left;
+				margin-right: 10px;
+				text-align: center;
+				line-height: 30px;
+			}
+			
+			.liActive,
+			li:hover {
+				cursor: pointer;
+				background-color: green;
+			}
+			
+			.divWrap {
+				position: relative;
+			}
+			
+			.divWrap div {
+				position: absolute;
+				top: 30px;
+				left: 0;
+				background-color: #ddd;
+				width: 300px;
+				height: 150px;
+			}
+			
+			.divWrap div.hide {
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var divWrap = document.getElementById('divWrap');
+			var oUL = divWrap.getElementsByTagName('ul')[0];
+			var oLi = oUL.getElementsByTagName('li');
+			var oDiv = divWrap.getElementsByTagName('div');
+//			alert(divWrap.nodeName)
+			for(var i = 0; i < oLi.length; i++) {
+				oLi[i].index = i;
+				oLi[i].onclick = function() {
+//					alert(divWrap.nodeName)
+					for(var j = 0; j < oLi.length; j++) {
+						oLi[j].className = "";
+						oDiv[j].className = "hide";
+					}
+					this.className = "liActive";
+					oDiv[this.index].className = "";
+				}
+			}
+		}
+			
+		</script>
+
+	</head>
+
+	<body>
+		<!-- HTML页面布局 -->
+		<div id="divWrap" class="divWrap">
+			<ul>
+				<li class="liActive">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div>1-1</div>
+			<div class="hide">2-2</div>
+			<div class="hide">3-3</div>
+		</div>
+
+	</body>
+
+</html>

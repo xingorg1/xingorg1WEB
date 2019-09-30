@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绝对定位的绝对居中效果</title>
+</head>
+<body>
+  <div class="box">
+    <div class="center"></div>
+  </div>
+  <style>
+    .box{
+      position: relative;
+      height: 300px;
+      margin: 20px  0;
+      border: 1px solid #333;
+    }
+    .center{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      margin: auto;
+      background: rgb(157, 235, 224);
+    }
+  </style>
+  <div class="box2">
+    <div class="center2"></div>
+  </div>
+  <style>
+    .box2{
+      position: relative;
+      height: 500px;
+      border: 1px solid #333;
+    }
+    .center2{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 200px;
+      width: 200px;
+      margin: auto;
+      background: rgb(255, 227, 174);
+    }
+  </style>
+</body>
+</html>

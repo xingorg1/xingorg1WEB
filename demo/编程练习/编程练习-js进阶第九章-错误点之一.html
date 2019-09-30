@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>   
+  <script type="text/javascript"> 
+  
+      window.onload = function(){
+                  
+     // 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+        var table = document.getElementById('table');
+        var tr = table.getElementsByTagName("tr");
+        var addTR1 = document.getElementById('addTR');
+        setInterval(function(){
+            for(var i=0;i<tr.length;i++){
+            tr[i].onmouseover = function(){
+                this.style.backgroundColor = "red"
+            }
+            tr[i].onmouseout = function(){
+                this.style.backgroundColor = "white"
+            }
+        }
+        },1000)
+	 
+     
+      // 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+      
+    //   alert(addTR1);
+      addTR1.onclick = function(){
+          var num = "001";
+          var name = "aaa"
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>'+num+'</td><td>'+name+'</td><td><a href="javascript:; onclick="del(this);" >删除</a></td>';
+        table.appendChild(tr);//总是忘记添加进去，总是创建了不添加，那还创建有什么用？
+     }
+     // 创建删除函数
+//   function del1(obj){
+//      var tr =  obj.parentNode.parentNode;
+//      tr.parentNode.removeChild(tr);
+//   }原来在window.onload里边，他就找不到，也执行不了这个函数
+     
+    }
+function del1(obj){
+        var tr =  obj.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+     }
+  </script> 
+ </head> 
+ <body> 
+	   <table border="1" width="50%" id="table">
+	   <tr>
+		<th>学号</th>
+		<th>姓名</th>
+		<th>操作</th>
+	   </tr>  
+
+	   <tr>
+		<td>xh001</td>
+		<td>王小明</td>
+		<td><a href="javascript:;" onclick="del1(this);">删除</a></td>   <!--在删除按钮上添加点击事件  -->
+	   </tr>                      
+
+	   <tr>
+		<td>xh002</td>
+		<td>刘小芳</td>
+		<td><a href="javascript:;" onclick="del1(this);">删除</a></td>   <!--在删除按钮上添加点击事件  -->
+	   </tr>  
+
+	   </table>
+	   <input type="button" value="添加一行" id="addTR"/>   <!--在添加按钮上添加点击事件  -->
+ </body>
+</html>

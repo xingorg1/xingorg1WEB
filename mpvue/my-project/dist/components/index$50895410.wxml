@@ -1,0 +1,26 @@
+<template name="index$50895410">
+  <view class="_div data-v-da39b59a choice-warp" id="Question">
+    <view class="_header data-v-da39b59a zhanshi"> 当前选择是：{{picked}} </view>
+    <form action class="_form data-v-da39b59a question">
+      <view class="_h3 data-v-da39b59a qus-title" data-id="{{ExamInfo.QuestionID}}">{{ExamInfo.QuestionID}}、{{ExamInfo.Description}}</view>
+      <view class="_ul data-v-da39b59a qus-list">
+        <view wx:key="ExamInfo.QuestionID+index" key="{{ExamInfo.QuestionID+index}}" wx:for="{{ExamInfo.QuestionAnswerCode}}" wx:for-index="index" wx:for-item="item" class="_li data-v-da39b59a {{[chooseNum == index ? 'li-focus' : '']}}">
+          <label for="{{'choice'+index}}" class="_label data-v-da39b59a choice-item">{{item.Code}}、{{item.Description}}</label>
+          <radio value="{{picked}}" id="{{'choice'+index}}" bindchange="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" class="_input data-v-da39b59a" />
+        </view>
+      </view>
+    </form>
+    <view class="_div data-v-da39b59a public-btn {{[unclickable ? 'public-btn-gray' : '']}}" wx:if="{{!isLast}}" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">下一题</view>
+    <view class="_div data-v-da39b59a public-btn {{[unclickable ? 'public-btn-gray' : '']}}" wx:else bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">提交</view>
+    <view id="example-3" class="_div data-v-da39b59a">
+      <checkbox id="jack" value="{{checkedNames}}" bindchange="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_input data-v-da39b59a" />
+      <label for="jack" class="_label data-v-da39b59a">Jack</label>
+      <checkbox id="john" value="{{checkedNames}}" bindchange="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_input data-v-da39b59a" />
+      <label for="john" class="_label data-v-da39b59a">John</label>
+      <checkbox id="mike" value="{{checkedNames}}" bindchange="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_input data-v-da39b59a" />
+      <label for="mike" class="_label data-v-da39b59a">Mike</label>
+      <view class="_br data-v-da39b59a"></view>
+      <label class="_span data-v-da39b59a">Checked names: {{ checkedNames }}</label>
+    </view>
+  </view>
+</template>

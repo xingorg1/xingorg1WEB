@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>十字架小icon</title>
+</head>
+<body>
+  <div class="add">
+  </div>
+  <style>
+    .add{
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 200px;
+      color: #ccc;
+      border: 1px solid;
+      transition: color .5s;
+    }
+    .add::before,.add::after{
+      content: "";
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+    .add::before{
+      margin-top: -5px;
+      margin-left: -30px;
+      border-top: 10px solid;
+    }
+    .add::after{
+      margin-top: -30px;
+      margin-left: -5px;
+      border-left: 10px solid;
+    }
+    .add:hover{
+      color: red;
+      cursor: pointer;
+    }
+  </style>
+</body>
+</html>

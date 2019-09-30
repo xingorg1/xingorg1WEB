@@ -1,0 +1,133 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>收款人列表导出到excel</title>
+
+<SCRIPT LANGUAGE="javascript">
+var tempRow=0; 
+//var maxRows=0; 
+function insertRows(){ 
+	tempRow=table1.rows.length-1;
+	//maxRows=tempRow+1; 
+	tempRow=tempRow+1; 
+	var Rows=table1.rows;//类似数组的Rows 
+	var newRow=table1.insertRow(table1.rows.length);//插入新的一行 
+	var Cells=newRow.cells;//类似数组的Cells 
+	
+	for (i=0;i<5;i++)//每行的  ?  列数据,循环插入 
+	{ 
+		var newCell=Rows(newRow.rowIndex).insertCell(Cells.length); 
+		newCell.align="center"; 
+	switch (i) 
+	{ 
+		case 0 : newCell.innerHTML="<td valign='top'><input name='seq' id='_Seq' type='text' size='2' value='"+tempRow+"'></td>";break; 
+		case 1 : newCell.innerHTML="<td valign='top'><input name='acno' id='_acno' type='text' size='30' value='' onKeyPress='mustDigit()'></td>"; break;
+		case 2 : newCell.innerHTML="<td valign='top'><input name='amount' id='_amount' type='text' size='10' value='' onKeyPress='mustDigit()'></td>"; break;
+		case 3 : newCell.innerHTML="<td valign='top'><input name='payeename' id='_name' type='text' value=''></td>"; break; 
+		case 4 : newCell.innerHTML="<td valign='top'><a href='javascript:delTableRow(\""+tempRow+"\")'>删除</a></TD>"; break; 
+	} 
+} 
+	//maxRows+=1; 
+} 
+function check(data){
+	if(data.value.length == 0){
+		return 0;
+	}
+	return 1;
+}
+function methodadd(tableid) //读取表格中每个单元到EXCEL中 
+{ 
+   var curTbl = document.getElementById(tableid); 
+   var oXL = new ActiveXObject("Excel.Application"); 
+   //创建AX对象excel 
+   var oWB = oXL.Workbooks.Add(); 
+   //获取workbook对象 
+   var oSheet = oWB.ActiveSheet; 
+   //激活当前sheet 
+   var Lenr = curTbl.rows.length-1;
+
+	oSheet.Cells(1, 1).value = "员工编号(1-8位数字)";
+	oSheet.Cells(1, 2).value = "收款账号";
+	oSheet.Cells(1, 3).value = "金额";
+	oSheet.Cells(1, 4).value = "收款人名称";
+   var seq = document.getElementsByName("seq");
+   var acno = document.getElementsByName("acno");
+   var amount = document.getElementsByName("amount");
+   var payeename = document.getElementsByName("payeename");
+   
+   //取得表格行数 
+   for (i = 0; i < Lenr; i++) 
+   {
+	   //取得每行的列数
+	   	if(check(seq[i]) == 0){
+		  alert("第"+(i+1)+"行第1列不能为空");
+		  return;
+		}
+	    if(check(acno[i]) == 0){
+		  alert("第"+(i+1)+"行第2列不能为空");
+		  return;
+		}
+		if(check(amount[i]) == 0){
+		  alert("第"+(i+1)+"行第3列不能为空");
+		  return;
+		}
+		if(check(payeename[i]) == 0){
+		  alert("第"+(i+1)+"行第4列不能为空");
+		  return;
+		}
+		oSheet.Cells(i + 2, 1).value = seq[i].value;
+		var acnoStr = acno[i].value.toString();
+		oSheet.Cells(i + 2, 2).value = acnoStr;
+		oSheet.Cells(i + 2, 3).value = amount[i].value;
+		oSheet.Cells(i + 2, 4).value = payeename[i].value;
+   } 
+   oXL.Visible = true; 
+   //设置excel可见属性 
+}
+
+function delTableRow(rowNum){ 
+	if (table1.rows.length >rowNum){ 
+		table1.deleteRow(rowNum); //系统方法
+	} 
+}
+
+function mustDigit(){
+	if (event.keyCode < 48 || event.keyCode > 57) {
+		event.returnValue = false;
+	}
+	if (event.keyCode == 46) {
+		event.returnValue = true;
+	}
+}
+
+</SCRIPT> 
+</head>
+<body>
+<form action="">
+   <p align="center"><input value="添加一行" type="button" onClick="insertRows()"></p>
+  <table border="1" width="98%" align="center" id="table1">
+
+
+    <tr>
+      <th >员工编号</th>
+      <th >收款账号</th>
+	  <th >金额</th>
+	  <th >收款人名称</th>
+      <th>删除
+      <th> 
+    </tr>
+  </table>
+    <br />
+    <table border="0" cellspacing="0" cellpadding="0" width="98%" align="center">
+    <tr valign="top">
+	  <th><input type="button" onclick="javascript:methodadd('table1');"value="导入增加的数据表格到EXCEL">
+      </th>
+    </tr>
+  </table>
+</form>
+
+
+</body>
+</html>

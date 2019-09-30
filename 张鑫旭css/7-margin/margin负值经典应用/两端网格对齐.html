@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>margin负值下的两端对齐</title>
+  <style>
+    ul {
+      padding: 0;
+      /* 清除浮动 */
+      background: rgb(227, 255, 236);
+      margin-bottom: -20px;
+    }
+
+    .fir,
+    .sec {
+      width: 640px;
+      overflow: hidden;
+      /*删掉ul右边多余的20像素 */
+    }
+    .fir ul {
+      margin-right: -20px;
+      /* margin负值 */
+      overflow: hidden;
+    }
+
+    .fir li,
+    .sec li {
+      float: left;
+      width: 200px;
+      height: 200px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      background: rgb(111, 197, 132);
+    }
+
+    .sec {
+      width: 640px;
+      overflow: hidden;
+    }
+
+    .sec ul {
+      width: 660px;
+      /* 宽度设置，配合父元素的宽度 */
+      overflow: hidden;
+    }
+
+    .thr {
+      width: 640px;
+      overflow: hidden;
+    }
+
+    .thr ul {
+      /* display: flex; */
+      -webkit-column-count:3;
+        -moz-column-count:3;
+
+        -webkit-column-gap:20px;
+        -moz-column-gap:20px;
+      background: rgb(227, 255, 236);
+    }
+
+    .thr li {
+      width: 200px;
+      height: 200px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      background: rgb(111, 197, 132);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fir">
+    <h3>
+      ul的width不能设置，因为margin负值是改变了元素的尺寸所以才让li撑下的，如果再ul上设置宽度，反而画蛇添足，起到了反作用。宽度固定为了640。
+    </h3>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+  </div>
+  <div class="sec">
+    <h3>
+      ul设置width，不用margin负值，利用最外层元素的overflow：hidden
+      优点：li的宽度可以设置百分比。
+    </h3>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+  </div>
+
+  <div class="thr">
+    <h3>
+      cloumn多栏布局；
+    </h3>
+    <h5>flex是弹性盒布局，是让元素自动伸缩的，所以可能会忽略宽高设置</h5>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+  </div>
+  <div class="four">
+      <h3>
+        grid
+      </h3>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+      </ul>
+    </div>
+    <div class="five">
+        <h3>
+          display: table;布局
+        </h3>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+        </ul>
+      </div>
+</body>
+
+</html>

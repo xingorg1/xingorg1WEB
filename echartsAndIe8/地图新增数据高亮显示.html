@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="renderer" content="webkit">
+	<title>地图数据新增高亮</title>
+  <style>
+    html, body{height: 100%}
+  html{
+    height: 100%;
+    background: rgb(9,9,24);
+  }
+    h1{
+      padding: 10px 20px;
+      font-family: '微软雅黑';
+      font-size: 20px;
+      background: rgb(9,9,24);
+      color: lightgreen;
+    } 
+    #main-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 51px;
+}
+    .echarts-box{
+      position: absolute;
+      left: 0;
+      top: 0;
+      /*right: 0;*/
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      padding-left: 5px;
+      border: none;
+      z-index: 30;
+      background: #f3f3f3;
+    }
+    .div-area{
+      float: left;
+      /*position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 50px;
+      left: 0;*/
+      padding: 10px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    div.bigArea{
+      width: 50%;
+      height: 800px;
+    }
+  </style>
+</head>
+<body>
+<h1>地图数据去重处理测试、地图高亮闪烁效果测试、自适应调整图表大小测试、lodash测试</h1>
+<h1 id="lodashBox"></h1>
+  <!-- <div id="main-container"> -->
+    <!-- <div class="echarts-box"> -->
+      <div class="div-area bigArea" id="main" onresize="alert('You have changed the size of the window')"></div>
+      <div class="div-area bigArea" id="main7"></div>
+    <!-- </div> -->
+  <!-- </div> -->
+  <!-- <div class="div-area" id="main10" class="bigArea"></div> -->
+</body>
+  <!-- 引入依赖：jquery+lodash -->
+  <script src="jquery-1.10.1.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+  <!-- echarts 依赖 @4.0.2 -->
+  <script src='echarts@4.0.2.min.js'></script>
+  <!-- 地图 依赖 -->
+  <script src="china.js"></script>
+  <!-- 数据配置 -->
+  <script src="mapDataTest.js"></script>
+  <script src="lodashTest.js"></script>
+
+</html>

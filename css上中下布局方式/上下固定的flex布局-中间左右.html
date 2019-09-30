@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>上下固定的上中下布局，中间固定-flex应用</title>
+  <style>
+    body{
+      color: #333;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: center;
+    }
+    header,footer{
+      line-height: 66px;
+      background: lightgreen;
+    }
+    article{
+      padding: 20px;
+    }
+    nav{
+      background: green;
+      color: #fff;
+      padding: 20px;
+    }
+    ul,li{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    /* 父元素设置flex，然后布局方向为主轴从上到下，那么header和footer就会在最上边和最下边 */
+    html,body{
+      height: 100%;
+      margin: 0;
+      /* 不设置100%，高度撑不开 */
+    }
+    .container{
+      display: flex;
+      display: -webkit-box;
+      display: -webkit-flex;
+      flex-direction: column;
+      -ms-flex-direction: column;
+    }
+    section{
+      
+      flex: 1;
+      display: flex;
+    }
+    nav{
+      width: 200px;
+    }
+    article{
+      flex: 1;
+      height: 3000px;//bug就是上翻会露怯，这种只适合不超出一屏的情况
+    }
+  </style>
+</head>
+<body  class="container">
+    <header>我是头部</header>
+    <section>
+      <nav>
+        <ul>
+          <li>导航一</li>
+          <li>导航二</li>
+          <li>导航三</li>
+          <li>导航四</li>
+        </ul>
+      </nav>
+      <article>我是中间文章主体部位</article>
+    </section>
+    <footer>我是尾部</footer>
+</body>
+</html>

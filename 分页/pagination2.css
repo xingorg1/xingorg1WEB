@@ -1,0 +1,223 @@
+html {
+  height: 100%; }
+
+body, div,
+h1, h2, h3, h4, h5, h6,
+ul, ol, li,
+dl, dt, dd,
+menu, p, pre, hr,
+form, input, select, button, textarea,
+table, td, th {
+  margin: 0;
+  padding: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+th {
+  text-align: left;
+  font-weight: 500; }
+
+img {
+  max-width: 100%;
+  border: 0;
+  vertical-align: middle; }
+
+ul, ol, li {
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: 700; }
+
+textarea {
+  overflow: auto;
+  resize: none; }
+
+a, button {
+  cursor: pointer; }
+
+a {
+  color: #2E85FF;
+  text-decoration: none; }
+
+a:hover {
+  color: #1f70db; }
+
+input, textarea, keygen, select, button {
+  margin: 0;
+  font-family: 'Helvetica Neue', 'Hiragino Sans GB',\534E\6587\9ED1\4F53,\6587\6CC9\9A7F\6B63\9ED1\4F53,"Microsoft YaHei", \5FAE\8F6F\96C5\9ED1, sans-seri;
+  text-rendering: auto;
+  color: #333B48;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0;
+  text-shadow: none;
+  display: inline-block; }
+.yi-frames .yi-pagination {
+  margin: 40px 0 20px;
+  clear: both;
+  text-align: center; }
+  .yi-frames .yi-pagination .pagewp {
+    padding-right: 10px;
+    font-size: 0;
+    text-align: center; }
+    .yi-frames .yi-pagination .pagewp li {
+      margin-right: 10px;
+      display: inline-block; }
+      .yi-frames .yi-pagination .pagewp li .lk {
+        padding: 3px 5px;
+        display: inline-block;
+        min-width: 18px;
+        height: 20px;
+        color: #5E6E87;
+        font-size: 12px;
+        line-height: 20px;
+        border: 1px solid #E5ECF1; }
+        .yi-frames .yi-pagination .pagewp li .lk:hover {
+          border-color: #2E85FF;
+          text-decoration: none;
+          color: #2E85FF;
+          background: #fff; }
+      .yi-frames .yi-pagination .pagewp li .icon {
+        position: relative;
+        top: 2px; }
+      .yi-frames .yi-pagination .pagewp li.disable .lk {
+        cursor: not-allowed;
+        color: #cfd5df;
+        border: 1px solid #E5ECF1;
+        background-color: #F6F7F8; }
+        .yi-frames .yi-pagination .pagewp li.disable .lk:hover {
+          color: #cfd5df;
+          border: 1px solid #E5ECF1;
+          background-color: #F6F7F8; }
+      .yi-frames .yi-pagination .pagewp li.active .lk {
+        cursor: default;
+        color: #fff;
+        border-color: #E5ECF1;
+        background: #2E85FF; }
+
+
+body {
+  margin: 0;
+  padding: 0; }
+.yi-pagination {
+  margin: 40px 0 20px;
+  clear: both;
+  height: 26px;
+  text-align: center; }
+  .yi-pagination ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    *display: inline;
+    *zoom: 1; }
+    .yi-pagination ul li {
+      display: inline-block;
+      float: left;
+      margin-right: 10px;
+      list-style-type: none; }
+      .yi-pagination ul li.disable span.normal-state {
+        background: #F6F7F8;
+        border: 1px solid #E5ECF1;
+        padding: 3px 6px 2px;
+        color: #cfd5df; }
+      .yi-pagination ul li.active span.normal-state {
+        display: inline-block;
+        border-color: #2E85FF;
+        color: #fff;
+        background: #2E85FF;
+        *zoom: 1; }
+      .yi-pagination ul li.prev a:hover i, .yi-pagination ul li.next a:hover i {
+        color: #2E85FF; }
+      .yi-pagination ul li a {
+        display: inline-block;
+        border: 1px solid #E5ECF1;
+        padding: 3px 5px;
+        min-width: 18px;
+        color: #5E6E87;
+        *zoom: 1;
+        font-size: 12px; }
+        .yi-pagination ul li a:hover {
+          border-color: #2E85FF;
+          text-decoration: none;
+          color: #2E85FF;
+          background: #fff; }
+      .yi-pagination ul li span.normal-state {
+        display: inline-block;
+        padding: 3px 6px 2px;
+        min-width: 18px;
+        color: #5E6E87;
+        *zoom: 1; }
+  .yi-pagination .icon {
+    position: relative;
+    top: 2px; }
+  .yi-pagination i {
+    font-style: normal; }
+
+/*
+ * @Author: liuyaya@ 
+ * @Date: 2017-11-17 11:19:57
+ */
+/*
+ * @Author: liuyaya@ 
+ * @Date: 2017-11-14 12:40:46 
+ */
+.jxs-pagination {
+  margin: 20px 0;
+  clear: both;
+  height: 26px;
+  text-align: center; }
+  .jxs-pagination ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    *display: inline;
+    *zoom: 1; }
+    .jxs-pagination ul li {
+      display: inline-block;
+      float: left;
+      margin: 0 5px;
+      list-style-type: none; }
+      .jxs-pagination ul li.disable span.normal-state {
+        color: #ccc; }
+      .jxs-pagination ul li.active span.normal-state {
+        display: inline-block;
+        background: #FF4F53;
+        color: #fff;
+        border-radius: 3px;
+        *zoom: 1; }
+      .jxs-pagination ul li.prev a, .jxs-pagination ul li.prev span.normal-state, .jxs-pagination ul li.next a, .jxs-pagination ul li.next span.normal-state {
+        -webkit-transform: scaleY(1.6);
+                transform: scaleY(1.6);
+        line-height: 24px;
+        font-size: 18px; }
+      .jxs-pagination ul li.prev a:hover, .jxs-pagination ul li.next a:hover {
+        background: none;
+        color: #FF4F53; }
+      .jxs-pagination ul li a {
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 8px;
+        color: #333333;
+        *zoom: 1;
+        font-size: 16px; }
+        .jxs-pagination ul li a:hover {
+          background: #f0f0f0;
+          text-decoration: none;
+          border-radius: 2px; }
+      .jxs-pagination ul li span.normal-state {
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 8px;
+        color: #333333;
+        *zoom: 1; }
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>内联元素水平居中</title>
+		<style type="text/css">
+			*{
+				background-color: #ddd;
+				font-size: 30px;
+			}
+			div{
+				border: 1px solid palevioletred;
+				margin-bottom: 10px;
+			}
+			.a1{
+				text-align: center;
+			}
+			.d1{
+				text-align: center;
+			}
+			.d2{
+				display: -webkit-flex;
+				-webkit-flex-flow: row;
+				-webkit-align-items: stretch;
+				-webkit-justify-content: center;
+				
+				display: -ms-flex;
+				-ms-flex-flow:row wrap;
+				/*row:横向（左向右）显示 column竖向（上向下）显示，wrap一行显示不完的时候换行。*/
+				-ms-align-items: stretch;
+				-ms-justify-content: center;
+				
+				display: flex;
+				flex-flow: row;
+				align-items: stretch;
+				justify-content: center;
+			}
+			.a2{
+				-webkit-flex: 1;
+				-ms-flex: 1;
+				flex: 1;
+				/*让他自适应div的宽度，然后设置居中，相当于设置成块元素了*/
+				text-align: center;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<h1><a href="https://buluo.qq.com/p/detail.html?bid=339910&pid=6675390-1488025584&from=share_qzone">css居中样式小谈</a></h1>
+		<b>内联元素：</b>中文叫法有多种，如:内联元素、内嵌元素、行内元素、直进式元素等；提到内联元素，通常会涉及到的属性是display:inline;这个属性能够修复著名的IE双倍浮动边界问题。<br />内联元素一般都是基于语义级(semantic)的基本元素，它只能容纳文本或者其他内联元素，通常被包括在块元素中使用，常见内联元素有“a、b、br”等。
+		<br />
+		1、行内元素：text-align:center;<br />
+		实验1：<br />
+		<a class="a1">我是文本</a>
+		<div class="d1"><a>我是文本</a></div>
+		<br />
+		2、Flex布局 设置display:  display:flex;justify-content:center;(灵活运用，注意兼容性和前缀。)<br />
+		<div><b>注解：display：flex；</b>绝大部分不支持，兼容性写法：display：-webkit-flex；display：-ms-flex；配合样式如.d2的设置</div>
+		实验2：<br />
+		<div class="d2"><a class="a2">我是文本</a></div>
+	</body>
+</html>

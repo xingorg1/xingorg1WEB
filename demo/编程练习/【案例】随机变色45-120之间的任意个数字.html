@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+            box-sizing: border-box;
+            list-style: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        p{
+            text-align: center;
+            margin: 20px;
+        }
+        p a{
+            font-size: 20px;
+            font-weight: 300;
+            color: #e4393c;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid currentColor;
+        }
+        .bg_color,.bg_two{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #aa00aa;
+        }
+        .main,.main ul{
+            overflow: hidden;
+        }
+        .main{
+            width: 400px;
+            margin:30px auto;
+        }
+        .main ul li{
+            float: left;
+        }
+		</style>
+	</head>
+	<body>
+    <div class="main">
+        <p><a href="javascript:;" id="btn-one">RandomColor-rgb</a></p>
+        <ul>
+            <li><div class="bg_color"></div></li>
+            <li><div class="bg_color"></div></li>
+            <li><div class="bg_color"></div></li>
+            <li><div class="bg_color"></div></li>
+        </ul>
+    </div>
+    <div class="main">
+        <p><a href="javascript:;" id="btn-two">RandomColor-#XXXXXX</a></p>
+        <ul>
+            <li><div class="bg_two"></div></li>
+            <li><div class="bg_two"></div></li>
+            <li><div class="bg_two"></div></li>
+            <li><div class="bg_two"></div></li>
+        </ul>
+    </div>
+    <script>
+		    (function(){
+		        //1、随机色的函数-rgb
+		        function getRandomColor(){
+		            var rgb='rgb('+Math.floor(Math.random()*255)+','
+		                     +Math.floor(Math.random()*255)+','
+		                     +Math.floor(Math.random()*255)+')';
+		            console.log(rgb);
+		            return rgb;
+		        }
+		//    获取按钮
+		        var btn_one=document.querySelector("#btn-one");
+		        var Divs=document.querySelectorAll(".bg_color");
+		        btn_one.onclick=function(){
+		            for(var i=0;i<Divs.length;i++){
+		                Divs[i].style.backgroundColor=getRandomColor();
+		            }
+		        };
+		        //2、随机颜色#XXXXXX
+		        var btn_two=document.querySelector("#btn-two");
+		        var divsTwo=document.querySelectorAll(".bg_two");
+		        var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+		        function generateMixed(n) {
+		            var res = "#";
+		            var id;
+		            for(var i = 0; i < n ; i ++) {
+		                id= Math.floor(Math.random()*16);
+		                res += chars[id];
+		            }
+		            console.log(id,res);
+		            return res;
+		        }
+		        btn_two.onclick=function(){
+		            for(var i=0;i<divsTwo.length;i++){
+		                divsTwo[i].style.backgroundColor=generateMixed(6);
+		            }
+		        };
+		    })()
+		</script>
+</body>
+</html>

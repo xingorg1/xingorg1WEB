@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>楼层高亮demo与兼容性测试</title>
+		<link rel="stylesheet" href="demo.css">
+	</head>
+<body>
+	<div class="floor-nav">
+		<span class="scroll-nav active">F1</span>
+		<span class="scroll-nav">F2</span>
+		<span class="scroll-nav">F3</span>
+		<span class="scroll-nav">F4</span>
+		<span class="scroll-nav">F5</span>
+		<span class="scroll-nav">F6</span>
+		<span class="scroll-nav">F7</span>
+		<span class="scroll-nav">F8</span>
+		<span class="scroll-nav">F9</span>
+		<span class="scroll-nav">F10</span>
+	</div>
+	<div class="content-parent" >
+		<div class="content" id="content">
+			<div class="scroll-floor floor1">一楼</div>
+			<div class="scroll-floor floor2">二楼</div>
+			<div class="scroll-floor floor3">三楼</div>
+			<div class="scroll-floor floor4">四楼</div>
+			<div class="scroll-floor floor5">五楼</div>
+			<div class="scroll-floor floor3">
+				六楼
+				<p class="more">查看更多评论</p>
+			</div>
+			<div class="scroll-floor floor1">七楼</div>
+			<div class="scroll-floor floor4">八楼</div>
+			<div class="scroll-floor floor5">九楼</div>
+			<div class="scroll-floor floor2">十楼</div>
+		</div>
+	</div>
+	<!-- <div style="height: 600px;"></div> -->
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="scrollFloor.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		var content = document.getElementById('content');
+			console.log(content.offsetParent)
+			$('.more').click(function(){
+				$(this).hide();
+				$('.floor3').eq(1).css('height',2000);
+			});
+			scrollFloor({
+				floorClass : '.scroll-floor',       //楼层盒子class;默认为'.scroll-floor'
+				navClass : '.scroll-nav',           //导航盒子class;默认为'.scroll-nav'
+				activeClass : 'active',             //导航高亮class;默认为'active'
+				delayTime: 300,                      //点击导航，滚动条滑动到该位置的时间间隔;默认为200
+				activeTop: 50,                      //楼层到窗口的某个位置时，导航高亮（设置该位置）;默认为100
+				scrollTop: 0                         //点击导航，楼层滑动到窗口的某位置;默认为100
+			});
+		</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+}
+.content-parent{
+    position: relative;
+    margin-top: 130px;
+}
+.floor-nav {
+    height: auto;
+    width: 50px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    margin-top: -250px;
+    z-index: 999;
+    border: 1px solid #000;
+}
+.scroll-nav {
+    display: inline-block;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+}
+.scroll-nav.active {
+    color: #fff;
+    background: #000;
+}
+.scroll-floor {
+    width: 100%;
+    height: 500px;
+    /*line-height: 500px;*/
+    color: #000;
+    text-align: center;
+    font-size: 50px;
+}
+.floor1 {
+    background: #ffb9b9;
+}
+.floor2 {
+    background: #cbfdcb;
+}
+.floor3 {
+    background: #bae690;
+}
+.floor4 {
+    background: #ffc67e;
+}
+.floor5 {
+    background: #98d7f5;
+}
+.more {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    background: #eee;
+    color: #555;
+    border-radius: 25px;
+    margin: 0 auto;
+}

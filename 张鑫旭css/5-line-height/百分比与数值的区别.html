@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>line-height设置百分比和数值的区别</title>
+  <style>
+    .box{
+      padding: 0 20px;
+      border: 1px solid;
+      /* * */
+      font-size: 14px;
+    }
+    .box span{
+      padding: 0 10px;
+      background: #ddd;
+      display: inline-block;
+      max-width: 300px;
+      margin-left: 20px;
+      /* * */
+      font-size: 60px;
+    }
+    .box1{
+      line-height: 1.5;
+      margin-bottom: 100px; 
+    }
+    .box2{
+      line-height: 1.5em;
+    }
+    b{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h3>
+    line-height: 1.5;的情况，内部元素的行高为<b>90px</b>,即 60px * 1.5 = 90px;内部元素自己的字体大小和行高相乘。
+    <p>
+      三行文字，总共高度height = 90px * 3 = 270px;
+    </p>
+  </h3>
+  <div class="box box1">
+    父元素文字字体大小14px、行高1.5
+    <span>
+      内部元素span,字体60px。
+    </span>
+  </div>
+  <h3>
+    line-height: 150%;的情况，内部元素的行高为 <b>21px</b>,即 14px * 150% = 21px;因为父元素的字体大小是14px，
+    <p>
+      三行文字，总共高度height = 21px * 3 = 63px;
+    </p>
+  </h3>
+  <div class="box box2">
+      父元素文字字体大小14px、行高150%
+      <span>
+        内部元素span,字体60px。
+      </span>
+    </div>
+</body>
+</html>

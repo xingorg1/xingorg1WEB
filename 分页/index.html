@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页原理学习</title>
+	<style type="text/css">
+		body { margin: 0; padding: 0; }
+		.pagination { color: #333; text-align: center; margin: 8px; }
+		.pagination span { color: #999; margin: 0 1px; padding: 3px 6px; border: 1px solid #ccc; }
+		.pagination span.on { background-color: #337ab7; color: #fff; font-weight: bold; border: 1px solid #333; }
+		.pagination a { color: #00f; text-decoration: none; }
+		.pagination a span { border: 1px solid #66c; color: #33f; }
+		#pager { margin: 20px; padding: 4px; }
+		#content { text-align: center; }
+	</style>
+</head>
+<body>
+	<div id="pager"></div>
+<div id="content"></div>
+<script>
+            var currentPage = 1; // 当前页码, 从1开始
+            var pageSize = 10; // 每页显示记录数
+            var maxButtons = 10; // 显示的分页按钮数量
+            var totalNumber = 230; // 记录总数
+            var totalPage = parseInt(Math.ceil(totalNumber / pageSize)); // 总页数
+            initPage();//页面开始调用函数
+
+            function initPage() {
+                //循环生成数组【其实用ajax会获取到】
+                var arr = [];
+                for (var o = 0; o < totalNumber; o++) {
+                    arr.push(o);
+                }//把记录总数的所有条数塞进arr中
+
+                //每一页第一个li（第一个li的id（或者说第几条数，下标）就是rangeStartitem）每页显示十条，从第0条开始
+                var rangeStartitem = (currentPage - 1) * pageSize;
+                //开始页（与1相比，取最大的那个，否则就取1）
+                var rangeStart = Math.max(1, currentPage - parseInt(maxButtons / 2));
+                //最后一页（与最后一页页码相比，取最小的，否则取最后一页）
+                var rangeEnd = Math.min(totalPage, rangeStart + maxButtons - 1);
+
+// 创建并填充页面内容模板
+                // pageCon生成每页的数据，constr里边放的就是十条li的内部数据和内容/结构，这里适合把ajax数据塞进结构，并传参，传刚刚得到的
+                var constr = pageCon(arr, rangeStartitem, pageSize);
+                // 把赛好的数据扔进body的对应document中
+                var divcontent = document.getElementById("content");
+                divcontent.innerHTML = constr;
+                
+                //创建分页模板（就是底部分页控件的结构）
+                var str = "";
+                str += "<div class='pagination'>";
+                str += "当前第" + currentPage + "页"
+                //如果总页数大于1
+                if (totalPage > 1) {
+                    //当前页不是第一页
+                    if (currentPage != 1) {
+                        str += '<a href="#!"  data-num="1"><span>|&lt;</span></a>';
+                        str += '<a href="#!"  data-num="' + (currentPage - 1) + '"><span>&lt;&lt;</span></a>';
+                    } else {
+                        //如果是第一页，禁用上一页按钮（禁用是把a链接变成了span标签）
+                        str += '<span>|&lt;</span>';
+                        str += '<span>&lt;&lt;</span>';
+                    }
+                    //中间页码
+                    for (var i = rangeStart; i <= rangeEnd; i++) {
+                        //如果是当前页的话，就禁用当前页的按钮
+                    if (i == currentPage) {
+                        str += '<span class="on">' + i + "</span>";
+                    } else {
+                        //否则就可以点击该页
+                        str += '<a href="#"  data-num="' + i + '"><span>' + i + "</span></a>";
+                    }
+                    }
+                    //当前页不是总页，即是最后一页
+                    if (currentPage != totalPage) {
+                        str += '<a href="#"  data-num="' + (currentPage + 1) + '"><span>&gt;&gt;</span></a>';
+                        str += '<a href="#"  data-num="' + totalPage + '"><span>&gt;|</span></a>';
+                    } else {
+                        //如果是最后页，禁用下一页
+                        str += '<span>&gt;&gt;</span>';
+                        str += '<span>&gt;|</span>';
+                    }
+                }
+                                                    
+                str += ' 一共' + totalPage + '页, ' + totalNumber + '条记录 </div>';
+                
+                var divpager = document.getElementById("pager");
+                divpager.innerHTML = str;
+                //获取所有生成的页面链接
+                var listTag = divpager.getElementsByTagName('a');
+                //绑定li事件
+                for (var i = 0; i < listTag.length; i++) {
+                    listTag[i].onclick = function() {
+                        var currentPage = this.getAttribute('data-num');
+                        nowcurrentPage(currentPage);
+                        return false;
+                    };
+                }
+            }
+            //传递页面
+            function nowcurrentPage(currentPage) {
+                this.currentPage = currentPage;
+                initPage();
+            }
+            
+            //生成每页的数据（把数据对应塞进结构）
+            function pageCon(arr, rangeStartitem, len) {
+                var constr = '';
+                for (var i = rangeStartitem; i < rangeStartitem + len; i++) {
+                    constr += "<li>"+ arr[i] + "</li>";
+                }
+                return constr;
+            }
+        </script>
+</body>
+</html>

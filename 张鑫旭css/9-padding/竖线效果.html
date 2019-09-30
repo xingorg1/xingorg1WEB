@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>竖线效果</title>
+</head>
+
+<body>
+  <h3>利用的原理，伪元素的font-size为0则高度为0，然后padding上下值撑开自身占据的上下尺寸，对于外界没有影响。padding左右值是margin的一半，加起来就是和margin一样的距离。用于拉大和右边（当border在左边设置时）元素的距离，margin-left负责拉大与左边元素的距离。</h3>
+  <div class="box1">
+    登陆
+    <span class="line"></span>
+    注册
+  </div>
+  <style>
+    .line {
+      padding: 12px 6px 2px;
+      margin-left: 10px;
+      border-left: 2px solid rgb(218, 218, 218);
+      font-size: 0;
+    }
+  </style>
+  <div class="box2">
+    <span class="vertical-line">
+      登陆
+    </span>
+    <span class="vertical-line">
+      注册
+    </span>
+    <span>
+      退出
+    </span>
+  </div>
+  <style>
+    .box2 {
+      margin-top: 20px;
+    }
+
+    .vertical-line {
+      position: relative;
+    }
+
+    .vertical-line::after {
+      content: "";
+      margin-left: 10px;
+      padding: 12px 6px 1px;
+      /* padding-top+padding-bottom的值刚好是文字大小的话，竖线就和文字一般高 */
+      font-size: 0;
+      border-left: 2px solid rgb(218, 218, 218);
+    }
+  </style>
+</body>
+
+</html>

@@ -1,0 +1,299 @@
+ @charset "utf-8";
+	body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
+	body { font-size: 12px; font-family: \5b8b\4f53, Arial, Helvetica, sans-serif;line-height: 150%; color: #333;}
+	table { border-collapse: collapse; border-spacing: 0; }
+	fieldset, img { border: 0; }
+	ins { text-decoration: none; display:block;}
+	legend { display: none; }
+	address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal; }
+	ol, ul { list-style: none; }
+	caption, th { text-align: left; }
+	h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+	q:before, q:after { content: ''; }
+	abbr, acronym { border: 0; }
+	a:link, a:visited { color: #333; text-decoration: none; }
+	a:hover { color: #c00;  text-decoration:none;}
+	a strong { color: #c00; }
+	object, embed { display: block }
+	input, select { border-radius: 0 }
+	.clear { clear: both; height: 0; overflow: hidden; }
+	.clearfix { *zoom:1}
+	.clearfix:after { display: block; overflow: hidden; clear: both; height: 0; visibility: hidden; content: "."; }
+	/*上面样式可删，继承公用*/
+	.wrap {position: relative;width: 1200px;margin: 0 auto;font-family: "Microsoft Yahei","微软雅黑";}
+ /*slide*/
+            
+            .slider {
+            	margin: 20px auto;
+                position: relative;
+                border-top: 1px solid #194090;
+                z-index: 1;
+            }
+            
+            .slider,
+            .slider_stage a {
+                display: block;
+                width: 100%;
+                min-width: 1200px;
+                height: 450px;
+            }
+            
+            .slider_stage {
+                width: 100%;
+                height: 450px;
+                overflow: hidden;
+            }
+            
+            .prev,
+            .next {
+                display: block;
+                width: 38px;
+                height: 84px;
+                position: absolute;
+                top: 50%;
+                margin-top: -42px;
+                z-index: 10;
+                cursor: pointer;
+            }
+            
+            .prev1,
+            .next1 {
+                background: url(http://img1.bitautoimg.com/brandmarket/yichehuinew/pc/images/header_icon.png) no-repeat;
+                display: none;
+            }
+            
+            .prev:focus,
+            .next:focus {
+                outline: none
+            }
+            
+            .prev {
+                left: 50%;
+                margin-left: -330px;
+                background-position: -312px -3px;
+            }
+            
+            .next {
+                right: 50%;
+                margin-right: -638px;
+                background-position: -312px -87px;
+            }
+            
+            .slider:hover .prev1,
+            .slider:hover .next1 {
+                display: block
+            }
+            
+            .slider-menu-1 {
+                position: absolute;
+                bottom: 12px;
+                width: 100%;
+                height: 24px;
+                z-index: 50;
+            }
+            
+            .slider-menu-1-box {
+                width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .slider-menu-1 ul {
+                padding-left: 270px;
+                text-align: center;
+            }
+            
+            .slider-menu-1 ul li {
+                position: relative;
+                display: inline-block;
+                *display: inline;
+                *zoom: 1;
+                width: 13px;
+                height: 13px;
+                padding: 6px 5px;
+                margin-left: -6px;
+                +margin-left: 0;
+                background: url(http://img1.bitautoimg.com/brandmarket/yichehuinew/pc/images/header_icon.png) no-repeat -30px -108px;
+            }
+            
+            .slider-menu-1 ul li a {
+                display: block;
+                background: url(http://img1.bitautoimg.com/brandmarket/yichehuinew/pc/images/header_icon.png) no-repeat -27px -157px;
+                width: 13px;
+                height: 13px;
+            }
+            
+            .slider-menu-1 ul li.current a {
+                background-position: -3px -157px;
+            }
+            
+            .slider-menu-1 ul li b {
+                position: absolute;
+                top: 0px;
+                width: 12px;
+                height: 25px;
+                background: url(http://img1.bitautoimg.com/brandmarket/yichehuinew/pc/images/header_icon.png) no-repeat;
+            }
+            
+            .slider-menu-1 ul li b.left_corner {
+                left: -12px;
+                background-position: 0 -108px;
+            }
+            
+            .slider-menu-1 ul li b.right_corner {
+                right: -12px;
+                background-position: -81px -108px;
+            }
+            
+            .links {
+                width: 270px;
+                height: 450px;
+                background-color: #fe7428;
+                position: absolute;
+                left: 50%;
+                top: 0;
+                margin-left: -600px;
+                font-family: "Microsoft Yahei";
+                color: #fff;
+                z-index: 70;
+            }
+            
+            .store_list {
+                position: relative;
+                width: 210px;
+                height: 207px;
+                padding: 19px 30px 0;
+                border: 1px solid transparent;
+                margin-bottom: 14px;
+            }
+            
+            .store_list.cur {
+                background: #fff;
+                border: 1px solid #fe7405;
+                border-right: none;
+                color: #333;
+                z-index: 1;
+            }
+            
+            .store_list.cur a,
+            .store_list.cur a.mark {
+                color: #333;
+            }
+            
+            .active_list {
+                width: 210px;
+                padding: 0 30px;
+            }
+            
+            .links p {
+                position: relative;
+                padding-left: 22px;
+                margin-bottom: 8px;
+                height: 18px;
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 18px;
+                background: url(http://img1.bitautoimg.com/brandmarket/yichehuinew/pc/images/header_icon.png) no-repeat;
+            }
+            
+            .store_list .tit_icon {
+                width: 180px;
+                padding-right: 30px;
+                background-position: 0 1px;
+                cursor: pointer;
+            }
+            
+            .store_list.cur .tit_icon {
+                background-position-y: -25px;
+                cursor: default;
+            }
+            
+            .store_list .tit_icon span {
+                display: inline-block;
+                width: 8px;
+                height: 14px;
+                background: url(http://img1.bitautoimg.com/brandmarket/yichehuinew/pc/images/header_icon.png) no-repeat -3px -68px;
+                float: right;
+                margin-top: 2px;
+            }
+            
+            .store_list>div {
+                border-bottom: 1px dotted #fff;
+                padding-bottom: 12px;
+                margin-bottom: 14px;
+            }
+            
+            .links .tit_icon2 {
+                background-position: 0 -45px
+            }
+            
+            .links .tit_icon2 a {
+                display: inline-block;
+                width: 36px;
+                height: 15px;
+                line-height: 15px;
+                background: #fff600;
+                text-align: center;
+                font-family: "Arial";
+                font-size: 12px;
+                float: right;
+                border-radius: 2px;
+            }
+            
+            .links div a {
+                display: inline-block;
+                padding-right: 20px;
+                font-size: 14px;
+                color: #fff;
+                line-height: 28px;
+            }
+            
+            .links div a.mark,
+            .links div a:hover {
+                color: #fff600;
+                text-decoration: none
+            }
+            
+            .links div.tit_link {
+                border-bottom: none;
+            }
+            
+            .links div.tit_link a {
+                display: block;
+                padding-right: 0;
+            }
+/*一元试驾*/
+.driveCar{ min-width:1200px;overflow: hidden;font-family: "微软雅黑","microsoft yahei";}
+.driveCar .wrap_tit_bg { width: 358px; height: 24px;}
+.driveCar-warp {position: relative; width: 1200px; height: 322px; padding-top: 32px; margin: 0 auto;}
+.driveCar-warp-box { position: relative; width: 1200px; height: 322px; overflow: hidden;} 
+.js-drive/*,.driveCar-warp-box li*/{width: 1200px;}  
+.driveCar-warp-box li {float: left; }
+.driveCar-warp-con {position:relative;/*float: left;*/display:block; width:298px; height:318px; margin-right:2px; overflow: hidden;background:#fff url(http://img1.bitautoimg.com/brandmarket/yichehuinew/pc/images/blank.gif);}
+.driveCar-warp-con .carImg{ width:294px; height:194px; padding:2px; }
+.driveCar-warp-con .carImg img{width:100%;}
+.driveCar-warp-con .carInfo{ padding:16px 15px 16px 26px}
+.driveCar-warp-con .carInfo div{ width:50px; height:50px; overflow: hidden; float:left; margin-right:18px;}
+.driveCar-warp-con .carInfo div img{ width:50px; display:block;}
+.driveCar-warp-con .carInfo span{ font-size:16px; line-height:32px; font-weight:bold; color:#333; display:block; height:32px; overflow:hidden;}
+.driveCar-warp-con:hover{ text-decoration:none}
+.driveCar-warp-con:hover:after{ content:""; width:294px; height:320px; position:absolute; left:0; top:0; z-index:1;}
+.driveCar-warp-con .carInfo i{ color:#999; font-style:normal;height: 16px;overflow: hidden;line-height: 16px;display:block;}
+.driveCar-warp-con .checkMore{ display:block;  width:100%; line-height:40px; height:40px; text-align:center; font-size:13px;}
+.driveCar-arrow-pre,.driveCar-arrow-next { position: absolute; top: 190px; width: 29px; height: 54px;}
+.driveCar-warp-con-list {position: absolute; top:375px; left:50%; width:1200px; height:20px; margin-left:-600px; text-align:center;	}
+.driveCar-warp-con-list a {display:inline-block; *display:inline; *zoom:1; margin:0 5px; width:20px; height:20px; overflow:hidden;}
+a.boxItem1:before,.brand_con>a:before{content:"";position:absolute;width:80px;height:350px;top:-120px;;left:-150px;overflow:hidden;background:-moz-linear-gradient(left,rgba(255,255,255,0)0,rgba(255,255,255,.2)50%,rgba(255,255,255,0)100%);background:-webkit-gradient(linear,left top,right top,color-stop(0%,rgba(255,255,255,0)),color-stop(50%,rgba(255,255,255,.2)),color-stop(100%,rgba(255,255,255,0)));background:-webkit-linear-gradient(left,rgba(255,255,255,0)0,rgba(255,255,255,.2)50%,rgba(255,255,255,0)100%);background:-o-linear-gradient(left,rgba(255,255,255,0)0,rgba(255,255,255,.2)50%,rgba(255,255,255,0)100%);-webkit-transform:skewX(-25deg);-moz-transform:skewX(-25deg);z-index:10;}
+a.boxItem1:hover::before,.brand_con>a:hover::before{-webkit-transition:left 1s;-moz-transition:left 1s;transition:left 1s;left:350px;}
+/**一元试驾**/
+.driveCar{height: 525px; background: url(img/drive_bg_g.jpg) no-repeat center top #2807b3;}
+.driveCar .wrap_tit_bg {padding-top: 103px;}
+.driveCar .wrap_tit_bg span {margin-right: 50px;}
+.driveCar-warp-con:hover:after{border:2px solid #f8d649}
+.driveCar-warp-con:hover .carInfo span{color:#f8d649;}
+.driveCar-warp-con .checkMore{background:#f8d649;color: #f50b3c; }
+.driveCar-warp-con:hover .checkMore{background:#f8d649;}
+.driveCar-arrow-pre,.driveCar-arrow-next,.driveCar-warp-con-list a  { background: url(img/icon_base.png) no-repeat;}
+.driveCar-warp .driveCar-arrow-pre {left:-40px; background-position: left top;}
+.driveCar-warp .driveCar-arrow-next {right:-40px; background-position: right top;}
+.driveCar-warp-con-list a {background-position: right bottom;}
+.driveCar-warp-con-list a:hover, .driveCar-warp-con-list a.cur { background-position: left bottom;}

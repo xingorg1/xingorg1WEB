@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			<style type="text/css"> body {
+				background-color: #EEEEEE;
+			}
+			
+			h1 {
+				color: #DC143C;
+			}
+			
+			div {
+				border: 1px solid #DC143C;
+				border-radius: 12px;
+				margin-top: 10px;
+				padding: 10px;
+				text-align: center;
+			}
+			
+			.radio1 label {
+				display: inline-block;
+				position: relative;
+				width: 28px;
+				height: 28px;
+				border: 1px solid #ccc;
+				background-color: #FFF;
+				cursor: pointer;
+				border-radius: 50%;
+				margin-top: 10px;
+			}
+			/*核心就是把label变成了单选框的样式，把radio隐藏起来，因为选中label就会选中对应的额radio，所以用户不必直接选radio了，而是通过label变相的来选中radio。但好处就是label可以加动画样式。*/
+			/*给label的后边加一个动画*/
+			
+			.radio1 label:after {
+				content: "";
+				position: absolute;
+				top: 4px;
+				left: 4px;
+				width: 20px;
+				height: 20px;
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				border-radius: 50%;
+				background-color: #666;
+				-moz-transform: scale(0);
+				-webkit-transform: scale(0);
+				-ms-transform: scale(0);
+				-o-transform: scale(0);
+				transform: scale(0);
+				-moz-transition: transform .5s ease-out;
+				-webkit-transition: transform .5s ease-out;
+				-o-transition: transform .5s ease-out;
+				-ms-transition: transform .5s ease-out;
+				transition: transform .5s ease-out;
+			}
+			/*把小黑点做出来，缩放为0.做出来的方法，是在label的后边加上了一个空伪类，然后填充颜色*/
+			
+			.radio1 input[type="radio"]:checked+ label {
+				/*这既是灵活运用伪类选择器和兄弟选择器了。checked表示被选中的那个radio，+表示那个radio下边的近邻label*/
+				background-color: #eee;
+				-moz-transition: transform .2s ease-out;
+				-webkit-transition: transform .2s ease-out;
+				-ms-transition: transform .2s ease-out;
+				-o-transition: transform .2s ease-out;
+				transition: transform .2s ease-out;
+			}
+			
+			.radio1 input[type="radio"]:checked+ label:after {
+				-moz-transform: scale(1);
+				-ms-transform: scale(1);
+				-webkit-transform: scale(1);
+				-o-transform: scale(1);
+				transform: scale(1);
+				-moz-transition: transform .5s ease-out;
+				-webkit-transition: transform .5s ease-out;
+				-o-transition: transform .5s ease-out;
+				-ms-transition: transform .5s ease-out;
+				transition: transform .5s ease-out;
+			}
+			
+			.radio1 input[type="radio"] {
+				display: none;
+			}
+			/*radio2自己练习旋转动画*/
+			
+			.radio2 label {
+				width: 30px;
+				height: 30px;
+				background-color: coral;
+				display: inline-block;
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				border-radius: 50%;
+				border: 1px solid #D2B48C;
+				margin-right: 5px;
+				position: relative;
+				cursor: pointer;
+				overflow: hidden;
+				/*///*/
+			}
+			
+			.radio2 label:after {
+				content: "";
+				width: 20px;
+				height: 20px;
+				background-color: #90EE90;
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				border-radius: 50%;
+				-webkit-transform: rotate(-80deg);
+				-moz-transform: rotate(-180deg);
+				-ms-transform: rotate(-180deg);
+				-o-transform: rotate(-180deg);
+				transform: rotate(-180deg);
+				-webkit-transform-origin: -10px 50%;
+				-moz-transform-origin: -10px 50%;
+				-ms-transform-origin: -10px 50%;
+				-o-transform-origin: -10px 50%;
+				transform-origin: -3px 50%;
+				-webkit-transition: transform .7s ease-out;
+				-moz-transition: transform .7s ease-out;
+				-ms-transition: transform .7s ease-out;
+				-o-transition: transform .7s ease-out;
+				transition: transform .7s ease-out;
+			}
+			
+			.radio2 input[type="radio"]:checked+ label {
+				background-color: #4169E1;
+				-webkit-transition: background-color .7s ease-out;
+				-moz-transition: background-color .7s ease-out;
+				-ms-transition: background-color .7s ease-out;
+				-o-transition: background-color .7s ease-out;
+				transition: background-color .7s ease-out;
+			}
+			
+			.radio2 input[type="radio"]:checked+label:after {
+				-webkit-transform: rotate(0deg);
+				-moz-transform: rotate(0deg);
+				-ms-transform: rotate(0deg);
+				-o-transform: rotate(0deg);
+				transform: rotate(0deg);
+				-webkit-transition: transform .7s ease-out;
+				-moz-transition: transform .7s ease-out;
+				-ms-transition: transform .7s ease-out;
+				-o-transition: transform .7s ease-out;
+				transition: transform .7s ease-out;
+			}
+			
+			.radio2 input[type="radio"] {
+				display: none;
+			}
+			/*radio3*/
+			.radio3 label {
+				width: 15px;
+				height: 15px;
+				background-color: #fff;
+				display: inline-block;
+				border: 1px solid #dfddde;
+				margin-right: 5px;
+				position: relative;
+				cursor: pointer;
+				overflow: hidden;
+				/*///*/
+			}
+			
+			.radio3 input[type="radio"]:checked+ label {
+				background-color: #164A84;
+			}
+			
+			.radio3 input[type="radio"] {
+				display: none;
+			}
+			
+			.radio3 span {
+				font-size: 30px;
+				margin: 5px 0;
+			}
+			/*radio4*/
+			.radio4 label {
+				width: 15px;
+				height: 15px;
+				background-color: #fff;
+				display: inline-block;
+				border: 1px solid #dfddde;
+				margin-right: 5px;
+				position: relative;
+				cursor: pointer;
+				overflow: hidden;
+				/*///*/
+			}
+			
+			.radio4 input[type="radio"]:checked+ label {
+				background-color: #164A84;
+			}
+			
+			.radio4 input[type="radio"] {
+				display: none;
+			}
+			
+			.radio4 span {
+				font-size: 30px;
+				margin: 5px 0;
+			}
+		</style>
+		</style>
+	</head>
+
+	<body>
+		<div class="radio1">
+			<h1>缩放动画</h1>
+			<input type="radio" name="ys" id="r1" />
+			<label for="r1"></label>
+			<input type="radio" name="ys" id="r2" />
+			<label for="r2"></label>
+			<input type="radio" name="ys" id="r3" />
+			<label for="r3"></label>
+		</div>
+		<div class="radio2">
+			<h1>旋转动画</h1>
+			<input type="radio" name="ys2" id="r4" />
+			<label for="r4"></label>
+			<input type="radio" name="ys2" id="r5" />
+			<label for="r5"></label>
+			<input type="radio" name="ys2" id="r6" />
+			<label for="r6"></label>
+		</div>
+		<div class="radio3">
+			<h1>方块选择</h1>
+			<input type="radio" name="sex" id="nan" value="男" />
+			<label for="nan"></label><span>男</span>
+			<input type="radio" name="sex" id="nv" />
+			<label for="nv"></label><span>女</span>
+		</div>
+		<div class="radio4">
+			<h1>方块选择结构二</h1>
+			<span class='radio_m'>
+                <input type="radio" id="sex1" value="先生" name="sex" />
+                <label for="sex1"></label><span>男</span>
+            </span>
+            <span class='radio_n'>
+                <input type="radio" name="sex" value="女士" id="sex2"/>
+                <label for="sex2"></label><span>女</span>
+            </span>
+            <p>很明显这种方法是css3的属性，这种很不适合用来ie8这种版本的浏览器，而且我也不知道，这对后台传数据有什么影响</p>
+        </div>
+	</body>
+</html>

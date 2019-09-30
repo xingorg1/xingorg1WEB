@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2.父元素高度确定的多行文本垂直居中.html</title>
+</head>
+<body>
+    <h3>多行文本垂直居中效果</h3>
+    <div class="content-box">
+      <div class="content">
+        我是多行文本。多行文本水平垂直居中的原理跟上一页图片的实现是一样的，区别在于要把多行文本所在的容器的display水平转换成和图片一样的，也就是inline-block，以及重置外部继承的text-align和line-height属性值。
+      </div>
+    </div>
+    <style>
+        .content-box{
+          border: 1px solid #eee;
+          background: #f8f8f8;
+          padding: 10px;
+          margin-bottom: 120px;
+          /* 核心： */
+          /* height: 300px;有了line-height，height就没必要了 */
+          line-height: 300px;
+          text-align: center;
+          /* 以下代码为了说明并非完全垂直居中 */
+          position: relative;
+        }
+        .content{
+          width: 500px;
+          border: 1px solid #00ff57;
+          /* 核心： */
+          display: inline-block;
+          vertical-align: middle;
+          /* 覆盖：继承自父元素、用于布局的代码 */
+          line-height: 21px;
+          text-align: left;
+          /* 具体情况具体分析，本案例字体是16px，差距就是4像素。 */
+          margin-top: -4px;
+        }
+        .content-box:before,.content-box:after{
+           /* 本段代码为了说明并非完全垂直居中 */
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 0 10px;
+          line-height: 118px;
+          text-align: center;
+          border: 1px solid #ff00b4;
+        }
+        .content-box:before{
+          top: 0%;
+          content: "高度118px，=顶部剩余空间";
+        }
+        .content-box:after{
+          bottom: 0;
+          content: "高度118px,但是盛不下！！114刚好";
+        }
+        </style>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="height: 1100px;">
+		<div style="height: 3000px;" id="div"></div>
+	</body>
+	<script type="text/javascript">
+		var oDiv = document.getElementById("div");
+//		var sT = document.documentElement.scrollTop || document.body.scrollTop;
+		var dT = oDiv.scrollTop;
+		
+		var vH = document.documentElement.clientHeight;
+		var vW = document.documentElement.clientWidth;
+		var bH = document.body.scrollHeight;
+//		console.log(sT)
+		console.log(dT)
+		console.log(vH)
+		console.log(vW+"可视区域的宽度")
+		console.log(bH)
+		window.onscroll = function(){
+//			console.log(sT)
+			console.log(dT)
+			console.log(vH+"可视区域的高度")
+			console.log(vW+"可视区域的宽度")
+			console.log(bH+"全部的高度")
+		}
+	</script>
+</html>

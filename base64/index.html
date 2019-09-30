@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>base64</title>
+</head>
+<body>
+<script>
+	var reader = new FileReader(), htmlImage;
+	reader.onload = function(e) {
+	    htmlImage = '<img src="'+ e.target.result +'" />';    // 这里e.target.result就是base64编码
+	}
+	reader.readAsDataURL('https://epbf.bitautoimg.com/16/20180410/efb5738f-9e66-40b0-b0f7-eaf7fb36aced.jpeg');
+</script>
+	
+</body>
+</html>

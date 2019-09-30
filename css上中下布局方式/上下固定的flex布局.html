@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>上下固定的上中下布局-flex应用</title>
+  <style>
+    body{
+      color: #333;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: center;
+    }
+    header,footer{
+      line-height: 66px;
+      background: lightgreen;
+    }
+    article{
+      padding: 20px;
+    }
+    /* 父元素设置flex，然后布局方向为主轴从上到下，那么header和footer就会在最上边和最下边 */
+    html,body{
+      height: 100%;
+      margin: 0;
+      /* 不设置100%，高度撑不开 */
+    }
+    .container{
+      display: flex;
+      display: -webkit-box;
+      display: -webkit-flex;
+      flex-direction: column;
+      -ms-flex-direction: column;
+    }
+    article{
+      flex: 1;
+    }
+  </style>
+</head>
+<body  class="container">
+    <header>我是头部</header>
+    <article>我是中间文章主体部位</article>
+    <footer>我是尾部</footer>
+</body>
+</html>

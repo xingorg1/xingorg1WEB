@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>absolute与margin结合得到垂直居中效果</title>
+  <style>
+    .fathre{
+      width: 100%;
+      height: 500px;
+      background: rgb(125, 213, 255);
+      position: relative;
+    }
+    .child{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="fathre">
+    <div class="child">
+      水平垂直居中，ie8+以上浏览器才支持
+    </div>
+  </div>
+</body>
+</html>

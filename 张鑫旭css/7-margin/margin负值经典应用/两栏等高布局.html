@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两栏等高布局</title>
+  <style>
+    .fun1{
+      width: 1220px;
+      overflow: hidden;
+      border: 1px solid rgb(0, 0, 80);
+      background: rgb(255, 216, 216);
+    }
+    .fl,.ri,.ri1{
+      width: 200px;
+      padding:20px;
+      float: left;
+      margin-bottom: -6000px;
+      padding-bottom: 6000px;
+    }
+    .fl{
+      background: rgb(166, 172, 255);
+    }
+    .ri{
+      width: 700px;
+      background: rgb(231, 255, 152);
+    }
+    .ri1{
+      background: rgb(136, 172, 255);
+    }
+  </style>
+</head>
+<body>
+  <h3>利用margin-bottom和padding-bottom实现</h3>
+  <div class="fun1">
+    <div class="fl">
+      <ul>
+        <li>列表一</li>
+        <li>列表一</li>
+        <li>列表一</li>
+        <li>列表一</li>
+        <li>列表一</li>
+      </ul>
+    </div>
+    <div class="ri">
+      文章内容
+      文章内容
+      文章内容
+      文章内容
+      文章内容
+    </div>
+    <div class="ri1">
+        <ul>
+            <li>列表一</li>
+            <li>列表一</li>
+            <li>列表一</li>
+            <li>列表一</li>
+            <li>列表一</li>
+          </ul>
+      </div>
+  </div>
+  <style>
+    .fun2{
+      margin: 20px;
+      background: black;
+      overflow: hidden;
+      color: #fff;
+      position: relative;
+    }
+    .fl2{
+      float: left;
+      width: 200px;
+    }
+    .ri2{
+      float: left;
+      background: red;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 200px;
+      right: 0;
+
+    }
+  </style>
+      <h3>利用padding-left,障眼法实现</h3>
+  <div class="fun2">
+      <div class="fl2">
+        <ul>
+          <li>列表一</li>
+          <li>列表一</li>
+          <li>列表一</li>
+          <li>列表一</li>
+          <li>列表一</li>
+        </ul>
+      </div>
+      <div class="ri2">
+        文章内容
+        文章内容
+        文章内容
+        文章内容
+        文章内容
+      </div>
+    </div>
+</body>
+</html>

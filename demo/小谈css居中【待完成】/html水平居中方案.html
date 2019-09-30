@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>html水平居中方案</title>
+		<style type="text/css">
+			div{
+				background-color: #ddd;
+				text-align: center;
+				/*方案一*/
+				position: relative;
+				/*方案一end*/
+			}
+			p{
+				width: 300px;
+				background-color: #999999;
+				/*方案一*/
+				/*position: absolute;
+				left: 50%;
+				margin-left: -150px;*/
+				/*方案一end*/
+				/*方案一不足：absolute脱离文档流，如何？*/
+				/*方案二*/
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: auto;
+				/*方案二end*/
+			}
+			a{
+				background-color: #42AA3A;
+				/*方案一*/
+				/*方案一end*/
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div><p>P标签</p></div>
+			<a>我是a标签</a>
+		</div>
+	</body>
+</html>

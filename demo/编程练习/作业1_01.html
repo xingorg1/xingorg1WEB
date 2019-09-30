@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			.div1 {
+				background-color: #8075a2;
+				width: 1080px;
+				margin: 0 auto;
+				font-size: 0;/*解决inline-block造成的边距问题。但是这种解决方法，会让div内部无法添加内容，一旦添加，会被挤下去*/
+				-webkit-text-size-adjust: none;/*还要加持这个才能让低版本的浏览器chrome等，来支持font-size为0的设置*/
+				
+			}
+			.div1:after{
+				content: "";
+				clear: both;
+				display: block;
+				vertical-align: middle;
+			}
+			.div1{
+				*zoom: 1;
+			}
+			.div1_1 {
+				width: 200px;
+				height: 220px;
+				display: inline-block;
+				/*float: left;*/
+				margin: 10px 0;
+				margin-right: 20px;
+				background-color : #e6eaf6;
+				font-size: 14px;
+				line-height: 220px;
+			}
+			/*.div1_1:nth-child(5n){
+				margin-right: 0;
+			}
+			.div1_1:nth-child(5n+1){
+				margin-left: 2px;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<div class="div1">
+			<p class="div1_1">1</p>
+			<p class="div1_1">2</p>
+			<p class="div1_1"></p>
+			<p class="div1_1">4</p>
+			<p class="div1_1">5</p>
+			<p class="div1_1">1</p>
+			<p class="div1_1">2</p>
+			<p class="div1_1"></p>
+			<p class="div1_1">4</p>
+			<p class="div1_1">5</p>
+			<p class="div1_1">1</p>
+			<p class="div1_1">2</p>
+		</div>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oDiv = document.getElementsByTagName("div")[0];
+				var div11 = oDiv.getElementsByTagName("p");
+			  //alert(div11.length);
+				for(var i = 0; i < div11.length; i++) {
+					if(i % 5 == 4) {//(i=i+4) 
+						div11[i].style.marginRight = 0;
+						div11[i].style.backgroundColor = "#d7d7f9";
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

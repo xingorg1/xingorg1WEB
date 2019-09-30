@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ie hack test</title>
+</head>
+<body>
+<style>
+	.iebox{
+    position: relative;
+    float: left;
+    width: 168px;
+    height: 30px;
+    padding-top: 50px;
+    margin-right: 16px;
+    text-align: center;
+    color: #333B48;
+    border-radius: 4px;
+    background: url(https://yichehuoban-fed.bitauto.com/das/fed/yi-platform/tree/f-wxTemplate-gjf/wxTemplate/dist/images/bg_white.png) no-repeat;
+	}
+	.iebox:before,.iebox:after{
+		content: "";
+		position: absolute;
+    z-index: 9;
+	}
+	.iebox:before{
+		bottom: 0;
+		right: 0;
+		width: 21px;
+		height: 21px;
+	}
+	.iebox:after{
+    top: 16px;
+    left: 50%;
+	}
+	.iebox.active{
+		background: url(https://yichehuoban-fed.bitauto.com/das/fed/yi-platform/tree/f-wxTemplate-gjf/wxTemplate/dist/images/bg_blue.png) no-repeat;
+	}
+	.iebox.active:before{
+		background: url(https://yichehuoban-fed.bitauto.com/das/fed/yi-platform/tree/f-wxTemplate-gjf/wxTemplate/dist/images/icon-tick.png) no-repeat;
+	}
+	.iebox:hover{
+		cursor: pointer;
+	}
+</style>
+	<div class="iebox">我是一个盒子</div>
+	<div class="iebox active">我是一个active盒子</div>
+</body>
+</html>

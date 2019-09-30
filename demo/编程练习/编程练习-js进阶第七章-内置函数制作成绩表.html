@@ -1,0 +1,67 @@
+<!DOCTYPE  HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>系好安全带,准备启航</title>
+		<style type="text/css">
+			table thead {
+				background-color: #ddd;
+			}
+			
+			table thead th {
+				padding: 10px 20px;
+			}
+			
+			table tr {
+				background-color: #ccc;
+			}
+			
+			table td {
+				border: 1px solid #ff0;
+			}
+		</style>
+		<script type="text/javascript">
+			//通过javascript的日期对象来得到当前的日期，并输出。
+			var oDate = new Date();
+			var year = oDate.getFullYear();
+			var month = oDate.getMonth();
+			var day = oDate.getDate();
+			//   document.write(xq)
+			var xqq = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+			var xq = oDate.getDay();
+			document.write("<table><thead><tr><th>" + "今天是&nbsp;&nbsp;&nbsp;" + year + "年" + (month + 1) + "月" + day + "日&nbsp;&nbsp;" + "星期" + xqq[xq] + "</th></tr></thead><tbody></tbody></table>")
+
+			//成绩是一长窜的字符串不好处理，找规律后分割放到数组里更好操作哦
+			var scoreStr = "小明:87;小花:81;小红:97;小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76";
+			var arr = new Array();
+			arr = scoreStr.split(";");
+			document.write(arr + "<br/>");
+			var sum = 0;
+			for(var a = 0; a < arr.length; a++) {
+				sum += parseInt(arr[a].substring(3, 5));
+			}
+			document.write(sum)
+			document.write("<table><tbody>");
+			for(var i = 0; i < arr.length; i++) {
+				document.write("<tr>")
+				document.write("<td>" + arr[i].substring(0, 2) + "</td>");
+				document.write("<td>" + arr[i].substring(3, 5) + "</td>");
+				document.write("</tr>")
+
+			}
+			document.write("<tr>")
+			document.write("<td>" + "总分" + "</td>");
+			document.write("<td>" + sum + "</td>");
+			document.write("</tr>")
+			document.write("</tbody></table>");
+
+			// document.write("<table><tbody><tr><td></td></tr></tbody></table>")
+			//从数组中将成绩撮出来，然后求和取整，并输出。
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

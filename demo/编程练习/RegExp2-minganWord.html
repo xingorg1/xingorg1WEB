@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式学习后的练习</title>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oTxt1 = document.getElementById("txt1");
+			var oTxt2 = document.getElementById("txt2");
+			var re = /[我|车|一]/g;
+			oBtn.onclick = function(){
+				oTxt2.value = oTxt1.value.replace(re,"【@!@!@】");
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<textarea name="" rows="20" cols="20" id="txt1"></textarea>
+		<input type="button" name="" id="btn" value="过滤" />
+		<textarea name="" rows="30" cols="30" id="txt2"></textarea>
+	</body>
+</html>

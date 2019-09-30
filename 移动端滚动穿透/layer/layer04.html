@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>layer4</title>
+  <script type="text/javascript">
+    (function () {
+      var b = document.createElement("meta");
+      b.setAttribute("name", "viewport");
+      var c = window.devicePixelRatio,
+        a = c ? 1 / c : 1;
+      window.screen.availWidth == document.documentElement.offsetWidth && (c = a = 1);
+      document.documentElement.setAttribute("data-dpr", c || 1);
+      window.navigator.userAgent.match(/android/i) ? b.setAttribute("content", "width=device-width, initial-scale=" +
+        a + ", maximum-scale=" + a + ", minimum-scale=" + a + ", user-scalable=no, viewport-fit=cover") : b.setAttribute(
+        "content", "initial-scale=" + a + ", maximum-scale=" + a + ", minimum-scale=" + a +
+        ", user-scalable=no, viewport-fit=cover");
+      document.head.appendChild(b)
+    })();
+  </script>
+  <script type="text/javascript">
+    var dpr = document.documentElement.getAttribute("data-dpr") || 1,
+      width = document.documentElement.offsetWidth,
+      fontSize = 100 / 750 * width;
+    document.querySelector("html").style.fontSize = fontSize + "px";
+    window.addEventListener("resize", function () {
+      var a = 100 / 750 * document.querySelector("html").offsetWidth;
+      document.querySelector("html").style.fontSize = a + "px"
+    });
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="box">
+    <h1>layer弹层阻止超出滚动事件,js用touchmove模拟移动端的滚动效果，实现弹层的超出滚动效果，这样也就不用设置body的overflow-hidden和position-fixed了</h1>
+    <div class="layer" id="layer">
+      <div class="layer-box" id="layerBox">
+        <div class="close" id="close">X</div>
+        <div class="layer-cont">百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。</div>
+        <ul class="layer-list">
+          <li>第一行</li>
+          <li>第二行</li>
+          <li>第三行</li>
+          <li>第四行</li>
+          <li>第五行</li>
+          <li>第六行</li>
+
+          <li>66666</li>
+
+          <li>第一行</li>
+          <li>第二行</li>
+          <li>第三行</li>
+          <li>第四行</li>
+          <li>第五行</li>
+          <li>第六行</li>
+        </ul>
+        <div class="btns">
+          <div class="btn-confirm">确认</div>
+          <div class="btn-cancel">取消</div>
+        </div>
+      </div>
+    </div>
+    <div class="for-height">
+      为了称高度 - 百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+      <img src="http://www.pptbz.com/pptpic/UploadFiles_6909/201203/2012031220134655.jpg" alt="">
+      百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+
+      <img src="http://pic3.nipic.com/20090527/1242397_102231006_2.jpg" alt="">
+      百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+      <img src="http://pic22.nipic.com/20120714/9622064_105642209176_2.jpg" alt="">
+      百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+      为了称高度 - 百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+      <img src="http://www.pptbz.com/pptpic/UploadFiles_6909/201203/2012031220134655.jpg" alt="">
+      百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+      <button id="btn">点击出弹层</button>
+      <img src="http://pic3.nipic.com/20090527/1242397_102231006_2.jpg" alt="">
+      百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+      <img src="http://pic22.nipic.com/20120714/9622064_105642209176_2.jpg" alt="">
+      百度图片使用世界前沿的人工智能技术,为用户甄选海量的高清美图,用更流畅、更快捷、更精准的搜索体验,带你去发现多彩的世界。
+    </div>
+  </div>
+  <script>
+    btn.onclick = function () {
+      layer.style.display = 'block';
+      layer.addEventListener('touchmove', function (e) {
+        // e.preventDefault();
+        e.stopPropagation();
+        if (e.target == layer) {
+          console.log(e.target, '我就是一个天才！！！');
+          e.preventDefault();
+        }
+      }, false);
+      var targetY = null;
+      layerBox.addEventListener('touchstart', function (e) {
+        //clientY-客户区坐标Y 、pageY-页面坐标Y
+        targetY = Math.floor(e.targetTouches[0].clientY);
+      },false);
+      layerBox.addEventListener('touchmove', function (e) {
+        // 检测可滚动区域的滚动事件，如果滑到了顶部或底部，阻止默认事件
+        var NewTargetY = Math.floor(e.targetTouches[0].clientY), //本次移动时鼠标的位置，用于计算
+          sTop = layerBox.scrollTop, //当前滚动的距离
+          sH = layerBox.scrollHeight, //可滚动区域的高度
+          lyBoxH = layerBox.clientHeight; //可视区域的高度
+        // console.log(sTop, sH, lyBoxH);
+        // console.log('hah', NewTargetY, NewTargetY - targetY);
+        if (sTop <= 0 && NewTargetY - targetY > 0 && '鼠标方向向下-到顶' || sTop >= sH - lyBoxH && NewTargetY - targetY < 0 &&
+          '鼠标方向向上-到底') {
+          // console.log('条件1成立：下拉页面到顶');
+          // console.log('条件2成立：上翻页面到底');
+          alert('够了！')
+          e.preventDefault();
+        }
+      }, false);
+    }
+    var closeBtn = document.getElementById('close');
+    closeBtn.onclick = function () {
+      layer.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

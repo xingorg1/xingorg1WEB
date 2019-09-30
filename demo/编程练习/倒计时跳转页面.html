@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>浏览器对象</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+
+	<body>
+		<!--
+ 		制作一个跳转提示页面：
+
+		要求：
+		1. 如果打开该页面后，如果不做任何操作则5秒后自动跳转到一个新的地址，如慕课网主页。
+		2. 如果点击“返回”按钮则返回前一个页面。
+ 	-->
+		<!--先编写好网页布局-->
+		<a href="一次性定时器制作计时器.html">一次性定时器制作计时器.html</a>
+		<h1>操作成功！</h1>
+		<p><span id="txt"></span>后回到主页</p>
+		<input type="button" value="返回" id="btn" />
+		<input type="button" value="停止跳转" id="stopTo" />
+
+		<script type="text/javascript">
+		/*
+			var timer = setInterval('hanshu()', 1000);
+			var num = 0;
+			function hanshu() {
+				num++;
+				if(num >= 3) {
+					clearInterval(timer);
+					window.open("http://www.imooc.com/code/1633","mukewang","scrollbars=no,width=600,height=400,top=100,left=0");
+					document.write("已成功跳转");
+				} else {
+					document.write(num + "<br/>")
+				}
+			}
+		*/
+			//获取显示秒数的元素，通过定时器来更改秒数。
+			var oTxt = document.getElementById("txt");
+			var oBtn = document.getElementById("btn");
+			var oStop = document.getElementById("stopTo");
+			var num = 5;
+			oTxt.innerHTML = num+"秒";
+			function openWin(){
+				window.open("http://www.imooc.com","muke","width=600,height=200");
+			}
+			var timer = setInterval(function(){
+				num--;
+				if(num<=0){
+					openWin();
+					clearInterval(timer);
+				}else{
+					oTxt.innerHTML = num+"秒";
+				}
+				
+			},1000)
+			oStop.onclick = function(){
+				clearInterval(timer);
+			}
+			oBtn.onclick = function(){
+				history.go(-1);
+			}
+			//通过window的location和history对象来控制网页的跳转。
+			
+			/*
+			 * 
+			 * 其他人的代码：
+			 * var num=document.getElementById("second").innerHTML;
+			    function count()
+			    {
+			        num--;
+			        document.getElementById("second").innerHTML=num;
+			        if(num==0)
+			        {
+			            location.assign("www.imooc.com");
+			        }
+			    }
+			    setInterval("count()",1000);
+			    function back()
+			    {
+			       window.history.back();
+			   }
+			 */
+		</script>
+	</body>
+
+</html>

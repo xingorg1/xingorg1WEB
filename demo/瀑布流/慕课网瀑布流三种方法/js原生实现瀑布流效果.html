@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>利用原生js来实现瀑布流布局</title>
+		<meta name="Description" content="定位式瀑布流"/>
+		<script src="jsyspbl.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#main{position: relative;}
+			.box{
+				float: left;
+				padding: 15px 0 0 15px;
+				/*这里的关键点是给盒子设置padding，而不是设置margin，
+				 * 这样对于以后js中的offsetHeight的计算来说，就比较简单了。
+				 * 因为offsetHeight是有padding而没有margin计算在内的。
+				*/
+			}
+			.pic{
+				padding: 15px;
+				border: 1px solid #ddd;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				-webkit-box-shadow: 0 0 5px #ddd;
+				box-shadow: 0 0 5px #ddd;
+			}
+			.pic img{width: 230px;height: auto;}
+		</style>
+	</head>
+	<body>
+		
+		<!--整体结构如下：
+			<div id="main">最外边的大盒子，用来相对定位
+			<div class="box">单个元素的盒子，用绝对定位和边距边框阴影等效果
+				<div class="pic">图片的边框等设计
+					<img src="../../images/0.jpg"/>最终核心的图片放置
+				</div>
+			</div>
+		</div>
+		-->
+		<div id="main">
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/0.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../../images/8.jpg"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

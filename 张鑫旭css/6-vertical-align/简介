@@ -1,0 +1,145 @@
+支持负值的属性：
+  margin,
+  letter-spacing,
+  word-spacing,
+  vertical-align
+元素vertical-align垂直对齐的位置与前后元素都没有关系
+元素vertical-align垂直对齐的位置与行高line-height没有关系。
+vertical-align垂直对齐的位置只与font-size大小有关。
+一、vertical-align支持的属性值及组成：
+1.支持继承：
+inherit 继承
+
+2.其他四类属性值：
+a. 线类：
+  baseline(vertical-align默认属性值)
+  top
+  middle
+  bottom
+
+b. 文本类
+  text-top
+  text-bottom
+
+c. 上标下标类
+  sub
+  super
+
+d. 数值百分比类
+  20px
+  2em(1em相当于一个元素的font-size值)
+  20%
+  ...
+d-1: 数值类
+d-2: 百分比类
+数值类和百分比类的共同特点：
+1. 都带数字
+2. 都支持负值
+  其他支持负值的属性有：margin、letter-spacing、word-spacing、vertical-align
+3. 行为表现一致
+具体行为如下：
+  设置为数值时(20px\20em)，元素基于vertical-align:baseline;对齐基础的位置上下偏移对应数值大小。
+  正值向上偏移，负值向下偏移。
+  比如vertical-align:1px;就是在baseline的基础上，向上移动1像素。
+
+但是，设置为百分比值时，元素的vertical-align最终计算值是相对于行高line-height计算的。
+比如，一个父元素的line-height:0;那么子元素设置vertical-align:100%;那么最终就是0*100%
+
+缺点：兼容性问题 - ie6/7下，vertical-align百分比值不支持小数line-height。
+
+二、vertical-align起作用的前提（display值对垂直对齐的影响）
+有时候设置vertical-align会发现根本不起作用，
+第一个原因：是因为vertical-align只能应用于inline/inline-block水平以及table-cell元素
+1. inline（或匿名inline）水平元素
+img、span、strong、em、自定义元素（浏览器默认会当做inline水平）
+2. inline-block
+input（ie8+）、button（ie8+）（这俩元素在ie67中会被认为是inline水平）
+3. table-cell：
+td
+第二个原因：是因为行高/父元素高度根本不够
+总结：
+默认情况下，支持vertical-align的为图片、按钮、文字、单元格。
+display设置时：更改元素的显示水平也会让其支持vertical-align
+
+三、更改元素的显示水平
+1. display属性设置：非inline、inline-block、table-cell等
+2. css声明
+  float会让元素变成block水平
+  position：absolute会让元素变成block水平，且脱离文档流
+
+四、vertical-align和line-height的关系
+1. vertical-align的百分比值是相对于line-height的值计算的。
+2. 普通情况下，图片和父元素底部有间隙
+3. 对于内联元素，vertical-align和line-height虽然看不见，但实际上到处都是
+
+
+空的inline-block、没有任何文字和图片的元素，或者本身有不为visible的overflow属性，其基线是margin的底边缘。
+
+五、vertical-align线类属性值
+baseline：基线，默认值
+top：顶线
+  inline等元素设置vertical-aligntop并不能把元素提高。毕竟vertical-align不能改变元素的高度。
+  元素顶部和整行的顶部对齐
+middle：中线
+  inline/inline-block元素，元素的垂直中心点和父元素基线（基线是x底部）上1/2 x-height处对齐。
+  table-cell元素，单元格填充盒子相对于外边的表格行居中对齐
+
+  字符有下沉特性
+
+middle值的缺点：
+1. 兼容性问题
+2. 不是真正意义上的垂直居中效果。因为字符的下沉特性。
+
+bottom： 底线
+  inline/inline-block元素，元素底部和整行的底部对齐
+  table-cell元素，单元格底padding边缘和表格行的底部对齐
+
+注意：顶线和底线是相对于父级内联 盒子顶部或底部 对齐。很容易受盒子的污染造成很大的偏差。
+六、vertical-align文本类属性值
+text-top：
+  **盒子的顶部** 和**父级content area**的顶部对齐
+text-bottom：
+  盒子的底部和父级content area的底部对齐
+
+content-area相当于文字所在区域
+
+注意：因为是和父级的内容区域对齐，所以，**元素的vertical-align垂直对齐的位置与前后的兄弟元素都没有关系。**
+再注意：又因为是和父级的content-area(内容区域)对齐，而内容区域的大小只与font-size有关。所以，**元素vertical-align垂直对齐的位置与行高line-height没有关系，只与字体大小font-size有关。**
+总结：vertical-align：text-bottom;(文本底部对齐)不受行高以及其他内联元素的影响。
+
+七、vertical-align上标下标类属性值
+super：上标，让字符偏上
+  提高盒子的基线到父级合适的上标基线位置
+sub：下标，让字符偏下
+  降低盒子的基线到父级合适的下标基线位置
+
+html中的上标下标标签：
+<sup>
+<sub>
+
+记忆技巧：p和b，圈在上的是上标，圈在下的是下标。
+用了上下标的字体比正常的字体小75%。
+
+vertical-align效果应用
+1. 单个图片和多行文本垂直居中
+.box {
+  padding: 10px;
+  border: 1px solid #eee;
+  margin: 5px 0;
+  /* 核心 */
+  width: 245px;
+  text-align: justify;
+}
+
+.box span {
+  width: 200px;
+  /* 核心 */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.box img {
+  /* 核心 */
+  vertical-align: middle;
+}
+2. 单个图片和多行文本垂直居中

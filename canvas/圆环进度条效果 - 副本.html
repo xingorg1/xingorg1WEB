@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .canvas-box {
+      position: relative;
+      width: 300px;
+      overflow: hidden;
+      border: 1px solid #eee;
+    }
+
+    canvas {
+      /* position: absolute; */
+      width: 400px;
+      height: 200px;
+      /* background: #f1f1f1; */
+
+    }
+
+    .txt {
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+      top: 85px;
+      left: 29px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="canvas-box">
+    <canvas id="myCanvas">您的浏览器不支持canvas，请更换浏览器重试</canvas>
+    <canvas id="canvas2">您的浏览器不支持canvas，请更换浏览器重试</canvas>
+    <!-- <canvas id="canvas2">您的浏览器不支持canvas，请更换浏览器重试</canvas> -->
+    <div class="txt">75.8分</div>
+  </div>
+  <script>
+    /* 基础值 */
+    var grade = 75.8; //分数 - 50分
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    /* 默认灰色圆圈 */
+    ctx.strokeStyle = "#eee";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(50, 75, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+    if (false) {
+      /* 上边 - 彩色渐变圆 */
+      // var gradient = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+      // gradient.addColorStop("0", "#00f1ff");
+      // gradient.addColorStop("1.0", "#0093ff");
+      var gradient = ctx.createLinearGradient(75, 50, 5, 90);
+      gradient.addColorStop("0", "#00f1ff");
+      gradient.addColorStop("1.0", "#0093ff");
+      // gradient.addColorStop("0", "#f00");
+      // gradient.addColorStop("1.0", "#0093ff");
+      ctx.strokeStyle = gradient; // 用渐变进行填充
+      ctx.lineWidth = 8;
+      ctx.lineCap = "round";
+      ctx.shadowColor = "rgba(0, 147, 255, 0.36)";
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetY = 4;
+      ctx.beginPath();
+      var count = grade / (100 / 2) + 1;
+      console.log(count);
+      ctx.arc(50, 75, 40, Math.PI, Math.PI * count, false);
+      ctx.stroke();
+
+      // var step = grade / (100 / 2)
+      // ctx.arc(50, 75, 40, - Math.PI / 2, step * Math.PI - Math.PI / 2, false);
+
+      //  Math.PI * (1 + 0.5) - 25分  25 = 1
+      //  Math.PI * (1.5 + 0.5) - 50分
+      //  Math.PI * (2 + 0.5) - 75分
+      //  Math.PI * (2.5 + 0.5) - 100分
+
+      /* 
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        ctx.lineWidth = 8;
+        ctx.shadowColor = "rgba(0, 147, 255, 0.36)";
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 4;
+  
+        var grd=ctx.createRadialGradient(50, 45, 15, 90, 60, 70);
+        grd.addColorStop(0,"blue");
+  
+        grd.addColorStop(1,"red");
+        ctx.strokeStyle = grd; // 用渐变进行填充
+  
+        ctx.beginPath();
+        ctx.arc(100,75,50,1 * Math.PI, 9.1,false);
+        ctx.stroke();
+      */
+    }
+  </script>
+
+</body>
+
+</html>

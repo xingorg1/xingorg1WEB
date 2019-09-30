@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<!--
+    	作者：guojufeng702004176@qq.com
+    	时间：2017-03-23
+    	描述：
+    -->
+	<head>
+		<meta charset="UTF-8">
+		<title>两周内自动登录</title>
+		<style type="text/css">
+		form{
+			position: relative;
+		}
+			form span{
+				display: none;
+				position: absolute;
+				top: 28px;
+				left: 367px;
+				padding: 12px 8px 8px;
+				background-color: #FEA167;
+				color: #B80000;
+				font: bold 12px "微软雅黑";
+			}
+			span:before{
+				display: block;
+				content: "";
+				width: 3px;
+				height: 3px;
+				background-color: #FEA167;
+				border: 3px solid #FEA167;
+				margin-top: -16px;
+margin-left: -6px;
+				-webkit-transform: rotate(45deg);
+				-moz-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				transform: rotate(45deg);
+			}
+		</style>
+		<script src="cookie.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<form action="" method="post" id="form1">
+			<input type="text" name="user" id="user" value="" />
+			<input type="password" name="pass" id="pass" value="" />
+			<input type="submit" value="提交" id="btn"/>
+			<input type="checkbox" name="checkbox" id="checkbox" value="" /><label for="checkbox" id="checkbox2">两周内自动登录</label>
+			<span id="ts">
+				为了保护您的账号安全，请不要在公共电脑上这样做。
+			</span>
+		</form>
+		
+	</body>
+	<script type="text/javascript">
+		var oTxt1 = document.getElementsByName('user')[0],
+		    oTxt2 = document.getElementsByName('pass')[0],
+		    cked = document.getElementsByName('checkbox')[0],
+			oForm1 = document.getElementById('form1'),
+			cked2 = document.getElementById('checkbox2'),
+			oTs = document.getElementById('ts'),
+			oBtn = document.getElementById('btn');
+		cked2.onmouseover = cked.onmouseover = function(){
+			
+			oTs.style.display = "block"
+		}
+		cked2.onmouseout = cked.onmouseout = function(){
+				oTs.style.display = "none"
+		}
+		oForm1.onsubmit = function(){
+			if(cked.checked){
+				alert('请注意！您已勾选自动登录。')
+				setCookie('user',oTxt1.value,14);
+				setCookie('pass',oTxt2.value,14);	
+			}
+		}
+		oTxt1.value = getCookie('user');
+		oTxt2.value = getCookie('pass');
+	</script>
+</html>

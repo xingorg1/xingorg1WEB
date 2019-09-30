@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>概念理解</title>
+		<style type="text/css">
+			body {
+				width: 300px;
+				margin: 0;
+				padding: 0;
+			}
+			
+			#div {
+				margin-top: 10px;
+				height: 5200px;
+				background: #DDDDDD;
+				padding: 30px 0;
+				position: absolute;
+				top: 30px;
+				left: 10px;
+				/*box-sizing: border-box;*/
+				/*-moz-box-sizing: border-box;*/
+				/*max-height: 699px;*/
+				overflow-y: scroll;
+				border: 22px solid #B80000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div">
+		</div>
+		<div style="height: 300px;background: red;display: none;"></div>
+		<script type="text/javascript">
+			var div = document.getElementById("div");
+			var a = div.scrollHeight;
+			var b = div.scrollTop;
+			var f = div.clientHeight;
+			var c = document.body.clientTop;
+			var d = document.body.clientHeight;
+			var e = document.body.scrollHeight;
+			console.log(a + "——物体的实际高度")
+			console.log(b)
+			console.log(f)
+			console.log(c)
+			console.log(d + "-物体的clientHeight就是所有内容叠加在一起的高度,不包括margin但是包括padding，当加了box-sizing这个概念后，就会不包括padding的高度")
+			console.log(e)
+		</script>
+	</body>
+
+</html>

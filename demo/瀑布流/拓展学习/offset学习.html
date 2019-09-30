@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>offset偏移量学习</title>
+		<meta name="author" content="郭菊锋/702004176@qq.com"/>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			#a{
+				height: 300px;width: 300px;
+				border: 8px solid red;
+				/*-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				padding: 10px 0;*/
+				margin: 30px 0;
+				overflow: scroll;
+			}
+			#a span{height: 450px;background: lightgoldenrodyellow;display: block;border: 7px solid forestgreen;margin-top: 12px;}
+		</style>
+	</head>
+	<body>
+		<div id="a" style="">
+			<span></span>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+			var a= document.getElementById('a');
+			var p= document.getElementsByTagName('span')[0];
+//			alert(a.offsetHeight);
+			alert(p.offsetTop);
+			alert(p.offsetLeft);
+			function getElementLeft(element){
+				var actualLeft = element.offsetLeft;
+				var current = element.offsetParent;
+				while (current !== null){
+				actualLeft += current.offsetLeft;
+				current = current.offsetParent;
+			}
+			return actualLeft;
+}
+			//offsetWidth  包括padding和border，不包括滚动条，滚动条是默认在宽度中的。
+			//加了boxsing，offsetWidth值就是style的宽度值,
+			//不加boxsizing，offsetWidth值就是style中的宽度+padding左右值+border左右值。
+			//有无滚动条不受影响
+			//height同理
+			
+//			alert(a.clientHeight);
+//			clientWidth永远会减去滚动条的尺寸和border的尺寸，只包括内容和padding的。
+//			即使加了box-sizing=border-box也不包括border，
+			//加了box-sizing，clientWidth值就是  style中的宽度-border宽度，
+			//不加box-sizing，clientWidth值就是  style中的宽度加上padding左右值。
+			//height同理
+			//有滚动条情况：clientWidth值  （style中的宽度加上padding左右值）—17px（滚动条的宽度值）；
+			//滚动条加box-sizing：（style中的宽度）—17px（滚动条的宽度值）-border的左右宽度值
+		</script>

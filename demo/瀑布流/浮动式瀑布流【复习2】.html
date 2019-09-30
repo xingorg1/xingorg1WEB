@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>浮动式瀑布流复习二</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#div{width: 960px;margin: 0 auto;overflow: hidden;*zoom: 1;}
+			#div:after{content: '';clear: both;display: block;}
+			#div ul{width: 230px;float: left;margin-right: 10px;}
+			#div li{width: 230px;overflow: hidden;margin-top: 10px;-webkit-box-shadow: 1px 3px 3px 3px #ddd;box-shadow: 1px 3px 3px 3px #ddd;}
+			#div img{width: 100%;vertical-align: bottom;}
+		</style>
+		
+	</head>
+	<body>
+		<div id="div">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var oDiv = document.getElementById("div");
+	var oUl = oDiv.getElementsByTagName("ul");
+	var str = '';
+	appendImg();
+	window.onscroll = function(){
+		var sT = document.documentElement.scrollTop || document.body.scrollTop;
+		var cH = document.documentElement.clientHeight;
+		var bH =document.body.scrollHeight * .8;
+		if(sT + cH >= bH){appendImg();};
+	}
+	function compare(){
+		var oldHeight = 23232323;
+		var index = 0;
+		for(var i = 0; i < oUl.length; i++){
+			var newHeight = oUl[i].offsetHeight;
+			if(newHeight < oldHeight){
+				oldHeight = newHeight;
+				index = i;
+			}
+		}
+		return index;
+	}
+	function appendImg(){
+		for(var a = 1; a < 20; a++){
+			str = '<li><img src="../img/'+ a +'.jpg" alt="第'+ a +'张"/></li>';
+			var index = compare();
+			oUl[index].innerHTML += str;
+		}
+	}
+//第二遍复习错的地方;
+//1: str = '<li><img src="../img/'+ a +'.jpg" alt="第'+ a +'张"/></li>';少了最后的单引号（报错找出）
+//2：oUl[index].innerHTML += str;innerHTML的最后一个L没有大写。（这种情况不报错。）
+</script>

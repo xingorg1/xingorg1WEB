@@ -1,0 +1,110 @@
+/*
+ * @Author: @Guojufeng 
+ * @Date: 2019-03-15 09:22:19 
+ * @Last Modified by: @Guojufeng
+ * @Last Modified time: 2019-03-20 23:57:47
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+ 
+}
+
+button {
+  padding: .2rem 0;
+  background: rgba(255, 0, 0, 0);
+}
+
+img,
+button {
+  display: block;
+  width: 100%;
+  margin: .2rem 0;
+}
+
+h1 {
+  font-size: .34rem;
+}
+
+.box {
+  font-size: .24rem;
+  padding: .4rem;
+  padding-bottom: .74rem;
+}
+
+.layer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.layer-box {
+  width: 6.6rem;
+  padding-top: 1rem;
+  border-radius: 8px;
+  background: #fff;
+  margin: 3rem auto 0;
+  position: relative;
+  font-size: .28rem;
+  max-height: 5rem;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;/* 解决在IOS上滚动惯性失效的问题 */
+}
+
+.close {
+  position: absolute;
+  right: .4rem;
+  top: .2rem;
+  z-index: 1;
+  font-size: .3rem;
+  font-weight: 600;
+  border: 1px solid;
+  display: inline-block;
+  /* float: right; */
+  padding: .1rem .2rem;
+  border-radius: 50%;
+  color: #ddd;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.layer-cont {
+  line-height: 1.5;
+  margin-bottom: .54rem;
+  padding: 0 .4rem;
+}
+
+.layer-list {
+  padding: .4rem;
+  list-style: none;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #08f;
+  border-top: 1px solid #f1f1f1;
+}
+
+.btns div {
+  padding: .2rem 0;
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #f1f1f1;
+}
+
+div.btn-cancel {
+  border-right: 0;
+}

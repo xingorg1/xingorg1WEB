@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="guojufeng@ xing.org1^">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>translateY实现垂直居中</title>
+  <style>
+    html,
+    body,
+    ul {
+      height: 100%;
+      margin: 0;
+    }
+    .mask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, .5);
+    }
+
+    .layer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      /* transform: translateX(-50%) translateY(-50%); 这种写法也可以，相当于写两个translate*/
+      transform: translate(-50%,-50%);
+      text-align: center;
+      background: #fff;
+      border-radius: 8px;
+    }
+    .box {
+      /* width: 500px;*/
+      /* height: 350px;  */
+      padding: 30px 10px;
+      background: rgba(255, 51, 255, 0.2901960784313726);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>我是body里的内容，哦吼吼！xing.org1^</h1>
+  <h1>translate负值实现元素的水平垂直居中</h1>
+  <!-- 蒙层 -->
+  <div class="mask">
+    <!-- 弹层 - 垂直居中实现 -->
+    <div class="layer xingorg1">
+      <div class="box">
+        <ul>
+          <li>关键点</li>
+          <li>left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;</li>
+          <li>top: 50%;</li>
+          <li>transform: translateY(-50%);</li>
+          <li>这些li是为了撑开box的高度</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

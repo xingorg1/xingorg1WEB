@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>垂直居中效果实现</title>
+  
+</head>
+<body>
+  <h3>实现一个图片的水平垂直居中</h3>
+  <div class="box">
+    <img src="https://img3.mukewang.com/57a6f85b00013c7202090209-100-100.jpg" alt="">
+  </div>
+  <style>
+      .box{
+        background: #eee;
+        padding: 20px;
+        line-height: 300px;
+        text-align: center;
+        /* 以下代码为了说明并非完全垂直居中 */
+        position: relative;
+      }
+      .box:before,.box:after{
+         /* 本段代码为了说明并非完全垂直居中 */
+        
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 10px;
+        line-height: 95px;
+        text-align: center;
+        border: 1px solid #ff00b4;
+      }
+      .box:before{
+        top: 0%;
+        content: "高度95px，=顶部剩余空间";
+      }
+      .box:after{
+        bottom: 0;
+        content: "高度95px,但是盛不下！！91刚好";
+      }
+      .box img{
+        vertical-align: middle;
+        width: 150px;
+        height: 150px;
+        border: 1px solid #00ff57;
+      }
+    </style>
+  <h3>多行文本垂直居中效果</h3>
+  <div class="content-box">
+    <div class="content">
+      我是多行文本。多行文本水平垂直居中的原理跟上一页图片的实现是一样的，区别在于要把多行文本所在的容器的display水平转换成和图片一样的，也就是inline-block，以及重置外部继承的text-align和line-height属性值。
+    </div>
+  </div>
+  <style>
+      .content-box{
+        border: 1px solid #eee;
+        background: #f8f8f8;
+        padding: 10px;
+        margin-bottom: 120px;
+        /* 核心： */
+        /* height: 300px;有了line-height，height就没必要了 */
+        line-height: 300px;
+        text-align: center;
+        /* 以下代码为了说明并非完全垂直居中 */
+        position: relative;
+      }
+      .content{
+        width: 500px;
+        border: 1px solid #00ff57;
+        /* 核心： */
+        display: inline-block;
+        vertical-align: middle;
+        /* 覆盖：继承自父元素、用于布局的代码 */
+        line-height: 21px;
+        text-align: left;
+        /* 具体情况具体分析，本案例字体是16px，差距就是4像素。 */
+        margin-top: -4px;
+      }
+      .content-box:before,.content-box:after{
+         /* 本段代码为了说明并非完全垂直居中 */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 10px;
+        line-height: 118px;
+        text-align: center;
+        border: 1px solid #ff00b4;
+      }
+      .content-box:before{
+        top: 0%;
+        content: "高度118px，=顶部剩余空间";
+      }
+      .content-box:after{
+        bottom: 0;
+        content: "高度118px,但是盛不下！！114刚好";
+      }
+    </style>
+  <h3>总结：要想绝对的垂直居中，有了上边的核心代码设置外，还要加一个margin-top: -4px;就可以啦！不过具体情况具体分析，换个页面，字体大小不一样，对行高的影响也不一样，自然偏差也不一定是4像素，新的负数值再重新计算即可。</h3>
+</body>
+</html>

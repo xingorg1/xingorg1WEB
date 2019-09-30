@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第二题</title>
+</head>
+<body>
+  <h1>map和parseInt考察</h1>
+  <script>
+    var oldArr = ['1','2','3'];
+    var arr = oldArr.map(parseInt);
+    console.log(arr);
+    /* 
+    解析：
+    1、map的作用是遍历数组并对其每一项都做一下处理。其括号里接收一个匿名函数，匿名函数接收三个参数，分别是ele、index、arr，
+    ele代表当前遍历项
+    index代表当前遍历项的索引（下标）
+    arr则表示当前数组。
+
+    map最后返回一个新的数组，不会影响原数组。
+
+    2、parseInt被调用时，可以传入两个参数parseInt(a,b);
+    其中a表示需要被转化为整型的参数、
+    b应该是一个数字，表示以这个数字为基地，转换成10进制。比如参数是16，就会以16进制为基地，把参数a转化为10进制的数。
+    取值范围应是2-36。如超出则返回NaN。如果省略该参数，则默认为10进制为基地转化为10进制，换句话说就是a是啥转化为啥。
+
+    3、map括号内部传入的参数是parseInt函数名，作为函数的引用，最后parseInt的函数体被当做map内部的匿名函数来执行
+
+    4、map匿名函数所需要的前两个参数和parseInt需要的两个参数发生化学反应：
+    第一次遍历：
+    oldArr.map(function(1,0){
+      // 则此时形如执行parseInt(1,0)，
+      第二个参数为0，相当于没有传，那么parseInt取整1，得到1。
+    });
+
+    第二次遍历：
+    oldArr.map(function(2,1){
+      // 则此时形如执行parseInt(2,1)，
+      第二个参数为1，也就是说以1为基地，1进制数中，最大值为1，小于2，所以无法解析返回NaN
+    });
+    第三遍同上一个道理。
+    
+    所以最终map的返回结果是一个数组，数组的每一项是匿名函数每次遍历的返回值。即[1,NaN,NaN]
+    
+
+    */
+  </script>
+</body>
+</html>

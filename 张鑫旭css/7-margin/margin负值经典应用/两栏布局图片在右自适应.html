@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="guojufeng@xing.org1^">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图片在右边</title>
+</head>
+
+<body>
+  <h3>原理也就是，只要元素浮动了，然后利用margin负值让元素移出父元素的内容区域，在内容区外会受float的影响，像水流里的球一样吸到一起。前提是内容区外border以内（即padding范围内）流出足够的空间容纳</h3>
+  <h3>图片float：left；margin负值实现自适应布局</h3>
+  <div class="box">
+    <div class="text-box">
+      文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边
+    </div>
+    <img class="img" src="https://img.mukewang.com/user/57a6f85b00013c7202090209-60-60.jpg" alt="">
+  </div>
+  <style>
+    .box {
+      max-width: 1000px;
+      border: 1px solid red;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .text-box {
+      float: left;
+      /* width: 100%; */
+      padding-right: 60px;
+    }
+
+    .img {
+      /* float在左，margin负值在左边 */
+      float: left;
+      margin-left: -60px;
+    }
+  </style>
+  <h3>图片float：right;margin负值实现自适应布局-此方法会增加外部元素的额宽度</h3>
+  <div class="box2">
+    <div class="text-box2">
+      文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边文案图片在右边
+    </div>
+    <img class="img2" src="https://img.mukewang.com/user/57a6f85b00013c7202090209-60-60.jpg" alt="">
+  </div>
+  <style>
+    .box2 {
+      max-width: 1000px;
+      border: 1px solid red;
+      padding: 20px;
+      overflow: hidden;
+      padding-right: 80px;
+      /* 内容区域要向左诺，腾出来右边60像素图片宽的距离 */
+    }
+
+    .text-box2 {
+      float: left;
+    }
+
+    .img2 {
+      /* float在右边，margin负值在右边。 */
+      float: right;
+      margin-right: -60px;
+    }
+  </style>
+</body>
+
+</html>

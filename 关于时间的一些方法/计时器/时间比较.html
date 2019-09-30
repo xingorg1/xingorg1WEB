@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算当前时间是否超过设定的时间（——时间比较）</title>
+</head>
+<body>
+<div id="show"></div>
+	  <script>
+	  // 获取时间戳并做处理
+		function formatDate(date,fmt){//要计算的时间，时间格式
+		    let o = {
+		        'M+' : date.getMonth() +1,                    //月份
+		    　　'd+' : date.getDate(),                        //日
+		   　　 'h+' : date.getHours(),                       //小时
+		    　　'm+' : date.getMinutes(),                     //分  
+		    　　's+' : date.getSeconds(),                     //秒
+		    　　"q+":  Math.floor((date.getMonth() + 3) / 3), //季度   
+		        "S":   date.getMilliseconds()                 //毫秒   
+		    };
+		    if(/(y+)/.test(fmt)){   //年份
+		   　　 fmt = fmt.replace(RegExp.$1,(date.getFullYear()+'').substr(4-RegExp.$1.length));
+		    }
+		    for(let k in o){
+		     if (new RegExp("(" + k + ")").test(fmt)){
+		        let str = o[k] + '';
+		        fmt = fmt.replace(RegExp.$1,(RegExp.$1.length === 1) ? str:padLeftZero(str));
+		    　　}
+		    }
+		    return fmt;
+		};
+		function padLeftZero(str){
+		    return ('00'+str).substr(str.length);
+		}
+  	var newTime = new Date();
+  	console.log(newTime)
+  	var myTime = new Date('2018,03,13')
+  	console.log(myTime)
+		formatDate(myTime,'YYYY-MM-DD');
+			window.onload = function() {  
+				var show = document.getElementById("show");  
+				setInterval(function() {   
+					var time = new Date();   // 程序计时的月从0开始取值后+1   
+					var m = time.getMonth() + 1>9?time.getMonth() + 1:'0'+Number(time.getMonth() + 1);
+					var d = time.getDate()>9?time.getDate():'0'+ time.getDate();
+					var h = time.getHours();//获取当前时间小时数值0~23  
+					var Min = time.getMinutes();  
+					var t = time.getFullYear() + "-" + m + "-" + d + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();   
+					show.innerHTML = t;  
+					if(Min>46){    //如果当前的小时数值小于10   
+				    show.style.backgroundColor="#DBDBDB";  
+		    	}  
+				},1000); 
+			};
+	  </script>
+</body>
+</html>

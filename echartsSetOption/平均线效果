@@ -1,0 +1,54 @@
+option = {
+    color:'red',
+    title : {
+        text: '某地区蒸发量和降水量',
+        subtext: '纯属虚构'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['蒸发量','降水量']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        
+        {
+            name:'降水量',
+            type:'line',
+            data:[2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6],
+           
+            symbolSize: 0,
+            markLine : {
+                data : [
+                    {type : 'average', name : '平均值'}
+                ],
+                lineStyle: {
+                    type: 'solid',
+                    color:'red'
+                },
+                
+            }
+        }
+    ]
+};

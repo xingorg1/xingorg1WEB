@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>小图标和文字的对齐</title>
+</head>
+<body>
+  <h3>可取的几点原因：</h3>
+  <p>1. vertical-align负值是相对于baseline基础的，所有浏览器下都是默认基线对齐，对baseline的表现都一致，不存在任何兼容性问题。</p>
+  <p>1-1. 所有浏览器对于负值的解析也都是一致的。</p>
+  <p>2. 元素的vertical-align对兄弟元素没有影响，该元素使用负值对其他元素没有影响，只有他自己发生偏移。</p>
+  <div class="box">
+    <img src="https://img1.mukewang.com/user/57a6f85b00013c7202090209-40-40.jpg" alt="">
+    xing.org1^我的头像
+  </div>
+  <h3>图像大小20*20，字体14px,vertical-align负值为-5很完美。</h3>
+  <style>
+    .box{
+      display: inline-block;
+      padding: 30px;
+      margin: 30px;
+      border: 1px solid #eee;
+    }
+    img{
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      border-radius: 50%;
+      /* 核心 */
+      vertical-align: -5px;
+    }
+  </style>
+</body>
+</html>

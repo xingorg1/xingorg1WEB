@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        
+        .fbox{
+            width: 1500px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        
+        .sbox1{
+            width: 200px;
+            /* 因为box2的after清楚了浮动，使得box2的高度适中跟随box1的高度变化 */
+            height: 700px;
+            float: left;
+            background: rebeccapurple;
+            opacity: .5;
+        }
+        .ssbox{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            background: gray;
+            float: left;
+            
+        }
+        .sbox2{
+            width: 300px;
+            background: yellow;
+            margin-left: 300px;
+        }
+        .sbox2::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="fbox">
+        <div class="sbox1">BOX1</div>
+        <div class="sbox2">BOX2
+            <div class="ssbox"></div>
+            <div class="ssbox"></div>
+            <div class="ssbox"></div>
+        </div>
+    </div>   
+</body>
+</html>

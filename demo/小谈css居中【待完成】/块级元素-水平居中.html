@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>块级元素-水平居中</title>
+		<style type="text/css">
+		div{
+			border: 1px solid red;
+		}
+			.d1{
+				/*width: 30%;*/
+				border: 1px solid red;
+				padding: 20px;
+				height: 300px;
+				position: relative;
+				left: 50%;
+				
+			}
+			.dd1{
+				border: 1px solid blue;
+				height: 200px;
+				position: relative;
+				left: -50%;
+			}
+			.box{
+		    position: absolute;或fixed
+		    top:0;
+		    right:0;
+		    bottom:0;
+		    left:0;
+		    margin: auto;
+		}
+				</style>
+	</head>
+	<body>
+		1、定宽块元素：margin： 0 auto;<br />
+		2/、不定宽块状元素：不定宽就是100%呗，还居中什么？<br />
+		a:在元素外加入 table 标签（完整的，包括 table、tbody、tr、td），该元素写在 td 内，然后 设置 margin 的值为 auto；<br />
+		b:给该元素设置 displa:inine 方法；<br />
+		c:父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:50%；<span style="color: red;">确定不是子元素left-50%？</span><br />
+		<div class="d1">
+			<div class="dd1"></div>
+		</div>
+		<div class="box">222</div>
+	</body>
+</html>

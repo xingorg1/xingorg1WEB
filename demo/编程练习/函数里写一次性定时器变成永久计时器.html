@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>计时器</title>
+<script type="text/javascript">
+  var num=0;
+  function startCount(){
+    document.getElementById('count').value=num;
+    num=num+1;
+    setTimeout('startCount()',1000) 
+  }
+</script>
+</head>
+<body>
+<form>
+<input type="text" id="count" onClick="startCount()"/>
+<a href="倒计时跳转页面.html">进入</a>
+</form>
+</body>
+</html>

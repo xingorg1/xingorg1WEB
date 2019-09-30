@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="guojufeng@ xing.org1^">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>宽高确定的正经弹层</title>
+  <style>
+    .mask{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,.5);
+    }
+    .layer{
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      /* margin: -150px auto auto -150px; */
+      margin-top: -150px;
+      margin-left: -150px;
+
+
+      text-align: center;
+      background: #fff;
+      border-radius: 8px;
+    }
+    span{
+      padding: 100px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>我是body里的内容，哦吼吼！xing.org1^</h1>
+  <!-- 蒙层 -->
+  <div class="mask">
+    <!-- 弹层 - 垂直居中实现 -->
+    <div class="layer xingorg1">
+      <span>我是宽高固定的弹层元素，我实现了垂直居中。</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标彩色拖尾小效果</title>
+		<meta name="author" content="郭菊锋/702004176@qq.com"/>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			body div{
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				/*margin: 10px;*/
+				/*background: rgb(255,255,255);*/
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				function getColor(){
+					var oMath = Math.floor(Math.random()*255);
+//					console.log(maTh)
+					var rgb = "rgb("+
+					Math.floor(Math.random()*255)+","+
+					Math.floor(Math.random()*255)+","+
+					Math.floor(Math.random()*255)+")";
+					return rgb;
+				}
+//					console.log(getColor())
+				var oDiv = document.getElementsByTagName("div");
+				
+				window.onmousemove = function(ev){
+					for(var i=0;i<oDiv.length;i++){
+						oDiv[i].style.backgroundColor = getColor();
+					}
+					var ev = ev || window.event;
+					var oScrollleft = document.documentElement.scrollleft || document.body.scrollLeft;
+					var oScrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+					var oLeft = ev.clientX + oScrollleft + "px";
+					var oTop = ev.clientY + oScrolltop + "px";
+//					for(var a = oDiv.length;a>0;a++){
+//						oDiv[a].style.top = oDiv[a-1].style.top;
+//						oDiv[a].style.left = oDiv[a-1].style.left;
+					for(var a = oDiv.length-1;a>0;a--){
+						oDiv[a].style.top = oDiv[a-1].offsetTop + "px";
+						oDiv[a].style.left = oDiv[a-1].offsetLeft + "px";
+					}
+					oDiv[0].style.top = oTop;
+					oDiv[0].style.left = oLeft;
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<h3>鼠标移进来试试</h3>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+<!--下面来写一写这个效果的分析-->
+<!--/*
+	 * 这原本就是一个鼠标后面跟随一串小方块的效果，
+	 * 后来我就想，运用之前学的随机数的案例把小方块的颜色做成彩色的，
+	 * 并且每一个小方块的色彩是随机分配而不是我自己手动填写的。
+	 * 等实现了以后，我又感觉虽然颜色都不一样了，但是只要页面不关闭他们就永远被分配了这个颜色不能变化了
+	 * 于是我又想让其颜色是随时随地随机变化随便什么颜色了。
+	 * 于是就将随机分配颜色的函数给了鼠标移动事件。
+	 * 之所以这么废话的原因，是我想记录下自己是怎么一步一步实现这个效果的。
+	 * 因为通常情况下，我们都是拿到一个效果后就蒙了，
+	 * 其实如果从内向外或者从外向内一层层剖析，然后一步步实现，不自乱阵脚，是可以实现最终的宏伟蓝图的。
+	 * 代码中：
+	 * getColor()函数是一个生成随机颜色值的函数，在需要给元素填充颜色的地方，直接调用就ok；
+	 * 其代码核心是 Math.floor(Math.random()*255) 这句，他获取到的是0-255之间的任意一个值，
+	 * 然后把r,g,b三个值分别用这句代码代替，凑成一个整的颜色值字符串赋给变量，最后弹出就ok了。
+	 * onmousemove函数中，是当鼠标有移动的时候会发生的事情，
+	 * 本来i的for循环是在这个函数的外边的，我为了让小方块可以随时随地换随机颜色，就把他放进了鼠标事件里边，每当鼠标移动一次，就从新调用一个颜色值，这样就会在鼠标移动的时候变颜色了。
+	 * 而多个小方块可以跟随的原理则是：
+	 * 所有小方块的属性为绝对定位
+	 * 其left和top值在鼠标变换时接受js传值改变。而值变化的规律是：后一个的left值等于前一个的offsetLeft值；top值等于前一个的offsetTop值
+	 * 注意的是，在这个循环中，是倒着循环的。
+	 * 最关键的是，第一个的值跟随鼠标的值+页面滚动上去的值。
+	 * 因为，鼠标的xy坐标值，只是鼠标相对于电脑屏幕（这么说更形象化，其实是根据浏览器界面）的值。
+	 * 而小方块或元素的xy坐标值（即left,top)则是根据的整个document||body页面，
+	 * 一旦页面发生滚动，小方块和鼠标的xy值将不再重合，而他们之间的差距就是scrollLeft和scrollTop；
+	 * 所以，最终的left、top值就是鼠标x、y值与对应的scrollleft、scrolltop值之和。
+	 * 另：
+	 * 这个代码还需要最后的封装处理。为了很好的体现我的制作思路我就不封装了。以后用到了可以拿下来再自己封装
+-->

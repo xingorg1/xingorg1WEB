@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!--[if ! IE 8]>
+		//大于ie8
+		<script src="jspdf.min.js"> </script>
+		<script src="html2canvas.min.js"> </script>
+		'<script src=""></script>'
+	<![endif]-->
+</head>
+<body>
+
+	<script>
+		var browser=navigator.appName 
+		var b_version=navigator.appVersion 
+		var version=b_version.split(";"); 
+		var trim_Version=version[1].replace(/[ ]/g,""); 
+		if((browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0")){
+		    alert("IE8");
+		}else{
+		    var script = document.createElement('script');
+		    var script1 = document.createElement('script');
+		    var script2 = document.createElement('script');
+		    script.src= 'html2canvas.min.js';
+		    script1.src = 'jspdf.min.js';
+		    script2.src = 'feiIE8.js';
+		    document.body.appendChild(script);
+		    document.body.appendChild(script1);
+		    document.body.appendChild(script2);
+		    document.body.innerText = '代码被成功引入';
+				alert('非ie8')
+		}
+	</script>
+</body>
+</html>

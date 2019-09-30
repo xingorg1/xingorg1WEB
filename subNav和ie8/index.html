@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <title>yc-frames-js-subNav</title>
+    <style>
+      .yi-subnav {
+      float: left;
+      margin-bottom: -5000px;
+      padding-bottom: 5000px;
+      width: 200px;
+      min-height: 500px;
+      padding-top: 10px;
+      font-size: 14px;
+      background: #fff;
+      -webkit-box-shadow: 0 0 4px rgba(41, 153, 255, 0.08);
+              box-shadow: 0 0 4px rgba(41, 153, 255, 0.08); }
+      .yi-subnav .nav-item-link {
+        display: block;
+        padding-left: 36px;
+        height: 40px;
+        line-height: 40px;
+        margin: 10px 0;
+        font-size: 16px;
+        color: #5E6E87;
+        text-decoration: none;
+        position: relative; }
+        .yi-subnav .nav-item-link:hover {
+          color: #2E85FF;
+          border-right: 4px solid #2E85FF;
+          -webkit-transition: all .3s;
+          transition: all .3s; }
+        .yi-subnav .nav-item-link img {
+          margin-top: -20px; }
+      .yi-subnav .nav-item .active {
+        color: #2E85FF;
+        border-right: 4px solid #2E85FF; }
+      .yi-subnav .nav-item .icon {
+        margin-right: 10px;
+        position: relative;
+        *position: static;
+        vertical-align: middle;
+        top: 0; }
+      .yi-subnav .nav-item-submenu {
+        padding: 0 10px;
+        background: #ECF0F4;
+        margin: 0 -5px;
+        display: none; }
+        .yi-subnav .nav-item-submenu ul {
+          background: #F6F7F8;
+          padding: 10px 10px 0;
+          -webkit-box-shadow: 0 0 4px rgba(41, 153, 255, 0.08);
+                  box-shadow: 0 0 4px rgba(41, 153, 255, 0.08); }
+          .yi-subnav .nav-item-submenu ul li {
+            padding-bottom: 10px; }
+        .yi-subnav .nav-item-submenu .submenu-item-link {
+          display: block;
+          padding-left: 60px;
+          height: 36px;
+          line-height: 36px;
+          background: #F6F7F8;
+          color: #2E85FF;
+          position: static; }
+          .yi-subnav .nav-item-submenu .submenu-item-link .icon {
+            color: #2E85FF; }
+          .yi-subnav .nav-item-submenu .submenu-item-link:link {
+            text-decoration: none; }
+          .yi-subnav .nav-item-submenu .submenu-item-link:hover {
+            color: #fff;
+            background: #2E85FF;
+            text-decoration: none;
+            -webkit-transition: all .3s;
+            transition: all .3s; }
+            .yi-subnav .nav-item-submenu .submenu-item-link:hover .icon {
+              color: #fff; }
+        .yi-subnav .nav-item-submenu .active {
+          color: #fff;
+          background: #2E85FF;
+          border: none;
+          text-decoration: none;
+          -webkit-transition: all .3s;
+          transition: all .3s; }
+          .yi-subnav .nav-item-submenu .active .icon {
+            color: #fff; }
+      .yi-subnav .nav-block {
+        display: block; }
+      .yi-subnav .active-dim > .nav-item-link {
+        color: #fff;
+        font-weight: bold; }
+
+    </style>
+    
+  </head>
+  <body class="norem">
+  <div class="yi-subnav" id="MainNav">
+            <ul>
+              <li class="nav-item"><a class="nav-item-link" href="index.html"><i class="menu-icon menu-icon-gwdf"></i>组件引用</a>
+                <div class="line-between"></div>
+              </li>
+              <li class="nav-item"><a class="nav-item-link active" href="javascript:;"><i class="menu-icon menu-icon-sjfp"></i>ui组件</a>
+                <div class="nav-item-submenu nav-block">
+                  <ul>
+                    <li><a class="submenu-item-link" href="pagination.html">pagination_分页</a></li>
+                    <li><a class="submenu-item-link" href="dropLayer.html">dropLayer_下拉</a></li>
+                    <li><a class="submenu-item-link active" href="subNav.html">subNav_左侧导航</a></li>
+                    <li><a class="submenu-item-link" href="tabs.html">tabs_选项卡</a></li>
+                    <li><a class="submenu-item-link" href="swiper.html">swiper_滑动特效</a></li>
+                    <li><a class="submenu-item-link" href="swiperForIE.html">swiperForIE</a></li>
+                    <li><a class="submenu-item-link" href="echarts.html">echarts_可视化图表</a></li>
+                    <li><a class="submenu-item-link" href="echartsForIE.html">echartsForIE</a></li>
+                  </ul>
+                </div>
+                <div class="line-between"></div>
+              </li>
+              <li class="nav-item"><a class="nav-item-link" href="javascript:;"><i class="menu-icon menu-icon-ywgl"></i>utils组件</a>
+                <div class="nav-item-submenu">
+                  <ul>
+                    <li><a class="submenu-item-link" href="exp.html">exp_正则验证</a></li>
+                    <li><a class="submenu-item-link" href="ua.html">ua_用户代理</a></li>
+                    <li><a class="submenu-item-link" href="countdown.html">countdown_倒计时</a></li>
+                    <li><a class="submenu-item-link" href="html2img.html">html2img_生成截图</a></li>
+                    <li><a class="submenu-item-link" href="fastclick.html">fastclick_H5穿透与延迟</a></li>
+                    <li><a class="submenu-item-link" href="photoclip.html">photoclip_手势截图</a></li>
+                    <li><a class="submenu-item-link" href="qrcode.html">qrcode_生成二维码</a></li>
+                  </ul>
+                </div>
+                <div class="line-between"></div>
+              </li>
+              <li class="nav-item"><a class="nav-item-link" href="javascript:;"><i class="menu-icon menu-icon-qt"></i>_base组件</a>
+                <div class="nav-item-submenu">
+                  <ul>
+                    <li><a class="submenu-item-link" href="getClass.html">getClass_取类名元素</a></li>
+                    <li><a class="submenu-item-link" href="eventUtil.html">eventUtil_dom2级事件</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item"><a class="nav-item-link" href="history.html"><i class="menu-icon menu-icon-grxx"></i>版本记录</a>
+                <div class="line-between"></div>
+              </li>
+            </ul>
+          </div><!-- 
+    <div class="page-body">
+      <div class="page-container page-container-extend">
+        <div class="main-aside">
+          
+        </div>
+        
+    </div> -->
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="subNav.js"></script>
+  </body>
+</html>

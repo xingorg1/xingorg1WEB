@@ -1,0 +1,80 @@
+{
+  "name": "generator-yi-frames-default",
+  "version": "2.2.8",
+  "description": "The Frames of Yi-Front-End-Development-Team",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp dev",
+    "clean": "rimraf ../dist",
+    "dev": "rimraf ../dist && gulp dev",
+    "prebuild": "cnpm run clean",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mapkab/generator-yiframes.git"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "yi-frames",
+    "generator-yi-frames"
+  ],
+  "author": "Mapk Volkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapkab/generator-yiframes/issues"
+  },
+  "homepage": "https://github.com/mapkab/generator-yiframes",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "Android >= 4.0"
+  ],
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "es5-shim": "^4.5.10",
+    "jquery": "^1.7.1",
+    "yi-frames-app": "^1.0.0",
+    "yi-frames-js": "^1.7.0",
+    "yi-frames-ui": "^2.1.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.13",
+    "css-loader": "^0.28.7",
+    "es3ify-loader": "^0.2.0",
+    "eslint": "^4.12.1",
+    "eslint-loader": "^1.9.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-watch": "^4.3.11",
+    "postcss-clean": "^1.1.0",
+    "postcss-pxtorem": "^4.0.1",
+    "postcss-url": "^7.1.2",
+    "postcss-urlrev": "^2.0.0",
+    "pug-loader": "^2.3.0",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "vinyl-named": "^1.1.0",
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.1",
+    "webpack-stream": "^4.0.0"
+  }
+}

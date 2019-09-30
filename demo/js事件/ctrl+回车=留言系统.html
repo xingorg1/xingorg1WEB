@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>留言提交系统</title>
+		<meta name="author" content="郭菊锋/702004176@qq.com"/>
+	</head>
+
+	<body>
+		<input type="text" name="" id="txt" value="" />
+		<input type="button" name="" id="btn" value="提交" /><br />
+		<textarea name="" rows="20" cols="80" id="txtArea"></textarea><br />
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function() {
+		var oTxt = document.getElementById("txt");
+		var oBtn = document.getElementById("btn");
+		var oTxtArea = document.getElementById("txtArea");
+		oBtn.onclick = function() {
+			addTxt();
+		};
+		oTxt.onkeydown = function(ev) {
+			var ev = ev || window.event;
+			//console.log(ev.keyCode)
+			//回车：13
+			//ctrl:17
+			if(ev.keyCode == 13 && ev.keyCode == 17) {
+				addTxt();
+			}
+			if(ev.keyCode == 13) {
+				addTxt();
+			}
+		};
+
+		function addTxt() {
+			if(oTxt.value == "") {
+				alert("请输入内容");
+			}
+			oTxtArea.value = oTxt.value;
+			oTxt.value = "";
+		};
+	}
+</script>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    
+    // 切割一维数组为动态多维数组
+    // 利用splice解决,splice有切割后改变原数组的特点，比较适合这个题
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //把数组的项换的更复杂点
+    arr = [1, 'a', false, true, null, undefined, function () {}, {
+        a: '1',
+        b: 2,
+        c: [1, 2],
+        d: {
+          a: 2
+        }
+      },
+      [1, 2, 3, 4], new Date(), new RegExp(/^\d$/, 'i')
+    ];
+    console.log(arr)
+
+    function deepClone(params) {
+      /* 深度克隆 */
+      var result = null,
+        obj = {
+          isArray: '[object Array]',
+          isObject: '[object Object]'
+        };
+      if (params === null) {
+        return result;
+      };
+      if (typeof params == 'object') {
+        var isWhat = Object.prototype.toString.call(params);
+        if (isWhat == obj.isArray) {
+          result = [];
+          params.forEach(el => {
+            result.push(deepClone(el));
+          });
+        } else if (isWhat == obj.isObject) {
+          result = {};
+          for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+              result[key] = deepClone(params[key]);
+            }
+          }
+        } else {
+          result = params;
+        }
+        return result;
+      } else {
+        return params;
+      }
+    }
+    var cloneArr = deepClone(arr);
+    cloneArr[7]['c'][0] = '深克隆';
+    console.log("最终结果", cloneArr);
+
+    function chunk(arr, num) {
+      let arrCopy = deepClone(arr),
+        result = [],
+        len1 = arr.length;
+      for (let i = 0; i < len1 && arrCopy.length > 0; i++) {
+        result.push(arrCopy.splice(0, num));
+      }
+      return result;
+    }
+    console.log('==========splice===========');
+    console.log(chunk(arr, 3));
+    console.log(chunk(arr, 2));
+    console.log(chunk(arr, 4));
+    //方法二、 尝试用slice解决，slice切割后不改变原数组，所以需要动态改变起始位置
+    function chunk2(arr, num) {
+      let arrCopy = JSON.parse(JSON.stringify(arr)),
+        result = [],
+        start = 0,
+        end = num,
+        len1 = arr.length,
+        len2 = arrCopy.length;
+      for (let i = 0; i < len1 && start < len2; i++) {
+        // console.log(start,num)
+        result.push(arrCopy.slice(start, end));
+        start += num;
+        end += num;
+      }
+      return result;
+    }
+    // chunk2有瑕疵，修改解决如下
+    function chunk2(arr, num) {
+      let result = [],
+        start = 0,
+        end = num,
+        len1 = arr.length;
+      for (let i = 0; i < len1 && start < len1; i++) {
+        result.push(arr.slice(start, end));
+        start += num;
+        end += num;
+      }
+      return result;
+    }
+    console.log('==========slice===========');
+    console.log(chunk2(arr, 3));
+    console.log(chunk2(arr, 2));
+    console.log(chunk2(arr, 4));
+    console.log(chunk2(arr, 1));
+
+    // 数据库的值：
+    var dataObj = {
+      rows: [
+        ['lisa', 16, 'female', '2000-12-10'],
+        ['lisa2', 11, 'male', '2010-12-10'],
+        ['lisa', 16, 'female', '2000-12-10'],
+        ['lisa2', 11, 'male', '2010-12-10']
+      ],
+      metaData: [{
+          name: "name",
+          note: ''
+        },
+        {
+          name: "age",
+          note: ''
+        },
+        {
+          name: "gender",
+          note: ''
+        },
+        {
+          name: "birthday",
+          note: ''
+        }
+      ]
+    };
+
+    // rows是数据，metaData是对数据的说明，先写一个函数parseData，将上面的对象转化为期望的数组。
+    /**/
+    var qiwangdeArr = [{
+      name: "Lasa",
+      age: 16,
+      gender: "female",
+      birthday: '2000-12-10'
+    }, {
+      name: "Lasa",
+      age: 16,
+      gender: "female",
+      birthday: '2000-12-10'
+    }];
+    console.log(qiwangdeArr);
+    // 利用循环
+    // qiwangArr
+    console.log(Array.isArray(dataObj.rows))
+    const parseData = (data) => {
+      let rst = [];
+      if (data && Array.isArray(data.rows)) {
+        let len = data.rows[0].length;
+        data.rows.forEach((el) => {
+          let TempArr = {};
+          el.forEach((ele, i) => {
+            TempArr[data.metaData[i].name] = ele;
+          });
+          rst.push(TempArr);
+        })
+      } else {
+        console.log(new Error('传参不正确'));
+      }
+      return rst;
+    }
+    console.log(parseData(dataObj));
+    // 利用解构赋值
+    // var qiwangArr = [];
+    // [{
+    //   name: qiwangArr[0],
+    //   1: qiwangArr[1],
+    //   2: qiwangArr[2],
+    //   3: qiwangArr[3]
+    // }] = obj.rows;
+    // [{
+    //   name: qiwangArr[0]
+    // }, {
+    //   name: qiwangArr[1]
+    // }, {
+    //   name: qiwangArr[2]
+    // }, {
+    //   name: qiwangArr[3]
+    // }] = obj.metaData
+    // let {}
+    // [{
+    //   0: qiwangArr[0]['name'],
+    //   1: qiwangArr[1],
+    //   2: qiwangArr[2],
+    //   3: qiwangArr[3]
+    // }] = obj.metaData
+    // console.log(qiwangArr, obj.metaData)
+
+    // 调用实例，实现Person方法
+    Person.prototype.sleepFirst = function (num) {
+      // 怎么之后后边调这个方法，然后让所有人都等着呢
+      new Promise((resolve) => {
+        console.log(`等待 ${num} 秒~`);
+        setTimeout(function () {
+          console.log(`Wake Up after ${num}`);
+        }, num);
+      }).then(function () {});
+      return this;
+    }
+    Person.prototype.eat = function (str) {
+      setTimeout(function () {
+        console.log(`Eat ${str || ''} ~~ `);
+      }, 0);
+      return this;
+    }
+    Person.prototype.sleep = function (num) {
+      new Promise((resolve) => {
+        setTimeout(function () {
+          console.log(`等待 ${num} 秒~`);
+        }, 0);
+        setTimeout(function () {
+          console.log(`Wake Up after ${num}`);
+        }, num);
+      }).then(function () {});
+      return this;
+      /* 问题出在哪？任务队列，异步线程，怎么让同步任务等异步任务完成后执行? */
+      /* 怎么中断任务 */
+      // 答案就是出栈与入栈！
+      // 小哥哥点题：这个面试题我总觉得应该用队列，然后模拟写了一个队列，用next函数进行下一步
+    }
+
+    function Person(name) {
+      setTimeout(function () {
+        console.log(`Hi,This is ${name || ''}`);
+      }, 0);
+      return Person.prototype;
+    };
+    // Person('郭菊锋')
+    // Person('郭菊锋').eat('dinner')
+    // Person('郭菊锋').eat('apple').eat('banana')
+    // Person('郭菊锋').sleep(3).eat('dinner')
+    // Person('郭菊锋').sleepFirst(1).eat('dinner')这样还是有问题，链式调用多个会有问题
+
+    // 模拟写一个队列
+    console.log('==========分割线================')
+
+    function TaskQueue(name) {
+      // return new TaskQueue(name);
+      Queue.prototype = {
+        next: function () {
+          // console.log(this.stack)
+          typeof this.stack[0] === 'function' && this.stack[0].call(this);
+          this.stack.length > 0 && this.stack.shift();
+          return this;
+        },
+        myName: function () {
+          this.stack.push(() => {
+            console.log('我是' + this.name);
+          });
+          this.next();
+          return this;
+        },
+        eat: function (str) {
+          this.stack.push(() => {
+            console.log('吃' + str);
+          });
+          this.next();
+          return this;
+        },
+        sleep: function (num) {
+          this.stack.push(() => {
+            console.log('睡' + num + '秒');
+            this.stack.push(() => {
+              setTimeout(function () {
+                console.log(num + '秒后~');
+                this.next();
+              }.bind(this), num * 1000);
+              // this.next();
+            });
+          });
+          this.next();
+          return this;
+        },
+        sleepFirst: function (num) {
+          this.stack.push(() => {
+            console.log('等待' + num + '秒');
+            setTimeout(function () {
+              console.log('等待' + num + '秒后~');
+              this.next();
+            }.bind(this), num * 1000);
+          });
+          return this;
+        }
+      }
+
+      function Queue() {
+        this.name = name;
+        this.stack = [];
+        this.callBack = [];
+        console.log(this);
+        return this;
+      }
+      let obj = new Queue();
+      obj.myName();
+      return obj;
+    }
+    // TaskQueue('gjf').sleep(2).eat('粑粑');
+    // TaskQueue('gjf').sleep(2).eat('午饭').sleep(2).eat('晚饭');
+
+    // 新思路，函数调用时把所有函数的名单记录在册，然后依据名单依次执行！
+    function myTaskQueue(name) {
+      myQueue.prototype = {
+        next: function () {
+          if (this.last && this.index < this.stack.length && typeof this[this.stack[this.index]] === 'function') {
+            if (this.index > 0) {
+              var param = this.params[this.index];
+              this[this.stack[this.index]](param);
+            } else {
+              this[this.stack[0]](this.params[this.index]);
+            }
+          }
+          // console.log('检测结束');
+          return this;
+        },
+        myName: function () {
+          if (!this.last) {
+            this.myPush('myName');
+          } else {
+            console.log('我是' + this.name);
+            this.index++;
+            this.next();
+          }
+          return this;
+        },
+        eat: function (str) {
+          if (!this.last) {
+            this.myPush('eat', str);
+          } else {
+            console.log('吃' + str);
+            this.index++;
+            this.next();
+          }
+          return this;
+        },
+        sleep: function (num) {
+          if (!this.last) {
+            this.myPush('sleep', num);
+          } else {
+            console.log('睡觉' + num + '秒');
+            setTimeout(() => {
+              console.log(num + '秒后~');
+              this.index++;
+              this.next();
+            }, num * 1000);
+          }
+          return this;
+        },
+        sleepFirst: function (num) {
+          if (!this.last) {
+            this.myPush('sleepFirst', num);
+          } else {
+            console.log('磨蹭' + num + '秒');
+            setTimeout(() => {
+              console.log(num + '秒后~');
+              this.index++;
+              this.next();
+            }, num * 1000);
+          }
+          return this;
+        },
+        myPush: function (item, param) {
+          clearTimeout(this.timer);
+          if (item === 'sleepFirst') {
+            this.stack.unshift(item);
+            this.params.unshift(param);
+          } else {
+            this.stack.push(item);
+            this.params.push(param);
+          }
+          // 防抖，计算这是最后一次调用
+          this.timer = setTimeout(() => {
+            this.last = true;
+            this.next();
+          }, 500);
+          console.log(this.stack);
+        }
+      }
+
+      function myQueue() {
+        this.name = name;
+        this.stack = ['myName'];
+        this.params = [this.name];
+        this.index = 0;
+        this.timer = null;
+        this.last = false;
+        return this;
+      }
+      let obj = new myQueue();
+      return obj;
+    }
+    myTaskQueue('gjf').sleepFirst(2).sleep(2).eat('粑粑').sleepFirst(2).sleep(2).eat('粑粑');
+  </script>
+</body>
+
+</html>

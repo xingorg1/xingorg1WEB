@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图/无缝滚动效果</title>
+		<link rel="stylesheet" type="text/css" href="lunbostyle.css"/>
+	</head>
+	<body>
+		<div class="scrollBanner">
+			<!--图片列表-->
+			<ul class="bannerBox">
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						1
+						<img src="img/top1.jpg"/>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						2
+						<img src="img/top2.jpg"/>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						3
+						<img src="img/top3.jpg"/>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						4
+						<img src="img/top4.jpg"/>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						5
+						<img src="img/top5.jpg"/>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						6
+						<img src="img/top6.jpg"/>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						7
+						<img src="img/top7.jpg"/>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" target="_blank">
+						8
+						<img src="img/top8.jpg"/>
+					</a>
+				</li>
+			</ul>
+			<!--左右箭头-->
+			<a href="javascript:void(0)" class="arr arr_left" title="上一张"></a>
+			<a href="javascript:void(0)" class="arr arr_right" title="下一张"></a>
+			<!--a不需要链接跳转的时候，切记不要加href，加了就加上javascript：viod（0）-->
+			<!--小圆点-->
+			<div class="scroll_num clearfix">
+				<span class="current"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</body>
+	<script src="jquery-2.1.0.js"></script>
+	<!--<script src="lunbo.js"></script>-->
+	<script src="lunbo_fz.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			lbt({
+				oBox: ".scrollBanner",
+				oUl: ".bannerBox",
+				oLi: ".scrollBanner li",
+				Prev: ".arr_left",
+				Next: ".arr_right",
+				Nums: ".scroll_num",
+				cur: "current",
+				playTime: 800,
+				duration: 2000
+			});
+		})
+	</script>
+</html>

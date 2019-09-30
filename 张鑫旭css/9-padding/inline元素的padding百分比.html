@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>inline元素的padding设置50%</title>
+</head>
+<body style="padding: 100px 0;">
+  <span></span>
+  <div></div>
+  <h3>
+    高度不等于宽度，总是高度比宽度大21，那是因为文字的高度为21，如果把padding去掉看只有文字的span标签，高度是21.
+  </h3>
+  <h3>设置font-size为0解决。</h3>
+  <style>
+    div{
+      padding: 50%;
+      margin-top: 20px;
+      background: #adff2f73;
+      border: 1px solid #00b71f;
+    }
+    span{
+    font-size: 0;
+      padding: 50%;
+      background: #ff5f5f7d;
+    }
+    h3{
+      color: #fff;
+    padding: 0 20px;
+    font-weight: normal;
+    font-size: 14px;
+    }
+  </style>
+</body>
+</html>

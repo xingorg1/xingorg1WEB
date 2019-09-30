@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style type="text/css">
+			.hide {
+				display: none;
+			}
+			
+			li {
+				list-style: none;
+				display: inline-block;
+				background-color: #90EE90;
+			}
+			
+			.tapActiveLi {
+				background-color: #FF7F50;
+			}
+			
+			div {
+				border: 1px solid #f00;
+			}
+			
+			.aTapWrap {
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aTapWrap aboutA_P" id="aTapWrap">
+			<ul id="aTapHeadWrap">
+				<li class="tapActiveLi">关于我们</li>
+				<li>
+					联系方式</li>
+				<li>
+					意见建议</li>
+			</ul>
+			<div class="aTapWrapS" id="aTapWrapS">
+				<div>
+					<p>文字1</p>
+				</div>
+				<div class="hide">
+					<p>文字2</p>
+				</div>
+				<div class="hide">
+					<p>文字3</p>
+				</div>
+			</div>
+		</div>
+		<div class="aTapWrap aboutA_P" id="aTapWrap2">
+				<ul id="aTapHeadWrap2">
+					<li class="tapActiveLi">关于我们</li><li>
+					联系方式</li><li>
+					意见建议</li>
+				</ul>
+				<div class="aTapWrapS" id="aTapWrapS2">
+					<div>
+						<p>文字1</p>
+					</div>
+					<div class="hide">
+						<p>文字2</p>
+					</div>
+					<div class="hide">
+						<p>文字3</p>
+					</div>
+				</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				function For(c,d){
+						for(var i = 0; i < c.length; i++) {
+						c[i].index = i;
+						c[i].onclick = function(e) { 
+							for(var j = 0; j < c.length; j++) {
+								c[j].className = "";
+								d[j].className = "hide";
+							}
+							this.className = "tapActiveLi";
+							d[this.index].className = "";
+							}
+						}
+					}
+				function tab(a,b){
+					var aLi = document.getElementById(a).getElementsByTagName('li');
+					var aDiv = document.getElementById(b).getElementsByTagName('div');
+					For(aLi,aDiv)
+				};
+				tab('aTapHeadWrap','aTapWrapS');
+				tab('aTapHeadWrap2','aTapWrapS2');
+				
+			}
+		</script>
+	</body>
+
+</html>

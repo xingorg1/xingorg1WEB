@@ -1,0 +1,35 @@
+.demo{
+  position: relative;
+  border: 1px solid tomato;
+  line-height: 100px;
+  height: 100px;
+  background: #f1f1f1;
+  margin: 30px auto 0;
+  width: 400px;
+  overflow: hidden;
+}
+.list{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  /* transition: transform .35s linear; */
+}
+.item{
+  color: #333;
+  width: 400px;
+  overflow: hidden;
+  line-height: 100px;
+  height: 100px;
+  background: #faf;
+}
+.item:nth-child(odd){
+  background: #adf;
+}
+a{
+  text-decoration: none;
+}

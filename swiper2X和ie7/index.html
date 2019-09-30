@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>swiper2.7.0在ie中的支持性</title>
+	<link rel="stylesheet" href="swiper.min.css">
+  <script src="jquery-1.10.1.min.js"></script>
+  <script src="idangerous.swiper.min.js"></script>
+  <style>
+  	.swiper-slide{
+  		background: red;
+  	}
+  </style>
+</head>
+<body>
+	<div class="swiper-container">
+  <div class="swiper-wrapper">
+      <div class="swiper-slide"> Slide1</div>
+      <div class="swiper-slide"> Slide2</div>
+      <div class="swiper-slide"> Slide3</div>
+  </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+  var mySwiper = new Swiper('.swiper-container',{
+    loop: true
+    //其他设置
+  });  
+}
+</script>
+<!-- jq版 -->
+<script>
+// 	$(function(){
+//   var mySwiper = $('.swiper-container').swiper({
+//     loop: true
+//     //其他设置
+//   });
+// })
+</script>
+</body>
+</html>

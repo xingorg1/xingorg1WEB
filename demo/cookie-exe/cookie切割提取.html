@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>切割提取cookie</title>
+	</head>
+	<body>
+		<h3>首先要知道，cookie记录是用“分号和空格”来分组的，切割的时候就是提取分号空格</h3>
+		<script type="text/javascript">
+			document.cookie = "name=gjf";
+			document.cookie = "age=23";
+			document.write("<hr/>"+document.cookie);
+			var cook = document.cookie;
+			var qiege = cook.split("; ");
+			console.log(qiege)
+//			var qiege2du = qiege.split("=");
+//			console.log(qiege2du)
+//最后遍历的时候，再把等号切开，见封装页面
+		</script>
+	</body>
+</html>

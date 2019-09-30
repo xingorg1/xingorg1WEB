@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 2 pdf</title>
+	<style>
+    h1{
+      padding: 10px 20px;
+      font-family: '微软雅黑';
+      font-size: 20px;
+      background: #eee;
+    } 
+    .div-area{
+      width: 600px;
+      height:400px;
+      margin-bottom: 10px;
+    }
+    div.bigArea{
+      width: 800px;
+      height:600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>柱状图</h1>
+  <div class="div-area" id="main"></div>
+ 	<button id="btn">html2canvas</button>
+  <h1>结果</h1>
+  <div id="canvasResult"></div>
+	<script src='echarts.min.js'></script>	
+	<script src="html2canvas.min.js"></script>
+	<script src="jspdf.min.js"></script>
+	<script src="entry.js"></script>
+</body>
+</html>

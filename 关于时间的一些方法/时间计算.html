@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间计算</title>
+</head>
+<body>
+	<!--计算时间段
+	    本月1号——今天，如果1号，则1号——1号
+	    本月1号——昨天，如果1号，则上月1号到最后一天
+	    如果1号{
+	      上月1号、-如本月是1月，上月是 上年12月
+	      上月最后一天（年+日）
+	    }
+	-->
+	<h1>控制台</h1>
+	<script>
+		// 获取月份最大天
+    function getCountDays(year,month) {
+      var date = new Date();
+      date.setFullYear(year,month);
+      date.setDate(0);
+      return date.getDate();
+    }
+    // 获取月份最大天end
+		var time = new Date();
+    var nY = time.getFullYear();//本年
+    var nM = time.getMonth()+1;//本月
+    var nD = time.getDate();//今天
+    var nY2 = time.getFullYear();//今年2
+    var nM2 = time.getMonth()+1;//本月2
+    /*var lY = nY -1;//去年
+    var lM = nM -1; //上月*/
+    var lD = nD -1;//昨天
+    var today = nD<=9?today='0'+nD:today=nD;//昨天
+    if((nD -1) == 0){
+    	today = '01';
+    }
+    if(lD < 1){//月初第一天
+      /*lM = nM-1;*/
+      nM2 = nM-1;
+     /* if(lM < 1){//元月
+        lM = 12;
+        lY = nY-1;//去年
+      }*/
+      if(nM2<1){//今年本月
+				nM2 = 12;
+        nY2 = nY-1;
+      }
+      /*lD = getCountDays(lY,lM)*/
+      lD = getCountDays(nY2,nM2)
+    }
+    nM<=9?nM='0'+nM:nM=nM
+    nM2<=9?nM2='0'+nM2:nM2=nM2
+    nD<=9?nD='0'+nD:nD=nD
+    /*lM<=9?lM='0'+lM:lM=lM*/
+    lD<=9?lD='0'+lD:lD=lD
+
+    console.log(`实时数据开始日期: ${nY}-${nM}-01`);//实时数据开始日期
+    console.log(`实时数据结束日期: ${nY}-${nM}-${today}`);
+    console.log(`柱图开始日期： ${nY2}-${nM2}-01`);//柱图开始日期
+    console.log(`柱图结束日：${nY2}-${nM2}-${lD}`);//柱图结束日
+	</script>
+</body>
+</html>

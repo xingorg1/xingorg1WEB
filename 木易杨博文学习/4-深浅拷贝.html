@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第四期-深浅拷贝</title>
+  <style>
+    .txt {
+      margin: 30px;
+      height: 200px;
+      /* line-height: 400px; */
+      font-size: 145px;
+      text-align: center;
+      background: #adf;
+      background: -webkit-linear-gradient(top, red,  blue 100%);
+      /* 实际是背景色渐变，但是只展示文字区域的背景色。此时的文字不是文字，而是文字外形构成并透出的背景色 */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      box-shadow: 1px 2px 3px yellow;
+      text-shadow: 1px 2px 3px yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="txt">
+    290,167
+  </div>
+  <script>
+    var obj = {
+      a: 1,
+      b: function () {
+        console.log(this.c);
+      },
+      c: [1, 2, [3, 4]],
+      d: {
+        a1: 11,
+        b1: {
+          a2: 111,
+          b2: true
+        }
+      },
+      e: null,
+      f: undefined,
+      g: '深浅拷贝案例代码'
+    };
+    /* Object.assign浅拷贝 */
+    var newObj = Object.assign({}, obj);
+    console.log(newObj);
+    newObj.b();
+    newObj.a++;
+    newObj.c[2].push(5);
+    console.log('obj:', obj, 'newObj:', newObj)
+    // obj也跟着变了，证明是浅拷贝。
+
+    /* slice浅拷贝 */
+    var arr = [1, 2, [3, 4], 5];
+    var newArr = arr.slice();
+    console.log(newArr);
+    newArr[0] = 0;
+    newArr[2].push('new');
+    console.log('arr:', arr, 'newArr:', newArr)
+    // 源数组arr也跟着变了，证明是浅拷贝
+
+    /* Spread 展开语法 */
+    var testA = {
+      a: 1,
+      b: function () {
+        console.log(this.c);
+      },
+      c: [1, 2, [3, 4]],
+      d: {
+        a1: 11,
+        b1: {
+          a2: 111,
+          b2: true
+        }
+      },
+      e: null,
+      f: undefined,
+      g: '深浅拷贝案例代码'
+    }
+    console.log('testA', testA);
+    var testB = { ...testA
+    };
+    console.log('testB', testB);
+    testB.b();
+    testB.a++;
+    testB.c[2].push('testB');
+    console.log('testA:', testA, 'testB:', testB)
+
+    /* 深拷贝 - JSON.parse(JSON.stringify(obj)) */
+    var objJson = {
+      a: 1,
+      b: function () {
+        console.log(this.c);
+      },
+      c: [1, 2, [3, 4]],
+      d: {
+        a1: 11,
+        b1: {
+          a2: 111,
+          b2: true
+        }
+      },
+      e: null,
+      f: undefined,
+      g: '深浅拷贝案例代码 - JSON'
+    }
+    var newObjJson = JSON.parse(JSON.stringify(objJson));
+    console.log(newObjJson)
+    // console.log(JSON.stringify(objJson))
+    // console.log(typeof JSON.stringify(objJson))
+    // console.log(JSON.parse(JSON.stringify(objJson)))
+    // console.log(typeof JSON.parse(JSON.stringify(objJson)))
+    // console.log(JSON.stringify(objJson,function(key,value){
+    //   console.log(111111,key,value)
+    //   return key
+    // }))
+    // console.log(JSON.stringify(objJson,222))
+    // newObjJson.b();
+    newObjJson.a++;
+    newObjJson.c[2].push('newObjJson');
+    console.log('objJson:', objJson, 'newObjJson:', newObjJson)
+
+
+    var testJson = {
+      a: '测试json序列化缺点',
+      b: function () {
+        return this.a;
+      },
+      c: undefined,
+      d: Symbol('xing.org1^')
+    }
+    console.log('testJson:', testJson)
+    var testJson2 = JSON.parse(JSON.stringify(testJson));
+    console.log('testJson2:', testJson2)
+
+    var a = {
+      name: 'gjf',
+      age: 20
+    }
+    var b = {
+      name: 'hobby',
+      list: ['history', 'FE', 'music']
+    }
+    var c = Object.assign(a, b);
+    console.log('b', b, 'a', a, 'c', c);
+    console.log('此时a和c是一个人吗？', a === c);
+    c.name = 'xing.org1^';
+    console.log('b', b, 'a', a, 'c', c);
+    //然后现在看看b和ac是否互相影响，主要是b的list引用值
+    b.name = "interest"
+    b.list.push('eat');
+    console.log('b', b, 'a', a, 'c', c);
+
+    var testOA = {
+      a: '测试Object.assign',
+      b: function () {
+        return this.a;
+      },
+      c: undefined,
+      d: Symbol('xing.org1^')
+    }
+    var newTestOA = Object.assign({}, testOA);
+    console.log('testOA', testOA, 'newTestOA', newTestOA)
+    newTestOA.a = 'Object.assign通过测试';
+
+    if (typeof Object.assign2 != 'function') {
+      // Attention 1
+      Object.defineProperty(Object, "assign2", {
+        value: function (target) {
+          'use strict';
+          if (target == null) { // Attention 2
+            throw new TypeError('Cannot convert undefined or null to object');
+          }
+          // Attention 3
+          var to = Object(target);
+          for (var index = 1; index < arguments.length; index++) {
+            var nextSource = arguments[index];
+            if (nextSource != null) { // Attention 2
+              // Attention 4
+              for (var nextKey in nextSource) {
+                if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                  to[nextKey] = nextSource[nextKey];
+                }
+              }
+            }
+          }
+          return to;
+        },
+        writable: true,
+        configurable: true
+      });
+    }
+    console.log(Object.getOwnPropertyDescriptor(newTestOA, 'a'))
+    console.log(newTestOA.propertyIsEnumerable('a'))
+
+    // 判断null和undefined可以简单点
+    var testNull = null;
+    var testUnf = undefined;
+    var newT = null;
+    var newUn = undefined;
+    if (newT == undefined) {
+      //不管变量值是null还是undefined，直接判断是否等于其中一个即可
+      console.log('undefined === null')
+    }
+    if (newUn == null) {
+      //不管变量值是null还是undefined，直接判断是否等于其中一个即可
+      console.log('undefined === null')
+    }
+
+    function testdemo(param) {
+      if (param == undefined) {
+        console.log("继续执行");
+      }
+    }
+
+    let letGet;
+    console.log(letGet);
+
+    var a = {
+      n: 1
+    };
+    var b = a;
+    a.x = 1;
+    console.log(a, b);
+
+    // let a = 20;
+    // const b = 30;
+    // var c;
+
+    // function multiply(e, f) {
+    //   var g = 20;
+    //   return e * f * g;
+    // }
+
+    // c = multiply(20, 30);
+
+    /* 全局环境 - GO */
+    // GlobalExectionContext = {
+
+    //   ThisBinding: < Global Object > ,//全局中的this绑定
+
+    //   LexicalEnvironment: {         //词法环境组件
+    //     EnvironmentRecord: {        //类型一、环境记录
+    //       Type: "Object",          //全局环境
+    //       // 标识符绑定在这里，如下  
+    //       a: < uninitialized > ,   //let绑定的全局变量
+    //       b: < uninitialized > ,   // const绑定的全局变量
+    //       multiply: < func >       //全局函数
+    //     }
+    //     outer: < null >            //类型二、对外部环境的引用
+    //   },
+
+    //   VariableEnvironment: {  //变量环境组件
+    //     EnvironmentRecord: {  // 类型一、环境记录
+    //       Type: "Object",     //全局环境
+    //       // 标识符绑定在这里  
+    //       c: undefined,       //var绑定的全局变量
+    //     }
+    //     outer: < null >       //类型二、对外部环境的引用
+    //   }
+    // }
+    /* 局部（函数）环境 - GO */
+    // FunctionExectionContext = {
+
+    //   ThisBinding: < Global Object > ,//函数中的this绑定，由于普通函数调用，指window
+
+    //   LexicalEnvironment: {          // 词法环境组件
+    //     EnvironmentRecord: {         // 类型一、环境记录
+    //       Type: "Declarative",       // 函数环境
+    //       // 标识符绑定在这里  
+    //       Arguments: {              // 函数的arguments对象
+    //         0: 20,
+    //         1: 30,
+    //         length: 2
+    //       },
+    //     },
+    //     outer: < GlobalLexicalEnvironment >//类型二、对外部环境的引用
+    //   },
+
+    //   VariableEnvironment: {         //变量环境组件
+    //     EnvironmentRecord: {         // 类型一、环境记录
+    //       Type: "Declarative",       // 函数环境
+    //       // 标识符绑定在这里  
+    //       g: undefined               //函数内部 var 绑定的局部变量
+    //     },
+    //     outer: < GlobalLexicalEnvironment >//类型二、对外部环境的引用
+    //   }
+    // }
+  </script>
+  <script>
+    var script1 = 'script1';
+    console.log('第一个window: ', window);
+    console.log(fun);
+    console.log(person);
+  </script>
+
+  <script>
+    var script2 = 'script2';
+    console.log(script1);
+    console.log('第二个window: ', window);
+    var person = "Eric";
+
+    function fun() {
+      console.log(person)
+      var person = "Tom";
+      console.log(person);
+    }
+    console.log(person);
+    console.log(fun);
+    console.log(person);
+    fun();
+    console.log(person);
+
+
+    // 作用域链和闭包
+    // 闭包 
+    var data = [];
+
+    for (let i = 0; i < 3; i++) {
+      data[i] = function () {
+        console.log(i);
+      }
+    }
+
+    data[0]();
+    data[1]();
+    data[2]();
+
+
+    var a = {
+      name: 'a',
+      b: {
+        name: 'b',
+        func: function () {
+          console.log(this, this.name)
+        }
+      }
+    }
+    a.b.func()
+
+    function bind(fn, obj) {
+      return function () {
+        return fn.apply(obj, arguments);
+      }
+    }
+    // 作者： 木易杨说
+    // 链接： https: //juejin.im/post/5bfcbb4be51d452aa770fa2b
+    //   来源： 掘金
+    // 著作权归作者所有。 商业转载请联系作者获得授权， 非商业转载请注明出处。
+    /* 
+      
+    */
+
+    function bind(origin, target) {
+      return function () {
+        return origin.apply(target, arguments);
+      }
+    }
+    var obj = {
+      a: 1,
+      b: 2
+    }
+
+    function fff(c) {
+      console.log(this.a + this.b + c)
+    }
+    var a = bind(fff, obj);
+    console.log(a)
+    a(3);
+    // 软绑定
+    
+  </script>
+</body>
+
+</html>

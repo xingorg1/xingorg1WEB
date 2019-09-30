@@ -1,0 +1,95 @@
+.text-over {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.new-btn {
+  display: inline-block; }
+
+.index-alert {
+  margin-top: 30px;
+  border: 1px solid #FFEBCB; }
+  .index-alert .warning {
+    background: rgba(255, 181, 64, 0.1); }
+
+.index-list {
+  margin-top: 24px;
+  font-size: 0;
+  overflow: hidden; }
+  .index-list li {
+    position: relative;
+    display: inline-block;
+    width: 398px;
+    margin-bottom: 20px;
+    padding: 24px 28px 20px;
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    -webkit-box-shadow: 0 2px 6px 0 rgba(219, 219, 219, 0.5);
+            box-shadow: 0 2px 6px 0 rgba(219, 219, 219, 0.5); }
+
+.index-list-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 88px;
+  height: 24px;
+  z-index: 9;
+  color: #fff;
+  font-size: 12px;
+  background: url(//yichehuoban-fed.bitauto.com/das/fed/yi-platform/tree/f-wxTemplate-gjf/wxTemplate/dist/images/icon-submitted.png) no-repeat; }
+  .index-list-status .icon-plus {
+    font-size: 17px;
+    font-weight: bold;
+    margin-right: 5px; }
+
+.index-item-images {
+  background: url(//yichehuoban-fed.bitauto.com/das/fed/yi-platform/tree/f-wxTemplate-gjf/wxTemplate/dist/images/cover_bg.png) no-repeat;
+  background-size: 100% 100%; }
+
+.index-item-img {
+  display: block;
+  width: 100%;
+  height: 110px; }
+
+.index-item-title {
+  height: 85px;
+  margin: 20px 0 18px; }
+  .index-item-title h3 {
+    font-size: 18px;
+    color: #333B48; }
+  .index-item-title p {
+    min-height: 21px;
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 15px; }
+  .index-item-title span {
+    font-size: 14px;
+    color: #999; }
+
+.index-item-links span {
+  position: relative;
+  font-size: 14px;
+  padding: 0 18px;
+  color: #4257FF; }
+  .index-item-links span:hover {
+    cursor: pointer; }
+
+.index-item-links .links-copy, .index-item-links .links-down {
+  padding-left: 0; }
+  .index-item-links .links-copy:after, .index-item-links .links-down:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 2px;
+    height: 14px;
+    background: #C0C0C0; }
+
+.index-item-links .links-down {
+  padding-left: 18px; }
+
+.index-item-links .links-white {
+  padding-left: 0; }
+
+.list-draft .index-list-status {
+  background: url(//yichehuoban-fed.bitauto.com/das/fed/yi-platform/tree/f-wxTemplate-gjf/wxTemplate/dist/images/icon-draft.png) no-repeat; }

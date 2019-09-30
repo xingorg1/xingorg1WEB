@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style type="text/css">
+			.hide {
+				display: none;
+			}
+			
+			li {
+				list-style: none;
+				display: inline-block;
+				background-color: #90EE90;
+			}
+			
+			.tapActiveLi {
+				background-color: #FF7F50;
+			}
+			
+			div {
+				border: 1px solid #f00;
+			}
+			
+			.aTapWrap {
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="aTapWrap aboutA_P" id="aTapWrap">
+			<ul id="aTapHeadWrap">
+				<li class="tapActiveLi">关于我们</li>
+				<li>
+					联系方式</li>
+				<li>
+					意见建议</li>
+			</ul>
+			<div class="aTapWrapS" id="aTapWrapS">
+				<div>
+					<p>文字1</p>
+				</div>
+				<div class="hide">
+					<p>文字2</p>
+				</div>
+				<div class="hide">
+					<p>文字3</p>
+				</div>
+			</div>
+		</div>
+		<div class="aTapWrap aboutA_P" id="aTapWrap2">
+				<ul id="aTapHeadWrap2">
+					<li class="tapActiveLi">关于我们</li><li>
+					联系方式</li><li>
+					意见建议</li>
+				</ul>
+				<div class="aTapWrapS" id="aTapWrapS2">
+					<div>
+						<p>文字1</p>
+					</div>
+					<div class="hide">
+						<p>文字2</p>
+					</div>
+					<div class="hide">
+						<p>文字3</p>
+					</div>
+				</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				function For(c,d){
+//					function stopPropagation(e) {  
+//					    e = e || window.event;  
+//					    if(e.stopPropagation) { 
+//					    	//W3C阻止冒泡方法
+//					        e.stopPropagation();  
+//					    } else {  
+//					        e.cancelBubble = true; 
+//					        //IE阻止冒泡方法
+//					    }  
+//					};
+						for(var i = 0; i < c.length; i++) {
+						c[i].index = i;
+						c[i].onclick = function(e) { 
+//							stopPropagation(e)
+							for(var j = 0; j < c.length; j++) {
+								c[j].className = "";
+								d[j].className = "hide";
+							}
+							this.className = "tapActiveLi";
+							d[this.index].className = "";
+							}
+						}
+					}
+				function tab(a,b){
+					var aLi = document.getElementById(a).getElementsByTagName('li');
+					var aDiv = document.getElementById(b).getElementsByTagName('div');
+					For(aLi,aDiv)
+				};
+//				function For(){
+//						for(var i = 0; i < aLi.length; i++) {
+//						aLi[i].index = i;
+//						aLi[i].onclick = function(e) { 
+//							for(var j = 0; j < aLi.length; j++) {
+//								aLi[j].className = "";
+//								aDiv[j].className = "hide";
+//							}
+//							this.className = "tapActiveLi";
+//							aDiv[this.index].className = "";
+//							}
+//						}
+//					}
+//				function tab(a,b){
+//					var aLi = document.getElementById(a).getElementsByTagName('li');
+//					var aDiv = document.getElementById(b).getElementsByTagName('div');
+//					For()
+//				};
+				tab('aTapHeadWrap','aTapWrapS');
+				tab('aTapHeadWrap2','aTapWrapS2');
+				
+				//2
+//				var oTapWrap2 = document.getElementById('aTapWrapS2');
+//				var oUL2 = document.getElementById('aTapHeadWrap2');
+//				var aLi2 = oUL2.getElementsByTagName('li');
+//				var aDiv2 = oTapWrap2.getElementsByTagName('div');
+//				for(var i = 0; i < aLi2.length; i++) {
+//					aLi2[i].index = i;
+//					aLi2[i].onclick = function(e) {
+//						stopPropagation(e)
+//						for(var j = 0; j < aLi2.length; j++) {
+//							aLi2[j].className = "";
+//							aDiv2[j].className = "hide";
+//						}
+//						this.className = "tapActiveLi";
+//						aDiv2[this.index].className = "";
+//					}
+//				}
+			}
+		</script>
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			//		    $(function(){  
+			//		        function tabs(tabMenu,on,tabContent){  
+			//		        $(tabContent).each(function(){  
+			//		            $(this).children().eq(0).show();      
+			//		        });   
+			//		        $(tabMenu).each(function(){  
+			//		            $(this).children().eq(0).addClass(on);    
+			//		        });  
+			//		        $(tabMenu).children().hover(function(){  
+			//		            $(this).addClass(on).siblings().removeClass(on);  
+			//		            var index = $(tabMenu).children().index(this);  
+			//		            $(tabContent).children().eq(index).show().siblings().hide();      
+			//		        });  
+			//		    }  
+			//		    tabs(".aTapHeadWrap","tapActiveLi",".aTapWrapS");  
+			//		})
+		</script>
+		<!--//思路！
+//一 function tabs(tabMenu,on,tabContent){}  用这个函数来封装js 调用的方式是tabs(".tab","on",".tabContent"),其中tabMenu是指li外层ul on是指当鼠标移上去li 希望他有个背景 tabContent 是指content的外层！
+//二 接着用each来遍历 找到第一个子元素li增加一个类on 第一个content让她们显示！接着当鼠标移到任何一个li时候 让当前的li增加一个类on 同辈元素删除类on  然后索引当前的li 看是第几个 最后找出content  如果他的索引值和li的索引值相同的话 显示内容 同辈元素隐藏掉！-->
+
+	</body>
+
+</html>

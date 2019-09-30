@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>loading加载</title>
+</head>
+<body>
+  <div style="font-size: 74px;padding: 45px 20px;color: #666;">
+    我是内容区的文字啊  
+  </div>
+  <div class="loading">
+    <div class="icon">加载中...</div>
+  </div>
+  <style>
+    html,body{
+      height: 100%;
+    }
+    body{
+      margin: 0;
+    }
+    .loading{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .icon{
+      width: 120px;
+      line-height: 120px;
+      text-align: center;
+      margin: 50% auto;
+      background: #fff;
+      border-radius: 8px;
+    }
+  </style>
+</body>
+</html>

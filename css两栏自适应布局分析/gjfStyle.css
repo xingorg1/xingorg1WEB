@@ -1,0 +1,189 @@
+/*
+ * @Author: @Guojufeng 
+ * @Date: 2019-01-19 11:18:15 
+ * @Last Modified by: @Guojufeng
+ * @Last Modified time: 2019-01-19 17:28:20
+ */
+/* 无关紧要的初始化样式 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  padding-bottom: 40px;
+}
+
+.main {background: #f7f6f6;}
+
+.mainCont {}
+.nav {}
+/* cnblogs样式关键代码 */
+.cnblogs-body {
+  /* 外边一个大结构，block块利用margin: 0 auto;实现整体的水平居中 */
+  width: 90%;
+  margin: 0 auto;
+}
+.cnblogs-main {}
+.cnblogs-main::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.cnblogs-main .mainCont {
+  /* 左浮动，宽度占满，使用margin负值让出左侧的距离 */
+  float: left;
+  margin-left: -22em;
+  width: 100%;
+}
+.cnblogs-main .mainCont-inner {
+  margin-left: 22em;
+  background: #fdd;
+}
+.cnblogs-main .nav {/* 外部nav结构用来布局 */
+  float: left;
+  width: 330px;
+  padding-left: 20px;
+}
+.cnblogs-main .nav-inner {
+  /* nav内部套内容结构，颜色样式加载内部，外部只用来布局 */
+  background: #def;
+}
+
+/* 腾讯课堂 */
+.txkt-main{
+  width: 980px;/* 如果想自适应可以设置为百分比宽度 */
+  margin: 0 auto;
+}
+.txkt-main::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.txkt-main .nav {
+  float: left;
+  width: 220px;
+}
+.txkt-main .nav-inner {
+  background: #def;/* 只负责样式 */
+}
+.txkt-main .mainCont {
+  width: 100%;
+  float: left;/* 跟随左侧浮动 */
+  margin-left: -220px;/* 努力向左位移，心满意得的盖住nav*/
+  padding-left: 240px;/* width宽度值220+二者间距值20，还得让出来 */
+  /* box-sizing关键，如果没有，padding正值只会扩大width值。*/
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.txkt-main .mainCont-inner {
+  background: #fdd;/* 只负责样式 */
+}
+/* 我的实现，觉得左边这里浮动已经形成浮动流，他占据左边220像素的日子也付东流了。所以右边这里没必要再浮动了。可以直接使用padding-left把左边nav占据的220px空出来就行了。 */
+.txkt-main .mainCont {
+  padding-left: 240px;
+}
+
+/* 慕课 */
+.mkw-main{
+  position: relative;/* 为了限制左侧nav绝对定位的位置 */
+  width: 980px;
+  margin: 0 auto;
+}
+
+.mkw-main .nav {
+  position: absolute;
+  width: 200px;
+}
+.mkw-main .nav-inner {
+  background: #def;/* 只负责样式 */
+}
+.mkw-main .mainCont {
+  /* 直接把nav的宽度让出来，再让出来20像素的间距即可 */
+  margin-left: 220px;
+  
+}
+.mkw-main .mainCont-inner {
+  background: #fdd;/* 只负责样式 */
+}
+
+/* github */
+.git-main{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.git-main::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.git-main .nav {
+  float: left;
+  width: 25%;
+}
+.git-main .nav-inner {
+  background: #def;/* 只负责样式 */
+}
+.git-main .mainCont {
+  float: left;
+  width: 75%;
+  
+}
+.git-main .mainCont-inner {
+  background: #fdd;/* 只负责样式 */
+}
+
+
+/* github */
+.gitmini-main{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.gitmini-main::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.gitmini-main .header{
+  background: #dfe;
+}
+.gitmini-main .header span{
+  /* 特殊，这里直接右浮动就实现了在右侧的效果 */
+  float: right;
+}
+.gitmini-main .nav {
+  float: right;
+  width: 25%;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+.gitmini-main .nav-inner {
+  background: #def;/* 只负责样式 */
+}
+.gitmini-main .mainCont {
+  float: left;
+  width: 75%;
+}
+.gitmini-main .mainCont-inner {
+  background: #fdd;/* 只负责样式 */
+}
+
+li{
+  list-style: none;
+}
+/* 九宫格布局 */
+.sudoku{
+  border: 1px solid;
+}
+.git-sudoku{
+  width: 980px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.git-sudoku .item{
+  background: #eee;
+  width: 456px;
+  
+  margin-bottom: 10px;
+}

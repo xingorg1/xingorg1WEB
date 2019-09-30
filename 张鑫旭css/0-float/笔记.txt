@@ -1,0 +1,120 @@
+张鑫旭css课程笔记
+https://www.imooc.com/t/197450
+float
+设计初衷/原本作用：实现文字环绕效果
+如，一个图片和一段文字垂直放置，给图片加上浮动，文字就环绕图片展示了。
+
+浮动的包裹与破坏：
+
+包裹
+  收缩：水平方向原来是一行，就变成一个块了。就像block元素变成了inline的效果。
+  坚挺：之前没有高度现在有了。结合收缩，感觉像是把一滩水放到了瓶子里的感觉。
+  隔绝 - BFC：形成自己独立的区域，内部元素的margin不会透出到外部。
+具有包裹的其他属性：(是不是可以生成块级上下文的其他人？)
+  display: inline-block、table-cell...
+  position: absolute(近亲)、fixed、sticky
+  overflow： hidden、scroll
+
+
+破坏
+  容器被破坏 父元素高度塌陷
+其他具有破坏属性的属性
+  display: none
+  position: absolute/fixed/sticky
+
+为什么浮动要带来破坏，让父元素的高度塌陷？
+浮动让父元素高度塌陷不是bug而是标准！浮动的破坏性只是单纯为了实现文字环绕效果而已；
+
+总结
+  浮动是魔鬼
+  无宽度 无图片 无浮动
+
+清除浮动 - 其实是清除浮动带来的影响，浮动还在
+基本方法：
+  1.在浮动元素的父元素底部插入clear:both
+    浮动元素和外部元素还是会有联系，例如发生margin重叠效果 -- 浮动元素的父元素内部，如果有其他子元素有margin，还是会跑到父元素的外边，导致和父元素其他兄弟元素的margin重叠。
+    做法：
+    a. 用html， block水平元素底部插入一个空的div元素即可
+    b. 用css, after伪元素，
+      .clearfix:after{}
+      .clearfix{}
+  2.使父元素BFC(ie8+)或haslayout(ie6/7)
+    bfc形成一个封闭的结构，保证里边的元素不会对外部发生任何影响，例如浮动带来的影响，也就不会发生margin重叠,因为bfc所形成的新块，包含内部元素的margin；
+  具体的区别对比，最清晰的看这个示例：https://www.imooc.com/code/2778
+怎么形成BFC?
+BFC、haslayout通常声明
+  . float:left/right;
+  . position: absolute/fixed;
+  . overflow: hidden/scroll(ie7+)
+  . display: inline-block、table-cell(ie8+)
+  . width/height/*【zoom:1】/..(ie6/7)
+  . border?
+以上，除了zoom:1以外，其他都不能通用，因为让所有元素都float不现实
+但是zoom：1只在低版本ie，高版本也不兼容的。
+
+通用伪元素after清除浮动带来影响的写法：
+  .clearfix:after{content:'';clear:both;display:block;height:0;overflow:hidden;visibility:hidden;}
+  .clearfix:after{content:'';display:table;clear:both;}//大神推荐写法
+  .clearfix{*zoom:1;}
+
+clearfix只能用在包含浮动元素的父级元素上，滥用会有ie低版本的触发haslayout导致的诡异问题
+浮动也会触发haslayout，加上浮动破坏性，在ie6/7下会有更多的bug。
+慎重使用浮动！！
+
+20180622
+浮动的特性
+1.可以使元素block块状化（元素就像砖头一样一块一块的inline-block感觉）
+2.破坏性造成的紧密排列特性（合并回车和空格等）
+第一种：
+<button></button>&nbsp;
+<button></button>&nbsp;
+<button></button>&nbsp;
+<p>button下边的一行字<p>
+使用float后的感觉是： 
+<button></button><button></button><button></button>&nbsp;&nbsp;&nbsp;//这就是对浮动的根本作用是实现文字环绕效果的最佳解释了
+
+<p>button下边的一行字<p>
+
+第二种：
+<button></button>//看不见的回车
+<button></button>//看不见的回车
+<button></button>//看不见的回车
+使用float后的感觉是：
+<button></button><button></button><button></button>
+<p>button下边的一行字<p>
+
+
+浮动滥用的一些场景
+用来做左右结构的布局，尽量避免
+
+借助浮动实现流体布局
+
+
+问题：
+  为什么bfc以后margin不重叠了，float后产生的包裹效果是margin被包裹在一起就像padding一样了？
+  不浮动的内联元素没有margin-top和bottom?
+  浮动后的内联元素还是内联元素吗？还能设置高度宽度吗  
+
+知乎问答：[浮动了解下？](https://www.zhihu.com/question/19915431)
+
+  * 不是清除浮动 而是 **闭合浮动**
+
+  闭合浮动，就是使得浮动元素闭合，从而减少浮动带来的影响。
+
+  * 不是文档流 而是 **普通流**
+
+  * 浮动，会有浮动框，浮动框可以左右移动，直到其外边缘遇到包含框或者另一个浮动框的边缘。
+
+  * 父元素overflow或者display：table;后可以闭合浮动的原理：
+
+    * 因为父元素此时会形成BFC,块级格式化上下文。
+
+    * 支持bfc的浏览器，ie8+
+
+    * 不支持bfc的，hasLayout闭合浮动
+
+float布局
+百分比布局
+flex布局
+栅栏布局
+表格布局

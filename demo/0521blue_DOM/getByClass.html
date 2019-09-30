@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用class获取元素-封装函数</title>
+		<script src="getByClass.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li class="li_box"></li>
+			<li class=""></li>
+			<li class=""></li>
+			<li class="li_box"></li>
+			<li class=""></li>
+			<li class="li_box"></li>
+			<li class=""></li>
+			<li class=""></li>
+			<li class="li_box"></li>
+		</ul>
+	</body>
+</html>
+<!--练习-->
+<script type="text/javascript">
+	window.onload = function(){
+		var oUL = document.getElementById("ul1");//获取到需要的找class的父元素
+//		var oLi = oUL.getElementsByTagName("li");
+//		var ArrClassName = [];
+//		for(var i = 0;i < oLi.length; i++){
+//			if(oLi[i].className == "li_box"){
+//				oLi[i].style.background = "red";
+//			}
+//		}
+//		var oBox = getByClass(oUL,"li_box");
+//		for(var i=0;i<oBox.length;i++){
+//			oBox[i].style.background = "yellow";
+//		}
+		var oLi = getByClass(oUL,"li_box");//让子元素们等于函数返回来的那个数组。其实直接用getElementsByTagName获取到的也是一个元素集合。现在直接等于一个数组，能用的方法和属性则更多了呢！顺便调用函数并传参。参数是父元素的变量和需要找的类名。
+		for(var i=0;i<oLi.length;i++){//循环弹出来的数组，也就是所有类名为“li_box”的li
+			//接下来直接做你想让那些带你需要类名的元素该做的事。
+			oLi[i].style.background = "red"
+		}
+	}
+</script>

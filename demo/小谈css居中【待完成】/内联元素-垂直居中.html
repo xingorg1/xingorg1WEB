@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>内联元素-垂直居中</title>
+		<style type="text/css">
+			.d1{
+				border: 1px solid red;
+				height: 300px;
+				line-height: 300px;
+				text-align: center;
+			}
+			div a{
+				font-size: 33px;
+				color: #FFF600;
+				background-color: #194090;
+				padding: 0 30px;
+			}
+			.d2,.d3{
+				border: 1px solid red;
+				height: 300px;
+				text-align: center;
+				
+			}
+			.d2 table{
+				width: 100%;
+				text-align: center;
+				height: 300px;
+			}
+			.d2{
+					/*vertical-align: middle;*/
+			}
+			.d3{
+				/*display: table-cell;*/
+				display: inline-block;
+				vertical-align: middle;
+				/*这种方法也可以，不过div块元素会变成内联块元素，因为table-cell、table-caption都与inline-block的功能一样，会让元素变成内联块元素、但是把div设置成成inline-block却没有作用哦 ，另外缺少vertical-align：middle这一句也不行*/
+			}
+		</style>
+	</head>
+	<body>
+		<h1><a href="https://buluo.qq.com/p/detail.html?bid=339910&pid=6675390-1488025584&from=share_qq">css居中小谈</a></h1>
+		<h3>一、！父元素高度确定！<strong style="color: red;">单行</strong>文本</h3>
+		<p>用line-height设置</p>
+		<div class="d1">
+			<a>文字</a>
+		</div>
+		<h3>二、！父元素高度确定！<strong style="color: red;">多行</strong>文本</h3>
+		<p>1、插入 table （插入方法和水平居中一样），然后设置 vertical-align:middle；</p>
+		<div class="d2">
+			<table>
+				<tbody>
+					<tr>
+						<td><a>文字<br />文字<br />文字<br />文字</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<table>
+			<th>
+				<td>wenzi</td>
+			</th>
+		</table>
+		<a style="background-color: red;">
+			<div style="background-color: ;">我是块级元素</div>
+		</a>
+		<p style="color: red;font-weight: bold;">注释：设置vertical-align的方法不奏效，于是我把table的宽高设置成与父元素一样的，这样下来，内联元素就水平垂直居中了</p>
+		<p>2、先设置display：table-cell；再设置vertical-align：middle；</p>
+		<div class="d3">
+			<a>文字<br />文字<br />文字<br />文字<br />文字</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+normal: {
+  formatter: function(params){
+    return parseInt((params.value)*100)+'%';
+  },
+  position: 'top',
+  show: true,
+  color: '#333'
+}
+normal: {
+  formatter: function(params){
+    return parseInt((params.value)*100)+'%';
+  },
+  position: ['-10','-35'],
+  show: true,
+  color: '#333'
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变化数字</title>
+</head>
+<body>
+	<div id="numBox" style="font-size: 24px;">5446</div>
+	<script>
+		var newNum = 6453;
+		var timer,oldNum;
+		var num = newNum - document.getElementById('numBox').innerText;
+		console.log(parseInt(num/100))
+		clearTimeout(timer);
+		function ooo(){
+			oldNum = Number(document.getElementById('numBox').innerText);
+			timer = setTimeout(function(){
+				if(oldNum <= newNum){
+					oldNum = oldNum + 111;
+					if(oldNum > newNum){
+						oldNum = newNum;
+					}
+					document.getElementById('numBox').innerText = oldNum;
+					ooo();
+				}
+			},100)
+		}
+		ooo();
+	</script>
+</body>
+</html>

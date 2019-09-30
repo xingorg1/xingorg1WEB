@@ -1,0 +1,119 @@
+$link1 : "//yichehuoban-fed.bitauto.com/das/fed/yi-platform/tree/f-wxTemplate-gjf/wxTemplate/dist/images/";
+.text-over{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+// 按钮
+.new-btn{
+	display: inline-block;
+}
+.index-alert{
+	margin-top: 30px;
+	border: 1px solid #FFEBCB;
+	.warning{
+		background: rgba(255,181,64,0.10);
+	}
+}
+
+// 列表
+.index-list{
+	margin-top: 24px;
+	font-size: 0;
+	overflow: hidden;
+	li{
+		position: relative;
+		display: inline-block;
+		width: 398px;
+		margin-bottom: 20px;
+		padding: 24px 28px 20px;
+		background: #FFFFFF;
+		border: 1px solid #F2F2F2;
+		box-shadow: 0 2px 6px 0 rgba(219,219,219,0.50);
+	}
+	a{
+		// display: inline-block;
+	}
+}
+
+.index-list-status{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 88px;
+	height: 24px;
+	z-index: 9;
+	color: #fff;
+	font-size: 12px;
+	background: url(#{$link1}icon-submitted.png) no-repeat;
+	.icon-plus{
+		font-size: 17px;
+		font-weight: bold;
+		margin-right: 5px;
+	}
+}
+.index-item-images{
+	background: url(#{$link1}cover_bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+.index-item-img{
+	display: block;
+	width: 100%;
+	height: 110px;
+}
+.index-item-title{
+	height: 85px;
+	margin: 20px 0 18px;
+	h3{
+		font-size: 18px;
+		color: #333B48;
+	}
+	p{
+		min-height: 21px;
+		font-size: 14px;
+		color: #666;
+		margin: 5px 0 15px;
+	}
+	span{
+		font-size: 14px;
+		color: #999;
+	}
+}
+.index-item-links{
+	span{
+		position: relative;
+		font-size: 14px;
+		padding: 0 18px;
+		color: #4257FF;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	.links-copy,.links-down{
+		padding-left: 0; 
+		&:after{
+			content: "";
+			position: absolute;
+			top: 3px;
+			right: 0;
+			width: 2px;
+			height: 14px;
+			background: #C0C0C0;
+		}
+	}
+	.links-down{
+		padding-left: 18px;
+	}
+	.links-view{
+		
+	}
+	.links-white{
+		padding-left: 0;
+	}
+}
+// 草稿状态li
+.list-draft{
+	.index-list-status{
+		background: url(#{$link1}icon-draft.png) no-repeat;
+	}
+}

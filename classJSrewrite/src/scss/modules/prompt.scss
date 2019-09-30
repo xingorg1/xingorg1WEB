@@ -1,0 +1,30 @@
+.prompt{
+	.yi-pageNotify{
+		.title{
+			color: #333;
+		}
+		.desc{
+			margin: 35px 0 10px;
+		}
+	}
+	.pageNotify2{
+		.desc{
+			margin: 15px 0 35px;
+		}
+		.right-border{
+			position: relative;
+			&:after{
+				content: "";
+				position: absolute;
+				top: 4px;
+				right: -10px;
+				width: 2px;
+				height: 14px;
+				background: #e8e8e8;
+			}
+		}
+	}
+	.prompt-btns-box{
+		margin: 10px auto 50px;
+	}
+}

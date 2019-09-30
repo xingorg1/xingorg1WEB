@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ie兼容测试</title>
+		 <meta name="author" content="郭菊锋702004176@qq.com"/>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 300px;
+				background: red; 
+				
+				background: blue\9;
+				
+				background: goldenrod\0/;
+				
+				 *background: deeppink;
+				 border: dotted;
+				
+				_background: green; 
+				
+				/*background: red;~非ie
+				background: blue\9;~ie所有
+				background: black\0;~ie8及以上
+				background: blue\9\0;~ie8及以上
+				background: yelow\9\0;~没用
+				background: blue\0/;~ie8 独有
+				_background: green;~6及以下
+				+background: grey;~没用
+				*background: deeppink;~ie7及以下
+				*/
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

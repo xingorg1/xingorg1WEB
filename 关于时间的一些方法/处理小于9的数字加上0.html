@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间个位数左边补零</title>
+</head>
+<body>
+	<h1>控制台</h1>
+	<script>
+		function NumGt9Deal(Num){
+			return Num=Num>9?Num:'0'+Num;
+		}
+		var date = new Date();
+		var dY = date.getFullYear();
+		var dM = NumGt9Deal(date.getMonth()+1);
+		var dD = NumGt9Deal(date.getDate());
+		var dH = NumGt9Deal(date.getHours());
+		console.log(dY);
+		console.log(dM);
+		console.log(dD);
+		console.log(dH);
+	</script>
+	<script>
+		console.log('=============')
+		// 第二种方法
+		function padLeftZero(str){
+      return ('00'+str).substr((str+'').length);
+    }
+		var date = new Date();
+		var dY = date.getFullYear();
+		var dM = padLeftZero(date.getMonth()+1);
+		var dD = padLeftZero(date.getDate());
+		var dH = padLeftZero(date.getHours());
+		console.log(dY);
+		console.log(dM);
+		console.log(dD);
+		console.log(dH);
+	</script>
+</body>
+</html>

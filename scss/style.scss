@@ -1,0 +1,152 @@
+body{
+	font-family:"微软雅黑";
+}
+.block{
+	padding: 10px 20px;
+	border-top: 8px solid #ccc;
+	border-bottom: 2px dashed #ccc;
+	margin-top: 20px;
+}
+.info{
+	margin: 10px 0 0;
+	padding: 20px 20px 0;
+	p{
+		font-weight: normal;
+		font-size: 14px;
+	}
+}
+.div1 input{
+	background:white;
+}
+.div1 input.active{
+	background: #2c6fce;
+}
+.div1 div{
+	width:200px;
+	height:60px;
+	margin-top:10px;
+	padding:10px;
+	background:#f4f4f4;
+	display:none;
+}
+input:hover{
+	cursor: pointer;
+}
+// 妙味js热身-上-课后作业
+body input[type="button"]{
+		margin-left: 10px;
+		background: #3b8cff;
+		color: #fff;
+		font-size: 14px;
+		padding: 10px;
+		border: none;
+		outline: none;
+		&:hover{
+			background: #2c6fce;
+		}
+	}
+.mwjs-1-by-seted{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #000;
+	margin: 10px 20px;
+}
+.mask{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url("../images/mask.png") repeat;
+	width: 100%;
+	height: 100%;
+}
+#mwjsPopWrap{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	width: 300px;
+	margin: auto;
+	text-align: left;
+	height: 300px;
+	background: #fff;
+	padding: 40px;
+	.mwjs-p-wrap{
+		margin-top: 40px;
+	}
+	p{
+		margin: 0 0 15px 0;
+	}
+	h4,.mwjs1-submit-wrap{
+		position: relative;
+		text-align: center;
+		margin: 0 0 15px 0;
+	}
+	h4{
+		span{
+			position: absolute;
+	    top: -30px;
+	    right: -30px;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    color: #999;
+	    line-height: 30px;
+	    &:hover{
+	    	background: #e8e8e8;
+	    	color: #333;
+				cursor: pointer;
+	    }
+		}
+	}
+	input{
+		width: 50px;
+		border: 1px solid #999;
+		border-radius: 5px;
+		background: #fff;
+		color: #333;
+		padding: 5px 10px;
+		&:hover,&.mwjs-1-seting-cur{
+			background: #e8e8e8;
+		}
+	}
+	.mwjs-1-btn-text{
+		width: 80px;
+		margin: 0;
+		background: #fff;
+		color: #333;
+		border: none;
+		&:hover{
+			cursor: text;
+			background: #fff;
+			color: #333;
+		}
+	}
+	.mwjs1-submit-wrap{
+		margin-top: 40px;
+			input{
+				background: #3b8cff;
+				color: #fff;
+				font-size: 14px;
+				width: auto;
+				padding: 10px 30px;
+				border: 1px solid #2c6fce;
+				outline: none;
+				border-radius: 0;
+				margin: 10px 15px;
+				&#mwjs1Reset{
+					background: #c8c8c8;
+					border: 1px solid #b2b2b2;
+					&:hover{
+						background: #b2b2b2;
+					}
+				}
+				&:hover{
+					background: #2c6fce;
+				}
+			}
+	}
+}	
