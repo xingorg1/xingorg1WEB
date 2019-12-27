@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第16期-左右两栏垂直居中布局</title>
+  <style>
+    /* 公共样式 */
+    .quiz {
+      background-color: white;
+      border: 1px solid #ddd;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .quiz-h {
+      font-size: 100%;
+    }
+
+    .quiz-p {
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <p>第一种：ie8+</p>
+  <div class="quiz quiz1">
+    <h6 class="quiz-h quiz-h1">201912</h6>
+    <p class="quiz-p quiz-p1">
+      12月5日，由游戏行业头部媒体游戏陀螺、VR陀螺、陀螺电竞、陀螺财经主办的第四届金陀螺奖颁奖典礼于深圳举办。金陀螺奖是国内游戏业界中最为瞩目的游戏奖项之一，此次大会以“蝶变·向上的力量”为主题，聚焦游戏行业的未来趋势发展、行业创新升级、商业生态新连接等前沿领域，具有极高的代表性和权威性。此次颁奖典礼中，阅文集团根据IP定制改编手游《新斗罗大陆》荣获“年度人气IP类游戏奖”。
+    </p>
+  </div>
+  <style>
+    .quiz-h1 {
+      display: table-cell;
+    }
+
+    /* 第一种： */
+    .quiz1 {}
+
+    .quiz-h1 {
+      vertical-align: middle;
+      padding: 0 10px;
+    }
+
+    .quiz-p1 {
+      display: table-cell;
+      padding-right: 10px;
+    }
+  </style>
+  <p>第2种：ie10+</p>
+  <div class="quiz quiz2">
+    <h6 class="quiz-h quiz-h2">201912</h6>
+    <p class="quiz-p quiz-p2">
+      12月5日，由游戏行业头部媒体游戏陀螺、VR陀螺、陀螺电竞、陀螺财经主办的第四届金陀螺奖颁奖典礼于深圳举办。金陀螺奖是国内游戏业界中最为瞩目的游戏奖项之一，此次大会以“蝶变·向上的力量”为主题，聚焦游戏行业的未来趋势发展、行业创新升级、商业生态新连接等前沿领域，具有极高的代表性和权威性。此次颁奖典礼中，阅文集团根据IP定制改编手游《新斗罗大陆》荣获“年度人气IP类游戏奖”。
+    </p>
+  </div>
+  <style>
+    .quiz2 {
+      display: flex;
+    }
+
+    /* 第2种： */
+    .quiz2 {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quiz-h2 {
+      padding: 0 10px;
+    }
+
+    .quiz-p2 {
+      padding-right: 10px;
+    }
+  </style>
+
+  <p>第3种：ie8+</p>
+  <div class="quiz quiz3">
+    <h6 class="quiz-h quiz-h3">201912</h6>
+    <p class="quiz-p quiz-p3">
+      12月5日，由游戏行业头部媒体游戏陀螺、VR陀螺、陀螺电竞、陀螺财经主办的第四届金陀螺奖颁奖典礼于深圳举办。金陀螺奖是国内游戏业界中最为瞩目的游戏奖项之一，此次大会以“蝶变·向上的力量”为主题，聚焦游戏行业的未来趋势发展、行业创新升级、商业生态新连接等前沿领域，具有极高的代表性和权威性。此次颁奖典礼中，阅文集团根据IP定制改编手游《新斗罗大陆》荣获“年度人气IP类游戏奖”。
+    </p>
+  </div>
+  <style>
+    .quiz-h3,
+    .quiz-p3 {
+      display: inline-block;
+    }
+
+    /* 第3种： */
+    .quiz3 {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .quiz-h3 {
+      padding: 0 10px;
+    }
+
+    .quiz-p3 {
+      white-space: normal;
+      vertical-align: bottom;
+      margin-right: 90px;
+    }
+  </style>
+
+  <p>第4种：ie8+</p>
+  <div class="quiz quiz4">
+    <h6 class="quiz-h quiz-h4">201912</h6>
+    <p class="quiz-p quiz-p4">
+      12月5日，由游戏行业头部媒体游戏陀螺、VR陀螺、陀螺电竞、陀螺财经主办的第四届金陀螺奖颁奖典礼于深圳举办。金陀螺奖是国内游戏业界中最为瞩目的游戏奖项之一，此次大会以“蝶变·向上的力量”为主题，聚焦游戏行业的未来趋势发展、行业创新升级、商业生态新连接等前沿领域，具有极高的代表性和权威性。此次颁奖典礼中，阅文集团根据IP定制改编手游《新斗罗大陆》荣获“年度人气IP类游戏奖”。
+    </p>
+  </div>
+  <style>
+    .quiz-h4 {
+      position: absolute;
+    }
+
+    /* 第4种： */
+    .quiz4 {
+      position: relative;
+    }
+
+    .quiz-h4 {
+      left: 10px;
+    }
+
+    .quiz-p4 {
+      padding-right: 10px;
+      padding-left: 80px;
+    }
+  </style>
+
+  <p>答案提交,太开心了，终于不用float解决左右布局了！！！</p>
+  <pre>
+    /* 第一种： */
+    .quiz {}
+
+    .quiz-h {
+      vertical-align: middle;
+      padding: 0 10px;
+    }
+
+    .quiz-p {
+      display: table-cell;
+      padding-right: 10px;
+    }
+
+    /* 第2种： */
+    .quiz {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quiz-h {
+      padding: 0 10px;
+    }
+
+    .quiz-p {
+      padding-right: 10px;
+    }
+
+    /* 第3种： */
+    .quiz {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .quiz-h {
+      padding: 0 10px;
+    }
+
+    .quiz-p {
+      white-space: normal;
+      vertical-align: bottom;
+      margin-right: 90px;
+    }
+
+    /* 第4种 */
+    .quiz {
+      position: relative;
+    }
+
+    .quiz-h {
+      left: 10px;
+    }
+
+    .quiz-p {
+      padding-right: 10px;
+      padding-left: 80px;
+    }
+    </pre>
+</body>
+
+</html>

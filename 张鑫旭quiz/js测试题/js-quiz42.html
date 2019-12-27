@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS基础测试42</title>
+</head>
+
+<body>
+  <!-- 代码提交 -->
+  <pre>
+  // 第1题
+  function centerDot(str, total, num) {
+    /* 
+      str为要处理的字符，total为长度，num为要预留的字数
+      */
+    if (str.length > total) {
+      str = str.substr(0, num) + '...' + str.substr(str.length - num)
+    }
+    return str;
+  }
+  // 第2题
+  function centerDotFileName(str, total, fillTxt) {
+    /* 
+      str为要处理的字符，total为最后生成文字总长度，为分隔的文案
+      */
+    var lastLetter = str.substr(str.indexOf('.') - 1)
+    if (str.length > total) {
+      str = str.substr(0, total - lastLetter.length - fillTxt.length) + fillTxt + lastLetter
+    }
+    return str;
+  }
+  </pre>
+  <script>
+    // 1、標題長度>15,前後留6個，中間...
+    var title = '🎅🎄🎁❤️🚀圣诞快乐，系列有9了'
+    function centerDot(str, total, num) {
+      /* 
+        str为要处理的字符，total为长度，num为要预留的字数
+       */
+      if (str.length > total) {
+        str = str.substr(0, num) + '...' + str.substr(str.length - num)
+      }
+      return str;
+    }
+    var result1 = centerDot(title, 15, 6)
+    console.log(result1)
+    document.body.innerHTML += "<h3>第一题结果：" + result1 + "</h3>"
+
+
+    // 2、后边留出文件名后缀和点前最后一个字符，中間...，加上前边动态的长度，使得最终总长度15,
+    var filename1 = 'abcdefghigklmn.excel'
+    var filename2 = 'abcdefghigklmn.jpg'
+    function centerDotFileName(str, total, fillTxt) {
+      /* 
+        str为要处理的字符，total为最后生成文字总长度，为分隔的文案
+       */
+      var lastLetter = str.substr(str.indexOf('.') - 1)
+      if (str.length > total) {
+        str = str.substr(0, total - lastLetter.length - fillTxt.length) + fillTxt + lastLetter
+      }
+      return str;
+    }
+    var result2_1 = centerDotFileName(filename1, 15, '...')
+    var result2_2 = centerDotFileName(filename2, 15, '...')
+    console.log(result2_1)
+    console.log(result2_2)
+    document.body.innerHTML += "<h3>第二题-1结果：" + result2_1 + "</h3>"
+    document.body.innerHTML += "<h3>第二题-2结果：" + result2_2 + "</h3>"
+  </script>
+</body>
+
+</html>
