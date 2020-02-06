@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@4.6.0/dist/echarts.min.js"></script>
+</head>
+
+<body>
+  <div id="main" style="width: 600px;height:400px;"></div>
+  <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    function setXsCbLrtOption() {
+      var option = {
+        title: {
+          text: '销售成本利润图'
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross'
+          }
+        },
+        color: ['#79F011', '#79F011', '#fd87ab', '#fd87ab', '#11abff', '#11abff'], //手动设置每个图例的颜色
+        legend: {
+          data: ['销售', '销售（预测）', '成本', '成本（预测）', '利润', '利润（预测）'],
+          //selectedMode:false  //关闭选择事件
+        },
+        toolbox: {
+          show: true,
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        },
+        yAxis: {
+          type: 'value',
+          axisLabel: {
+            formatter: '{value}万'
+          },
+          axisPointer: {
+            snap: false
+          }
+        },
+        series: [{
+            name: '销售（预测）',
+            type: 'line',
+            smooth: false,
+            data: [null, null, null, null, null, null, null, null, 200, 300, 280, 250],
+            itemStyle: {
+              normal: {
+                lineStyle: {
+                  width: 2,
+                  color: '#79F011',
+                  type: 'dotted' //'dotted'虚线 'solid'实线
+                }
+              }
+            }
+          }, {
+            name: '销售',
+            type: 'line',
+            smooth: false,
+            data: [111, 213, 210, 300, 98, 312, 231, 211, 200, null, null, null],
+            itemStyle: {
+              normal: {
+                lineStyle: {
+                  width: 2,
+                  color: '#79F011',
+                  type: 'solid' //'dotted'虚线 'solid'实线
+                }
+              }
+            }
+          },
+          {
+            name: '成本（预测）',
+            type: 'line',
+            smooth: false,
+            data: [null, null, null, null, null, null, null, null, 300, 300, 280, 250],
+            itemStyle: {
+              normal: {
+                lineStyle: {
+                  width: 2,
+                  color: '#fd87ab',
+                  type: 'dotted' //'dotted'虚线 'solid'实线
+                }
+              }
+            }
+          },
+          {
+            name: '成本',
+            type: 'line',
+            smooth: false,
+            data: [211, 113, 110, 200, 298, 112, 131, 111, 300, null, null, null],
+            itemStyle: {
+              normal: {
+                lineStyle: {
+                  width: 2,
+                  color: '#fd87ab',
+                  type: 'solid' //'dotted'虚线 'solid'实线
+                }
+              }
+            }
+          },
+          {
+            name: '利润（预测）',
+            type: 'line',
+            smooth: false,
+            data: [null, null, null, null, null, null, null, null, 100, 200, 180, 150],
+            itemStyle: {
+              normal: {
+                lineStyle: {
+                  width: 2,
+                  color: '#11abff',
+                  type: 'dotted' //'dotted'虚线 'solid'实线
+                }
+              }
+            }
+          },
+          {
+            name: '利润',
+            type: 'line',
+            smooth: false,
+            data: [211, 313, 310, 400, 198, 212, 131, 311, 100, null, null, null],
+            itemStyle: {
+              normal: {
+                lineStyle: {
+                  width: 2,
+                  color: '#11abff',
+                  type: 'solid' //'dotted'虚线 'solid'实线
+                }
+              }
+            }
+          }
+        ]
+      };
+      return option;
+    }
+
+    myChart.setOption(setXsCbLrtOption());
+  </script>
+
+</body>
+
+</html>

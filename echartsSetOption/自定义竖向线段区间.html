@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+var categoryData = [];
+var errorData = [];
+var barData = [];
+var dataCount = 100;
+for (var i = 0; i < dataCount; i++) {
+    var val = Math.random() * 1000;
+    categoryData.push('category' + i);
+    errorData.push([
+        i,
+        echarts.number.round(Math.max(0, val - Math.random() * 100)),
+        echarts.number.round(val + Math.random() * 80)
+    ]);
+    
+    barData.push(echarts.number.round(val, 2));
+}
+
+function renderItem(params, api) {
+    var xValue = api.value(0);
+    var highPoint = api.coord([xValue, api.value(1)]);
+    var lowPoint = api.coord([xValue, api.value(2)]);
+    var halfWidth = api.size([1, 0])[0] * 0.1;
+    var style = api.style({
+        stroke: api.visual('color'),
+        fill: null
+    });
+
+    return {
+        type: 'group',
+        children: [{
+            type: 'line',
+            shape: {
+                x1: highPoint[0] - halfWidth, y1: highPoint[1],
+                x2: highPoint[0] + halfWidth, y2: highPoint[1]
+            },
+            style: style
+        }, {
+            type: 'line',
+            shape: {
+                x1: highPoint[0], y1: highPoint[1],
+                x2: lowPoint[0], y2: lowPoint[1]
+            },
+            style: style
+        }, {
+            type: 'line',
+            shape: {
+                x1: lowPoint[0] - halfWidth, y1: lowPoint[1],
+                x2: lowPoint[0] + halfWidth, y2: lowPoint[1]
+            },
+            style: style
+        }]
+    };
+}
+
+option = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    title: {
+        text: 'Error bar chart'
+    },
+    legend: {
+        data: ['bar', 'error']
+    },
+    dataZoom: [{
+        type: 'slider',
+        start: 50,
+        end: 70
+    }, {
+        type: 'inside',
+        start: 50,
+        end: 70
+    }],
+    xAxis: {
+        data: categoryData
+    },
+    yAxis: {},
+    series: [{
+        type: 'line',
+        style:'dotted',
+        name: 'bar',
+        data: barData,
+        itemStyle: {
+              normal: {
+                lineStyle: {
+                  width: 2,
+                  color: '#79F011',
+                  type: 'dotted' //'dotted'虚线 'solid'实线
+                }
+              }
+            }
+    }, {
+        type: 'custom',
+        name: 'error',
+        itemStyle: {
+            normal: {
+                borderWidth: 1.5,
+                type: 'dotted' 
+            }
+        },
+        renderItem: renderItem,
+        encode: {
+            x: 0,
+            y: [1, 2]
+        },
+        data: errorData,
+        z: 100
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
