@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://cdn.highcharts.com.cn/highcharts/6.1.0/highcharts.js"></script>
+  <script src="http://cdn.highcharts.com.cn/highcharts/6.1.0/highcharts-more.js"></script>
+  <script src="http://cdn.highcharts.com.cn/highcharts/6.1.0/modules/exporting.js"></script>
+</head>
+<body>
+  <div id="container" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px"></div>
+  <script>
+    Highcharts.chart('container', {
+      // chart: {
+      //   type: 'boxplot'
+      // },
+      title: {
+        text: '误差图虚线效果'
+      },
+      legend: {
+        enabled: false
+      },
+      xAxis: {
+        categories: ['1', '2', '3', '4', '5'],
+        title: {
+          text: 'Experiment No.'
+        }
+      },
+      yAxis: {
+        title: {
+          text: 'Observations'
+        }
+      },
+      plotOptions: {
+        boxplot: {
+          lineWidth: 0,
+          medianColor: '#0C5DA5',
+          medianWidth: 0,
+          stemColor: '#333',
+          stemDashStyle: 'dot',
+          stemWidth: 1,
+          whiskerColor: '#333',
+          whiskerLength: 4,
+          whiskerWidth: 2
+        }
+      },
+      series: [{
+        name: 'errorbar',
+        type: 'boxplot',
+        data: [
+          [10, 20, 30, 40, 50],			
+          [40, 40, 40, 40, 50], // 前三個点一样，这样渲染出来的才最完美
+          // [733, 853, 939, 980, 1080],
+          // [714, 762, 817, 870, 918],
+          // [724, 802, 806, 871, 950],
+          // [834, 836, 864, 882, 910]
+        ]
+      }]
+    });
+  </script>
+</body>
+</html>
