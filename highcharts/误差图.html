@@ -20,7 +20,7 @@
         text: '误差图'
       },
       xAxis: [{
-        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月']
       }],
       yAxis: [{ // Primary yAxis
         labels: {
@@ -70,22 +70,15 @@
       series: [{
         name: '降水',
         type: 'spline',
-        data: [ 25.2, 26.5, 23.3, 18.3, 13.9, 19.6, null, null, null, null, null, null],
+        data: [ 25.2, 26.5, 23.3, 21.2, null, null, null, null, null, null],
         tooltip: {
           pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: <b>{point.y:.1f} mm</b> '
         }
-      // }, {
-      //   name: '降雨误差',
-      //   type: 'errorbar',
-      //   data: [[48, 51], [68, 73], [92, 110], [128, 136], [140, 150], [171, 179], [135, 143], [142, 149], [204, 220], [189, 199], [95, 110], [52, 56]],
-      //   tooltip: {
-      //     pointFormat: '(误差范围: {point.low}-{point.high} mm)<br/>'
-      //   }
       }, {
         name: '温度',
         type: 'spline',
         dashStyle: 'ShortDot', // 点虚线
-        data: [null, null, null, null, null, 19.6, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+        data: [null, null, null, 21.2, 22.2, 26.5, 23.3, 18.3, 13.9, 9.6],
         tooltip: {
           pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: <b>{point.y:.1f}°C</b> '
         }
@@ -93,7 +86,7 @@
         name: '温度误差',
         type: 'errorbar', // 误差图
         dashStyle: 'ShortDot',
-        data: [null, null, null, null, null, null, [23.2, 25.3], [26.1, 27.8], [23.2, 23.9], [18.0, 21.1], [12.9, 14.0], [7.6, 10.0]],
+        data: [null, null, null, null, [23.2, 25.3], [26.1, 27.8], [23.2, 23.9], [18.0, 21.1], [12.9, 14.0], [7.6, 10.0]],
         tooltip: {
           pointFormat: '(误差范围: {point.low}-{point.high}°C)<br/>'
         }

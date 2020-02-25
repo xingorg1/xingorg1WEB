@@ -60,6 +60,17 @@
         }
       },
       plotOptions: {
+        boxplot: {
+          lineWidth: 0,
+          // medianColor: '#0C5DA5',
+          medianWidth: 0,
+          stemColor: '#333',
+          stemDashStyle: 'dot',
+          stemWidth: 1,
+          whiskerColor: '#333',
+          whiskerLength: 4,
+          whiskerWidth: 2
+        },
         series: {
           color: '#333',
           marker: {
@@ -74,13 +85,6 @@
         tooltip: {
           pointFormat: '<span style="font-weight: bold; color: {series.color}">{series.name}</span>: <b>{point.y:.1f} mm</b> '
         }
-      // }, {
-      //   name: '降雨误差',
-      //   type: 'errorbar',
-      //   data: [[48, 51], [68, 73], [92, 110], [128, 136], [140, 150], [171, 179], [135, 143], [142, 149], [204, 220], [189, 199], [95, 110], [52, 56]],
-      //   tooltip: {
-      //     pointFormat: '(误差范围: {point.low}-{point.high} mm)<br/>'
-      //   }
       }, {
         name: '温度',
         type: 'spline',
@@ -91,9 +95,8 @@
         }
       }, {
         name: '温度误差',
-        type: 'errorbar', // 误差图
-        dashStyle: 'ShortDot',
-        data: [null, null, null, null, null, null, [23.2, 25.3], [26.1, 27.8], [23.2, 23.9], [18.0, 21.1], [12.9, 14.0], [7.6, 10.0]],
+        type: "boxplot",
+        data: [null, null, null, null, null, null, [23, 29.3], [24.1, 27.8], [23.2, 32.9], [18.0, 21.1], [12.9, 14.0], [7.6, 10.0]],
         tooltip: {
           pointFormat: '(误差范围: {point.low}-{point.high}°C)<br/>'
         }
