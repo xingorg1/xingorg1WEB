@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则验证小工具</title>
+</head>
+<body>
+  <div>
+    正则：<input type="text" placeholder="输入正则" id="reg">
+    修饰符：<input type="text" placeholder="输入修饰符" id="attrib">
+  </div>
+  <div>
+    字符串：<input type="text"  placeholder="输入字符串" id="str">
+  </div>
+  <div>
+    <button id="vertify">验证</button>
+    <button>刷新</button>
+    <button id="status">是否执行</button>
+  </div>
+  <div>
+    验证结果：<span id="result"></span>
+  </div>
+  <div>
+    匹配结果：<span id="match"></span>
+  </div>
+  <script>
+    let reg = document.getElementById('reg')
+    let attrib = document.getElementById('attrib')
+    let vertify = document.getElementById('vertify')
+    let str = document.getElementById('str')
+    let result = document.getElementById('result')
+    let match = document.getElementById('match')
+    let status = document.getElementById('status')
+    let num = 0
+    vertify.onclick = function() {
+      num ++
+      let myreg = new RegExp(reg.value, attrib.value)
+      result.innerHTML = myreg.test(str.value)
+      match.innerHTML = str.value.match(myreg) + ''
+      status.innerText = num
+    }
+    
+  </script>
+</body>
+</html>
