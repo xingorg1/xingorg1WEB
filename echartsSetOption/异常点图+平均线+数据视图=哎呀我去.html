@@ -1,34 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-        var strings = 'qtwertertertutaerytqertery';
-        function find(target) {
-        var str = [],
-            obj = {},
-            len = target.length;
-        for(var i = 0; i < len; i ++){
-            if(!obj[target[i]]){
-                obj[target[i]] = 1;
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {
+        show: true // 必须引入 tooltip 组件
+    },
+    toolbox: {
+        left: 0,
+        showTitle: false, // 隐藏默认文字，否则两者位置会重叠
+        feature: {
+            dataView: {
+                readOnly: true,
+                lang: ['', '关闭', '刷新'],
+                backgroundColor: '#f3f3f3',
+                optionToContent: function(opt) {
+                    console.log(opt)
+                    var axisData = opt.xAxis[0].data;
+                    var series = opt.series;
+                    var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+                                 + '<td>日期</td>';
+                    series.forEach((el) => {
+                        console.log(el)
+                        if(el.type === 'line'){
+                             table += '<td>' + el.name || '-'  + '</td>'
+                        }
+                    })
+                    table += '</tr>' 
+                    // 这里还需要tbody方便该样式
+                   
+                        
+                    axisData.forEach((row, i) => { // 行数遍历
+                        console.log('row', row)
+                        table += '<tr>'
+                        table += `<td>${axisData[i]}</td>`
+                        // series.forEach((col) => { // 列数遍历
+                        //     console.log('col', col)
+                        //     if(col.type === 'line'){
+                        //         // 正常表
+                        //          table += '<td>' + col.name || '-'  + '</td>'
+                        //     }else {
+                        //         // 异常点
+                        //     }
+                        // })
+                        table += '/<tr>'
+                       
+                    })
+                    // for (var i = 0, l = axisData.length; i < l; i++) {
+                    //     table += ''
+                    //              + '<td>' + series[i].data[i] + '</td>'
+                    //              + '<td>' + series[1].data[i] + '</td>'
+                    //              + '</tr>';
+                    // }
+                    table += '</tbody></table>';
+                    return table;
+                }
             }
-            else{
-                obj[target[i]] ++;
-            }
+        },
+        tooltip: { // 和 option.tooltip 的配置项相同
+            show: true,
+            formatter: function (param) {
+                return '<div>' + param.title + '</div>'; // 自定义的 DOM 结构
+            },
+            backgroundColor: '#465674', // #fff
+            borderColor: '#3e4e6c', // #ebeef5
+            textStyle: {
+                color: '#cdd3dd', // #6c7383
+                fontSize: 12,
+            },
+            extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);' // 自定义的 CSS 样式
         }
-        for(var item in obj){
-            if(obj[item] == 1){
-                str.push(item);
-            }
+    },
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        name: '哈哈哈',
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        showSymbol: false,
+    },{
+        name: '哈哈哈',
+        data: [null, 932, null, 934, null, null, 1320],
+        type: 'effectScatter',
+        color: 'red',
+          symbol: 'pin',
+          symbolSize: 20
+    }, {
+        name: '哈哈哈平均线',
+        data: [840, 932, 840, 840, 932, 840, 840],
+        type: 'line',
+        
+        symbolSize: 0,
+        lineStyle: {
+            width: 1,
+            type: 'dashed'
         }
-        return str[0];
-        }
-        console.log(find(strings))
-    </script>
-</body>
+    }]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
 </html>
