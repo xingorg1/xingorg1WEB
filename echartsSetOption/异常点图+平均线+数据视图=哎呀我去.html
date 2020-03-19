@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+        var strings = 'qtwertertertutaerytqertery';
+        function find(target) {
+        var str = [],
+            obj = {},
+            len = target.length;
+        for(var i = 0; i < len; i ++){
+            if(!obj[target[i]]){
+                obj[target[i]] = 1;
+            }
+            else{
+                obj[target[i]] ++;
+            }
+        }
+        for(var item in obj){
+            if(obj[item] == 1){
+                str.push(item);
+            }
+        }
+        return str[0];
+        }
+        console.log(find(strings))
+    </script>
+</body>
+</html>
