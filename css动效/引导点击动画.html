@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>引导点击动画</title>
+  <link rel="stylesheet" href="./assets/iconfont.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="border posi test2">
+    </div>
+    <div class="border posi test2 test3">
+    </div>
+    <div class="bg posi test1">
+    </div>
+    <i class="iconfont icon-shouzhi posi"></i>
+  </div>
+  <!-- style-动画效果 -->
+  <style>
+    body{
+      padding: 30px;
+      background: #0080007a;
+    }
+    .wrapper{
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+    .posi{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+    .bg{
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.4;
+    }
+    .border{
+      border: 1px solid #fff;
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    .test1{
+      width: 15px;
+      height: 15px;
+      opacity: 0.8;
+    }
+    .test2{
+      width: 15px;
+      height: 15px;
+      animation: ripple 1.5s linear  infinite; 
+    }
+    .test3{
+      animation-delay: 0.8s;
+    }
+    .icon-shouzhi{
+      position: absolute;
+      top: 72%;
+      left: 26%;
+      font-size: 25px;
+      color: #fff;
+      transform-origin: top left;
+      animation: finger 1.5s linear alternate infinite; 
+    }
+    @keyframes finger {
+      0% {
+        transform: scale(0.95) translateY(-8px) rotate(-25deg);
+      }
+      50% {
+        transform: scale(1.1) rotate(-25deg);
+      }
+      100% {
+        transform: scale(0.95) translateY(-8px) rotate(-25deg);
+      }
+    }
+    @keyframes ripple {
+      0% {
+        transform: scale(1);
+        opacity: 0.4;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
+</body>
+</html>
