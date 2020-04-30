@@ -34,7 +34,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "es5-shim": "^4.5.10",
-    "jquery": "^1.7.1",
+    "jquery": "^3.5.0",
     "yi-frames-app": "^1.0.0",
     "yi-frames-js": "^1.7.0",
     "yi-frames-ui": "^2.1.5"
