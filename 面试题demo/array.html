@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>1、[0, 1, 0, 3, 12]</h1>
+    <h1>2、[1,0,-1,0,-2,2]</h1>
+    <script>
+      var moveZeroes = function (nums) {
+        let n = nums.length;
+        let i = -1;
+        for (let j = 0; j < n; j++) {
+          if (nums[j] !== 0) {
+            console.log(i, nums[j]);
+            i++;
+            nums[i] = nums[j];
+          }
+        }
+        //遍历i-n为0
+        for (let k = i + 1; k < n; k++) {
+          nums[k] = 0;
+        }
+        console.log(nums);
+        return nums;
+      };
+      // moveZeroes([0, 1, 0, 3, 12]);
+    </script>
+    <script>
+      // [1,0,-1,0,-2,2] target = 0
+      function sumEqualTarget(arr, target) {
+        let resultArr = []
+        if (!Array.isArray(arr)) return false;
+        let len = arr.length,
+          n = len - 1;
+        for (var i = 0; i < len; i++) {
+          let a = arr[i],
+            b = arr[n--];
+          console.log(a, b)
+          if (typeof b === "undefined") return false;
+          for (let j = i + 1; j < len; j++) {
+            console.log(arr[j])
+          }
+        }
+      }
+      let demoArr = [1, 0, -1, 0, -2, 2];
+      sumEqualTarget(demoArr, 0);
+    </script>
+  </body>
+</html>
