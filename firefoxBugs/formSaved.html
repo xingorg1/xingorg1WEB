@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>select、checkbox等表单选中后，刷新页面依旧选中的问题</title>
+</head>
+
+<body>
+  <form autocomplete="off">
+    <p>First name: <input type="text" name="fname" /></p>
+    <p>Last name: <input type="text" name="lname" /></p>
+    <input type="submit" value="Submit" />
+    <br />
+    <label for="male">Male</label>
+    <input type="radio" name="sex" id="male" />
+    <br />
+    <label for="female">Female</label>
+    <input type="radio" name="sex" id="female" />
+    <br />
+    我喜欢自行车：
+    <input type="checkbox" name="Bike">
+    <br />
+    我喜欢汽车：
+    <input type="checkbox" name="Car">
+  </form>
+</body>
+
+</html>
