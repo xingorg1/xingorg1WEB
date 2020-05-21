@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8632076",
+      "name": "手指",
+      "font_class": "shouzhi",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "11107210",
+      "name": "手指",
+      "font_class": "shouzhi1",
+      "unicode": "e946",
+      "unicode_decimal": 59718
+    },
+    {
+      "icon_id": "11922314",
+      "name": "手指",
+      "font_class": "shouzhi2",
+      "unicode": "e6c5",
+      "unicode_decimal": 59077
+    }
+  ]
+}
