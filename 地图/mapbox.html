@@ -5,26 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-  </head>
-  <body>
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css"
       rel="stylesheet"
     />
-
-    <div id="map" style="width: 400px; height: 300px;"></div>
+  </head>
+  <body>
+    <div id="map" style="width: 1200px; height: 700px;"></div>
     <script>
       // TO MAKE THE MAP APPEAR YOU MUST
       // ADD YOUR ACCESS TOKEN FROM
       // https://account.mapbox.com
-      mapboxgl.accessToken = '<your access token here>'
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoieGluZ29yZzEiLCJhIjoiY2tibHRyaHJrMWNtMTJxbnoxMzh5eTY5aSJ9.NlSDXhiV38bAUQByf4BXeA'
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-        center: [-74.5, 40], // starting position [lng, lat]
+        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location 地图皮肤
+        center: [116.4, 39.9], // starting position [lng-经度, lat-维度]
         zoom: 9 // starting zoom
       })
+      // language setting
+      // map.setLayoutProperty('country-label', 'text-field', [
+      //   'get',
+      //   'name_' + language
+      // ])
     </script>
   </body>
 </html>
