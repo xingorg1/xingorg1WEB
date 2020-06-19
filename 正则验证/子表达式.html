@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let str = "aabbcc",
+        reg = /(\w)+/;
+      console.log(str.match(reg));
+      let result = str.replace(reg, '$1');
+      // 等价于这种写法
+      // let result = str.replace(reg, RegExp.$1);
+      console.log(result); // c
+      console.log("RegExp.$1: ", RegExp.$1); //c
+      console.log("RegExp.$2: ", RegExp.$2); //
+
+      
+      
+      
+      str.replace(reg, function (a,b,c)  {
+        console.log(a,b,c, arguments);
+      });
+
+      // var str2 ='11122xxxx';
+      // var res3= str2.replace(/(\d{3})(\d{2})/g,'a$1b$2c');
+      // document.write(res3);    //a111b22cxxxx
+      // console.log(RegExp.$1) //111
+      // console.log(RegExp.$2) //22
+      // console.log(RegExp.$3)
+    </script>
+  </body>
+</html>
