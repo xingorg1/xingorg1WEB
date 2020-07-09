@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>this、let、箭头函数</title>
+  </head>
+  <body>
+    <script>
+      var go = console
+      var langue = {
+        name: '',
+        php() {
+          var _t_ = this // this指向调用者
+          go.info(_t_, _t_.name)
+        },
+        python: () => {
+          let _t_ = this // window
+          go.info(_t_, _t_.name)
+        }
+      }
+      langue.php()
+      langue.python()
+    </script>
+  </body>
+</html>
