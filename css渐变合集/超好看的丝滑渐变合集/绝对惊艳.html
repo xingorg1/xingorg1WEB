@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box little"></div>
+    <style>
+      .box {
+        width: 500px;
+        height: 350px;
+        background: radial-gradient(
+            100% 246.94% at 100% 0,
+            #fff 0,
+            #020063 100%
+          ),
+          linear-gradient(146.32deg, #1400ff 0.45%, #004e3b),
+          linear-gradient(168.88deg, #ff002e, #ff005c 74.04%),
+          linear-gradient(354.79deg, #9316a8 5.75%, #2400ff 83.31%),
+          linear-gradient(200.18deg, #8f0000 12.99%, #1cffe4 87.21%),
+          linear-gradient(167.28deg, #b7d500 15.35%, #20a 89.57%);
+        background-blend-mode: color-burn, screen, overlay, difference;
+      }
+      .little {
+        width: 238px;
+        padding: 0 45px;
+        line-height: 64px;
+        height: 64px;
+        margin-left: 15px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 700;
+        background: linear-gradient(154.48deg, #ff2f2f 10.43%, #000460 92.78%),
+          radial-gradient(100% 246.94% at 100% 0, #fff 0, #020063 100%),
+          linear-gradient(146.54deg, #1400ff 0.45%, #3a0000),
+          linear-gradient(168.97deg, #ff002e, #ff003d 74.04%),
+          linear-gradient(352.2deg, #b25bba 7.52%, #1700a7 77.98%),
+          linear-gradient(200.03deg, #a90000 12.99%, #00ffe0 87.21%),
+          linear-gradient(167.38deg, #b7d500 15.35%, #20a 89.57%);
+        background-blend-mode: overlay, color-burn, screen, overlay, difference,
+          difference, normal;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+  </body>
+</html>
