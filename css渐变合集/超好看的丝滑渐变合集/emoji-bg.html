@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用emoji做背景图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --rule-emoji :( :doodle {
+          @grid: 20 / 100vmax;
+          grid-gap: 1px;
+          background: #f9d654;
+          overflow: hidden;
+        }
+
+        transition: @r(1s) ease;
+        transform: scale(@rand(.1, 1)) rotate(@rand(0, 360)deg);
+
+        :after {
+          content: \@hex(@rand(0x1F600, 0x1F636));
+          /*将十六进制转换成unicode编码*/
+          opacity: @r(.1, 1);
+          font-size: 3vmax;
+        }
+
+      )
+    }
+  </style>
+</head>
+
+<body>
+  <a href="https://www.cnblogs.com/lvonve/p/10746289.html" target="_blank" rel="noopener noreferrer">点击查看出处</a>
+  <css-doodle>
+    @use: var(--rule-emoji);
+  </css-doodle>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.6.1/css-doodle.min.js"></script>
+<script>
+  const doodle = document.querySelector('css-doodle');
+  // 每次点击刷新css-doodle
+  doodle.onclick = function () {
+    doodle.update();
+  };
+</script>
+
+</html>
