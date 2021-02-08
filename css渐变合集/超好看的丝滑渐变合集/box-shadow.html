@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>翻角渐变效果</title>
+    <style>
+      body {
+        background: rgb(8, 11, 34);
+      }
+      .box {
+        margin: 40px;
+        width: 500px;
+        height: 500px;
+        position: relative;
+        overflow: hidden;
+      }
+      .box-son {
+        height: 100%;
+        font-size: 24px;
+        padding: 20px;
+        box-sizing: border-box;
+        background: #e7e7fb;
+        --polygon: polygon(
+          0 0,
+          calc(100% - 35px) 0,
+          100% 35px,
+          100% 100%,
+          0 100%
+        );
+        -webkit-clip-path: var(--polygon);
+        clip-path: var(--polygon);
+      }
+      .box::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 1px;
+        right: 0;
+        top: 0;
+        border: 0;
+        transform-origin: 0 0;
+        transform: translate(12px) rotate(45deg);
+        box-shadow: 0 -5px 0 0 rgb(231 231 252 / 80%),
+          0 -8px 0 0 rgb(231 231 252 / 60%), 0 -12px 0 0 rgb(231 231 252 / 40%),
+          0 -17px 0 0 rgb(231 231 252 / 20%), 0 -22px 0 0 rgb(231 231 252 / 20%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="box-son">
+        看右上角的小图标
+      </div>
+    </div>
+  </body>
+</html>
