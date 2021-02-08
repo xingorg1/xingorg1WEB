@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 300px;
+        height: 150px;
+        background: linear-gradient(180deg, #ffb7b7, #727272),
+          radial-gradient(60.91% 100% at 50% 0, #ffd1d1 0, #260000 100%),
+          linear-gradient(117.03deg, #0ff, #fff),
+          radial-gradient(100.22% 100% at 70.57% 0, red 0, #00ffe0 100%),
+          linear-gradient(72.6deg, #dbff00, #30f);
+        background-blend-mode: screen, overlay, color-burn, color-dodge, normal;
+      }
+      .box2 {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(180deg, #ffb7b7, #727272),
+          radial-gradient(60.91% 100% at 50% 0, #ffd1d1 0, #260000 100%),
+          linear-gradient(247.95deg, #fdd, #720066),
+          linear-gradient(117.03deg, #0ff, #f44),
+          radial-gradient(100.22% 100% at 70.57% 0, red 0, #00ffe0 100%),
+          linear-gradient(117.03deg, #b7d500, #30f);
+        background-blend-mode: screen, overlay, hard-light, color-burn,
+          color-dodge, normal;
+        border-radius: 50%;
+      }
+      .box2 h2 {
+        position: absolute;
+        top: 0;
+        font-size: 100px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://www.cnblogs.com/coco1s/p/14376348.html"
+      >这篇csdn的教程文章</a
+    >
+    <hr />
+    <div class="box"></div>
+    <div class="box2">
+    </div>
+    <h2>Flowing light and shadow：</h2>
+    <div class="river">
+      <div class="river-child"></div>
+      <div class="river-child"></div>
+      <div class="river-child"></div>
+      <div class="river-child"></div>
+      <div class="river-child"></div>
+      <div class="river-child"></div>
+    </div>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      .river {
+        position: relative;
+        width: 500px;
+        height: 300px;
+      }
+
+      div.river-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      div.river-child:nth-child(1) {
+        background: linear-gradient(
+          238deg,
+          rgb(136, 255, 0) 0%,
+          rgb(7, 124, 240) 100%
+        );
+        animation: move 12s infinite linear;
+      }
+
+      div.river-child:nth-child(2) {
+        background: linear-gradient(
+          238deg,
+          rgb(63, 232, 99) 0%,
+          rgb(172, 91, 254) 100%
+        );
+        mix-blend-mode: overlay;
+        animation: move 6s infinite linear;
+      }
+
+      div.river-child:nth-child(3) {
+        background: linear-gradient(
+          238deg,
+          rgb(200, 255, 255) 48%,
+          rgb(106, 104, 223) 100%
+        );
+        mix-blend-mode: multiply;
+        animation: move 6s infinite linear;
+      }
+
+      div.river-child:nth-child(4) {
+        background: radial-gradient(
+          100% 85% at 0% 100%,
+          rgb(255, 3, 217) 0%,
+          rgb(49, 155, 255) 50%,
+          rgb(255, 31, 31) 100%
+        );
+        mix-blend-mode: difference;
+        animation: move 6s infinite linear;
+      }
+
+      div.river-child:nth-child(5) {
+        background: radial-gradient(
+          100% 225% at 0% 100%,
+          rgb(0, 229, 255) 0%,
+          rgb(0, 255, 157) 100%
+        );
+        mix-blend-mode: difference;
+        animation: move 6s infinite linear;
+      }
+
+      div.river-child:nth-child(6) {
+        background: radial-gradient(
+          100% 140% at 100% 0%,
+          rgb(102, 227, 0) 0%,
+          rgb(0, 239, 255) 50%,
+          rgb(0, 153, 255) 100%
+        );
+        mix-blend-mode: overlay;
+        animation: move 6s infinite linear;
+      }
+
+      @keyframes move {
+        0% {
+          filter: unset;
+        }
+
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+    </style>
+  </body>
+</html>
