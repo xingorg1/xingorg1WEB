@@ -43,8 +43,7 @@
     >
     <hr />
     <div class="box"></div>
-    <div class="box2">
-    </div>
+    <div class="box2"></div>
     <h2>Flowing light and shadow：</h2>
     <div class="river">
       <div class="river-child"></div>
@@ -54,6 +53,33 @@
       <div class="river-child"></div>
       <div class="river-child"></div>
     </div>
+    <h3>
+      混合模式可以对应ps图层混合去理解。<a
+        href="https://www.zcool.com.cn/article/ZMzcyNzY=.html"
+        target="_blank"
+      >ps的图层混合模式原理</a>
+    </h3>
+    <ul>
+      <li>mix-blend-mode: normal; // 正常</li>
+      <li>mix-blend-mode: multiply; // 正片叠底</li>
+      <li>mix-blend-mode: screen; // 滤色</li>
+      <li>mix-blend-mode: overlay; // 叠加</li>
+      <li>mix-blend-mode: darken; // 变暗</li>
+      <li>mix-blend-mode: lighten; // 变亮</li>
+      <li>mix-blend-mode: color-dodge; // 颜色减淡</li>
+      <li>mix-blend-mode: color-burn; // 颜色加深</li>
+      <li>mix-blend-mode: hard-light; // 强光</li>
+      <li>mix-blend-mode: soft-light; // 柔光</li>
+      <li>mix-blend-mode: difference; // 差值</li>
+      <li>mix-blend-mode: exclusion; // 排除</li>
+      <li>mix-blend-mode: hue; // 色相</li>
+      <li>mix-blend-mode: saturation; // 饱和度</li>
+      <li>mix-blend-mode: color; // 颜色</li>
+      <li>mix-blend-mode: luminosity; // 亮度</li>
+      <li>mix-blend-mode: initial;</li>
+      <li>mix-blend-mode: inherit;</li>
+      <li>mix-blend-mode: unset;</li>
+    </ul>
     <style>
       html,
       body {
@@ -72,8 +98,6 @@
         left: 0;
         bottom: 0;
         right: 0;
-        width: 100%;
-        height: 100%;
       }
 
       div.river-child:nth-child(1) {
