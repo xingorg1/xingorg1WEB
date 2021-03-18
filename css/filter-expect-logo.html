@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面除了logo都置灰</title>
+  </head>
+  <body>
+    <div class="logo">
+      <img
+        src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+        alt="baiduLogo"
+      />
+    </div>
+    <h1>页面除了logo都置灰</h1>
+    <div id="abc" class="abc">
+      <font color="red">This should be a normal text.</font>
+    </div>
+    <font color="red">This should be an affected text.</font>
+    <p>我是正常的黑色</p>
+    <div class="nav">
+      <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+      </ul>
+    </div>
+    <div class="footer">底部文案</div>
+    <style>
+      /* *:not(.abc) { */
+      html:not(.logo) {
+        filter: grayscale(1);
+      }
+      html .logo {
+        -webkit-filter: grayscale(0%);
+        -moz-filter: grayscale(0%);
+        filter: grayscale(0%);
+        background-color: #fed;
+      }
+      /* html .logo {
+        filter: grayscale(0);
+        background-color: #fed;
+      } */
+      h1 {
+        color: yellow;
+      }
+      li {
+        color: blue;
+      }
+      .footer {
+        color: red;
+      }
+    </style>
+  </body>
+</html>
