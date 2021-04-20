@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cdd-doodle 大鱼海棠</title>
+    <style>
+      @font-face {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/playfairdisplay/v22/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      html, body { 
+        width: 100%;
+        height: 100%; 
+        background: #011627; 
+        margin: 0; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        overflow: hidden;
+      }
+      ul, li{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      header{
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 54px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        padding: 0 200px;
+        color: #fff;
+        background: #011627; 
+      }
+      .logo{
+        cursor: pointer;
+        width: 80px;
+        height: 30px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: 'Playfair Display';
+        font-weight: bold;
+      }
+      nav{
+        flex: 1;
+        font-size: 15px;
+      }
+      nav ul{
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 25px;
+      }
+      nav ul li{
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .head-image{
+        display: inline-block;
+        width: 30px;
+        overflow: hidden;
+      }
+      .head-image img{
+        border-radius: 50%;
+        width: 100%;
+        cursor: pointer;
+      }
+      .abs{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        text-align: center;
+        color: #fff;
+        padding-top: 100px;
+      }
+      .abs h1{
+        font-family: 'Playfair Display';
+        font-size: 60px;
+        margin-bottom: 0;
+        font-weight: normal;
+      }
+      .abs p{
+        margin-top: 0;
+        opacity: 0.8;
+      }
+      .upload{
+        width: 500px;
+        height: 500px;
+        margin: 50px auto 0; 
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 80px;
+        background: rgb(255 255 255 / 19%);
+        /* border: 5px solid rgba(255, 255, 255, 0.36); */
+        box-sizing: content-box;
+        box-shadow: 2px 2px 6px #011423;
+        transition: background-color .35s linear;
+        transition-property: background-color, border-radius;
+      }
+      .upload:hover{
+        background: rgb(255 255 255 / 79%);
+        border-radius: 30px;
+      }
+      .upload::before{
+        content: 'Drag and drop the image here to upload';
+        color: #b1b6b9;
+        font-size: 20px;
+        margin-top: 220px;
+        display: block
+      }
+    </style>
+    <style>
+      css-doodle {
+        --color: @p(#FDFFFC, #2EC4B6, #E71D36, #FF9F1C);
+        --color-fade: var(--color)@repeat2(@p([0-9a-b]));
+        --bg: @svg(
+          <svg viewBox="0 0 1000 1000">
+            @repeat240(
+              <circle cx="@r(20, 980)" cy="@r(20, 980)" r="@r(.01, 10)"
+                fill=`var(--color-fade)`
+              />
+            )
+            @repeat100(<path
+              d="M @r(1000) @r(1000) l @r(-30, 30) @r(-200, 500)"
+              stroke=`var(--color)`
+              stroke-width="@r(.01, .6)"
+              stroke-dasharray="5 @ri(5, 20)"
+            />)
+            @repeat20(<path
+              d="M @r(1000) @r(1000) l @r(-30, 30) @r(-20, 50)"
+              stroke=`var(--color-fade)`
+              stroke-width="@r(8, 15)"
+              stroke-dasharray="5 @ri(5, 20)"
+            />)
+          </svg>
+        );
+        --noise: @svg-filter(
+          <svg>
+            <filter>
+              <feTurbulence type="fractalNoise" baseFrequency=".016" numOctaves="1" seed="@r(1000)" />
+              <feDisplacementMap in="SourceGraphic" scale="10" />
+            </filter>
+          </svg>
+        );
+    
+        --rule: (
+          :doodle {
+            @grid: 12x1 / 100vw 100vh;
+            background-image: var(--bg);
+            background-position: 50%;
+            filter: var(--noise);
+          }
+    
+          @size: 100% 50%;
+          position: absolute; top: 25%;
+          transform: rotate(calc((@i() - 1) * 360deg / @size()));
+    
+          :after {
+            --c: var(--color);
+            --s: @r(5);
+            content: '';
+            position: absolute;
+            @size: @r(40vmin, 61vmin) @r(12vmin, 17vmin);
+            border-left: @r(3px) solid @var(--c);
+            border-radius: 50vmin;
+            background:
+              radial-gradient(@var(--c) 50%, transparent 0%) 1vmin 42% / 3px 6px no-repeat,
+              radial-gradient(@var(--c) 50%, transparent 0%) 1vmin 58% / 3px 6px no-repeat,
+              @m20(linear-gradient(to right, @var(--c), transparent @r(50%, 80%)) 0 @r(100%) / @r(20%) 1px no-repeat),
+              linear-gradient(to right, @var(--c), transparent @r(50%, 80%)) 0 50% / @r(40%, 60%) 1px no-repeat,
+              linear-gradient(to right, rgba(255, 255, 255, .015), transparent);
+            transform: rotateY(0) scaleX(@var(--s)) translateZ(50vmin);
+            transform-origin: 0 50%;
+            will-change: transform;
+            animation: r @r(10s, 20s) linear infinite;
+            animation-delay: -@r(50s);
+          }
+    
+          @keyframes r {
+            to { transform: rotateY(-1turn) scaleX(@var(--s)) translateZ(50vmin) }
+          }
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    <css-doodle use="var(--rule)" click-to-update></css-doodle>
+    <header>
+      <div class="logo">
+        IU_UI
+      </div>
+      <nav>
+        <ul>
+          <li>上传列表</li>
+          <li>个人中心</li>
+        </ul>
+      </nav>
+      <span class="head-image">
+        <img src="./head.jpeg" alt="">
+      </span>
+    </header>
+    <div class="abs">
+      <h1>Image Uploading</h1>
+      <p>Hi, I'm an image uploading system, so you can drag your pictures and upload them here.</p>
+      <div class="upload">
+        
+      </div>
+    </div>
+  </body>
+</html>

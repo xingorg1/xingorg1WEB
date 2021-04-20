@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cdd-doodle实现电路图背景首页</title>
+    <style>
+      html,
+      body {
+        background: rgb(18 21 46);
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      .container,
+      css-doodle{
+        height: 100%;
+
+      }
+      css-doodle {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    <div class="container">
+      <css-doodle>
+        @grid: 14 / 80%; @random { border-left: 1px solid #5d81bc; } @random {
+        border-top: 1px solid #5d81bc; } @random(.25) { background:
+        linear-gradient( @p(#fff, tan, #5d81bc), @lp ) 50% / @r(60%) @lr
+        no-repeat; } @random { filter: drop-shadow(0 0 10px #fff); }
+      </css-doodle>
+    </div>
+  </body>
+</html>
