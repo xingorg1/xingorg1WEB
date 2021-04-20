@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始学习</title>
+    <link rel="stylesheet" href="./reset.css">
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    <style>
+      body{
+        overflow: hidden;
+      }
+        a{
+            position: absolute;
+            color: #fff;
+            z-index: 11;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://segmentfault.com/a/1190000015370571" target="_blank">学习教程</a>
+    <css-doodle>
+        :doodle {
+          @grid: 7 / 100vmax;
+          background: #0a0c27;
+        }
+      
+        @shape: clover 5;
+        background: hsla(
+          calc(360 - @index() * 4),
+          70%, 68%, @rand(.8)
+        );
+        transform:
+          scale(@rand(.2, 1.5))
+          translate(
+            @rand(-50%, 50%), @rand(-50%, 50%)
+          );
+      </css-doodle>
+      
+</body>
+</html>

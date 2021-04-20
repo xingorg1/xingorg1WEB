@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-seed</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>设定seed值，怎么刷新都不会变</h1>
+      <css-doodle seed="20">
+        :doodle {
+          @grid: 5 / 8em;
+        }
+        background: #60569e;
+        transform: scale(@rand(.2, .9));
+      </css-doodle>
+      <h1>没有seed值，刷新后每一次的图案都不一样</h1>
+      <css-doodle>
+        :doodle {
+          @grid: 5 / 8em;
+        }
+        background: #60569e;
+        transform: scale(@rand(.2, .9));
+      </css-doodle>
+  </body>
+</html>

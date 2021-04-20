@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-use</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>使用css变量</h1>
+      <style>
+        css-doodle {
+          --rule: (
+            @grid: 5 / 8em;
+            --d: @p(45deg, -45deg, 135deg, -135deg);
+            --lg: linear-gradient(@var(--d),#60569e 50%,transparent 0);
+            background:
+              @var(--lg) 0 0 / 100% 100%,
+              @var(--lg) 0 0 / 50% 50%;
+          );
+        }
+      </style>
+      <css-doodle use="var(--rule)"></css-doodle>
+  </body>
+</html>
