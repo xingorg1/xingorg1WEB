@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-:container</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    </head>
+  <body>
+      <h1>:container选择器的使用</h1>
+      <css-doodle grid="8">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+        }
+        :container {
+          grid-gap: 1px;
+          transform: rotate(45deg) scale(1.5);
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>从:doodle选择器中继承所有grid相关的属性</h1>
+      <css-doodle grid="8">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+          grid-gap: 2px;
+        }
+        :container {
+          transform: rotate(45deg) scale(1.5);
+        }
+        background: #60569e;
+      </css-doodle>
+  </body>
+</html>
