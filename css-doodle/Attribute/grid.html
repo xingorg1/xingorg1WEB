@@ -19,7 +19,7 @@
         } 
         background: #60569e;
     </css-doodle>
-    <h1>grid=0</h1>
+    <h1>grid=0，则使用默认值：1 * 1</h1>
     <css-doodle grid="0">
         :doodle { 
           grid-gap: 1px; 
@@ -27,6 +27,25 @@
           height: 8em; 
         } 
         background: #60569e;
+    </css-doodle>
+    <h1>不写grid，一样使用默认值：1 * 1</h1>
+    <css-doodle>
+        :doodle { 
+          grid-gap: 1px; 
+          width: 8em; 
+          height: 8em; 
+        } 
+        background: #60569e;
+    </css-doodle>
+    <h1>也可以使用Properties里的`@grid`属性来简写，设置grid的值和宽高：    </h1>
+    5 / 8em = 5x5的行数和列数。总体宽高是8em*8em
+    <css-doodle>
+      :doodle {
+        @grid: 5 / 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      <!-- transform: scale(@rand(.2, .9)); -->
     </css-doodle>
     <h1>一维网格，grid行或列的数量取值范围变大</h1>
     【@size: 8em;】 相当于 【width: 8em; height: 8em;】
@@ -47,14 +66,6 @@
         background: #60569e;
         height: @rand(5%, 100%); /* from 5% to 100% by random */
     </css-doodle>
-    <h1>使用Properties里的`@grid`属性来设置grid的值：    </h1>
-    5 / 8em = 5x5的行数和列数。总体宽高是8em*8em
-    <css-doodle>
-      :doodle {
-        @grid: 5 / 8em;
-      }
-      background: #60569e;
-      transform: scale(@rand(.2, .9));
-    </css-doodle>
+    
   </body>
 </html>
