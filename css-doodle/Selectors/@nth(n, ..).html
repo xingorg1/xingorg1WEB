@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@nth</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    </head>
+  <body>
+    <h1>大合集</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      :nth-child(1) {
+        background: hsl(175deg 100% 80%);
+      }
+      :nth-child(3) {
+        background: hsl(75deg 100% 80%);
+      }
+      @nth(6) {
+        background: hsl(305deg 100% 80%);
+      }
+      @nth(11) {
+        background: hsl(15deg 100% 80%);
+      }
+      @nth(13) {
+        background: hsl(240deg 100% 80%);
+      }
+      @nth(4n) {
+        background: #ff8282;
+      }
+      @nth(2, 5, 3n + 8) {
+        :after {
+          content: @index;
+          color: #fff;
+        }
+      }
+    </css-doodle>
+    <h1>:nth-child(n) 选择器的使用 - 给指定单元格变色</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      :nth-child(1) {
+        background: hsl(175deg 100% 80%);
+      }
+      :nth-child(3) {
+        background: hsl(75deg 100% 80%);
+      }
+    </css-doodle>
+    <h1>@nth(n) 选择器的使用 - 给指定单元格变色</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      @nth(6) {
+        background: hsl(305deg 100% 80%);
+      }
+      @nth(11) {
+        background: hsl(15deg 100% 80%);
+      }
+      @nth(13) {
+        background: hsl(240deg 100% 80%);
+      }
+    </css-doodle>
+    <h1>@nth(n) 选择器的使用 - 数学公式</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      @nth(3n + 1) {
+        background: #ff8282;
+      }
+    </css-doodle>
+    <h1>@nth(n) 选择器的使用 - 配合伪元素指定内容</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      @nth(2, 5, 3n + 8) {
+        :after {
+          content: @index;
+          color: #fff;
+        }
+      }
+    </css-doodle>
+    <h1>多个@nth选择器组合使用</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      @nth(3n + 1) {
+        background: #ff8282;
+      }
+      @nth(2, 5, 3n + 8) {
+        :after {
+          content: @index;
+          color: #fff;
+        }
+      }
+    </css-doodle>
+  </body>
+</html>
