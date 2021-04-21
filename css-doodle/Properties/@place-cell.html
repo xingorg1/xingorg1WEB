@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@place-cell</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <style>
+      :root {
+        --doodle-rule: (
+          @grid: 5;
+          @size: 8em;
+          grid-gap: 1px;
+          border: 1px solid #999;
+        );
+        --cell-rule: (
+          :after {
+            content: @index;
+            color: #ff9422;
+          }
+        );
+        --cell1-rule: (
+          :after {
+            color: #fff;
+            /* z-index: 123; */
+          }
+          background: #60569e;
+        ) 
+      }
+    </style>
+    <h1>@place-cell 设置单元格的位置</h1>
+    <h3>@place-cell: 0 top;</h3>
+    <css-doodle>
+      :doodle {
+        @use: var(--doodle-rule);
+      }
+      @nth(n) {
+        @use: var(--cell-rule);
+      }
+      @nth(1){
+        @use: var(--cell1-rule);
+        @place-cell: 0 top;
+      }
+    </css-doodle>
+    <h3>@place-cell: right 25%;</h3>
+    <css-doodle>
+      :doodle {
+        @use: var(--doodle-rule);
+      }
+      @nth(n) {
+        @use: var(--cell-rule);
+      }
+      @nth(1){
+        @use: var(--cell1-rule);
+        @place-cell: right 25%;
+      }
+    </css-doodle>
+    <h3>@place-cell: center;</h3>
+    <css-doodle>
+      :doodle {
+        @use: var(--doodle-rule);
+      }
+      @nth(n) {
+        @use: var(--cell-rule);
+      }
+      @nth(1){
+        @use: var(--cell1-rule);
+        @place-cell: center;
+      }
+    </css-doodle>
+    <h3>@place-cell: .8em calc(100% - .8em);;</h3>
+    <css-doodle>
+      :doodle {
+        @use: var(--doodle-rule);
+      }
+      @nth(n) {
+        @use: var(--cell-rule);
+      }
+      @nth(1){
+        @use: var(--cell1-rule);
+        @place-cell: .8em calc(100% - .8em);;
+      }
+    </css-doodle>
+    <h3>@place-cell: 75% 80%;</h3>
+    <css-doodle>
+      :doodle {
+        @use: var(--doodle-rule);
+      }
+      @nth(n) {
+        @use: var(--cell-rule);
+      }
+      @nth(1){
+        @use: var(--cell1-rule);
+        @place-cell: 75% 80%;
+      }
+    </css-doodle>
+    <h3>合集</h3>
+    <css-doodle>
+      :doodle {
+        @use: var(--doodle-rule);
+      }
+      @nth(n) {
+        @use: var(--cell-rule);
+      }
+      @nth(1) { 
+        @use: var(--cell1-rule);
+        @place-cell: 0 top; 
+      }
+      @nth(2) { 
+        @use: var(--cell1-rule);
+        @place-cell: right 25%; 
+      }
+      @nth(3) { 
+        @use: var(--cell1-rule);
+        @place-cell: center; 
+      }
+      @nth(4) { 
+        @use: var(--cell1-rule);
+        @place-cell: .8em calc(100% - .8em); 
+      }
+      @nth(5) { 
+        @use: var(--cell1-rule);
+        @place-cell: 75% 80%; 
+      }
+    </css-doodle>
+  </body>
+</html>
