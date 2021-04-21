@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@even</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@even 选择偶数单元格</h1>
+      <css-doodle grid="5">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          background: #f7f7f7;
+          @nth(n) {
+            :after {
+                content: @index;
+                color: #fff;
+            }
+          }
+          @even {
+            background: #9887ff;
+          }
+      </css-doodle>
+      <h1>@even(cross) </h1>
+      如果grid的列数是奇数，设置这个参数没啥作用
+      <css-doodle grid="5">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          @nth(even) {
+            :after {
+                content: @index;
+                color: white;
+            }
+          }
+          @even(cross) {
+            background: #9887ff;
+          }
+      </css-doodle>
+      下边是不设置的，和上边没啥区别
+      <css-doodle grid="5">
+        :doodle {
+            grid-gap: 1px;
+            width: 10em;
+            height: 10em;
+        }
+        @nth(even) {
+          :after {
+              content: @index;
+              color: white;
+          }
+        }
+        @even {
+          background: #9887ff;
+        }
+      </css-doodle>
+      将列数改成6就能看出带不带这个参数的区别了。
+      <css-doodle grid="6">
+        :doodle {
+            grid-gap: 1px;
+            width: 10em;
+            height: 10em;
+        }
+        @nth(even) {
+          :after {
+              content: @index;
+              color: #60569e;
+          }
+        }
+        @even(cross) {
+          background: #9887ff;
+        }
+      </css-doodle>
+      下边是不设置的，和上边的区别就很明显了。全选中了一排
+      <css-doodle grid="6">
+        :doodle {
+            grid-gap: 1px;
+            width: 10em;
+            height: 10em;
+        }
+        @nth(even) {
+          :after {
+              content: @index;
+              color: white;
+          }
+        }
+        @even() {
+          background: #9887ff;
+        }
+      </css-doodle>
+      <h1>@odd 选择奇数单元格</h1>
+      <css-doodle grid="5">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          background: #f7f7f7;
+          @nth(n) {
+            :after {
+                content: @index;
+                color: #fff;
+            }
+          }
+          @odd {
+            background: #9887ff;
+          }
+      </css-doodle>
+      <h1>@odd(cross)</h1>
+      当grid的列数为偶数，选中奇数、不加cross的时候
+      <css-doodle grid="4">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          background: #f7f7f7;
+          @nth(n) {
+            :after {
+                content: @index;
+                color: #fff;
+            }
+          }
+          @odd {
+            background: #9887ff;
+          }
+      </css-doodle>
+      同上，加cross的时候
+      <css-doodle grid="4">
+        :doodle {
+            grid-gap: 1px;
+            width: 10em;
+            height: 10em;
+        }
+        background: #f7f7f7;
+        @nth(n) {
+          :after {
+              content: @index;
+              color: #fff;
+          }
+        }
+        @odd(cross) {
+          background: #9887ff;
+        }
+    </css-doodle>
+  </body>
+</html>

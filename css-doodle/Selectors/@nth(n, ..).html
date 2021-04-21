@@ -57,6 +57,21 @@
         background: hsl(75deg 100% 80%);
       }
     </css-doodle>
+    <h1>:nth-child配合 even/odd 参数使用</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      :nth-child(even) {
+        background: hsl(75deg 100% 80%);
+      }
+      :nth-child(odd) {
+        background: hsl(275deg 100% 80%);
+      }
+    </css-doodle>
     <h1>@nth(n) 选择器的使用 - 给指定单元格变色</h1>
     <css-doodle grid="4">
       :doodle {
@@ -87,6 +102,21 @@
         background: #ff8282;
       }
     </css-doodle>
+    <h1>@nth(even)或@nth(odd) css关键字选择器</h1>
+    <css-doodle grid="4">
+      :doodle {
+        width: 8em;
+        height: 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      @nth(even) {
+        background: hsl(275deg 100% 80%);
+      }
+      @nth(odd) {
+        background: hsl(75deg 100% 80%);
+      }
+    </css-doodle>
     <h1>@nth(n) 选择器的使用 - 配合伪元素指定内容</h1>
     <css-doodle grid="4">
       :doodle {
@@ -113,7 +143,7 @@
       @nth(3n + 1) {
         background: #ff8282;
       }
-      @nth(2, 5, 3n + 8) {
+      @nth(n) {
         :after {
           content: @index;
           color: #fff;
