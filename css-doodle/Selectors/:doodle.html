@@ -40,7 +40,15 @@
         :doodle {
           grid-gap: 1px;
         }
-        <!-- grid-gap: 1px; 这个就必须写在:doodle选择器里,否则不起作用 -->
+      </css-doodle>
+      <h3>
+        grid-gap: 1px; 这个就必须写在:doodle选择器里,否则不起作用；
+        大概猜测原因是不在:doodle选择器里写，样式就作用到了每一个单元格上。而不是整个grid标签。所以分隔不出来每一个单元格。整个grid在每个单元格设置了background之后就是一整个大块。
+      </h3>
+      <css-doodle>
+        @grid: 5 / 8em;
+        background: #60569e;
+        grid-gap: 1px;
       </css-doodle>
   </body>
 </html>

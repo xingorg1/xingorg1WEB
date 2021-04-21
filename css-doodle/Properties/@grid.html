@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@grid</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@grid属性 写法与优先级测试</h1>
+    <h3>Properties-@grid的写法优先级高于Attributes-grid的写法。</h3>
+    所以下边的代码分成了6列而不是5列
+    <css-doodle grid="5,7">
+      :doodle {
+        grid-gap: 1px;
+        @grid: 6 x 6;
+        @size: 8em;
+      }
+      @row(1) {
+        :after {
+          content: @index;
+          color: #fff;
+        }
+      }
+      background: #60569e;
+    </css-doodle>
+    <h1>@grid与@size合并简写：@grid: colAndRow / widthAndHeight + 单位;</h1>
+    <css-doodle>
+      background: #60569e;
+      :doodle {
+        grid-gap: 1px;
+        @grid: 3 / 8em;
+      }
+      @nth(n) {
+        :after {
+          content: @index;
+          color: #fff;
+        }
+      }
+    </css-doodle>
+    <h1>完整写法：@grid: col x row / width height</h1>
+    <css-doodle>
+      background: #60569e;
+      @grid: 5 x 4 / 8em 12em;
+      :doodle {
+        grid-gap: 1px;
+      }
+      @nth(n) {
+        :after {
+          content: @index;
+          color: #fff;
+        }
+      }
+    </css-doodle>
+  </body>
+</html>
