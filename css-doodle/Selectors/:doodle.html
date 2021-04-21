@@ -33,5 +33,14 @@
         transition-delay: @rand(500ms);
         transform: translateY(calc(var(--s) * 100%))
       </css-doodle>
+      <h1>:doodle选择器可以被省略，如果在css-doodle标签中没有其他规则时。</h1>
+      <css-doodle>
+        @grid: 5 / 8em;
+        background: #60569e;
+        :doodle {
+          grid-gap: 1px;
+        }
+        <!-- grid-gap: 1px; 这个就必须写在:doodle选择器里,否则不起作用 -->
+      </css-doodle>
   </body>
 </html>
