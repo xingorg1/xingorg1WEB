@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@at</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    </head>
+  <body>
+      <h1>@at 指定特定单元格</h1>
+      <css-doodle grid="8">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          grid-gap: 2px;
+          overflow: hidden;
+        }
+        background: #60569e;
+        @at(3, 2) {
+          background: #fdf;
+        }
+        <!-- background: #60569e; -->
+      </css-doodle>
+      <h1>@at参数只填一个，不起作用。</h1>
+      还以为只填一个会被当做，列号与行号相同的值呢。
+      <css-doodle grid="8">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+          grid-gap: 2px;
+        }
+        background: #60569e;
+        @at(5) {
+          background: #fdf;
+        }
+      </css-doodle>
+  </body>
+</html>
