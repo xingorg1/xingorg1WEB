@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@random</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    </head>
+  <body>
+      <h1>@random 按0.5的比率随机指定单元格</h1>
+      刷新页面，变色的单元格会变化
+      <css-doodle grid="3">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          grid-gap: 2px;
+          overflow: hidden;
+        }
+        @nth(n) {
+          :after{
+            content: @index;
+            color: #fff;
+          }
+        }
+        background: #60569e;
+        @random {
+          background: hsl(285deg 100% 80%);
+        }
+      </css-doodle>
+      <h1>@random(radio) 指定一个比率</h1>
+      <h3>指定0</h3>
+      <css-doodle grid="3">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+          grid-gap: 2px;
+        }
+        background: #60569e;
+        @random(0) {
+          background: hsl(285deg 100% 80%);
+        }
+      </css-doodle>
+      <h3>指定1</h3>
+      <css-doodle grid="3">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+          grid-gap: 2px;
+        }
+        background: #60569e;
+        @random(1) {
+          background: hsl(285deg 100% 80%);
+        }
+      </css-doodle>
+      <h3>指定0~1的一个数</h3>
+      <css-doodle grid="3">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+          grid-gap: 2px;
+        }
+        background: #60569e;
+        @random(.46) {
+          background: hsl(285deg 100% 80%);
+        }
+      </css-doodle>
+      <h1>@random([radio-start, radio-end]) 指定一个比率区间</h1>
+      <h3 style="color: red">这种写法不知道对不对,不知道是不是只有第一个参数起了作用</h3>
+      <css-doodle grid="3">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+          grid-gap: 2px;
+        }
+        background: #60569e;
+        @random(.46, .87) {
+          background: hsl(285deg 100% 80%);
+        }
+      </css-doodle>
+      <h1>@random 多次使用</h1>
+      <css-doodle grid="9">
+        :doodle {
+          width: 8em;
+          height: 8em;
+          overflow: hidden;
+          grid-gap: 2px;
+        }
+        @random(.2) {
+          border-top: 1px solid #60569e;
+        }
+        @random(.42) {
+          border-bottom: 1px solid #60569e;
+        }
+        @random(.6) {
+          border-left: 1px solid #60569e;
+        }
+        @random(.82) {
+          :after {
+            content: '';
+            background: hsl(@rand(360), 60%, 70%);
+            @size: @rand(3px);
+          }
+        }
+      </css-doodle>
+  </body>
+</html>

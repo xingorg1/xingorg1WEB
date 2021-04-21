@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@row@col</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@row(n,...) 选择指定行单元格</h1>
+      <css-doodle grid="5">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          background: #60569e;
+          @row(2) {
+            :after {
+                content: @index;
+                color: #fff;
+            }
+          }
+          @row(3,  5) {
+            background: hsl(58, 100%, 80%);
+            :after {
+              content: '-';
+              color: #60569e;
+            }
+          }
+      </css-doodle>
+      <h1>@row(even)/@row(odd) 偶数行或者奇数行</h1>
+      <css-doodle grid="5">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          background: #60569e;
+          @row(even) {
+            :after {
+                content: @index;
+                color: white;
+            }
+          }
+          @row(odd) {
+            background: #9887ff;
+          }
+      </css-doodle>
+      <h1>@col(n,...) 选择指定列单元格</h1>
+      <css-doodle grid="5">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          background: #60569e;
+          @col(2) {
+            :after {
+                content: @index;
+                color: #fff;
+            }
+          }
+          @col(3,  5) {
+            background: hsl(58, 100%, 80%);
+            :after {
+              content: '-';
+              color: #60569e;
+            }
+          }
+      </css-doodle>
+      <h1>@col(even)/@col(odd) 偶数列或者奇数列</h1>
+      <css-doodle grid="5">
+          :doodle {
+              grid-gap: 1px;
+              width: 10em;
+              height: 10em;
+          }
+          background: #60569e;
+          @col(even) {
+            :after {
+                content: @index;
+                color: white;
+            }
+          }
+          @col(odd) {
+            background: #9887ff;
+          }
+      </css-doodle>
+      <h1>如果row和col并用，指定到同一个单元格了，算谁的？</h1>
+      很简单，谁在下边算谁的
+      <css-doodle grid="5">
+        :doodle {
+            grid-gap: 1px;
+            width: 10em;
+            height: 10em;
+        }
+        @col(odd) {
+          background: #9887ff;
+          :after {
+            content: @index;
+            color: yellow;
+          }
+        }
+        @row(even) {
+          background: #60569e;
+          :after {
+              content: @index;
+              color: white;
+          }
+        }
+      </css-doodle>
+      <hr>
+      <css-doodle grid="5">
+        :doodle {
+            grid-gap: 1px;
+            width: 10em;
+            height: 10em;
+        }
+        @row(even) {
+          background: #60569e;
+          :after {
+              content: @index;
+              color: white;
+          }
+        }
+        @col(odd) {
+          background: #9887ff;
+          :after {
+            content: @index;
+            color: yellow;
+          }
+        }
+    </css-doodle>
+  </body>
+</html>
