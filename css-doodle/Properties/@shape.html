@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@shape</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@shape 设置grid网格和cells单元格的形状</h1>
+    <css-doodle>
+      :doodle {
+        @grid: 7 / 8em;
+        @shape: circle;
+      }
+      @even {
+        @shape: hypocycloid 5;
+        background: #83b9ff;
+        transform: scale(2) rotate(-60deg);
+      }
+    </css-doodle>
+    <h1>@shape 水滴效果+鱼</h1>
+    <css-doodle seed="20">
+      :doodle {
+        @grid: 7 / 8em;
+        @shape: drop;
+      }
+      @even {
+        @shape: fish;
+        background: hsl(@rand(360deg), 100%, 80%);
+      }
+    </css-doodle>
+    <h1>@shape 心+心</h1>
+    <css-doodle >
+      :doodle {
+        @grid: 10 / 10em;
+        @shape: heart;
+      }
+      @even {
+        @shape: heart;
+        background: hsl(@rand(360deg), 100%, 80%);
+      }
+    </css-doodle>
+  </body>
+</html>
