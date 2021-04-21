@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@use</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@use 属性 应用多套规则</h1>
+    <style>
+      :root {
+        /* --rule: (
+          @grid: 5 / 8em;
+          grid-gap: 1px;
+          background: #dedede;
+        ); */
+        --rule: (
+          @grid: 5 / 8em;
+          --d: @p(45deg, -45deg, 135deg, -135deg);
+          --lg: linear-gradient(@var(--d),#60569e 50%,transparent 0);
+          background:
+            @var(--lg) 0 0 / 100% 100%,
+            @var(--lg) 0 0 / 50% 50%;
+        );
+        --rule-a: (
+          @grid: 5 / 8em;
+          clip-path: circle(100% at 0 0);
+        );
+        --rule-b: (
+          background-image: radial-gradient(#fff 50%,transparent 0);
+          background-position: -25% -25%;
+          background-size: @r(40%, 80%) @lr();
+          background-repeat: no-repeat;
+        );
+      }
+    </style>
+    <h3>逗号分隔，一起写：</h3>
+    <css-doodle>
+      @use: var(--rule-a), var(--rule-b);
+    
+      /* more rules */
+      background-color: #60569e;
+    </css-doodle>
+    <h3>分号分隔，写多个</h3>
+    <css-doodle>
+      @use: var(--rule-a);
+      @use: var(--rule-b);
+      /* more rules */
+      background-color: #60569e;
+    </css-doodle>
+    <h1>use 特性 应用单一的一套规则</h1>
+    优先级高于Attributes-use，放开下边的代码，--rule规则就不生效了。
+    <css-doodle use="var(--rule)">
+      <!-- @use: var(--rule-a), var(--rule-b); -->
+    </css-doodle>
+  </body>
+</html>
