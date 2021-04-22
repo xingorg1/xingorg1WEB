@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@size</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@size() 常用用法</h1>
+      返回单元格的个数
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 2 / 5em;
+        }
+        @nth(n) {
+            :after {
+                content: @size;
+                color: #fff;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>
+        配合@x、@y、@I一起使用，利用calc生成动态颜色值
+      </h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+        }
+        @nth(n) {
+          background: rgba(142, 170, 255, calc(@x * @y / @I));
+          :after {
+            content: @i;
+            color: #fff;
+            font-size: 10px;
+          }
+        }
+      </css-doodle>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+            background: #60569e;
+            @shape: circle;
+        }
+        @nth(n) {
+          background: rgba(255, 225, 93, calc(@x * @y / @I));
+          @shape: star;
+          :after {
+            color: #fff;
+            font-size: 10px;
+          }
+        }
+      </css-doodle>
+  </body>
+</html>
