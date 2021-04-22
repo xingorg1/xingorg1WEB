@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@size-row@size-col</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@size-row() 常用用法</h1>
+      size-row：返回行总数
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 4 x 2 / 15em 5em;
+        }
+        @nth(n) {
+            :after {
+                content: 一共@size-row行;
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      别名@Y
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 4 x 2 / 15em 5em;
+        }
+        @nth(n) {
+            :after {
+                content: 一共@Y行;
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>@size-col() 常用用法</h1>
+      size-col：返回列总数
+      <css-doodle grid="4 x 2">
+        :doodle {
+            grid-gap: 1px;
+            @size: 15em 5em;
+        }
+        @nth(n) {
+            :after {
+                content: 一共@size-col()列;
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      别名：@X
+      <css-doodle grid="4 x 2">
+        :doodle {
+            grid-gap: 1px;
+            @size: 15em 5em;
+        }
+        @nth(n) {
+            :after {
+                content: 一共@X()列;
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+  </body>
+</html>
