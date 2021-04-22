@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@rand</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@rand(start) 只有一个start的用法</h1>
+      只写一个数字，返回的是浮点数：@rand(3)。并且数不会大于等于3
+      <css-doodle>
+        :doodle {
+          grid-gap: 5px;
+          @grid: 1 x 5 / 10em;
+        }
+        @nth(n) {
+          border: 1px solid #60569e;
+          :after {
+            position: absolute;
+            left: 0;
+              content: @rand(3);
+              color: #000;
+          }
+        }
+      </css-doodle>
+      <h1>@rand(start, end) 常用用法</h1>
+      10 ~ 25 之间的随机浮点数
+      <css-doodle>
+        :doodle {
+          grid-gap: 5px;
+          @grid: 1 x 5 / 10em;
+        }
+        @nth(n) {
+          border: 1px solid #60569e;
+          :after {
+            position: absolute;
+            left: 0;
+              content: @rand(10, 25);
+              color: #000;
+          }
+        }
+      </css-doodle>
+      <h1>@rand 参数带单位</h1>
+      <css-doodle>
+        :doodle {
+          grid-gap: 1px;
+          @grid: 10 / 20em;
+          @shape: drop;
+          background: #4f73ff;
+        }
+        @nth(n) {
+          background: rgba(255, 255, 58, @rand(.9));
+          transition: .2s ease @rand(200ms);
+          transform: rotate(@rand(360deg));
+          clip-path: polygon(
+            @rand(100%) 0, 100% @rand(100%), 0 @rand(100%)
+          );
+        }
+      </css-doodle>
+  </body>
+</html>
