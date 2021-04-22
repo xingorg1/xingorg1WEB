@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@index</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@index() 常用用法</h1>
+        搭配cell选择器的after伪类选择器，给cells们设置编号。
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 2 / 5em;
+        }
+        @nth(n) {
+            :after {
+                content: @index();
+                color: #fff;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>@index 不带参数时可以不用括号</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 2 / 5em;
+        }
+        @nth(n) {
+            :after {
+                content: @index;
+                color: #fff;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>@i 别名的使用</h1>
+      <css-doodle>
+        @grid: 5 x 1 / 8em;
+        @nth(n) {
+            @place-cell: center;
+            @size: calc(100% / 5 * @i);
+            opacity: calc(1.1 - 1 / 5 * @i);
+            z-index: calc(5 - @i);
+            :after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                content: @i;
+                color: #fff;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <css-doodle>
+        :doodle {
+            @grid: 5 x 1 / 8em;
+        }
+        @nth(n) {
+            @size: calc(100% / 5 * @i);
+            opacity: calc(1.1 - 1 / 5 * @i);
+            z-index: calc(5 - @i);
+            :after {
+                content: @i;
+                color: yellow;
+                opacity: 1;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+  </body>
+</html>
