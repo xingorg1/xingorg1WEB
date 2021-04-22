@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@last-</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@last-pick() 常用用法</h1>
+      下边例子中，@last-pick取得是上一次最近的@pick选出来的颜色值。
+      有点感觉是@pick、@pd、@pn等这些方法选出来值存到了剪贴板，然后@last-pick从剪切板中取出来最近一次copy的值一样。
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+        }
+        @nth(n) {
+          background: linear-gradient(
+            @pick-d(45deg, -45deg),
+            @pick(#60569e, #e6437d),
+            rgba(255, 255, 255, 0),
+            @last-pick()
+          );
+        }
+      </css-doodle>
+      取上一次pick-d的值
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+        }
+        @nth(n) {
+          background: linear-gradient(
+            @pick-d(45deg, -45deg),
+            @pick-d(#60569e, #e6437d),
+            rgba(255, 255, 255, 0),
+            @last-pick()
+          );
+        }
+      </css-doodle>
+      取上一次pick-n的值
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+        }
+        @nth(n) {
+          background: linear-gradient(
+            @pick-d(45deg, -45deg),
+            @pick-n(#60569e, #e6437d),
+            rgba(255, 255, 255, 0),
+            @last-pick()
+          );
+        }
+      </css-doodle>
+      <h1>@last-rand</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 2 / 15em;
+        }
+        @nth(n) {
+          @shape: clover, 4;
+          background: linear-gradient(
+            @pick-d(55deg, -55deg, 125deg, -125deg),
+            hsl(@rand(360, 200), 100%, 80%),
+            hsl(@last-rand(), 100%, 80%),
+            hsl(@rand(0, 160), 100%, 80%),
+            hsl(@last-rand(), 100%, 80%)
+          );
+        }
+      </css-doodle>
+  </body>
+</html>
