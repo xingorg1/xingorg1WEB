@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@n@nx@ny@N</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@rep(@n)</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 4 x 3 / 20em;
+        }
+        @nth(n) {
+            :after {
+                content: 遍历次数 @rep(3, 头@n、);
+                font-size: 12px;
+                color: #fff;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>@M(@nx)、@M(@ny)</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 4 x 3 / 14em;
+        }
+        @nth(n) {
+          :before {
+            content: 当前列数 @M(3, @nx);
+            color: yellow;
+            font-size: 10px;
+          }
+          :after {
+            content: 当前行数 @M(3, @ny);
+            color: #fff;
+            font-size: 10px;
+          }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>@rep(@N)</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 4 x 3 / 14em;
+        }
+        @nth(n) {
+          :before {
+            content: 最大计数值 @M(3, @N);
+            color: yellow;
+            font-size: 10px;
+          }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>一个效果例子</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 8em;
+            background: radial-gradient(
+              circle at @r(100%) @r(100%),
+              @m(20, (
+                @p(#60569e, #ebbf4d) calc((@n - 1) * 100% / @N),
+                @lp calc(@n * 100% / @N)
+              ))
+            );
+        }
+      </css-doodle>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 8em;
+            background: radial-gradient(
+              circle at @r(100%) @r(100%),
+              @m(20, (
+                hsl(@r(0， 130)deg, 100%, 80%) calc((@n - 1) * 100% / @N),
+                hsl(@lr, 100%, 80%) calc(@n * 100% / @N)
+              ))
+            );
+        }
+      </css-doodle>
+  </body>
+</html>
