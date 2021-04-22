@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@multiple</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    
+      <h1>@m(times, (val1, val2, ……))，@m</h1>
+      @pick-n(#60569e, #e6437d, #ebbf4d) 打乱顺序后，选中1个
+      <p></p>
+      calc((@n - 1) * 100% / 3), 设置颜色渐变的位置，@n是当前循环的索引，从1开始。类似for循环的i一样。1-1 * 100% / 3 = 0
+      <p></p>
+      @lp 就是@last-pick的简写，使用上次选的颜色值
+      <p></p>
+      calc(@n * 100% / 3) 再次设置渐变到哪里。1 * 100 / 3，还是33%的位置
+      <p></p>
+      上边这段代码，执行3次，得到三段颜色渐变。
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 15em;
+        }
+        @nth(n) {
+            :after {
+                content: @pick(x,i,n,g,.,o,r,g,1,^);
+                color: #fff;
+            }
+            background: linear-gradient(
+              @rand(360deg),
+              @m(3, (
+                @pick-n(#60569e, #e6437d, #ebbf4d)
+                  calc((@n - 1) * 100% / 3),
+                @lp
+                  calc(@n * 100% / 3)
+              ))
+            );
+        }
+      </css-doodle>
+      如果没有位置的计算，就是渐变效果
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 15em;
+        }
+        @nth(n) {
+            :after {
+                content: @pick(x,i,n,g,.,o,r,g,1,^);
+                color: #fff;
+            }
+            background: linear-gradient(
+              @rand(360deg),
+              @m(3, (
+                @pick-n(blue, red, yellow),
+                @lp
+              ))
+            );
+        }
+      </css-doodle>
+      <h1>@m5()</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 15em;
+        }
+        @nth(n) {
+            :after {
+                content: @pick(x,i,n,g,.,o,r,g,1,^);
+                color: #fff;
+            }
+            background: #60569e;
+            box-shadow: @m5(
+              calc(@n * 4px) calc(@n * 4px) 0 0 rgba(192, 107, 232, calc(1.1 - @n / 5))
+            );
+        }
+        @nth(13) {
+          background: rgb(96 86 158 / 54%)
+        }
+      </css-doodle>
+      <h1>@M，@Multiple(times, val1 val2 ……)</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 1 / 2em;
+        }
+        @nth(n) {
+            :after {
+                content: @pick(x,i,n,g,.,o,r,g,1,^);
+                color: #fff;
+            }
+            background: rgb(@M3(122));
+            
+        }
+        @nth(13) {
+          background: rgb(96 86 158 / 54%)
+        }
+      </css-doodle>
+  </body>
+</html>
