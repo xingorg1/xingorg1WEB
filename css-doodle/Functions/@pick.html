@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@pick</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@pick(1,2,3) 常用用法</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 2 / 5em;
+        }
+        @nth(n) {
+          @shape: drop;
+            :after {
+                content: @pick(x,i,n,g,.,o,r,g,1,^);
+                color: #fff;
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>
+        从一段连续的字母表里取内容，别名@p
+      </h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+        }
+        @nth(n) {
+          background: rgba(96, 85, 158, 0.@pick([1-9]));
+          :after {
+            content: @p([a-z1-9]);
+            color: #000;
+            font-size: 10px;
+          }
+        }
+      </css-doodle>
+      如果想逗号分隔参数、范围两种方式混用，中括号会被当做字符。可见逗号分隔的优先级高。
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+        }
+        background: #60569e;
+        @nth(n) {
+          :after {
+            content: @p(1,2, 3,[a,b,c]);
+            color: #fff;
+            font-size: 10px;
+          }
+        }
+      </css-doodle>
+  </body>
+</html>
