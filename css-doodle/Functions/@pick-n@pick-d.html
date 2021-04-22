@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@pick-n@pick-d</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@pick-n(1,2,3) 按顺序取值</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 8 x 2 / 12em 4em;
+        }
+        @nth(n) {
+            :after {
+                content: @pick-n(小,石,头);
+                color: rgb(250 197 calc(@i * 20));
+            }
+        }
+        background: #60569e;
+      </css-doodle>
+      <h1>
+        @pick-d(1,2,3)
+      </h1>
+      <css-doodle>
+        :doodle {
+          grid-gap: 1px;
+          @grid: 8 x 2 / 12em 4em;
+      }
+      @nth(n) {
+          :after {
+              content: @pick-d(1, 2, 3, 4, 5);
+              color: rgb(250 197 calc(@i * 20));
+          }
+      }
+      background: #60569e;
+      </css-doodle>
+      <h1>官方给的两个对比的例子</h1>
+      看上边的例子，感觉没有区分开。看下下边的两个：
+      <css-doodle>
+        :doodle {
+          grid-gap: 1px;
+          @grid: 4 / 10em;
+        }
+        @nth(n) {
+          opacity: @pick-n(1, .6, .3, .1);
+          :after {
+              content: @pick-n([1-4]);
+              color: #fff;
+          }
+        }
+        background: #60569e;
+      </css-doodle>
+      <css-doodle>
+        :doodle {
+          grid-gap: 1px;
+          @grid: 4 / 10em;
+        }
+        @nth(n) {
+          opacity: @pick-d(1, .6, .3, .1);
+          :after {
+              content: @pick-d([1-4]);
+              color: #fff;
+          }
+        }
+        background: #60569e;
+      </css-doodle>
+  </body>
+</html>
