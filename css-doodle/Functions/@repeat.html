@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@repeat-</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@repeat(times, value)</h1>
+      <css-doodle>
+        :doodle {
+            grid-gap: 1px;
+            @grid: 5 / 10em;
+        }
+        @nth(n) {
+          border-radius: @repeat(4, @rand(40%, 60%));
+          :after {
+            content: .;
+            font-size: 30px;
+            color: #@repeat(6, @pick([0-9a-f]));
+          }
+        }
+        background: #60569e;
+      </css-doodle>
+  </body>
+</html>
