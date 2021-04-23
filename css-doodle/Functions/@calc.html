@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@calc</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@calc(expr) </h1>
+      <p>
+        13 * 13 = 69
+      </p>
+      <p>
+        25 * 25 = 625
+      </p>
+      <css-doodle>
+        :doodle {
+          grid-gap: 5px;
+          @grid: 5 / 10em;
+        }
+        @nth(n) {
+          border: 1px solid #60569e;
+          :after {
+            content: @calc(@i * @i);
+            color: #000;
+          }
+        }
+      </css-doodle>
+      <css-doodle>
+        :doodle {
+          grid-gap: 5px;
+          @grid: 4 / 20em;
+        }
+        :after {
+          content: @i * @i = @calc(@i * @i);
+          color: #60569e;
+        }
+        font-size: 10px;
+        background: hsl(calc(@i * @i), 100%, 80%);
+        border-radius: @M4(@r(100px));
+        @odd {
+          transform: scale(@r(.75, 1));
+        }
+      </css-doodle>
+  </body>
+</html>
