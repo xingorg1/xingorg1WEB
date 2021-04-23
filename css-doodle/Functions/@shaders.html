@@ -10,7 +10,10 @@
   </head>
   <body>
     <h1>@shaders(code) 不区分模块的code</h1>
-    饱和度渐变、明度渐变
+    根据像素的坐标填充每个像素的颜色。
+    <p>
+      饱和度渐变、明度渐变
+    </p>
     <css-doodle > 
       :doodle {
         @grid: 2 x 4 / 22em 29em;
@@ -81,11 +84,11 @@
       }
     </css-doodle>
     <h1>多个纹理的写法</h1>
-    click-to-update
+    加了click-to-update。这个图案用css和svg是画不出来的！
     <css-doodle grid="5" click-to-update>
-      @grid: 1 / 8em;
+      @grid: 1 / 18em;
       background: @shaders(
-        texture1 {
+        texture_1 {
           @grid: 1 / 100%;
           background: linear-gradient(
             45deg,
@@ -102,7 +105,27 @@
             float angle = atan(uv.y, uv.x) + R * smoothstep(.5, 0., len);
             float r = length(uv) + .1;
             vec2 coords = vec2(r * cos(angle), r * sin(angle)) + c;
-            gl_FragColor = texture2D(texture1, coords);
+            gl_FragColor = texture2D(texture_1, coords);
+          }
+        }
+      );
+    </css-doodle>
+    <h1>
+      使用css-doodle制作纹理，并使用片段着色器加载纹理。
+    </h1>
+    <css-doodle >
+      @grid: 1 / 10em;
+      background: @shaders(
+        texture1 {
+          @grid: 1 / 100%;
+          background: linear-gradient(45deg, @stripe.@m20.@p(
+            #d62828, #fcbf49, #eae2b7, #000
+          ));
+        }
+        fragment {
+          void main() {
+            vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+            gl_FragColor = texture2D(texture1, uv);
           }
         }
       );
