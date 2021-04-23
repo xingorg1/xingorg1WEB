@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@doodle</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@doodle(code)</h1>
+    <p>啥都不说了，上代码</p>
+    <css-doodle>
+      @grid: 1 / 10em;
+      background-size: 3em 3em;
+      background-image: @doodle(
+        @grid: 3 / 100%;
+        background: #60569e;
+        @even(cross) {
+          background: #e6437d;
+          transform: scale(.5);
+          border-radius: 50%;
+        }
+      );
+    </css-doodle>
+    <p>上边生成的图，简化一下（去掉repeat效果）就是下边这样：</p>
+    <css-doodle>
+      @grid: 2 / 8em;
+      background: #60569e;
+      @even(cross) {
+        background: #e6437d;
+        transform: scale(.5);
+        border-radius: 50%;
+      }
+    </css-doodle>
+    <p>但是第二个grid就有四个cell标签，而第一个grid虽然动画还更复杂，但只需要一个grid即可</p>
+  </body>
+</html>
