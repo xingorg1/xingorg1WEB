@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@var</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@var(expr)</h1>
+    <style>
+      :root {
+        --rule: (
+          @grid: 5 / 8em;
+          --bg: #60569e; 
+          background: linear-gradient(
+            @rand(360deg),
+            /* --bg is not recognizable */ 
+            var(--bg) 50%, transparent 0
+          );
+        );
+      }
+    </style>
+    下面的例子不能工作，因为var(——bg)在外部没有定义。
+    上边用原生的var函数不起作用
+    <css-doodle use="var(--rule)"> @grid: 5 / 8em; </css-doodle>
+    <h1>下边的用@var方法就可以</h1>
+    <style>
+      :root {
+        --rule1: (
+          @grid: 5 / 8em;
+          --bg: #60569e; 
+          background: linear-gradient(
+              @rand(360deg),
+              /* --bg is not recognizable */ 
+              @var(--bg) 50%, transparent 0
+            );
+        );
+      }
+    </style>
+    <css-doodle use="var(--rule1)"></css-doodle>
+  </body>
+</html>
