@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@hex</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@hex(num)</h1>
+    <css-doodle>
+      @grid: 5 / 18em;
+      :after {
+        content: @hex(@rand(9632, 9687));
+      }
+    </css-doodle>
+    <css-doodle>
+      @grid: 5 / 18em;
+      :after {
+        content: \@hex(@rand(9632, 9687));
+        color: hsl(@r(360), 100%, 80%);
+      }
+      background: #60569e;
+    </css-doodle>
+  </body>
+</html>
