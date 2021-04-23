@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-use api</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>getter and setter use</h1>
+      click me to change background
+      <style>
+        :root {
+          --rule-a: (
+            background: #60569e;
+          );
+          --rule-b: (
+            background: #5daeff;
+          );
+        }
+      </style>
+      <css-doodle id="doodle1"  use="var(--rule-a)">
+          :doodle {
+            @grid: 1;
+            @size: 5em;
+          }
+      </css-doodle>
+      <script>
+          const doodle1 = document.querySelector('#doodle1');
+          doodle1.onclick = () => {
+            doodle1.use = 'var(--rule-b)';
+          }
+          console.log(doodle1, doodle1.use)
+          console.log(doodle1.grid)
+      </script>
+  </body>
+</html>
