@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始学习-export api</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+</head>
+<body>
+    <h1>导出图片</h1>
+    <css-doodle click-to-update id="doodle">
+        @grid: 10 / 20em;
+        background: @p(#FFF4E0, #F8B501, #06ACB5, #17191D, #FC3D3C);
+        :after {
+            content: '';
+            @size: 100%;
+            position: absolute;
+            background:
+            @m(4, radial-gradient(
+                circle at @p(-40% -40%, 140% 140%, 140%  -40%, -40% 140%),
+                @p(#FFF4E0, #F8B501, #06ACB5, #17191D, #FC3D3C) 50%,
+                transparent 50%
+            )),
+            radial-gradient(
+                @p(#FFF4E0, #F8B501, #06ACB5, #17191D, #FC3D3C) @r(10%, 40%),
+                transparent 0
+            )
+        }
+    </css-doodle>
+    <button id="button" style="margin-top: 10px;">下载图片</button>
+    <script>
+        let doodle = document.querySelector('#doodle');
+        let button = document.querySelector('#button');
+        if (button) {
+            button.addEventListener('click', e => {
+            button.disabled = true;
+            doodle.export({ 
+                download: true, 
+                scale: 1,
+                name: '小石头加油！',
+                detail: false // true
+            })
+                .then(data => {
+                console.log(data);
+                setTimeout(() => {
+                    button.disabled = false;
+                }, 800);
+                })
+                .catch(err => {
+                    console.error(err);
+                    button.disabled = false;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
