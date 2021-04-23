@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@shaders</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@shaders(code) 不区分模块的code</h1>
+    饱和度渐变、明度渐变
+    <css-doodle > 
+      :doodle {
+        @grid: 2 x 4 / 22em 29em;
+      }
+      @nth(1) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .8, 1.); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+      @nth(3) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .6, 1.); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+      @nth(5) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .4, 1.); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+      @nth(7) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .2, 1.); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+      @nth(2) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .9, 1.); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+      @nth(4) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .9, .8); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+      @nth(6) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .9, .5); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+      @nth(8) {
+        background: @shaders(
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy; /*gl_FragCoord 只读输入，窗口的x,y,z和1/w*/
+            gl_FragColor = vec4(p.yx, .9, .3); /* gl_FragColor 输出的颜色用于随后的像素操作*/
+          }
+        )
+      }
+    </css-doodle>
+    <h1>多个纹理的写法</h1>
+    click-to-update
+    <css-doodle grid="5" click-to-update>
+      @grid: 1 / 8em;
+      background: @shaders(
+        texture1 {
+          @grid: 1 / 100%;
+          background: linear-gradient(
+            45deg,
+            @stripe.@m20.@p(#FFF4E0, #F8B501, #06ACB5, #17191D, #FC3D3C)
+          );
+        }
+        fragment {
+          void main() {
+            vec2 p = gl_FragCoord.xy / u_resolution.xy;
+            vec2 c = vec2(.5, .5);
+            vec2 uv = p.xy - c;
+            float R = 3.141593;
+            float len = length(uv * vec2(u_resolution.x / u_resolution.y, 1.));
+            float angle = atan(uv.y, uv.x) + R * smoothstep(.5, 0., len);
+            float r = length(uv) + .1;
+            vec2 coords = vec2(r * cos(angle), r * sin(angle)) + c;
+            gl_FragColor = texture2D(texture1, coords);
+          }
+        }
+      );
+    </css-doodle>
+  </body>
+</html>
