@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@math函数</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>@abs() 取绝对值</h1>
+    <css-doodle grid="5">
+      :doodle { 
+        @size: 8em; 
+      }
+      --alpha: calc(@abs(@abs(@row - 3) + @abs(@col - 3) - 5) / 5);
+      background: rgba(
+        96, 86, 158, var(--alpha)
+      );
+      transform: rotate(15deg) scale(var(--alpha));
+    </css-doodle>
+    <h1>π</h1>
+    <css-doodle>
+      @grid: 1x60 / 8em 15em;
+      @size: 75.8% 1px;
+      justify-self: center;
+      background: #e6437d;
+      opacity: calc(1 - @index / @size);
+      transform:
+        rotate(-15deg)
+        translateX(calc(@sin(@index / 4) * π * 10px));
+    </css-doodle>
+    
+  </body>
+</html>
