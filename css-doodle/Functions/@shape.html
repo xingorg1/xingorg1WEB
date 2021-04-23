@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@shape</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@shape(commands) 画六边形 hexagon</h1>
+      <css-doodle>
+        @grid: 1 / 8em;
+        clip-path: @shape(split: 6;);
+        background: #60569e;
+      </css-doodle>
+      <h1>split值无限大，得到圆形</h1>
+      <css-doodle>
+        @grid: 1 / 8em;
+        clip-path: @shape(split: 100);
+        background: #60569e;
+      </css-doodle>
+  </body>
+</html>
