@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-grid api</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>getter and setter grid</h1>
+      <css-doodle id="doodle1" grid="5">
+          @size: 1em;
+          background: #60569e;
+      </css-doodle>
+      <script>
+          const doodle1 = document.querySelector('#doodle1');
+          console.log(doodle1, doodle1.grid)
+          doodle1.grid = "15";
+          console.log(doodle1.grid)
+      </script>
+      <h1>getter @grid</h1>
+      <css-doodle id="doodle2">
+          :doodle {
+            @grid: 2;
+            grid-gap: 1px;
+            @size: 8em;
+          }
+          background: #60569e;
+      </css-doodle>
+      <script>
+          const doodle2 = document.querySelector('#doodle2');
+          console.log(doodle2, doodle2.grid)
+          doodle2.grid = "15";
+          console.log(doodle2.grid)
+      </script>
+  </body>
+</html>
