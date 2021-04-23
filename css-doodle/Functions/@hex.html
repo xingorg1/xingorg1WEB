@@ -20,6 +20,14 @@
     <css-doodle click-to-update>
       @grid: 5 / 18em;
       :after {
+        content: \@hex(@rand(0x2500, 0x257f));
+        color: hsl(@r(360), 100%, 80%);
+      }
+      background: #60569e;
+    </css-doodle>
+    <css-doodle click-to-update>
+      @grid: 5 / 18em;
+      :after {
         content: \@hex(@rand(9632, 9687));
         color: hsl(@r(360), 100%, 80%);
       }
