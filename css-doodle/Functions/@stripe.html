@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-@stripe</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+  </head>
+  <body>
+      <h1>@stripe(color1, color2)</h1>
+      <css-doodle>
+        :doodle {
+            @grid: 5 / 8em;
+        }
+        background: linear-gradient(
+            @r(-45deg, 45deg), 
+            @stripe(hsl(@r(360), 100%, 80%), #e1e1ff)
+        );
+        <!-- 
+            思考和下边这种写法的区别：
+            background: linear-gradient(
+                @r(-45deg, 45deg), 
+                @m(3,
+                    hsl(
+                        @r(360), 
+                        100%, 
+                        80%
+                    ) 
+                    calc(@n * 100% / 3)
+                )
+            );
+        -->
+      </css-doodle>
+      <h1>@stripe(color size) stripe会自己累加size</h1>
+      把@m3(hsl(@r(360),100%,80%) 33% 的 33% 这里写成 calc(@n * 100% / 3)，就能明白了。
+      <p></p>
+      他每下一次的size是会累加上一次的size。
+      <css-doodle>
+        :doodle {
+            @grid: 5 / 8em;
+        }
+        /* 这样写注释就没事儿 */
+        background: linear-gradient(
+            @r(-45deg, 45deg), 
+            @stripe(
+                @m3(hsl(@r(360),100%,80%) 33%
+            ))
+        );
+        box-shadow: @m5(
+              calc(@n * 4px) calc(@n * 4px) 0 0 rgba(192, 107, 232, calc(1.1 - @n / 5))
+            );
+        <!-- 上两行这个))不能分开，多一个空格都不行。css生成的格式就不对了。 -->
+        <!-- 在这里边写的代码都会被渲染成css。所以你不能写html的注释代码 -->
+      </css-doodle>
+      <h1>测试 没有size 累加的规律</h1>
+      <css-doodle>
+        :doodle {
+            @grid: 1 / 8em;
+        }
+        background: linear-gradient(
+            135deg,
+            @stripe(#60569e, #e6437d, #ebbf4d, red)
+        )
+      </css-doodle>
+      <h1>测试 单个size 累加的规律</h1>
+      <css-doodle>
+        :doodle {
+            @grid: 1 / 8em;
+        }
+        background: linear-gradient(
+            135deg,
+            @stripe(#60569e 50%, #e6437d, #ebbf4d, red)
+        )
+      </css-doodle>
+      <h1>测试 多个 size累加的规律</h1>
+      <css-doodle>
+        :doodle {
+            @grid: 1 / 8em;
+        }
+        background: linear-gradient(
+            135deg,
+            @stripe(#60569e 10%, #e6437d 14%, #ebbf4d, #ff9, red)
+        )
+      </css-doodle>
+      <h1>测试 没有size 累加的规律</h1>
+      <css-doodle>
+        :doodle {
+            @grid: 1 / 8em;
+            @shape: circle;
+        }
+        background: conic-gradient(
+            @stripe(
+              #9a89ff 10%,
+              #ff6ea2 20%,
+              #ffd976 30%,
+              #f5b9ff
+            )
+          );
+      </css-doodle>
+  </body>
+</html>
