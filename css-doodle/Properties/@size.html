@@ -49,5 +49,16 @@
         grid-gap: 1px;
       }
     </css-doodle>
+    <h1>@size如果给单个单元格设置，就是设置单元格的高度</h1>
+    <css-doodle>
+      :doodle {
+        @grid: 5;
+        @size: 10em;
+        grid-gap: 1px;
+      }
+      @size: 5px;
+      background: #60569e;
+      <!-- 这么写，cell的宽高就是5px；背景色#6xx的 -->
+    </css-doodle>
   </body>
 </html>
