@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            div {
+                position: relative;
+                width: 300px;
+                height: 150px;
+                background: #fff344a3;
+                text-align: center;
+                color: #fff;
+                margin: 10px 0 25px;
+                border: 2px #ff225b dashed;
+                border-radius: 15px;
+                box-shadow: 2px 2px 9px 1px #d4c82e;
+                background-clip: content-box;
+            }
+            span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding: 5px;
+                display: inline-block;
+                font-size: 12px;
+                background: rgb(255 34 91);
+                width: 50px;
+                height: 20px;
+            }
+            span.s1 {
+                border-bottom-left-radius: 15px;
+                transform: skewX(41deg);
+            }
+            span.s2 {
+                border-bottom-right-radius: 15px;
+                transform: skewX(-41deg);
+            }
+            span.s3 {
+                left: -32px;
+                /* width: 0;
+                height: 0;
+                border: 10px solid rebeccapurple; */
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 15px;
+
+                transform: skewX(41deg);
+            }
+            span.s4 {
+                left: 32px;
+                /* width: 0;
+                height: 0;
+                border: 10px solid rebeccapurple;*/
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 10px;
+                transform: skewX(-41deg);
+            }
+        </style>
+        <div class="xing1">
+            <span class="s1"></span>
+            <span class="s2"></span>
+        </div>
+        <div class="xing1">
+            <span class="s3"></span>
+            <span class="s4"></span>
+        </div>
+    </body>
+</html>
