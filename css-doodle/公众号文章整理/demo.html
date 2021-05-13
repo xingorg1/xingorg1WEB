@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始学习-grid</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src="./css-doodle.min.js"></script>
+  </head>
+  <body>
+    <h1>grid=5</h1>
+    【grid-gap】 属性是用来设置网格行与列之间的间隙
+    <css-doodle grid="5">
+        :doodle { 
+          grid-gap: 1px; 
+          width: 8em; 
+          height: 8em; 
+        } 
+        background: #60569e;
+    </css-doodle>
+    <h1>grid=0，则使用默认值：1 * 1</h1>
+    <css-doodle grid="0">
+        :doodle { 
+          grid-gap: 1px; 
+          width: 8em; 
+          height: 8em; 
+        } 
+        background: #60569e;
+    </css-doodle>
+    <h1>不写grid，一样使用默认值：1 * 1</h1>
+    <css-doodle>
+        :doodle { 
+          grid-gap: 1px; 
+          width: 8em; 
+          height: 8em; 
+        } 
+        background: #60569e;
+    </css-doodle>
+    <h1>也可以使用Properties里的`@grid`属性来简写，设置grid的值和宽高：    </h1>
+    5 / 8em = 5x5的行数和列数。总体宽高是8em*8em
+    <css-doodle>
+      :doodle {
+        @grid: 5 / 8em;
+        grid-gap: 1px;
+      }
+      background: #60569e;
+      <!-- transform: scale(@rand(.2, .9)); -->
+    </css-doodle>
+    <h1>一维网格，grid行或列的数量取值范围变大</h1>
+    【@size: 8em;】 相当于 【width: 8em; height: 8em;】
+    <css-doodle grid="1x35">
+        :doodle {
+          grid-row-gap: 1px;
+          @size: 8em;
+        }
+        background: #60569e;
+        width: @rand(5%, 100%); /* from 5% to 100% by random */
+    </css-doodle>
+    仅当网格为一维时，行或列的最大限制为1024。
+    <css-doodle grid="100x1">
+        :doodle {
+          grid-column-gap: 1px;
+          @size: 18em;
+        }
+        background: #60569e;
+        height: @rand(5%, 100%); /* from 5% to 100% by random */
+    </css-doodle>
+    
+  </body>
+</html>

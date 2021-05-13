@@ -1,0 +1,63 @@
+
+# Attributes
+
+## grid
+在元素上设置grid属性（attribute）来定义网格的行数和列数。
+
+网格为二维时，数字的范围：1~32；
+仅当网格为一维时，行或列的最大限制为1024。
+
+如果没有设置值或者设置了0，则使用默认值：1 * 1（就是一行一列的一个格子，也就是一个正方形）
+
+grid的写法是：`n * m`  
+对应的就是（列, 行），或者（x, y）
+- 下面的这些写法都是可识别的：
+    - grid = "0"
+    - grid = "5"
+    - grid = "20"
+    - grid = "5x7"
+    - grid = "5 x 7"
+    - grid = "5,7"
+
+也可以使用Properties里的`@grid`属性来设置grid的值：
+
+grid-gap设置每个gird格子之间的间隙值。
+`grid-gap: a b;` a表示row-gap；b表示column-gap。
+
+根据一段代码来分析最终绘制方块的列宽：
+```html
+<css-doodle grid="5">
+  :doodle { 
+    grid-gap: 1px; 
+    width: 8em; 
+    height: 8em; 
+  } 
+  background: #60569e;
+</css-doodle>
+<style>
+  body {
+    font-size: 16px;
+  }
+</style>
+```
+grid的宽高设置为8em、5列后，css-doodle的总宽度就是父元素字号（假设是16px）* 8，也就是128px的宽度。（因为em宽度单位受父元素字号大小的影响。1em等于父元素字体fontSize的大小。Xem的值换算成px后就是x*fontSize值）  
+5列、gap的间隙为1时，则每一列的宽度就是128-4（4*1个间隙，总宽度为4）得到124。  
+124/5 则每一列的宽度24.8px  
+## use
+从[`CSS custome properties`](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)（CSS 变量）中引入规则。
+
+CSS custome properties举例：
+```css
+#firstParagraph {
+  background-color: var(--first-color);
+  color: var(--second-color);
+}
+```
+
+如果要在生产环境的网站中使用css-doodle的话，强烈建议使用这种方式。因为这样写不受网络速度慢的影响，并且当浏览器不支持[`Web Component`](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components)的时候也不会出现错误。
+
+## seed
+根据seed value的值，所有随机数会被重新生成为上次相同的值。
+当你需要一个快照时这将是非常有用的。
+
+如果你没有特殊指定的话，随机seed会被默认生成。你总是可以用接下来要学习的JS API来获取生成的值。
