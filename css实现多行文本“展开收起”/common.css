@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 20px;
+}
+.hide {
+  display: none;
+}
+.box {
+  width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px #e1e1e1;
+  border: 1px solid #e5e5e5;
+  font-size: 14px;
+  color: #333;
+  /* 
+  flex布局：在 flex 布局 的子项中，可以通过百分比来计算变化高度 
+  display: grid 和 display: -webkit-box 同样有效
+  */
+  display: flex;
+}
+
+.text {
+  /* 多行文本截断 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding-bottom: 1px;
+}
+.text.origin{
+  -webkit-line-clamp: 999;
+  overflow: visible;
+}
+
+.text .btn {
+  padding: 2px 4px;
+  font-size: 12px;
+  color: #fff;
+  border: 0;
+  background: #49a4ff;
+  border-radius: 4px;
+  cursor: pointer;
+  transform: scale(0.98);
+  float: right;
+  /* margin-top: 50px;  */
+  /* 
+    使用margin-top让按钮移下去有两个问题
+    1、不知道展开、伸缩的实际高度是多少
+    2、按钮上边margin的距离会空出来，文字过不去
+  */
+
+  /* 但是利用多个浮动元素+自身清除浮动就能解决这个问题 */
+  clear: both;
+}
+.text::before {
+  content: '';
+  float: right;
+  /* 
+  放开这两个可以看到效果
+  width: 10px;
+  background: red 
+  */
+  /*  
+  但是具体高度应该是多少呢？需要动态计算
+  height: 50px; 
+  */
+  /* 
+  浮动后 高度100%失效，所以自动计算也不成立
+  然后让整个父元素设置flex布局后，高度100%就成立了，再减去按钮自身的高度就行了
+  height: calc(100% - 21px);
+  */
+  /* 动态高度也可以用margin负值实现，性能会比calc好 */
+  height: 100%;
+  margin-bottom: -20px;
+}
+
+/* 切换状态 */
+.toggle:checked + .text {
+  -webkit-line-clamp: 999; /*设置一个足够大的行数就可以全展开了*/
+}
+.btn::after {
+  content: "展开";
+}
+.toggle:checked + .text .btn::after{
+  content: "收起";
+}
