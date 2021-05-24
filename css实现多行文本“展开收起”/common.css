@@ -28,7 +28,7 @@ body {
   overflow: hidden;
   padding-bottom: 1px;
 }
-.text.origin{
+.text.origin {
   -webkit-line-clamp: 999;
   overflow: visible;
 }
@@ -80,8 +80,34 @@ body {
   -webkit-line-clamp: 999; /*设置一个足够大的行数就可以全展开了*/
 }
 .btn::after {
-  content: "展开";
+  content: '展开';
 }
-.toggle:checked + .text .btn::after{
-  content: "收起";
+.toggle:checked + .text .btn::after {
+  content: '收起';
+}
+
+/* 隐藏展开按钮 */
+.hide-btn1 .text {
+  resize: horizontal;
+}
+.hide-btn .text {
+  position: relative;
+}
+.hide-btn .text::after {
+  /* 在文本末尾添加一个红色小方块，盖住展开按钮 */
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: white;
+}
+.hide-btn1 .text::after {
+  width: 10px;
+  height: 10px;
+  background: red;
+}
+
+/* 收起按钮不能被遮挡，所以单独显示 */
+.hide-btn2 .toggle:checked + .text::after {
+  visibility: hidden;
 }
