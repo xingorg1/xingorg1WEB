@@ -1,3 +1,4 @@
+
 .box {
   /* 
   flex布局：在 flex 布局 的子项中，可以通过百分比来计算变化高度 
@@ -6,9 +7,12 @@
   display: flex;
 }
 
-.text.origin {
-  -webkit-line-clamp: 999;
-  overflow: visible;
+.text {
+  /* 多行文本截断 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .text .btn {
@@ -60,24 +64,10 @@
 .hide-btn1 .text {
   resize: horizontal;
 }
-.hide-btn .text {
-  position: relative;
-}
-.hide-btn .text::after {
-  /* 在文本末尾添加一个红色小方块，盖住展开按钮 */
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: white;
-}
+
 .hide-btn1 .text::after {
   width: 10px;
   height: 10px;
   background: red;
 }
 
-/* 收起按钮不能被遮挡，所以单独显示 */
-.hide-btn2 .toggle:checked + .text::after {
-  visibility: hidden;
-}

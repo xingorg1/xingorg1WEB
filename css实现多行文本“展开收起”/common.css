@@ -15,15 +15,14 @@ body {
   color: #333;
 }
 .text {
-  /* 多行文本截断 */
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   padding-bottom: 1px;
 }
 
-.text .btn {
+.text.origin {
+  -webkit-line-clamp: 999;
+  overflow: visible;
+}
+.btn {
   padding: 2px 4px;
   font-size: 12px;
   color: #fff;
@@ -32,4 +31,20 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transform: scale(0.98);
+}
+
+.hide-btn .text {
+  position: relative;
+}
+.hide-btn .text::after {
+  /* 在文本末尾添加一个红色小方块，盖住展开按钮 */
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: white;
+}
+/* 收起按钮不能被遮挡，所以单独显示 */
+.hide-btn2 .toggle:checked + .text::after {
+  visibility: hidden;
 }
