@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #000;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <style>
+        css-doodle {
+        --rule: (
+          :doodle {
+            @grid: 1x103 / 85vmin 60vmin
+            @min-size: 400px 300px;
+            overflow: hidden; 
+            background: @m100(radial-gradient(#fff 50%, transparent 0) @r(100%) @r(40%) / 1px 1px no-repeat),linear-gradient(#000, #e91e63);
+          } 
+          background: #000; 
+          overflow: hidden; 
+          position: absolute; 
+          left: @r(-2%, 98%); 
+          bottom: 0; 
+          --w: @ri(15, 50); 
+          --h: @ri(10, 50); 
+          @random(0.2) {
+            --w: @ri(15, 20);
+            --h: @ri(10, 20);
+          } 
+          @random(0.2) {
+              --w: @ri(50, 100);
+               --h: @ri(50, 100);
+            } 
+          @random(0.1) {
+            --w:@ri(15, 50);
+             --h: @ri(80, 150);
+          } 
+          z-index: calc(
+              99999999 - @var(--w) * @var(--h)
+            );
+             opacity: calc(1 - 1 / 8000 * @var(--w) * @var(--h));
+             @size: calc(
+              @var(--w) * 1px
+            ) calc(@var(--h) * 0.5%);
+          @random {
+            :after {
+              content: '';
+             position: absolute; 
+             top: -3px; 
+             left: -2px; 
+             @size: @p(3px, 4px, 5px) 2px;
+             background: #fff; 
+             box-shadow: @m20(
+              calc(@ri(1, 5) * 5px) calc(@ri(1, 100) * 2px) 0 0px #fff @p([0-9a-f])
+            );
+          }} 
+          @nth(1) {
+            @size: 3vmin; 
+            box-shadow: inset 0.5vmin 0 #fff; 
+            border-radius:50%; 
+            background: transparent; 
+            left: auto; 
+            top: @r(2%, 8%);
+            right: @r(5%, 10%);
+            opacity: .8; transform: rotate(@r(-30deg, 30deg));
+            filter:drop-shadow(0 0 10px #fff);
+          } 
+          @nth(2, 3) {
+            @size: 60% 1px;
+            background: linear-gradient(to right, #fffa, transparent);
+            transform: rotate(
+              @pn(-145deg, -150deg)
+            );
+            top: @pn(0%, 10%);
+            left: @pn(-20%, 0%);
+            opacity: @pn(0.2,0.5);
+            z-index: 1;
+          }
+        );
+      }
+    </style>
+    <!-- from https://codepen.io/yuanchuan/pen/MMYmqv -->
+    <css-doodle use="var(--rule)"></css-doodle>
+    <script>
+      document.addEventListener(
+        'click',
+        e => e.target.update && e.target.update()
+      )
+    </script>
+  </body>
+</html>

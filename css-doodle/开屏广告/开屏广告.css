@@ -1,0 +1,138 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+.box {
+  position: relative;
+  margin-top: -100px;
+  width: 600px;
+  height: 330px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+main {
+  display: flex;
+  /* filter: hue-rotate(45deg) blur(2.9px); */
+  filter: hue-rotate(90deg) blur(2.9px);
+  background: #000;
+}
+p {
+  line-height: 1;
+  margin: 0;
+}
+span {
+  display: block;
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+  color: #9bff9b11;
+  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+.txt {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  color: #fff;
+  text-align: center;
+  padding-top: 70px;
+}
+.txt h1 {
+  margin: 5px 0;
+  font-size: 36px;
+  text-shadow: 1px 4px 5px #d0fff8; /* 1px 4px 5px #566ca1*/
+}
+.txt .sub-title {
+  font-size: 15px;
+  /* text-shadow: 1px 1px 2px #ffffff; */
+  font-weight: bold;
+}
+
+.button {
+  margin-top: 50px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 0;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+  border: 3px solid #fff;
+  background: transparent;
+  font-weight: 600;
+}
+.button:hover {
+  background: rgb(255 255 255 / 20%);
+}
+.button2 {
+  margin-top: 50px;
+  color: #000;
+  transition: color 0.3s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  border-radius: 40px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 1em 2em;
+  border: none;
+  background: none;
+  position: relative;
+  z-index: 1;
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+.button2::after,
+.button2::before {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+  background: #fff;
+  z-index: -1;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button2::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale3d(1.1, 1, 1);
+  transform: scale3d(1.1, 1, 1);
+  transition: transform 0.3s, background-color 0.3s, opacity 0.3s;
+}
+.button2::before {
+  top: -4px;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  opacity: 0.3;
+  -webkit-transform: scale3d(0.7, 1, 1);
+  transform: scale3d(0.7, 1, 1);
+  transition: all 0.3s;
+}
+.button2:hover {
+  color: #fff;
+}
+.button2:hover::after {
+  transform: scale3d(1, 1, 1);
+  opacity: 0;
+  background-color: #fff;
+}
+.button2:hover::before {
+  top: -3px;
+  bottom: -3px;
+  opacity: 1;
+  background: transparent;
+  border: 3px solid #fff;
+  transform: scale3d(1, 0.9, 1);
+}
