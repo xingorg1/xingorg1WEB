@@ -1,3 +1,13 @@
+#close {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  /* width: 200px;
+  background: #fff;
+  height: 40px;
+  color: #333; */
+}
 html,
 body {
   height: 100%;
@@ -5,14 +15,24 @@ body {
   overflow: hidden;
 }
 body {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  position: relative;
   background: #0f1629;
+}
+.dialog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
 }
 .box {
   position: relative;
-  margin-top: -100px;
+  margin: 200px auto 0;
   width: 600px;
   height: 330px;
   border-radius: 5px;
@@ -21,6 +41,43 @@ body {
   background-image: url(./cover.png);
   background-size: 100% auto;
   background-position: center center;
+  transform-origin: -140% 300%;
+}
+/* @-webkit-keyframes fadeOutBottomLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateZ(0);
+    transform: scale(1) translateZ(0);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0) translate3d(-140%, 220%, 0);
+    transform: scale(0) translate3d(-140%, 220%, 0);
+  }
+} */
+
+@keyframes fadeOutBottomLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateZ(0);
+    transform: scale(1) translateZ(0);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0) translate3d(90%, 0%, 0);
+    transform: scale(0) translate3d(90%, 0%, 0);
+  }
+}
+
+.animate__fadeOutBottomLeft {
+  -webkit-animation-name: fadeOutBottomLeft;
+  animation-name: fadeOutBottomLeft;
+}
+.box.close {
+  animation-name: fadeOutBottomLeft;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
 }
 p {
   line-height: 1;
