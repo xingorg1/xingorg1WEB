@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>流星雨</title>
+    <link rel="stylesheet" href="./流星雨.css" />
+    <script src="https://unpkg.com/css-doodle@0.14.2/css-doodle.min.js"></script>
+    <!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/52982/css-doodle.min.js?v=1"></script> -->
+  </head>
+  <body>
+    <div class="box">
+      <css-doodle>
+        :doodle {
+          @grid: 1x1 / 600px 330px;
+          position: absolute;
+          top: 0; left: 0;
+          z-index: 0;
+        }
+      
+        @size: 100% 150%;
+        position: absolute;
+        
+        background: @m(10, (
+          linear-gradient(transparent, @p(
+            #72ecff@repeat(2, @p([0-9a-f])), 
+            #ffffff@repeat(2, @p([0-9a-f])) 
+          ))
+          @r(0%, 100%) @r(0%, 100%) /
+          @r(1px) @r(13vmin)
+          no-repeat
+        ));
+      
+        will-change: transform;
+        animation: f 5s linear calc(-10s / @size() * @i()) infinite;
+        @keyframes f {
+          from { transform: rotate(-45deg) translateY(-100%) }
+          to { transform: rotate(-45deg) translateY(100%) }
+        }
+      </css-doodle>
+      <div class="txt">
+        <h1>一起来看 流星雨</h1>
+        <div class="sub-title">致我们 终将失去的青春</div>
+        <button class="button2">청  춘</button>
+      </div>
+    </div>
+  </body>
+</html>
