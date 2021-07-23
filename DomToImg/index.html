@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试将DOM结构转成图片</title>
+    <style>
+      .box {
+        width: 400px;
+        /* height: 500px; */
+        margin: 0px auto 0;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px 2px #f1f1f1;
+        border: 1px solid #f1f1f1;
+        overflow: hidden;
+      }
+      h2 {
+        margin: 0;
+      }
+      img {
+        width: 100%;
+        margin: 0;
+      }
+    </style>
+    <script src="./html2canvas.min.js"></script>
+  </head>
+  <body>
+    <div class="box" id="box">
+      <h2>测试结果</h2>
+      <img
+        src="https://up.enterdesk.com/edpic_360_360/27/a4/87/27a487802eb50430c065a63021ab11bd.jpg"
+        alt="来源百度"
+      />
+      <hr />
+      <span style="float: none; color: #f40">小石头</span>
+      <div>
+        <span style="opacity: 0">透明</span>、
+        <span style="opacity: 1">不透明</span>、
+        <span style="visibility: hidden">隐藏</span>、
+        <span style="visibility: none">不隐藏</span>、
+      </div>
+    </div>
+    <!-- <button οnclick="aa()">这个onclick死活和别人匹配不上，绝了！</button> -->
+    <div>
+      <button onclick="html2canvasHandle()">转成图片</button>
+    </div>
+
+    <script type="text/javascript">
+      // html2canvas
+      function html2canvasHandle() {
+        // setTimeout(() => {
+        html2canvas(document.querySelector('#box'), {
+          useCORS: true,
+        }).then(canvas => {
+          document.body.appendChild(canvas)
+          console.log(canvas)
+          // console.log(canvas.toDataURL())
+        })
+        // }, 500)
+      }
+    </script>
+    <!-- <script>
+      // domtoimage
+      domtoimage
+        .toPng(document.getElementById('repair'))
+        .then(function (dataUrl) {
+          var img = new Image()
+          img.src = dataUrl
+          document.body.appendChild(img)
+          var a = document.createElement('a')
+          a.setAttribute('href', dataUrl)
+          a.setAttribute('download', '1.png')
+          a.click()
+        })
+        .catch(function (error) {
+          console.error('转图片失败!', error)
+        })
+    </script> -->
+  </body>
+</html>
