@@ -1,0 +1,7 @@
+{
+  "name": "font-zip",
+  "version": "1.0.0",
+  "dependencies": {
+    "font-spider": "^1.3.5"
+  }
+}
