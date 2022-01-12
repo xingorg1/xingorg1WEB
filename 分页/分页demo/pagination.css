@@ -216,7 +216,7 @@ body {
   height: 50px; }
 
 .jxs-page-notify .success {
-  background: url(http://image.bitautoimg.com/2016/pc1200/jxshd/success-large.png) no-repeat; }
+  background: url(/success-large.png) no-repeat; }
 
 .jxs-page-notify h1 {
   padding: 10px 0 0 70px;

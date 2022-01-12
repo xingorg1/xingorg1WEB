@@ -34,7 +34,7 @@
     var iframe = document.getElementById('mainContent');
     var sty = document.createElement('style');
     sty.type = "text/css";
-    sty.innerHTML="iframe#mainContent{height:1130px;}iframe#mainContent body{background:#fff;}.main-container:before{content:none;}.yicheTpl .yicheBreadcrumb{margin:0;padding:10px 16px;}.yicheTpl > .row > .col-xs-12{padding:0;}.fixed-table-header .table{width:100%!important;}.fixed-table-body{height:700px;}.grid_icon{margin-left:0;}";
+    sty.innerHTML="iframe#mainContent{height:1130px;}iframe#mainContent body{background:#fff;}.main-container:before{content:none;}.fixed-table-header .table{width:100%!important;}.fixed-table-body{height:700px;}.grid_icon{margin-left:0;}";
     iframe.onload = function(e){
       var doc = this.contentWindow.document || this.contentDocument;
       console.log(doc)

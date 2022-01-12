@@ -153,7 +153,7 @@ $yiBtnValueMap: (
 
 	// 加载
 	btnLoadBgImgPl: 30px,
-	btnLoadBgImg: 'https://img1.bitautoimg.com/das/fe/yi-widget/pc-widget/other/load.gif',
+	btnLoadBgImg: '/other/load.gif',
 	btnLoadBgImgPosition: 10px center,
 );
 // 按钮 end
@@ -183,7 +183,7 @@ $yiAlertValueMap: (
 // 警告提示 end
 
 
-$yiCheckRadioValueMap: (
+$ckRadioValueMap: (
 	// 文字： 左边距、默认颜色、字号、行高、
 	crTextMl: 8px,
 	crTextColor: #666,
@@ -224,7 +224,7 @@ $yiInputValueMap: (
 	// 日历：右侧内边距、icon背景图
 	iptDateW: 87px,
 	iptDatePl: 25px,
-	iptDateBgImg: 'https://img1.bitautoimg.com/das/fe/yi-widget/m-widget/other/icon-date.png',
+	iptDateBgImg: '/icon-date.png',
 
 	// 尺寸规格
 	iptLgW: 238px !important,
@@ -415,7 +415,7 @@ $yiToastValueMap: (
 
 $yiHeaderValueMap:(
 	// 基础：背景图、宽度、高度、链接颜色
-	headBgI: 'https://img1.bitautoimg.com/das/fe/yi-widget/pc-widget/other/header.jpg',
+	headBgI: '/other/header.jpg',
 	headW: 1200px,
 	headH: 60px,
 	headLinkColor: $white,
@@ -425,7 +425,7 @@ $yiHeaderValueMap:(
 	headLogoPr: 12px,
 	headLogoW: 188px,
 	headLogoH: 28px,
-	headLogoBgI: 'https://img1.bitautoimg.com/das/fe/yi-widget/pc-widget/other/logo.png',
+	headLogoBgI: '/other/logo.png',
 
 	// menu：内上边距、高度、选中背景色、圆角、选中颜色
 	headMenuPt: 18px,
